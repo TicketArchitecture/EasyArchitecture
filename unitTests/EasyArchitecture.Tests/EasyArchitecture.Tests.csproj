@@ -84,15 +84,15 @@
       <Project>{09A7AA21-ED65-409C-8442-E0ADA02A7AAF}</Project>
       <Name>EasyArchitecture</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TestStuff\Application4Test.Application\Application4Test.Application.csproj">
+    <ProjectReference Include="..\Application4Test.Application\Application4Test.Application.csproj">
       <Project>{8AE9BF26-387B-49B9-8789-93BEA4B212AD}</Project>
       <Name>Application4Test.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TestStuff\Application4Test.Domain\Application4Test.Domain.csproj">
+    <ProjectReference Include="..\Application4Test.Domain\Application4Test.Domain.csproj">
       <Project>{82873FF4-1685-423F-B40B-1CF84AABBEAE}</Project>
       <Name>Application4Test.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TestStuff\Application4Test.Infrastructure\Application4Test.Infrastructure.csproj">
+    <ProjectReference Include="..\Application4Test.Infrastructure\Application4Test.Infrastructure.csproj">
       <Project>{21CEB06D-9A61-4331-95EA-7BE413A29D76}</Project>
       <Name>Application4Test.Infrastructure</Name>
     </ProjectReference>
