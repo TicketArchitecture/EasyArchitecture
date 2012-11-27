@@ -2,7 +2,6 @@
 using EasyArchitecture.Initialization;
 using Application4Test.Application.Contracts;
 using EasyArchitecture.Tests.Stuff;
-using Microsoft.Practices.ServiceLocation;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Tests.Initialization
@@ -23,7 +22,7 @@ namespace EasyArchitecture.Tests.Initialization
             var bootstrap = Bootstrap.GetInstance();
             bootstrap.Register<IDogFacade, DummyDogFacade>();
 
-            var facade = ServiceLocator.Current.GetInstance<IDogFacade>();
+            var facade = Bootstrap.GetInstance().GetInstance<IDogFacade>();
 
             Assert.That(facade, Is.InstanceOf<IDogFacade>());
 

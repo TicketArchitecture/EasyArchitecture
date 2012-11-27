@@ -2,7 +2,6 @@
 using System.Reflection;
 using EasyArchitecture.Data;
 using EasyArchitecture.Diagnostic;
-using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.InterceptionExtension;
 
@@ -19,8 +18,6 @@ namespace EasyArchitecture.Initialization
             Container = new UnityContainer();
             Container.AddNewExtension<Interception>();
 
-            InitializeServiceLocator();
-
             ConfigurePoliceInterceptor();
 
             Log.To(typeof(UnityContainerInitializer)).Message("Container initialized").Debug();
@@ -31,12 +28,6 @@ namespace EasyArchitecture.Initialization
             ContainerConfig(interfaceAssembly, implementationAssembly, useInterception);
         }
 
-        private static void InitializeServiceLocator()
-        {
-            ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(Container));
-
-            Log.To(typeof(UnityContainerInitializer)).Message("Service Locator Configured").Debug();
-        }
 
         private static void ContainerConfig(Assembly interfacesAssembly, Assembly implementationAssembly, bool useInterception)
         {
@@ -104,6 +95,11 @@ namespace EasyArchitecture.Initialization
         public static void OutterRegister<T, U>() where U : T
         {
             Container.RegisterType<T, U>();
+        }
+
+        public static T GetInstance<T>()
+        {
+            return Container.Resolve<T>();
         }
 
         private static void ConfigurePoliceInterceptor()

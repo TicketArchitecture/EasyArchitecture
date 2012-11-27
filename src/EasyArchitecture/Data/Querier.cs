@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Microsoft.Practices.ServiceLocation;
+using EasyArchitecture.Initialization;
 
 namespace EasyArchitecture.Data
 {
@@ -10,7 +10,7 @@ namespace EasyArchitecture.Data
         {
          //   Type U = typeof (NamedQuery<T>);
             //get querier 4 T
-            var querier = ServiceLocator.Current.GetInstance<NHibernateQuerier<T>>();
+            var querier = Bootstrap.GetInstance().GetInstance<NHibernateQuerier<T>>();
 
             //execute
             //var ret = new NHibernateQuerier<T>().Execute(namedQuery);

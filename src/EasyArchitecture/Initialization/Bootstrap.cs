@@ -82,5 +82,10 @@ namespace EasyArchitecture.Initialization
         {
             UnityContainerInitializer.OutterRegister<T, U>();
         }
+
+        public T GetInstance<T>()
+        {
+            return UnityContainerInitializer.GetInstance<T>();
+        }
     }
 }
