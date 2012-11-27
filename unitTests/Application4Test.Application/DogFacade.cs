@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
+using Application4Test.Application.Queries;
 using AutoMapper;
 using EasyArchitecture.Data;
 using EasyArchitecture.Diagnostic;
 using EasyArchitecture.Initialization;
 using Application4Test.Application.Contracts;
 using Application4Test.Application.Contracts.DTOs;
-using Application4Test.Application.Queriers;
 using Application4Test.Domain;
 using Application4Test.Domain.Repositories;
 
@@ -58,11 +58,19 @@ namespace Application4Test.Application
         }
 
 
+        //TODO: mount by reflection
         [QueryMethod]
-        public virtual List<DogDto> GetAllOldDogs(int age)
+        public virtual IList<DogDto> GetAllOldDogs(int age)
         {
-            return new DogQuerier().GetAllOldDogs(age);
+            return Querier.Execute(new GetAgedDogs(age));
         }
+
+        [QueryMethod]
+        public virtual IList<DogDto> GetAllDogs()
+        {
+            return Querier.Execute(new GetAllDogs());
+        }
+
 
     }
 }

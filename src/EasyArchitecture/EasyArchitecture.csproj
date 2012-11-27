@@ -81,7 +81,9 @@
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\NamedQuery.cs" />
     <Compile Include="Data\PersistenceConfiguration.cs" />
+    <Compile Include="Data\Querier.cs" />
     <Compile Include="Data\TransactionHandler.cs" />
     <Compile Include="Data\NHibernateConfiguration.cs" />
     <Compile Include="Data\PersistenceManagerInitializer.cs" />

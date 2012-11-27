@@ -1,6 +1,7 @@
 ﻿using System;
 using EasyArchitecture.Initialization;
 using Application4Test.Application.Contracts;
+using EasyArchitecture.Tests.Stuff;
 using Microsoft.Practices.ServiceLocation;
 using NUnit.Framework;
 

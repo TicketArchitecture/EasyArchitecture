@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Application4Test.Application.Contracts;
 using Application4Test.Application.Contracts.DTOs;
 
-namespace EasyArchitecture.Tests
+namespace EasyArchitecture.Tests.Stuff
 {
     public class DummyDogFacade : IDogFacade
     {
@@ -21,7 +21,12 @@ namespace EasyArchitecture.Tests
             throw new System.NotImplementedException();
         }
 
-        public List<DogDto> GetAllOldDogs(int age)
+        public IList<DogDto> GetAllOldDogs(int age)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IList<DogDto> GetAllDogs()
         {
             throw new System.NotImplementedException();
         }

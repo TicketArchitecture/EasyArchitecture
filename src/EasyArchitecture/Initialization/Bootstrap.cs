@@ -77,5 +77,10 @@ namespace EasyArchitecture.Initialization
         {
             UnityContainerInitializer.Register<T, U>();
         }
+
+        public void OutterRegister<T, U>() where U : T
+        {
+            UnityContainerInitializer.OutterRegister<T, U>();
+        }
     }
 }

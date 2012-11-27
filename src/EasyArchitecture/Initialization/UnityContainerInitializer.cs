@@ -76,13 +76,13 @@ namespace EasyArchitecture.Initialization
             }
         }
 
-        public static void Register<T,U>() where U : T
+        public static void Register<T, U>() where U : T
         {
             var type = typeof(T);
             if (!type.IsInterface)
                 throw new Exception("T must be an interface");
 
-            if(AssemblyManager.IsContractAssembly(type.Assembly))
+            if (AssemblyManager.IsContractAssembly(type.Assembly))
             {
                 Container.RegisterType(
                     typeof(T), typeof(U),
@@ -98,7 +98,12 @@ namespace EasyArchitecture.Initialization
             }
 
             throw new Exception("T must a facade interface, a domain service interface or a domain repository interface");
-            
+
+        }
+
+        public static void OutterRegister<T, U>() where U : T
+        {
+            Container.RegisterType<T, U>();
         }
 
         private static void ConfigurePoliceInterceptor()
