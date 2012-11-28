@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\..\src\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="FluentNHibernate">
       <HintPath>..\..\src\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
     </Reference>
@@ -58,7 +55,6 @@
     <Compile Include="Contracts\IDogFacade.cs" />
     <Compile Include="DogFacade.cs" />
     <Compile Include="Queries\GetAgedDogs.cs" />
-    <Compile Include="Profiles\DogProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\GetAllDogs.cs" />
   </ItemGroup>

@@ -62,11 +62,11 @@
     <Compile Include="Stuff\Helpers\AssemblyLoader.cs" />
     <Compile Include="Internals\Initialization\AssemblyManagerTest.cs" />
     <Compile Include="Internals\Initialization\BootStrapTest.cs" />
-    <Compile Include="Internals\Initialization\AutoMapperInitializerTest.cs" />
     <Compile Include="Stuff\DummyCatFacade.cs" />
     <Compile Include="Stuff\ICatFacade.cs" />
     <Compile Include="Internals\Internal\JsonSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserCode\Initialization\TranslationTest.cs" />
     <Compile Include="UserCode\Initialization\InitializationTest.cs" />
     <Compile Include="UserCode\Querier\QuerierTest.cs" />
   </ItemGroup>
@@ -79,6 +79,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\plugins\EasyArchitecture.Plugins.Automapper\EasyArchitecture.Plugins.Automapper.csproj">
+      <Project>{46C70FC2-29AC-4F11-AC70-CC3D066C90ED}</Project>
+      <Name>EasyArchitecture.Plugins.Automapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\plugins\EasyArchitecture.Plugins.Log4net\EasyArchitecture.Plugins.Log4net.csproj">
       <Project>{13B2D49C-45D2-43AD-99A3-FF1F66AEAA3F}</Project>
       <Name>EasyArchitecture.Plugins.Log4net</Name>

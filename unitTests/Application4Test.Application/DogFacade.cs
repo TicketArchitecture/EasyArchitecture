@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Application4Test.Application.Queries;
-using AutoMapper;
+using EasyArchitecture;
 using EasyArchitecture.Data;
 using EasyArchitecture.Diagnostic;
 using EasyArchitecture.Initialization;

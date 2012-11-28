@@ -4,6 +4,7 @@ using EasyArchitecture.Configuration;
 using EasyArchitecture.Data;
 using EasyArchitecture.Diagnostic;
 using EasyArchitecture.Domain;
+using Remotion.Linq.Utilities;
 
 namespace EasyArchitecture.Initialization
 {
@@ -12,6 +13,7 @@ namespace EasyArchitecture.Initialization
         private static readonly object SyncRoot = new object();
         private static volatile Bootstrap _instance;
         internal static ILogPlugin LogPlugin;
+        internal static IObjectMapperPlugin ObjectMapperPlugin;
 
         //http://msdn.microsoft.com/en-us/library/ff650316.aspx
         public static Bootstrap GetInstance()
@@ -36,7 +38,10 @@ namespace EasyArchitecture.Initialization
             try
             {
                 if (LogPlugin == null)
-                    throw new ArgumentNullException("LogPlugin");   
+                    throw new ArgumentNullException("LogPlugin");
+
+                if (ObjectMapperPlugin==null)
+                    throw new ArgumentNullException("ObjectMapperPlugin");
                 
                 LogManager.InitializeFrameworkLogger(ConfigurationManager.GetLogLevel());
                 Log.To(typeof(Bootstrap)).Message("Initializing Bootstrap").Debug();
@@ -58,7 +63,7 @@ namespace EasyArchitecture.Initialization
 
                     ValidatorEngine.Configure(domainAssembly);
 
-                    AutoMapperInitializer.Configure(applicationAssembly);
+                    ObjectMapperPlugin.Configure(infrastructureAssembly);
 
                     UnityContainerInitializer.AutoRegister(domainAssembly, infrastructureAssembly, false);
                     UnityContainerInitializer.AutoRegister(contractsAssembly, applicationAssembly, true);
@@ -92,9 +97,22 @@ namespace EasyArchitecture.Initialization
             return UnityContainerInitializer.GetInstance<T>();
         }
 
-        public static void Configure<T>(T logPlugin) where T :ILogPlugin
+        public static void Configure<T>(T plugin) //where T : IObjectMapperPlugin,ILogPlugin
         {
-            LogPlugin = logPlugin;
+            if (plugin is ILogPlugin)
+            {
+                LogPlugin = plugin as ILogPlugin;
+                return;
+            }
+
+            if (plugin is IObjectMapperPlugin)
+            {
+                ObjectMapperPlugin = plugin as IObjectMapperPlugin;
+                return;
+            }
+
+            throw new ArgumentTypeException("plugin", typeof(ILogPlugin),typeof(T));
+        
         }
     }
 }

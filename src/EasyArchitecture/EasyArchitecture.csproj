@@ -42,9 +42,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=2.1.267.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="FluentNHibernate">
       <HintPath>..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
     </Reference>
@@ -98,6 +95,7 @@
     <Compile Include="Diagnostic\LogMessage.cs" />
     <Compile Include="Initialization\FacadeMatchingRule.cs" />
     <Compile Include="Diagnostic\ILogPlugin.cs" />
+    <Compile Include="Initialization\IObjectMapperPlugin.cs" />
     <Compile Include="Initialization\QueryMethodAttribute.cs" />
     <Compile Include="Internal\JsonSerializer.cs" />
     <Compile Include="Internal\LocalThreadStorage.cs" />
@@ -118,8 +116,8 @@
     <Compile Include="Initialization\Bootstrap.cs" />
     <Compile Include="Initialization\AssemblyManager.cs" />
     <Compile Include="Configuration\ConfigurationManager.cs" />
-    <Compile Include="Initialization\AutoMapperInitializer.cs" />
     <Compile Include="Initialization\UnityContainerInitializer.cs" />
+    <Compile Include="Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

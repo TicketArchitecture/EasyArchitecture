@@ -1,8 +1,9 @@
-﻿using AutoMapper;
-using Application4Test.Application.Contracts.DTOs;
+﻿using Application4Test.Application.Contracts.DTOs;
 using Application4Test.Domain;
+using AutoMapper;
 
-namespace Application4Test.Application.Profiles
+
+namespace Application4Test.Infrastructure.ObjectMapper
 {
     public class DogProfile : Profile
     {
