@@ -79,7 +79,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\EasyArchitecture.Plugins.Log4net\EasyArchitecture.Plugins.Log4net.csproj">
+    <ProjectReference Include="..\..\plugins\EasyArchitecture.Plugins.Log4net\EasyArchitecture.Plugins.Log4net.csproj">
       <Project>{13B2D49C-45D2-43AD-99A3-FF1F66AEAA3F}</Project>
       <Name>EasyArchitecture.Plugins.Log4net</Name>
     </ProjectReference>

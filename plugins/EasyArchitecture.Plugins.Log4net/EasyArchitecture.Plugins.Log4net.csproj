@@ -47,7 +47,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EasyArchitecture\EasyArchitecture.csproj">
+    <ProjectReference Include="..\..\src\EasyArchitecture\EasyArchitecture.csproj">
       <Project>{09A7AA21-ED65-409C-8442-E0ADA02A7AAF}</Project>
       <Name>EasyArchitecture</Name>
     </ProjectReference>

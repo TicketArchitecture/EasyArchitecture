@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application4Test.Applicatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{25C120B5-E642-4854-9D49-C8089EE5FA32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Plugins.Log4net", "EasyArchitecture.Plugins.Log4net\EasyArchitecture.Plugins.Log4net.csproj", "{13B2D49C-45D2-43AD-99A3-FF1F66AEAA3F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Plugins.Log4net", "..\plugins\EasyArchitecture.Plugins.Log4net\EasyArchitecture.Plugins.Log4net.csproj", "{13B2D49C-45D2-43AD-99A3-FF1F66AEAA3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
