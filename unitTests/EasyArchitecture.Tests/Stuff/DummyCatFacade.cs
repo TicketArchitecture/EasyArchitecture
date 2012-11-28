@@ -1,6 +1,4 @@
-using EasyArchitecture.Tests.Initialization;
-
-namespace EasyArchitecture.Tests
+namespace EasyArchitecture.Tests.Stuff
 {
     public class DummyCatFacade : ICatFacade
     {

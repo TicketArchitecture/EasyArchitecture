@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace EasyArchitecture.Tests.Helpers
+namespace EasyArchitecture.Tests.Stuff.Helpers
 {
     public static class AssemblyLoader
     {

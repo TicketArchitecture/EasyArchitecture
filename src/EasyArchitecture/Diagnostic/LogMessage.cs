@@ -1,15 +1,14 @@
 using System;
-using log4net;
 
 namespace EasyArchitecture.Diagnostic
 {
     public  class LogMessage
     {
-        internal readonly ILog Logger;
+        internal readonly Type Logger;
         internal  object _message;
         internal  Exception _exception;
 
-        internal LogMessage(ILog logger)
+        internal LogMessage(Type logger)
         {
             Logger = logger;
         }

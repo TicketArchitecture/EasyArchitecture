@@ -2,7 +2,7 @@
 using EasyArchitecture.Configuration;
 using NUnit.Framework;
 
-namespace EasyArchitecture.Tests.Configuration
+namespace EasyArchitecture.Tests.Internals.Configuration
 {
     [TestFixture]
     public class ConfigurationManagerTest

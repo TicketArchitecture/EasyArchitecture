@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application4Test.Domain", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application4Test.Application", "..\unitTests\Application4Test.Application\Application4Test.Application.csproj", "{8AE9BF26-387B-49B9-8789-93BEA4B212AD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{25C120B5-E642-4854-9D49-C8089EE5FA32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Plugins.Log4net", "EasyArchitecture.Plugins.Log4net\EasyArchitecture.Plugins.Log4net.csproj", "{13B2D49C-45D2-43AD-99A3-FF1F66AEAA3F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,10 @@ Global
 		{8AE9BF26-387B-49B9-8789-93BEA4B212AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AE9BF26-387B-49B9-8789-93BEA4B212AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AE9BF26-387B-49B9-8789-93BEA4B212AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13B2D49C-45D2-43AD-99A3-FF1F66AEAA3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13B2D49C-45D2-43AD-99A3-FF1F66AEAA3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13B2D49C-45D2-43AD-99A3-FF1F66AEAA3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13B2D49C-45D2-43AD-99A3-FF1F66AEAA3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +56,7 @@ Global
 		{21CEB06D-9A61-4331-95EA-7BE413A29D76} = {8B654DAA-B565-4267-B9E8-7A97944DF48A}
 		{82873FF4-1685-423F-B40B-1CF84AABBEAE} = {8B654DAA-B565-4267-B9E8-7A97944DF48A}
 		{8AE9BF26-387B-49B9-8789-93BEA4B212AD} = {8B654DAA-B565-4267-B9E8-7A97944DF48A}
+		{13B2D49C-45D2-43AD-99A3-FF1F66AEAA3F} = {25C120B5-E642-4854-9D49-C8089EE5FA32}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\Unity.2.1.505.2\lib\NET35;packages\Unity.Interception.2.1.505.2\lib\NET35

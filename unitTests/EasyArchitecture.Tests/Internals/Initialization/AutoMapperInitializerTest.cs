@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using EasyArchitecture.Initialization;
 
-namespace EasyArchitecture.Tests.Initialization
+namespace EasyArchitecture.Tests.Internals.Initialization
 {
     [TestFixture]
     public class AutoMapperInitializerTest

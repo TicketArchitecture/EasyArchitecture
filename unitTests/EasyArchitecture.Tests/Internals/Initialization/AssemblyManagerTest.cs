@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using EasyArchitecture.Tests.Stuff.Helpers;
 using NUnit.Framework;
 using EasyArchitecture.Initialization;
-using System.Reflection;
-using EasyArchitecture.Tests.Helpers;
 
-namespace EasyArchitecture.Tests.Initialization
+namespace EasyArchitecture.Tests.Internals.Initialization
 {
     [TestFixture]
     public class AssemblyManagerTest

@@ -1,9 +1,11 @@
-﻿using EasyArchitecture.Initialization;
+﻿using EasyArchitecture.Diagnostic;
+using EasyArchitecture.Initialization;
 using Application4Test.Domain;
+using EasyArchitecture.Plugins.Log4net;
 using NUnit.Framework;
 using EasyArchitecture.Domain;
 
-namespace EasyArchitecture.Tests.Domain
+namespace EasyArchitecture.Tests.Internals.Domain
 {
     [TestFixture]
     public class ValidatorEngineTest
@@ -13,6 +15,7 @@ namespace EasyArchitecture.Tests.Domain
 
         [SetUp]
         public void Init() {
+            Bootstrap.Configure<ILogPlugin>(new Log4NetPlugin()); 
             Bootstrap.GetInstance();
 
             _oldDog = new Dog { Age = 15, Name = "Old Dog" };

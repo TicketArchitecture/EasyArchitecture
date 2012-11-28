@@ -5,7 +5,7 @@ using Application4Test.Infrastructure.Queriers;
 using EasyArchitecture.Initialization;
 using NUnit.Framework;
 
-namespace EasyArchitecture.Tests.Use.Querier
+namespace EasyArchitecture.Tests.UserCode.Querier
 {
     [TestFixture]
     public class QuerierTest

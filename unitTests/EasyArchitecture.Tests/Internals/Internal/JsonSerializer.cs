@@ -1,9 +1,8 @@
-﻿using System;
-using System.Web.Script.Serialization;
+﻿using System.Web.Script.Serialization;
 using EasyArchitecture.Internal;
 using NUnit.Framework;
 
-namespace EasyArchitecture.Tests.Internal
+namespace EasyArchitecture.Tests.Internals.Internal
 {
     [TestFixture]
     public class JsonSerializerTest

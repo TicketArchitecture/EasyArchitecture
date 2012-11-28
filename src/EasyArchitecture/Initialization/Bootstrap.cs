@@ -11,6 +11,7 @@ namespace EasyArchitecture.Initialization
     {
         private static readonly object SyncRoot = new object();
         private static volatile Bootstrap _instance;
+        internal static ILogPlugin LogPlugin;
 
         //http://msdn.microsoft.com/en-us/library/ff650316.aspx
         public static Bootstrap GetInstance()
@@ -34,6 +35,9 @@ namespace EasyArchitecture.Initialization
 
             try
             {
+                if (LogPlugin == null)
+                    throw new ArgumentNullException("LogPlugin");   
+                
                 LogManager.InitializeFrameworkLogger(ConfigurationManager.GetLogLevel());
                 Log.To(typeof(Bootstrap)).Message("Initializing Bootstrap").Debug();
 
@@ -63,7 +67,7 @@ namespace EasyArchitecture.Initialization
                 }
 
                 Log.To(typeof(Bootstrap)).Message("Finalizing Bootstrap at {0}ms", sw.ElapsedMilliseconds).Debug();
-                LogManager.FinalizeFrameworkLogger();
+                //LogManager.FinalizeFrameworkLogger();
 
             }
             catch (Exception exception)
@@ -86,6 +90,11 @@ namespace EasyArchitecture.Initialization
         public T GetInstance<T>()
         {
             return UnityContainerInitializer.GetInstance<T>();
+        }
+
+        public static void Configure<T>(T logPlugin) where T :ILogPlugin
+        {
+            LogPlugin = logPlugin;
         }
     }
 }
