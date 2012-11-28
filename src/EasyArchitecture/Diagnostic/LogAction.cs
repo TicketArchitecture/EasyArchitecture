@@ -12,7 +12,7 @@ namespace EasyArchitecture.Diagnostic
         internal LogAction(LogMessage message)
         {
             _message = message;
-            _moduleName = LocalThreadStorage.GetCurrentBusinessModuleName();
+            _moduleName = LocalThreadStorage.GetCurrentBusinessModuleName()??"EasyArchitecture";
         }
 
         public void Debug()
@@ -21,6 +21,7 @@ namespace EasyArchitecture.Diagnostic
             //    return;
 
             _logLevel=LogLevel.Debug;
+            Log();
 
             
         }
@@ -30,6 +31,7 @@ namespace EasyArchitecture.Diagnostic
             //if (!_message.Logger.IsInfoEnabled)
             //    return;
             _logLevel = LogLevel.Info;
+            Log();
 
         }
 
@@ -39,6 +41,7 @@ namespace EasyArchitecture.Diagnostic
             //    return;
 
             _logLevel = LogLevel.Warn;
+            Log();
 
         }
 
@@ -48,6 +51,7 @@ namespace EasyArchitecture.Diagnostic
             //    return;
 
             _logLevel = LogLevel.Error;
+            Log();
         }
 
         public void Fatal()
@@ -56,10 +60,13 @@ namespace EasyArchitecture.Diagnostic
             //    return;
 
             _logLevel = LogLevel.Fatal;
+            Log();
         }
 
         private void Log()
         {
+            if (Bootstrap.LogPlugin!=null)
+
             Bootstrap.LogPlugin.Log(_logLevel, _moduleName, _message._message, _message._exception);
         }
     }

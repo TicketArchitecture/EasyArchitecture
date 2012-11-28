@@ -16,7 +16,7 @@ namespace EasyArchitecture.Diagnostic
         {
             Log.To(typeof (LogManager)).Message("Configure log to [{0}] at [{1}] level", businessModuleName, logLevel).Debug();
             var logFile = "Logs/" + businessModuleName + ".log";
-            Bootstrap.LogPlugin.Configure(businessModuleName, logFile, GetLogLevel(logLevel) );
+            Bootstrap.LogPlugin.Configure(logFile, businessModuleName, GetLogLevel(logLevel));
         }
 
         private static LogLevel GetLogLevel(string logLevel)

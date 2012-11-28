@@ -127,7 +127,7 @@ namespace EasyArchitecture.Plugins.Log4net
             var rollingFileAppender = new RollingFileAppender
             {
                 Name = "RollingFileAppender",
-                File = "Logs/" + businessModuleName + ".log",
+                File = logFile,
                 AppendToFile = true,
                 RollingStyle = RollingFileAppender.RollingMode.Size,
                 MaxSizeRollBackups = 15,
