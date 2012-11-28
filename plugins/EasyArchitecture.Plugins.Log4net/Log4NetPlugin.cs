@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using EasyArchitecture.Diagnostic;
-using EasyArchitecture.Initialization;
 using log4net;
 using log4net.Appender;
 using log4net.Config;
@@ -27,7 +24,7 @@ namespace EasyArchitecture.Plugins.Log4net
                 {
                     return Loggers[source];
                 }
-                ILog logger = log4net.LogManager.GetLogger(source);
+                ILog logger = LogManager.GetLogger(source);
                 Loggers.Add(source, logger);
                 return logger;
             }
