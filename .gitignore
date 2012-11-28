@@ -13,8 +13,8 @@
 _ReSharper*
 
 # ncrunch
-#_NCrunch*
-#*.ncrunchsolution
+_NCrunch*
+*.ncrunchsolution
 
 # mstest test results
 TestResults
