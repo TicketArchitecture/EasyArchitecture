@@ -1,5 +1,5 @@
-﻿using FluentNHibernate.Cfg.Db;
-using EasyArchitecture.Data;
+﻿using EasyArchitecture.Plugins.NHibernate;
+using FluentNHibernate.Cfg.Db;
 
 namespace Application4Test.Infrastructure.Repositories.Configuration
 {

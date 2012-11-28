@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace EasyArchitecture.Data
+namespace EasyArchitecture.Plugins.NHibernate
 {
     internal class PersistenceConfiguration
     {

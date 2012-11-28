@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace EasyArchitecture.Data
+﻿namespace EasyArchitecture.Data
 {
     public abstract class NamedQuery<T>
     {

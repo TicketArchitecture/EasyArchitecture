@@ -33,15 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentNHibernate">
-      <HintPath>..\..\src\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="Iesi.Collections">
-      <HintPath>..\..\src\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate">
-      <HintPath>..\..\src\packages\NHibernate.3.3.2.4000\lib\Net35\NHibernate.dll</HintPath>
-    </Reference>
+    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL" />
     <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\src\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
@@ -57,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Internals\Configuration\ConfigurationManagerTest.cs" />
-    <Compile Include="Internals\Domain\ValidatorEngineTest.cs" />
+    <Compile Include="UserCode\Domain\ValidatorEngineTest.cs" />
     <Compile Include="Stuff\DummyDogFacade.cs" />
     <Compile Include="Stuff\Helpers\AssemblyLoader.cs" />
     <Compile Include="Internals\Initialization\AssemblyManagerTest.cs" />
@@ -86,6 +78,10 @@
     <ProjectReference Include="..\..\plugins\EasyArchitecture.Plugins.Log4net\EasyArchitecture.Plugins.Log4net.csproj">
       <Project>{13B2D49C-45D2-43AD-99A3-FF1F66AEAA3F}</Project>
       <Name>EasyArchitecture.Plugins.Log4net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\plugins\EasyArchitecture.Plugins.NHibernate\EasyArchitecture.Plugins.NHibernate.csproj">
+      <Project>{2A920002-A724-469C-9330-57482D1A01F3}</Project>
+      <Name>EasyArchitecture.Plugins.NHibernate</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\EasyArchitecture\EasyArchitecture.csproj">
       <Project>{09A7AA21-ED65-409C-8442-E0ADA02A7AAF}</Project>

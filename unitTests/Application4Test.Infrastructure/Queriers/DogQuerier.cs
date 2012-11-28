@@ -4,6 +4,7 @@ using Application4Test.Application;
 using Application4Test.Application.Contracts.DTOs;
 using Application4Test.Application.Queries;
 using EasyArchitecture.Data;
+using EasyArchitecture.Plugins.NHibernate;
 
 namespace Application4Test.Infrastructure.Queriers
 {

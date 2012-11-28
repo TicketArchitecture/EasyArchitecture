@@ -4,7 +4,6 @@ using EasyArchitecture.Configuration;
 using EasyArchitecture.Data;
 using EasyArchitecture.Diagnostic;
 using EasyArchitecture.Domain;
-using Remotion.Linq.Utilities;
 
 namespace EasyArchitecture.Initialization
 {
@@ -12,8 +11,11 @@ namespace EasyArchitecture.Initialization
     {
         private static readonly object SyncRoot = new object();
         private static volatile Bootstrap _instance;
+
+        //TODO: change the way of configure plugin, to allow per module configuration
         internal static ILogPlugin LogPlugin;
         internal static IObjectMapperPlugin ObjectMapperPlugin;
+        internal static IPersistencePlugin PersistencePlugin;
 
         //http://msdn.microsoft.com/en-us/library/ff650316.aspx
         public static Bootstrap GetInstance()
@@ -42,7 +44,11 @@ namespace EasyArchitecture.Initialization
 
                 if (ObjectMapperPlugin==null)
                     throw new ArgumentNullException("ObjectMapperPlugin");
+
+                if (PersistencePlugin == null)
+                    throw new ArgumentNullException("PersistencePlugin");
                 
+
                 LogManager.InitializeFrameworkLogger(ConfigurationManager.GetLogLevel());
                 Log.To(typeof(Bootstrap)).Message("Initializing Bootstrap").Debug();
 
@@ -68,12 +74,10 @@ namespace EasyArchitecture.Initialization
                     UnityContainerInitializer.AutoRegister(domainAssembly, infrastructureAssembly, false);
                     UnityContainerInitializer.AutoRegister(contractsAssembly, applicationAssembly, true);
 
-                    PersistenceManagerInitializer.Configure(configuration.Name, configuration.ConnectionString, infrastructureAssembly);
+                    PersistencePlugin.Configure(configuration.Name, configuration.ConnectionString, infrastructureAssembly);
                 }
 
                 Log.To(typeof(Bootstrap)).Message("Finalizing Bootstrap at {0}ms", sw.ElapsedMilliseconds).Debug();
-                //LogManager.FinalizeFrameworkLogger();
-
             }
             catch (Exception exception)
             {
@@ -111,7 +115,13 @@ namespace EasyArchitecture.Initialization
                 return;
             }
 
-            throw new ArgumentTypeException("plugin", typeof(ILogPlugin),typeof(T));
+            if (plugin is IPersistencePlugin)
+            {
+                PersistencePlugin = plugin as IPersistencePlugin;
+                return;
+            }
+
+            throw new ArgumentException("Must to be ILogPlugin or IObjectMapperPlugin or IPersistencePlugin", "plugin");
         
         }
     }

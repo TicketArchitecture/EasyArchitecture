@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
+using NHibernate.Transform;
 
-namespace EasyArchitecture.Data
+namespace EasyArchitecture.Plugins.NHibernate
 {
-    public class GenericResultTransformer<T> : NHibernate.Transform.IResultTransformer
+    public class GenericResultTransformer<T> : IResultTransformer
     {
         private readonly Func<object[], string[], T> _transformation;
 

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using Application4Test.Application.Contracts.DTOs;
 using Application4Test.Domain;
+using EasyArchitecture.Data;
 using EasyArchitecture.Diagnostic;
 using EasyArchitecture.Initialization;
 using EasyArchitecture.Plugins.Automapper;
 using EasyArchitecture.Plugins.Log4net;
+using EasyArchitecture.Plugins.NHibernate;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Tests.UserCode.Initialization
@@ -18,8 +20,10 @@ namespace EasyArchitecture.Tests.UserCode.Initialization
         [Test]
         public void CanTranslate()
         {
+            //init
             Bootstrap.Configure<ILogPlugin>(new Log4NetPlugin());
             Bootstrap.Configure<IObjectMapperPlugin>(new AutoMapperPlugin());
+            Bootstrap.Configure<IPersistencePlugin>(new NHibernatePlugin());
 
             Bootstrap.GetInstance();
 

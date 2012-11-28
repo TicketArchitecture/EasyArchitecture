@@ -1,8 +1,11 @@
 ﻿using System;
+using EasyArchitecture.Data;
 using EasyArchitecture.Diagnostic;
 using EasyArchitecture.Initialization;
 using Application4Test.Application.Contracts;
+using EasyArchitecture.Plugins.Automapper;
 using EasyArchitecture.Plugins.Log4net;
+using EasyArchitecture.Plugins.NHibernate;
 using EasyArchitecture.Tests.Stuff;
 using NUnit.Framework;
 
@@ -15,7 +18,11 @@ namespace EasyArchitecture.Tests.Internals.Initialization
         [Test]
         public void GetInstance()
         {
-            Bootstrap.Configure<ILogPlugin>(new Log4NetPlugin()); 
+            //init
+            Bootstrap.Configure<ILogPlugin>(new Log4NetPlugin());
+            Bootstrap.Configure<IObjectMapperPlugin>(new AutoMapperPlugin());
+            Bootstrap.Configure<IPersistencePlugin>(new NHibernatePlugin());
+
             Bootstrap.GetInstance();
             
         }
@@ -23,7 +30,11 @@ namespace EasyArchitecture.Tests.Internals.Initialization
         [Test]
         public void RegisterTest()
         {
-            Bootstrap.Configure<ILogPlugin>(new Log4NetPlugin()); 
+            //init
+            Bootstrap.Configure<ILogPlugin>(new Log4NetPlugin());
+            Bootstrap.Configure<IObjectMapperPlugin>(new AutoMapperPlugin());
+            Bootstrap.Configure<IPersistencePlugin>(new NHibernatePlugin());
+
             var bootstrap = Bootstrap.GetInstance();
             bootstrap.Register<IDogFacade, DummyDogFacade>();
 

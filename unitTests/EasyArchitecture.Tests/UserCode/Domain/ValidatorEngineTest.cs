@@ -1,8 +1,10 @@
-﻿using EasyArchitecture.Diagnostic;
+﻿using EasyArchitecture.Data;
+using EasyArchitecture.Diagnostic;
 using EasyArchitecture.Initialization;
 using Application4Test.Domain;
 using EasyArchitecture.Plugins.Automapper;
 using EasyArchitecture.Plugins.Log4net;
+using EasyArchitecture.Plugins.NHibernate;
 using NUnit.Framework;
 using EasyArchitecture.Domain;
 
@@ -16,8 +18,11 @@ namespace EasyArchitecture.Tests.Internals.Domain
 
         [SetUp]
         public void Init() {
+            //init
             Bootstrap.Configure<ILogPlugin>(new Log4NetPlugin());
-            Bootstrap.Configure<IObjectMapperPlugin>(new AutoMapperPlugin()); 
+            Bootstrap.Configure<IObjectMapperPlugin>(new AutoMapperPlugin());
+            Bootstrap.Configure<IPersistencePlugin>(new NHibernatePlugin());
+
             Bootstrap.GetInstance();
 
             _oldDog = new Dog { Age = 15, Name = "Old Dog" };
