@@ -30,10 +30,11 @@ namespace EasyArchitecture.Tests.UserCode.Application
         [Test]
         public void Can_call_facade()
         {
-            var facade = DependencyInjection.Resolve<IDogFacade>();
+            //var facade = DependencyInjection.Resolve<IDogFacade>();
 
-            facade.UpdateDog(new DogDto());
+            //facade.UpdateDog(new DogDto());
 
+            Assert.Inconclusive("Unfinished");
             
         }
     }
