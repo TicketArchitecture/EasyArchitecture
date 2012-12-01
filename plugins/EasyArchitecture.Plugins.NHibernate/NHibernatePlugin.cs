@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using EasyArchitecture.Data;
-using EasyArchitecture.Initialization;
 using FluentNHibernate.Cfg;
 using NHibernate;
 
@@ -44,8 +42,6 @@ namespace EasyArchitecture.Plugins.NHibernate
         {
             lock (PersistenceLock)
             {
-                //Log.To((typeof(PersistenceManager))).Message("Get Session Factory for [{0}]",businessModuleName).Debug();
-
                 if (SessionFactories.ContainsKey(businessModuleName))
                     return SessionFactories[businessModuleName];
 

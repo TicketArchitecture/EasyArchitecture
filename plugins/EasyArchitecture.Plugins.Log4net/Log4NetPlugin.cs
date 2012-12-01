@@ -140,12 +140,6 @@ namespace EasyArchitecture.Plugins.Log4net
             logger.Repository.Configured = true;
         }
 
-        public static void FinalizeFrameworkLogger()
-        {
-            var root = ((Hierarchy)log4net.LogManager.GetRepository()).Root;
-            //root.CloseNestedAppenders();
-            root.RemoveAllAppenders();
-        }
 
     }
 }

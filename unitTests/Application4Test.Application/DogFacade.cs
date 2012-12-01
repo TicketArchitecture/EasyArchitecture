@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Application4Test.Application.Queries;
-using EasyArchitecture;
 using EasyArchitecture.Data;
 using EasyArchitecture.Diagnostic;
 using EasyArchitecture.Initialization;
@@ -8,55 +7,48 @@ using Application4Test.Application.Contracts;
 using Application4Test.Application.Contracts.DTOs;
 using Application4Test.Domain;
 using Application4Test.Domain.Repositories;
+using EasyArchitecture.Mechanisms;
 
 namespace Application4Test.Application
 {
     public class DogFacade : IDogFacade
     {
-        private readonly IDogRepository _repository;
+        private readonly IDogRepository _dogRepository;
 
-        public DogFacade(IDogRepository repository)
+        public DogFacade(IDogRepository dogRepository)
         {
-            _repository = repository;
+            _dogRepository = dogRepository;
         }
 
-
-        public virtual DogDto GetDog(DogDto dog)
+        public DogDto GetDog(DogDto dog)
         {
-            var entity = Mapper.Map<DogDto, Dog>(dog);
-
-            entity = _repository.GetDog(entity);
-
-            var dto = Mapper.Map<Dog, DogDto>(entity);
+            var entity = _dogRepository.Get(dog.Id);
+            var dto = Translator.This(entity).To<DogDto>();
 
             return dto;
         }
 
-        public virtual DogDto CreateDog(DogDto dog)
+        public DogDto CreateDog(DogDto dog)
         {
-            var entity = Mapper.Map<DogDto, Dog>(dog);
+            var entity = Translator.This(dog).To<Dog>();
 
-            _repository.CreateDog(entity);
+            _dogRepository.Save(entity);
 
-            var dto = Mapper.Map<Dog, DogDto>(entity);
+            var dto = Translator.This(entity).To<DogDto>();
 
             return dto;
         }
 
-        public virtual void UpdateDog(DogDto dog)
+        public void UpdateDog(DogDto dto)
         {
-            var entity = Mapper.Map<DogDto, Dog>(dog);
+            Logger.Message("Teste").Debug();
 
-            Log.To(this).Message("Teste").Debug();
+            var entity = _dogRepository.Get(dto.Id);
 
+            Translator.This(dto).To(entity);
 
-            var updEntity = _repository.GetDog(entity);
-            updEntity.Name = entity.Name;
-            updEntity.Age = entity.Age;
-
-            _repository.UpdateDog(updEntity);
+            _dogRepository.Update(entity);
         }
-
 
         //TODO: mount by reflection
         [QueryMethod]
@@ -70,7 +62,5 @@ namespace Application4Test.Application
         {
             return Querier.Execute(new GetAllDogs());
         }
-
-
     }
 }

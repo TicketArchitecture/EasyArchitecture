@@ -8,7 +8,7 @@ namespace EasyArchitecture.Tests.Stuff
     {
         public DogDto GetDog(DogDto dog)
         {
-            throw new System.NotImplementedException();
+            return new DogDto(){Name = "DummyDog"};
         }
 
         public DogDto CreateDog(DogDto dog)

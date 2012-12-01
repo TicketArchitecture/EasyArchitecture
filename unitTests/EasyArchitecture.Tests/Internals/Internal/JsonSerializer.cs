@@ -1,4 +1,5 @@
 ﻿using System.Web.Script.Serialization;
+using EasyArchitecture.Diagnostic;
 using EasyArchitecture.Internal;
 using NUnit.Framework;
 

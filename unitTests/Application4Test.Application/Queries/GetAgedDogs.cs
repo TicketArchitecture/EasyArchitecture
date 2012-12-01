@@ -3,7 +3,7 @@ using EasyArchitecture.Data;
 
 namespace Application4Test.Application.Queries
 {
-    public class GetAgedDogs : NamedQuery<DogDto>
+    public class GetAgedDogs : NamedQuery<DogDto>//TODO: analisar specifications que recebam parameters[]
     {
         public int Age { get; private set; }
 

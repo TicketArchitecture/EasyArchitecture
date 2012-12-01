@@ -2,8 +2,8 @@
 {
     public interface IDogRepository
     {
-        void CreateDog(Dog dog);
-        Dog GetDog(Dog dog);
-        void UpdateDog(Dog dog);
+        void Save(Dog dog);
+        Dog Get(object id);
+        void Update(Dog dog);
     }
 }

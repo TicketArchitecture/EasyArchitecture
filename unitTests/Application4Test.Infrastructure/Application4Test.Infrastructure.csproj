@@ -50,8 +50,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queriers\DogQuerier.cs" />
     <Compile Include="Repositories\DogRepository.cs" />
-    <Compile Include="Repositories\Configuration\NHibernateConfig.cs" />
-    <Compile Include="Repositories\Mappings\DogMap.cs" />
+    <Compile Include="Configuration\NHibernateConfig.cs" />
+    <Compile Include="Configuration\Mappings\DogMap.cs" />
+    <Compile Include="Validators\DogValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />

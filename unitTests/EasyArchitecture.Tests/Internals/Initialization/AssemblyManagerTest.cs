@@ -10,7 +10,7 @@ namespace EasyArchitecture.Tests.Internals.Initialization
         private const string BusinessModuleName = "Application4Test";
 
         [Test]
-        public void GetDomainAssembliesTest()
+        public void Can_get_domain_assemblies()
         {
             var expected = AssemblyLoader.LoadAssemblyFromFile(AssemblyLoader.DomainAssemblyName);
             var actual = AssemblyManager.GetDomainAssembly(BusinessModuleName);
@@ -19,7 +19,7 @@ namespace EasyArchitecture.Tests.Internals.Initialization
         }
 
         [Test]
-        public void GetInfrastructureAssembliesTest()
+        public void Can_get_infrastructure_assemblies()
         {
             var expected = AssemblyLoader.LoadAssemblyFromFile(AssemblyLoader.InfrastructureAssemblyName);
             var actual = AssemblyManager.GetInfrastructureAssembly(BusinessModuleName);
@@ -28,7 +28,7 @@ namespace EasyArchitecture.Tests.Internals.Initialization
         }
 
         [Test]
-        public void GetApplicationAssembliesTest()
+        public void Can_get_application_assemblies()
         {
             var expected = AssemblyLoader.LoadAssemblyFromFile(AssemblyLoader.ApplicationAssemblyName);
             var actual = AssemblyManager.GetApplicationAssembly(BusinessModuleName);
@@ -37,7 +37,7 @@ namespace EasyArchitecture.Tests.Internals.Initialization
         }
 
         [Test]
-        public void RemoveAssemblySufixTest()
+        public void Can_remove_sufix_from_assembly_name()
         {
             var expected = AssemblyLoader.ApplicationAssemblyName.Replace(".Application",string.Empty);
             var actual = AssemblyManager.RemoveAssemblySufix(AssemblyLoader.ApplicationAssemblyName);
