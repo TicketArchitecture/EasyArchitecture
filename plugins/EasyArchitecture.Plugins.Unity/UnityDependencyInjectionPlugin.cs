@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using EasyArchitecture.Data;
-using EasyArchitecture.Diagnostic;
-using EasyArchitecture.Initialization;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.InterceptionExtension;
 

@@ -1,6 +1,7 @@
+using EasyArchitecture.Mechanisms;
 using Microsoft.Practices.Unity.InterceptionExtension;
 
-namespace EasyArchitecture.Data
+namespace EasyArchitecture.Plugins.Unity
 {
     public class TransactionHandler : ICallHandler
     {
@@ -8,19 +9,17 @@ namespace EasyArchitecture.Data
 
         public IMethodReturn Invoke(IMethodInvocation input, GetNextHandlerDelegate getNext)
         {
-            //var moduleName = LocalThreadStorage.GetCurrentBusinessModuleName();
-
-            //PersistenceManager.BeginTransaction(moduleName);
-
+            PersistenceManager.BeginTransaction();
+            
             var methodReturn = getNext()(input, getNext);
 
             if (methodReturn.Exception != null)
             {
-//                PersistenceManager.RollbackTransaction(moduleName);
+                PersistenceManager.RollbackTransaction();
             }
             else
             {
-//                PersistenceManager.CommitTransaction(moduleName);
+                PersistenceManager.CommitTransaction();
             }
 
             return methodReturn;

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using EasyArchitecture.Plugins;
-using EasyArchitecture.Plugins.Default;
+using EasyArchitecture.Plugins.Default.DI;
 using EasyArchitecture.Plugins.Default.Log;
 using EasyArchitecture.Plugins.Default.Map;
 using EasyArchitecture.Plugins.Default.Persistence;

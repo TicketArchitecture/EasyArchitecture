@@ -1,6 +1,6 @@
 using System;
 
-namespace EasyArchitecture.DI
+namespace EasyArchitecture.Plugins.Default.DI
 {
     public class NotInterfaceException : Exception
     {

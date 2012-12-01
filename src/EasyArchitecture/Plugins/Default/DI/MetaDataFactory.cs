@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Reflection;
 
-namespace EasyArchitecture.DI
+namespace EasyArchitecture.Plugins.Default.DI
 {
     /// <summary>
     /// Factory class used to cache Types instances

@@ -34,28 +34,22 @@ namespace EasyArchitecture.Plugins.Log4net
 
         private static Level GetLogLevel(LogLevel logLevel)
         {
-            var _logLevel = Level.Error;
-
             switch (logLevel)
             {
                 case LogLevel.Fatal:
-                    _logLevel = Level.Fatal;
-                    break;
+                    return Level.Fatal;
                 case LogLevel.Warn:
-                    _logLevel = Level.Warn;
-                    break;
+                    return Level.Warn;
                 case LogLevel.Info:
-                    _logLevel = Level.Info;
-                    break;
+                    return Level.Info;
                 case LogLevel.Debug:
-                    _logLevel = Level.Debug;
-                    break;
+                    return Level.Debug;
+                default:
+                    return Level.Error;
             }
-
-            return _logLevel;
         }
 
-        public void Configure(string logFile, LogLevel logLevel)
+        public void Configure(string moduleName, LogLevel logLevel)
         {
             BasicConfigurator.Configure();
 
@@ -67,7 +61,7 @@ namespace EasyArchitecture.Plugins.Log4net
             var rollingFileAppender = new RollingFileAppender
             {
                 Name = "RollingFileAppender",
-                File = logFile,
+                File = "Log/" + moduleName + ".log",
                 AppendToFile = true,
                 RollingStyle = RollingFileAppender.RollingMode.Size,
                 MaxSizeRollBackups = 15,
@@ -109,36 +103,36 @@ namespace EasyArchitecture.Plugins.Log4net
             }
         }
 
-        public void Configure(string logFile, string businessModuleName, LogLevel logLevel)
-        {
-            //Log.To(typeof(LogManager)).Message("Configure log to [{0}] at [{1}] level", businessModuleName, logLevel).Debug();
+        //public void Configure(string logFile, string businessModuleName, LogLevel logLevel)
+        //{
+        //    //Log.To(typeof(LogManager)).Message("Configure log to [{0}] at [{1}] level", businessModuleName, logLevel).Debug();
 
-            BasicConfigurator.Configure();
+        //    BasicConfigurator.Configure();
 
-            var configLogLevel = GetLogLevel(logLevel);
+        //    var configLogLevel = GetLogLevel(logLevel);
 
-            var defaultPattern = new PatternLayout { ConversionPattern = LogPattern };
-            defaultPattern.ActivateOptions();
+        //    var defaultPattern = new PatternLayout { ConversionPattern = LogPattern };
+        //    defaultPattern.ActivateOptions();
 
 
-            var rollingFileAppender = new RollingFileAppender
-            {
-                Name = "RollingFileAppender",
-                File = logFile,
-                AppendToFile = true,
-                RollingStyle = RollingFileAppender.RollingMode.Size,
-                MaxSizeRollBackups = 15,
-                MaximumFileSize = "100MB",
-                StaticLogFileName = true,
-                Layout = defaultPattern
-            };
-            rollingFileAppender.ActivateOptions();
+        //    var rollingFileAppender = new RollingFileAppender
+        //    {
+        //        Name = "RollingFileAppender",
+        //        File = logFile,
+        //        AppendToFile = true,
+        //        RollingStyle = RollingFileAppender.RollingMode.Size,
+        //        MaxSizeRollBackups = 15,
+        //        MaximumFileSize = "100MB",
+        //        StaticLogFileName = true,
+        //        Layout = defaultPattern
+        //    };
+        //    rollingFileAppender.ActivateOptions();
 
-            var logger = (Logger)log4net.LogManager.GetLogger(businessModuleName).Logger;
-            logger.AddAppender(rollingFileAppender);
-            logger.Level = configLogLevel;
-            logger.Repository.Configured = true;
-        }
+        //    var logger = (Logger)log4net.LogManager.GetLogger(businessModuleName).Logger;
+        //    logger.AddAppender(rollingFileAppender);
+        //    logger.Level = configLogLevel;
+        //    logger.Repository.Configured = true;
+        //}
 
 
     }

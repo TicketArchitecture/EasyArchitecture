@@ -1,8 +1,6 @@
 ﻿using System;
-using EasyArchitecture.DI;
-using EasyArchitecture.Plugins.Default.DI;
 
-namespace EasyArchitecture.Plugins.Default
+namespace EasyArchitecture.Plugins.Default.DI
 {
     public class InjectionPlugin : IDependencyInjectionPlugin
     {

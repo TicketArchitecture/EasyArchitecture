@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace EasyArchitecture.DI
+namespace EasyArchitecture.Plugins.Default.DI
 {
     public interface IProxyInvocationHandler
     {

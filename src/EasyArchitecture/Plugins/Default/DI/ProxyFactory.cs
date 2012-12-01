@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Threading;
 
-namespace EasyArchitecture.DI
+namespace EasyArchitecture.Plugins.Default.DI
 {
     public class ProxyFactory
     {

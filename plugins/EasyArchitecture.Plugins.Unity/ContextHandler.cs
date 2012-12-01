@@ -1,3 +1,4 @@
+using EasyArchitecture.Internal;
 using Microsoft.Practices.Unity.InterceptionExtension;
 
 namespace EasyArchitecture.Plugins.Unity
@@ -8,8 +9,8 @@ namespace EasyArchitecture.Plugins.Unity
 
         public IMethodReturn Invoke(IMethodInvocation input, GetNextHandlerDelegate getNext)
         {
-            //var moduleName = AssemblyManager.RemoveAssemblySufix(input.MethodBase.DeclaringType.Namespace);
-            //LocalThreadStorage.SetCurrentBusinessModuleName(moduleName);
+            var moduleName = AssemblyManager.RemoveAssemblySufix(input.MethodBase.DeclaringType.Namespace);
+            LocalThreadStorage.SetCurrentBusinessModuleName(moduleName);
 
             return getNext()(input, getNext);
         }

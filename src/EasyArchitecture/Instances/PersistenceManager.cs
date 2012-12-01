@@ -5,68 +5,48 @@ namespace EasyArchitecture.Instances
 {
     public class PersistenceManager
     {
-        private readonly EasyConfig _easyConfig;
+        private readonly string _moduleName;
+        private readonly IPersistencePlugin _plugin;
 
         internal PersistenceManager(EasyConfig easyConfig)
         {
-            _easyConfig = easyConfig;
+            _moduleName = easyConfig.ModuleName;
 
-            //get plugin
-            var plugin = (IPersistencePlugin)_easyConfig.Plugins[typeof(IPersistencePlugin)];
+            _plugin = (IPersistencePlugin)easyConfig.Plugins[typeof(IPersistencePlugin)];
 
-            //execute
-            plugin.Configure( _easyConfig.ModuleName,"",_easyConfig.InfrastructureAssembly);
+            _plugin.Configure( _moduleName,"",easyConfig.InfrastructureAssembly);
         }
 
         internal object GetSession()
         {
-            //get plugin
-            var plugin = (IPersistencePlugin)_easyConfig.Plugins[typeof(IPersistencePlugin)];
-
-            var moduleName = LocalThreadStorage.GetCurrentBusinessModuleName();
-            //execute
-            var session = LocalThreadStorage.RecoverSession(moduleName) ?? plugin.GetSession(_easyConfig.ModuleName);
-
-            return session;
+            return LocalThreadStorage.RecoverSession(_moduleName) ?? _plugin.GetSession(_moduleName);
         }
 
-        internal void BeginTransaction(string businessModuleName)
+        internal void BeginTransaction()
         {
             var session = GetSession();
 
-            //get plugin
-            var plugin = (IPersistencePlugin)_easyConfig.Plugins[typeof(IPersistencePlugin)];
-            
-            //execute
-            plugin.BeginTransaction(session);
+            _plugin.BeginTransaction(session);
 
-            LocalThreadStorage.StoreSession(businessModuleName, session);
+            LocalThreadStorage.StoreSession(_moduleName, session);
         }
 
-        internal void CommitTransaction(string businessModuleName)
+        internal void CommitTransaction()
         {
-            var session = LocalThreadStorage.RecoverSession(businessModuleName);
+            var session = LocalThreadStorage.RecoverSession(_moduleName);
 
-            //get plugin
-            var plugin = (IPersistencePlugin)_easyConfig.Plugins[typeof(IPersistencePlugin)];
+            _plugin.CommitTransaction(session);
 
-            //execute
-            plugin.CommitTransaction(session);
-
-            LocalThreadStorage.ClearSession(businessModuleName);
+            LocalThreadStorage.ClearSession(_moduleName);
         }
 
-        internal void RollbackTransaction(string businessModuleName)
+        internal void RollbackTransaction()
         {
-            var session = LocalThreadStorage.RecoverSession(businessModuleName);
+            var session = LocalThreadStorage.RecoverSession(_moduleName);
 
-            //get plugin
-            var plugin = (IPersistencePlugin)_easyConfig.Plugins[typeof(IPersistencePlugin)];
+            _plugin.RollbackTransaction(session);
 
-            //execute
-            plugin.RollbackTransaction(session);
-
-            LocalThreadStorage.ClearSession(businessModuleName);
+            LocalThreadStorage.ClearSession(_moduleName);
         }
     }
 }

@@ -5,7 +5,7 @@ namespace EasyArchitecture.Internal
 {
     internal static class EasyConfigurations
     {
-        internal static readonly ConcurrentDictionary<string,EasyConfig> Configurations = new ConcurrentDictionary<string, EasyConfig>();
+        internal static readonly ConcurrentDictionary<string, EasyConfig> Configurations = new ConcurrentDictionary<string, EasyConfig>();
 
         internal static EasyConfig Selector<T>()
         {

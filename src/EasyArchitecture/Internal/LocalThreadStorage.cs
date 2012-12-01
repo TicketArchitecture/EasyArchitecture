@@ -2,18 +2,21 @@
 
 namespace EasyArchitecture.Internal
 {
-    internal static class LocalThreadStorage
+    //TODO: must be internal
+    public static class LocalThreadStorage
     {
         private const string BusinessModuleNameKey = "bmn";
         private const string NHibernateSession = "nhs";
 
-        internal static string GetCurrentBusinessModuleName()
+        //TODO: must be internal
+        public static string GetCurrentBusinessModuleName()
         {
             var slot = Thread.GetNamedDataSlot(BusinessModuleNameKey);
             return (string)Thread.GetData(slot);
         }
 
-        internal static void SetCurrentBusinessModuleName(string businessModuleName)
+        //TODO: must be internal
+        public static void SetCurrentBusinessModuleName(string businessModuleName)
         {
             var slot = Thread.GetNamedDataSlot(BusinessModuleNameKey);
             Thread.SetData(slot, businessModuleName);

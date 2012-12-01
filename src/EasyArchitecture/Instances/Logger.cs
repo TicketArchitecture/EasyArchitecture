@@ -7,20 +7,20 @@ namespace EasyArchitecture.Instances
 {
     internal class Logger
     {
-        private readonly EasyConfig _easyConfig;
+        private readonly ILogPlugin _plugin;
+        private readonly string _moduleName;
 
         internal Logger(EasyConfig easyConfig)
         {
-            _easyConfig = easyConfig;
+            _moduleName = easyConfig.ModuleName;
+            _plugin = (ILogPlugin)easyConfig.Plugins[typeof(ILogPlugin)];
 
-            var logFile = "Logs/" + _easyConfig.ModuleName + ".log";
+            _plugin.Configure(_moduleName, GetLogLevel("debug"));
+        }
 
-            //get plugin
-            var plugin = (ILogPlugin)_easyConfig.Plugins[typeof(ILogPlugin)];
-
-            //execute
-            plugin.Configure(logFile, _easyConfig.ModuleName, GetLogLevel("debug"));
-
+        internal void Log(LogLevel logLevel, object message, Exception exception)
+        {
+            _plugin.Log(logLevel, _moduleName, message, exception);
         }
 
         private static LogLevel GetLogLevel(string logLevel)
@@ -51,13 +51,5 @@ namespace EasyArchitecture.Instances
             return _logLevel;
         }
 
-        internal void Log(LogLevel logLevel, object message, Exception exception)
-        {
-            //get plugin
-            var plugin = (ILogPlugin)_easyConfig.Plugins[typeof(ILogPlugin)];
-
-            //execute
-            plugin.Log(logLevel, _easyConfig.ModuleName, message, exception);
-        }
     }
 }

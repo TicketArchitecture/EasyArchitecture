@@ -1,10 +1,12 @@
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.Runtime.Serialization.Json;
 using System.Text;
-using System.Web.Script.Serialization;
+using EasyArchitecture.Mechanisms;
 using Microsoft.Practices.Unity.InterceptionExtension;
 
-namespace EasyArchitecture.Diagnostic
+namespace EasyArchitecture.Plugins.Unity
 {
     public class LoggingHandler: ICallHandler
     {
@@ -43,61 +45,27 @@ namespace EasyArchitecture.Diagnostic
             if (input.Inputs.Count>0)
                 parameters.Remove(parameters.Length - 2, 2);
 
-            //Log.To(input.MethodBase.DeclaringType).Message("->[{0}]: {1}",input.MethodBase.Name, parameters).Debug();
+            Logger.Message("->[{0}]: {1}", input.MethodBase.Name, parameters).Debug();
         }
 
         private static void LogReturn(IMethodInvocation input, IMethodReturn message, Stopwatch sw)
         {
-            //Log.To(input.MethodBase.DeclaringType).Message("<-[{0}]: ({1}) [{2}ms]", input.MethodBase.Name, Mount(message.ReturnValue),sw.ElapsedMilliseconds).Debug();
+            Logger.Message("<-[{0}]: ({1}) [{2}ms]", input.MethodBase.Name, Mount(message.ReturnValue), sw.ElapsedMilliseconds).Debug();
         }
 
         private static void LogException(IMethodInvocation input, Exception ex, Stopwatch sw)
         {
-            //Log.To(input.MethodBase.DeclaringType).Exception(ex, "x [{0}]: {1} [{2}ms]", input.MethodBase.Name, ex.Message,sw.ElapsedMilliseconds).Debug();
+            Logger.Exception(ex, "x [{0}]: {1} [{2}ms]", input.MethodBase.Name, ex.Message,sw.ElapsedMilliseconds).Debug();
         }
 
         private static string Mount(object obj)
         {
-
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            serializer.RecursionLimit = 30;
-//            Console.WriteLine(serializer.Serialize(p));
-            return serializer.Serialize(obj);
-
-            if (obj == null)
-                return "null";
-
-            var type = obj.GetType();
-
-            if (type.IsClass)
-            {
-                return MountClass(obj, type);
-            }
-            if (type.IsArray)
-            {
-                return MountArray(obj, type);
-            }
-
-            return obj.ToString();
-        }
-
-        private static string MountArray(object o, Type type)
-        {
-            return o.ToString();
-        }
-
-        private static string MountClass(object obj, Type type)
-        {
-            var sb = new StringBuilder();
-            var propertiesInfo = type.GetProperties();
-            foreach (var propertyInfo in propertiesInfo)
-            {
-                sb.Append(propertyInfo.Name + "(" + propertyInfo.GetValue(obj, null) + "), ");
-            }
-            if (propertiesInfo.Length > 0)
-                sb.Remove(sb.Length - 2, 2);
-
-            return sb.ToString();
+            var json = new DataContractJsonSerializer(obj.GetType());
+            var ms = new MemoryStream();
+            var writer = JsonReaderWriterFactory.CreateJsonWriter(ms);
+            json.WriteObject(ms, obj);
+            writer.Flush();
+            return Encoding.UTF8.GetString(ms.GetBuffer(), 0, (int)ms.Length); ;
         }
     }
 }

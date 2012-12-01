@@ -4,7 +4,8 @@ using System.Text;
 
 namespace EasyArchitecture.Internal
 {
-    internal static class AssemblyManager
+    //TODO: must be internal
+    public static class AssemblyManager
     {
         private const string Application = ".Application";
         private const string Contract = ".Application.Contracts";
@@ -32,7 +33,8 @@ namespace EasyArchitecture.Internal
             return AppDomain.CurrentDomain.Load(assemblyName);
         }
 
-        internal static string RemoveAssemblySufix(string name)
+        //TODO: must be internal
+        public static string RemoveAssemblySufix(string name)
         {
             var sb = new StringBuilder(name);
 

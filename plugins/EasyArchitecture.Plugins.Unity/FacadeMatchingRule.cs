@@ -1,7 +1,8 @@
 using System.Reflection;
+using EasyArchitecture.Initialization;
 using Microsoft.Practices.Unity.InterceptionExtension;
 
-namespace EasyArchitecture.Initialization
+namespace EasyArchitecture.Plugins.Unity
 {
     public class FacadeMatchingRule : IMatchingRule
     {
@@ -17,11 +18,10 @@ namespace EasyArchitecture.Initialization
             if (member.DeclaringType==null || member.DeclaringType.IsInterface)
                 return false;
 
-            //var isQuery = member.GetCustomAttributes(typeof(QueryMethodAttribute),true).Length!=0;
-            //var isFacade = member.DeclaringType.Name.EndsWith("Facade");
+            var isQuery = member.GetCustomAttributes(typeof(QueryMethodAttribute), true).Length != 0;
+            var isFacade = member.DeclaringType.Name.EndsWith("Facade");
 
-            //return (!isQuery || _allFacades) && isFacade;
-            return true;
+            return (!isQuery || _allFacades) && isFacade;
         }
     }
 }
