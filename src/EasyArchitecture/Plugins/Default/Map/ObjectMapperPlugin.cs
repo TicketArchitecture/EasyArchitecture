@@ -1,7 +1,6 @@
-using System;
 using System.Reflection;
 
-namespace EasyArchitecture.Plugins.Default
+namespace EasyArchitecture.Plugins.Default.Map
 {
     public class ObjectMapperPlugin:IObjectMapperPlugin
     {

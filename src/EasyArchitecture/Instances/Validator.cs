@@ -4,7 +4,7 @@ using EasyArchitecture.Plugins;
 
 namespace EasyArchitecture.Instances
 {
-    public class Validator
+    internal class Validator
     {
         private readonly EasyConfig _easyCofig;
 
@@ -20,7 +20,7 @@ namespace EasyArchitecture.Instances
         }
 
 
-        public List<string> GetMessages<T>(T entity)
+        internal List<string> GetMessages<T>(T entity)
         {
             //get plugin
             var plugin = (IValidatorPlugin)_easyCofig.Plugins[typeof(IValidatorPlugin)];
@@ -29,7 +29,7 @@ namespace EasyArchitecture.Instances
             return plugin.Validate(entity);
         }
 
-        public void IsValid<T>(T entity)
+        internal void IsValid<T>(T entity)
         {
             //get plugin
             var plugin = (IValidatorPlugin)_easyCofig.Plugins[typeof(IValidatorPlugin)];

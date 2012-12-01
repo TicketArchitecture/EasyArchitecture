@@ -8,25 +8,19 @@ namespace EasyArchitecture.Mechanisms
     {
         private readonly Exception _exception;
         private readonly object _message;
-        //private readonly string _moduleName;
         private LogLevel _logLevel;
 
-        private LoggerActionExpression()
-        {
-            //_moduleName = LocalThreadStorage.GetCurrentBusinessModuleName()??"EasyArchitecture";
-        }
-
-        public LoggerActionExpression(object message):this()
+        internal LoggerActionExpression(object message)
         {
             _message = message;
         }
 
-        public LoggerActionExpression(Exception exception): this()
+        internal LoggerActionExpression(Exception exception)
         {
             _exception = exception;
         }
 
-        public LoggerActionExpression(object message, Exception exception)
+        internal LoggerActionExpression(object message, Exception exception)
         {
             _message = message;
             _exception = exception;
@@ -64,10 +58,7 @@ namespace EasyArchitecture.Mechanisms
 
         private void Log()
         {
-            //discovery instance
-            var moduleName = LocalThreadStorage.GetCurrentBusinessModuleName();
-            //execute
-            EasyConfigurations.Configurations[moduleName].Logger.Log(_logLevel, moduleName, _message, _exception);
+            EasyConfigurations.SelectorByThread().Logger.Log(_logLevel,  _message, _exception);
         }
     }
 }

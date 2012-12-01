@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using EasyArchitecture.DI;
 
-namespace EasyArchitecture.DI
+namespace EasyArchitecture.Plugins.Default.DI
 {
     public class Container
     {

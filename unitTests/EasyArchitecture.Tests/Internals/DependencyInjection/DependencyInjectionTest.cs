@@ -1,4 +1,5 @@
 ﻿using EasyArchitecture.DI;
+using EasyArchitecture.Plugins.Default.DI;
 using EasyArchitecture.Tests.Internals.DependencyInjection.Stuff;
 using NUnit.Framework;
 

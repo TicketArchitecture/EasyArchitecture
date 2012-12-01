@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using EasyArchitecture.Initialization;
 
 namespace EasyArchitecture.Internal
 {
@@ -10,10 +9,19 @@ namespace EasyArchitecture.Internal
 
         internal static EasyConfig Selector<T>()
         {
-            var moduleName = AssemblyManager.ModuleName<T>();
+            return Selector(AssemblyManager.ModuleName<T>());
+        }
+
+        internal static EasyConfig SelectorByThread()
+        {
+            return Selector(LocalThreadStorage.GetCurrentBusinessModuleName());
+        }
+
+        private static EasyConfig Selector(string moduleName)
+        {
             EasyConfig instance;
 
-            if(!EasyConfigurations.Configurations.TryGetValue(moduleName, out instance))
+            if (!EasyConfigurations.Configurations.TryGetValue(moduleName, out instance))
                 throw new Exception("NotConfigured");
 
             return instance;

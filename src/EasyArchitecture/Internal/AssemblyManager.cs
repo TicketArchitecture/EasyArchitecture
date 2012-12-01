@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Text;
 
-namespace EasyArchitecture.Initialization
+namespace EasyArchitecture.Internal
 {
     internal static class AssemblyManager
     {

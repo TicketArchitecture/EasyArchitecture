@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using EasyArchitecture.Initialization;
 using EasyArchitecture.Plugins;
 using EasyArchitecture.Plugins.Default;
 using EasyArchitecture.Plugins.Default.Log;
+using EasyArchitecture.Plugins.Default.Map;
 using EasyArchitecture.Plugins.Default.Persistence;
 using EasyArchitecture.Plugins.Default.Validation;
 
@@ -27,12 +27,12 @@ namespace EasyArchitecture.Internal
         internal Instances.DependencyInjection DependencyInjection;
         internal Instances.Validator Validator;
 
-        public EasyConfig(string moduleName)
+        internal EasyConfig(string moduleName)
         {
             ModuleName = moduleName;
         }
 
-        public void Start()
+        internal void Start()
         {
             //load assemblies
             ApplicationAssembly = AssemblyManager.GetApplicationAssembly(ModuleName);
@@ -62,12 +62,12 @@ namespace EasyArchitecture.Internal
             Validator = new Instances.Validator(this);
         }
 
-        public void Register<T>(T plugin)
+        internal void Register<T>(T plugin)
         {
             Plugins.Add(typeof(T), plugin);
         }
 
-        public void Register<TU, T>()
+        internal void Register<TU, T>()
         {
             var type = typeof(T);
             var plugin = type.Assembly.CreateInstance(type.FullName);

@@ -1,4 +1,5 @@
-﻿using EasyArchitecture.Tests.Stuff.Helpers;
+﻿using EasyArchitecture.Internal;
+using EasyArchitecture.Tests.Stuff.Helpers;
 using NUnit.Framework;
 using EasyArchitecture.Initialization;
 

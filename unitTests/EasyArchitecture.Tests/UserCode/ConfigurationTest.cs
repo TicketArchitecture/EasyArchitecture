@@ -2,6 +2,7 @@
 using EasyArchitecture.Plugins;
 using EasyArchitecture.Plugins.Default;
 using EasyArchitecture.Plugins.Default.Log;
+using EasyArchitecture.Plugins.Default.Map;
 using EasyArchitecture.Plugins.Default.Persistence;
 using EasyArchitecture.Plugins.Default.Validation;
 using NUnit.Framework;

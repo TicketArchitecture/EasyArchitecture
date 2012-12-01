@@ -13,8 +13,8 @@ namespace EasyArchitecture.Instances
         {
             _easyConfig = easyConfig;
 
-            this.AutoRegister(easyConfig.DomainAssembly, easyConfig.InfrastructureAssembly, false);
-            this.AutoRegister(easyConfig.ApplicationAssembly, easyConfig.ApplicationAssembly, true);
+            AutoRegister(easyConfig.DomainAssembly, easyConfig.InfrastructureAssembly, false);
+            AutoRegister(easyConfig.ApplicationAssembly, easyConfig.ApplicationAssembly, true);
         }
 
         private void AutoRegister(Assembly interfacesAssembly, Assembly implementationsAssembly, bool useInterception)
@@ -44,7 +44,7 @@ namespace EasyArchitecture.Instances
             }
         }
 
-        public T Resolve<T>()
+        internal T Resolve<T>()
         {
             //get plugin
             var plugin = (IDependencyInjectionPlugin)_easyConfig.Plugins[typeof(IDependencyInjectionPlugin)];
@@ -53,7 +53,7 @@ namespace EasyArchitecture.Instances
             return plugin.GetInstance<T>();
         }
 
-        public void Register<T, T1>() where T1 : T
+        internal void Register<T, T1>() where T1 : T
         {
             //get plugin
             var plugin = (IDependencyInjectionPlugin)_easyConfig.Plugins[typeof(IDependencyInjectionPlugin)];

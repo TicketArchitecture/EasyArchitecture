@@ -1,5 +1,6 @@
 ﻿using System;
 using EasyArchitecture.DI;
+using EasyArchitecture.Plugins.Default.DI;
 
 namespace EasyArchitecture.Plugins.Default
 {

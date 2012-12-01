@@ -4,7 +4,7 @@ using EasyArchitecture.Plugins;
 
 namespace EasyArchitecture.Instances
 {
-    public class Translator
+    internal class Translator
     {
         private readonly EasyConfig _easyCofig;
 
@@ -34,11 +34,5 @@ namespace EasyArchitecture.Instances
             //execute
             return plugin.Map(p0, obj1);
         }
-
-        public static TranslatorToExpression<T> This<T>(T obj)
-        {
-            return new TranslatorToExpression<T>(obj);
-        }
-
     }
 }

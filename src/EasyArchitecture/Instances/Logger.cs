@@ -13,7 +13,6 @@ namespace EasyArchitecture.Instances
         {
             _easyConfig = easyConfig;
 
-            //this.Configure(easyConfig.ModuleName, "debug");
             var logFile = "Logs/" + _easyConfig.ModuleName + ".log";
 
             //get plugin
@@ -52,34 +51,13 @@ namespace EasyArchitecture.Instances
             return _logLevel;
         }
 
-        //public static Logger GetCurrentLogger()
-        //{
-        //    var businessModuleName = LocalThreadStorage.GetCurrentBusinessModuleName();
-        //    return EasyConfigurations.Loggers[businessModuleName];
-        //}
-
-        public void Log(LogLevel logLevel, string moduleName, object message, Exception exception)
+        internal void Log(LogLevel logLevel, object message, Exception exception)
         {
             //get plugin
             var plugin = (ILogPlugin)_easyConfig.Plugins[typeof(ILogPlugin)];
 
             //execute
-            plugin.Log(logLevel, moduleName, message, exception);
+            plugin.Log(logLevel, _easyConfig.ModuleName, message, exception);
         }
-
-        //internal static void AddNew(EasyConfig easyConfig, ILogPlugin logPlugin)
-        //{
-        //    EasyConfigurations.Loggers[easyConfig.ModuleName] = new Logger(logPlugin, easyConfig.ModuleName);
-        //}
-
-        //public static Logger GetInstanceOf(string businessModule)
-        //{
-        //    return EasyConfigurations.Loggers[businessModule];
-        //}
-
-        //public ILogPlugin GetPlugin()
-        //{
-        //    return _logPlugin;
-        //}
     }
 }

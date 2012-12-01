@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using EasyArchitecture.Initialization;
 using EasyArchitecture.Internal;
 
 namespace EasyArchitecture.Mechanisms
