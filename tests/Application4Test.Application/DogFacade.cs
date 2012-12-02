@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Application4Test.Application.Queries;
 using EasyArchitecture.Data;
-using EasyArchitecture.Diagnostic;
 using EasyArchitecture.Initialization;
 using Application4Test.Application.Contracts;
 using Application4Test.Application.Contracts.DTOs;

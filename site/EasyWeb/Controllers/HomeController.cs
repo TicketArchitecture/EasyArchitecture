@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,6 +13,14 @@ namespace EasyWeb.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+
+            Version v = Assembly.GetAssembly(typeof(EasyArchitecture.Data.NamedQuery<>)).GetName().Version;
+            //Version v = Assembly.GetExecutingAssembly().GetName().Version;
+            string About = string.Format(CultureInfo.InvariantCulture, @"YourApp Version {0}.{1}.{2} (r{3})", v.Major, v.Minor, v.Build, v.Revision);
+
+            ViewBag.EasyVersion = About;
+
+
 
             return View();
         }

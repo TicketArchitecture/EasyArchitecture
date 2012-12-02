@@ -10,6 +10,7 @@ namespace EasyArchitecture.Plugins.Unity
 {
     public class LoggingHandler: ICallHandler
     {
+        private const string NullValue = "null";
         public int Order { get; set; }
 
         public IMethodReturn Invoke(IMethodInvocation input, GetNextHandlerDelegate getNext)
@@ -57,9 +58,12 @@ namespace EasyArchitecture.Plugins.Unity
         {
             Logger.Exception(ex, "x [{0}]: {1} [{2}ms]", input.MethodBase.Name, ex.Message,sw.ElapsedMilliseconds).Debug();
         }
-
+        
         private static string Mount(object obj)
         {
+            if (obj == null)
+                return NullValue;
+
             var json = new DataContractJsonSerializer(obj.GetType());
             var ms = new MemoryStream();
             var writer = JsonReaderWriterFactory.CreateJsonWriter(ms);

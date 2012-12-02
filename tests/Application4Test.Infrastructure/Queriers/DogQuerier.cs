@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Application4Test.Application;
 using Application4Test.Application.Contracts.DTOs;
 using Application4Test.Application.Queries;
 using EasyArchitecture.Data;
@@ -43,7 +42,6 @@ namespace Application4Test.Infrastructure.Queriers
             return query.List<DogDto>().ToList();
 
         }
-
 
         private IList<DogDto> InternalExecute(GetAllDogs namedQuery)
         {

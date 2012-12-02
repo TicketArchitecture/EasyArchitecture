@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application4Test.Infrastruc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Tests", "tests\EasyArchitecture.Tests\EasyArchitecture.Tests.csproj", "{56157217-6DCD-4B47-8FBA-82C9C1E6E600}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyWeb", "site\EasyWeb\EasyWeb.csproj", "{8E036BE1-451A-4623-AED2-B7641E8CD43C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyWeb", "site\EasyWeb\EasyWeb.csproj", "{1823BE92-75D4-410E-BEBA-333A06511189}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,10 +69,10 @@ Global
 		{56157217-6DCD-4B47-8FBA-82C9C1E6E600}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56157217-6DCD-4B47-8FBA-82C9C1E6E600}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56157217-6DCD-4B47-8FBA-82C9C1E6E600}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E036BE1-451A-4623-AED2-B7641E8CD43C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E036BE1-451A-4623-AED2-B7641E8CD43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E036BE1-451A-4623-AED2-B7641E8CD43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E036BE1-451A-4623-AED2-B7641E8CD43C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1823BE92-75D4-410E-BEBA-333A06511189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1823BE92-75D4-410E-BEBA-333A06511189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1823BE92-75D4-410E-BEBA-333A06511189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1823BE92-75D4-410E-BEBA-333A06511189}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,7 +86,7 @@ Global
 		{46C70FC2-29AC-4F11-AC70-CC3D066C90ED} = {25C120B5-E642-4854-9D49-C8089EE5FA32}
 		{2A920002-A724-469C-9330-57482D1A01F3} = {25C120B5-E642-4854-9D49-C8089EE5FA32}
 		{E03E3582-FA3F-436C-B84A-32313E5033BD} = {25C120B5-E642-4854-9D49-C8089EE5FA32}
-		{8E036BE1-451A-4623-AED2-B7641E8CD43C} = {51D277E4-C562-47EC-8087-3CED19A7D4EC}
+		{1823BE92-75D4-410E-BEBA-333A06511189} = {51D277E4-C562-47EC-8087-3CED19A7D4EC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\Unity.2.1.505.2\lib\NET35;packages\Unity.Interception.2.1.505.2\lib\NET35
