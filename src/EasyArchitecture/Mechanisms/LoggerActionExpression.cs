@@ -1,5 +1,5 @@
 using System;
-using EasyArchitecture.Diagnostic;
+using EasyArchitecture.Common.Diagnostic;
 using EasyArchitecture.Internal;
 
 namespace EasyArchitecture.Mechanisms

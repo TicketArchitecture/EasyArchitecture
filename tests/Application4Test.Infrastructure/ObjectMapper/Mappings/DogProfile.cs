@@ -2,8 +2,7 @@
 using Application4Test.Domain;
 using AutoMapper;
 
-
-namespace Application4Test.Infrastructure.ObjectMapper
+namespace Application4Test.Infrastructure.ObjectMapper.Mappings
 {
     public class DogProfile : Profile
     {

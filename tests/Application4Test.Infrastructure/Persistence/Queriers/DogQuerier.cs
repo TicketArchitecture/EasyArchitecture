@@ -2,16 +2,13 @@
 using System.Linq;
 using Application4Test.Application.Contracts.DTOs;
 using Application4Test.Application.Queries;
-using EasyArchitecture.Data;
+using EasyArchitecture.Common.Persistence;
 using EasyArchitecture.Plugins.NHibernate;
 
-namespace Application4Test.Infrastructure.Queriers
+namespace Application4Test.Infrastructure.Persistence.Queriers
 {
-   
-
     public class DogQuerier : NHibernateQuerier<DogDto>
     {
-        //TODO: nao gostei desse IF =(
         public override IList<DogDto> Execute(NamedQuery<DogDto> namedQuery)
         {
             if (namedQuery is GetAgedDogs)

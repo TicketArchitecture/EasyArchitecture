@@ -1,4 +1,4 @@
-namespace EasyArchitecture.Diagnostic
+namespace EasyArchitecture.Common.Diagnostic
 {
     public enum LogLevel
     {

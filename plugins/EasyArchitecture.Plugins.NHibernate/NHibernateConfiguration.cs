@@ -2,9 +2,8 @@
 
 namespace EasyArchitecture.Plugins.NHibernate
 {
-    public abstract class NHibernateConfiguration
+    public interface INHibernateConfiguration
     {
-        public string ConnectionString { get; set; }
-        public abstract IPersistenceConfigurer ConfigureDatabase();
+        IPersistenceConfigurer ConfigureDatabase();
     }
 }

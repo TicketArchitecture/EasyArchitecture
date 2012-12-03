@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using EasyArchitecture.Common.Persistence;
 
 namespace EasyWeb.Controllers
 {
@@ -14,7 +15,7 @@ namespace EasyWeb.Controllers
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
-            Version v = Assembly.GetAssembly(typeof(EasyArchitecture.Data.NamedQuery<>)).GetName().Version;
+            Version v = Assembly.GetAssembly(typeof(NamedQuery<>)).GetName().Version;
             //Version v = Assembly.GetExecutingAssembly().GetName().Version;
             string About = string.Format(CultureInfo.InvariantCulture, @"YourApp Version {0}.{1}.{2} (r{3})", v.Major, v.Minor, v.Build, v.Revision);
 

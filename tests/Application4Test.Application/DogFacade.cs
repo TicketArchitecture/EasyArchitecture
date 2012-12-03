@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Application4Test.Application.Queries;
-using EasyArchitecture.Data;
-using EasyArchitecture.Initialization;
+using EasyArchitecture.Common;
+using EasyArchitecture.Common.Persistence;
 using Application4Test.Application.Contracts;
 using Application4Test.Application.Contracts.DTOs;
 using Application4Test.Domain;
@@ -38,7 +38,7 @@ namespace Application4Test.Application
             return dto;
         }
 
-        public virtual void UpdateDog(DogDto dto)
+        public void UpdateDog(DogDto dto)
         {
             Logger.Message("Teste").Debug();
 
@@ -51,13 +51,13 @@ namespace Application4Test.Application
 
         //TODO: mount by reflection
         [QueryMethod]
-        public virtual IList<DogDto> GetAllOldDogs(int age)
+        public IList<DogDto> GetAllOldDogs(int age)
         {
             return Querier.Execute(new GetAgedDogs(age));
         }
 
         [QueryMethod]
-        public virtual IList<DogDto> GetAllDogs()
+        public IList<DogDto> GetAllDogs()
         {
             return Querier.Execute(new GetAllDogs());
         }

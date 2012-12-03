@@ -1,4 +1,4 @@
-﻿namespace EasyArchitecture
+﻿namespace EasyArchitecture.Common
 {
     public class InvalidEntityException : DomainException
     {

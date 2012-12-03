@@ -3,7 +3,7 @@ using EasyArchitecture.Plugins;
 
 namespace EasyArchitecture.Instances
 {
-    public class PersistenceManager
+    internal class PersistenceManager
     {
         private readonly string _moduleName;
         private readonly IPersistencePlugin _plugin;
@@ -14,7 +14,7 @@ namespace EasyArchitecture.Instances
 
             _plugin = (IPersistencePlugin)easyConfig.Plugins[typeof(IPersistencePlugin)];
 
-            _plugin.Configure( _moduleName,"",easyConfig.InfrastructureAssembly);
+            _plugin.Configure( _moduleName,easyConfig.InfrastructureAssembly);
         }
 
         internal object GetSession()

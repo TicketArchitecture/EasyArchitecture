@@ -1,5 +1,5 @@
 using Application4Test.Application.Contracts.DTOs;
-using EasyArchitecture.Data;
+using EasyArchitecture.Common.Persistence;
 
 namespace Application4Test.Application.Queries
 {

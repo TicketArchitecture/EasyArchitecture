@@ -303,6 +303,12 @@
   <ItemGroup>
     <Content Include="Views\Shared\_BootstrapLayout.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EasyArchitecture\EasyArchitecture.csproj">
+      <Project>{09A7AA21-ED65-409C-8442-E0ADA02A7AAF}</Project>
+      <Name>EasyArchitecture</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

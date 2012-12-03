@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using EasyArchitecture.Mechanisms;
 
-namespace EasyArchitecture.Data
+namespace EasyArchitecture.Common.Persistence
 {
     public abstract class QuerierBase<T>
     {

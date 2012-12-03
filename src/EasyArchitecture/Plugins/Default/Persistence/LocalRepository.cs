@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using EasyArchitecture.Data;
+using EasyArchitecture.Common.Persistence;
 
 namespace EasyArchitecture.Plugins.Default.Persistence
 {

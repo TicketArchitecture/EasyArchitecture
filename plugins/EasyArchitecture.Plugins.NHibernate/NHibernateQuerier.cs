@@ -1,4 +1,4 @@
-﻿using EasyArchitecture.Data;
+﻿using EasyArchitecture.Common.Persistence;
 using NHibernate;
 
 namespace EasyArchitecture.Plugins.NHibernate

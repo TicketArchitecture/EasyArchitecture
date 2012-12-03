@@ -4,9 +4,7 @@ namespace EasyArchitecture.Plugins.NHibernate
 {
     internal class PersistenceConfiguration
     {
-        public string Name;
-        public string ConnectionString;
-        public Assembly MappingAssembly;
-        public NHibernateConfiguration NHibernateConfiguration;
+        internal Assembly MappingAssembly;
+        internal INHibernateConfiguration NHibernateConfiguration;
     }
 }

@@ -1,5 +1,5 @@
 using System.Reflection;
-using EasyArchitecture.Initialization;
+using EasyArchitecture.Common;
 using Microsoft.Practices.Unity.InterceptionExtension;
 
 namespace EasyArchitecture.Plugins.Unity

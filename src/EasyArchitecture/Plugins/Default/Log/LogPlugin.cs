@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using EasyArchitecture.Diagnostic;
+using EasyArchitecture.Common.Diagnostic;
 
 namespace EasyArchitecture.Plugins.Default.Log
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using EasyArchitecture.Diagnostic;
+using EasyArchitecture.Common.Diagnostic;
 using log4net;
 using log4net.Appender;
 using log4net.Config;

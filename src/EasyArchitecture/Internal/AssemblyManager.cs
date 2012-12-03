@@ -5,7 +5,7 @@ using System.Text;
 namespace EasyArchitecture.Internal
 {
     //TODO: must be internal
-    public static class AssemblyManager
+    internal static class AssemblyManager
     {
         private const string Application = ".Application";
         private const string Contract = ".Application.Contracts";
@@ -34,7 +34,7 @@ namespace EasyArchitecture.Internal
         }
 
         //TODO: must be internal
-        public static string RemoveAssemblySufix(string name)
+        internal static string RemoveAssemblySufix(string name)
         {
             var sb = new StringBuilder(name);
 
@@ -48,10 +48,15 @@ namespace EasyArchitecture.Internal
 
         internal static string ModuleName<T>()
         {
-            var type = typeof(T);
+            return ModuleName(typeof (T));
+        }
+
+        internal static string ModuleName(Type type)
+        {
             var assemblyName = type.Assembly.GetName().Name;
             var moduleName = RemoveAssemblySufix(assemblyName);
             return moduleName;
         }
+
     }
 }

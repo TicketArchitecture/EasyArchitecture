@@ -9,8 +9,11 @@ namespace EasyArchitecture.Plugins.Unity
 
         public IMethodReturn Invoke(IMethodInvocation input, GetNextHandlerDelegate getNext)
         {
-            var moduleName = AssemblyManager.RemoveAssemblySufix(input.MethodBase.DeclaringType.Namespace);
-            LocalThreadStorage.SetCurrentBusinessModuleName(moduleName);
+            //var moduleName = AssemblyManager.RemoveAssemblySufix(input.MethodBase.DeclaringType.Namespace);
+            //LocalThreadStorage.SetCurrentBusinessModuleName(moduleName);
+
+            //TODO: nao devia ser chamado diretamente
+            LocalThreadStorage.SetCurrentBusinessModuleName(input.MethodBase.DeclaringType);
 
             return getNext()(input, getNext);
         }

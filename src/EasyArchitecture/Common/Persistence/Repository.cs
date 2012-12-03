@@ -1,6 +1,6 @@
 ﻿using EasyArchitecture.Mechanisms;
 
-namespace EasyArchitecture.Data
+namespace EasyArchitecture.Common.Persistence
 {
     public abstract class Repository<T> where T : class
     {

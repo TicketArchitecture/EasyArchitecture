@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using EasyArchitecture.Common.Diagnostic;
 using EasyArchitecture.Plugins;
 using EasyArchitecture.Plugins.Default.DI;
 using EasyArchitecture.Plugins.Default.Log;
@@ -17,7 +18,7 @@ namespace EasyArchitecture.Internal
         internal Assembly ApplicationAssembly;
         internal Assembly InfrastructureAssembly;
 
-        internal Diagnostic.LogLevel LogLevel = Diagnostic.LogLevel.Fatal;
+        internal LogLevel LogLevel = LogLevel.Fatal;
 
         internal readonly Dictionary<Type, object> Plugins = new Dictionary<Type, object>();
 

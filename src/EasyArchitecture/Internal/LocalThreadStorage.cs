@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 
 namespace EasyArchitecture.Internal
 {
@@ -21,6 +22,15 @@ namespace EasyArchitecture.Internal
             var slot = Thread.GetNamedDataSlot(BusinessModuleNameKey);
             Thread.SetData(slot, businessModuleName);
         }
+
+        //TODO: must be internal
+        public static void SetCurrentBusinessModuleName(Type type)
+        {
+            var moduleName = AssemblyManager.RemoveAssemblySufix(type.Namespace);
+            var slot = Thread.GetNamedDataSlot(BusinessModuleNameKey);
+            Thread.SetData(slot, moduleName);
+        }
+
 
         internal static object RecoverSession(string businessModuleName)
         {

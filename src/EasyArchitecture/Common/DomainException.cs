@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EasyArchitecture
+namespace EasyArchitecture.Common
 {
     public abstract class DomainException : Exception
     {

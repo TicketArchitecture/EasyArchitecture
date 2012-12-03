@@ -8,10 +8,13 @@ namespace EasyArchitecture.Instances
     internal class DependencyInjection 
     {
         private readonly EasyConfig _easyConfig;
+        private readonly IDependencyInjectionPlugin _plugin;
 
         internal DependencyInjection(EasyConfig easyConfig)
         {
             _easyConfig = easyConfig;
+
+            _plugin = (IDependencyInjectionPlugin)_easyConfig.Plugins[typeof(IDependencyInjectionPlugin)];
 
             AutoRegister(easyConfig.DomainAssembly, easyConfig.InfrastructureAssembly, false);
             AutoRegister(easyConfig.ApplicationAssembly, easyConfig.ApplicationAssembly, true);
@@ -35,32 +38,18 @@ namespace EasyArchitecture.Instances
                     continue;
                 }
 
-                //get plugin
-                var plugin = (IDependencyInjectionPlugin) _easyConfig.Plugins[typeof (IDependencyInjectionPlugin)];
-
-                //execute
-                plugin.RegisterType(exportedType, implementationType, useInterception);
-
+                _plugin.Register(exportedType, implementationType, useInterception);
             }
         }
 
         internal T Resolve<T>()
         {
-            //get plugin
-            var plugin = (IDependencyInjectionPlugin)_easyConfig.Plugins[typeof(IDependencyInjectionPlugin)];
-
-            //execute
-            return plugin.GetInstance<T>();
+            return _plugin.Resolve<T>();
         }
 
         internal void Register<T, T1>() where T1 : T
         {
-            //get plugin
-            var plugin = (IDependencyInjectionPlugin)_easyConfig.Plugins[typeof(IDependencyInjectionPlugin)];
-
-            //execute
-            plugin.Register<T, T1>();
-
+            _plugin.Register<T, T1>();
         }
     }
 }

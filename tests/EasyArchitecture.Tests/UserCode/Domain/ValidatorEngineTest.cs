@@ -1,4 +1,5 @@
 ﻿using Application4Test.Domain;
+using EasyArchitecture.Common;
 using EasyArchitecture.Mechanisms;
 using NUnit.Framework;
 

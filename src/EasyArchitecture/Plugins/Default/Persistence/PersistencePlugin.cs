@@ -10,7 +10,7 @@ namespace EasyArchitecture.Plugins.Default.Persistence
 
         private Dictionary<string,SessionFactory> sessionFactories = new Dictionary<string,SessionFactory>();
 
-        public void Configure(string name, string connectionString, Assembly assembly)
+        public void Configure(string moduleName, Assembly assembly)
         {
 //            throw new NotImplementedException();
         }

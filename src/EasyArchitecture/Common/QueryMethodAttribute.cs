@@ -1,6 +1,6 @@
 using System;
 
-namespace EasyArchitecture.Initialization
+namespace EasyArchitecture.Common
 {
     public class QueryMethodAttribute : Attribute
     {

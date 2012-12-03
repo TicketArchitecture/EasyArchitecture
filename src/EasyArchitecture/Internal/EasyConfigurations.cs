@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Linq;
 
 namespace EasyArchitecture.Internal
 {
@@ -9,7 +10,11 @@ namespace EasyArchitecture.Internal
 
         internal static EasyConfig Selector<T>()
         {
-            return Selector(AssemblyManager.ModuleName<T>());
+            var type = typeof (T);
+            if(type.IsGenericType)
+                type= type.GetGenericArguments().FirstOrDefault();
+
+            return Selector(AssemblyManager.ModuleName(type));
         }
 
         internal static EasyConfig SelectorByThread()

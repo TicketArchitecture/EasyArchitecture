@@ -53,7 +53,8 @@
     <Compile Include="Internals\DependencyInjection\Stuff\IDummyInterface.cs" />
     <Compile Include="Internals\DependencyInjection\Stuff\DummyImplementation.cs" />
     <Compile Include="Internals\DependencyInjection\Stuff\NewDummyImplementation.cs" />
-    <Compile Include="UserCode\Application\Class1.cs" />
+    <Compile Include="Plugins\EntityFramework\EntityFrameworkTest.cs" />
+    <Compile Include="Plugins\NHibernate\NHibernateTest.cs" />
     <Compile Include="UserCode\ConfigurationTest.cs" />
     <Compile Include="UserCode\ObjectMapperTest.cs" />
     <Compile Include="UserCode\Domain\ValidatorEngineTest.cs" />
@@ -78,6 +79,10 @@
     <ProjectReference Include="..\..\plugins\EasyArchitecture.Plugins.Automapper\EasyArchitecture.Plugins.Automapper.csproj">
       <Project>{46C70FC2-29AC-4F11-AC70-CC3D066C90ED}</Project>
       <Name>EasyArchitecture.Plugins.Automapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\plugins\EasyArchitecture.Plugins.EntityFramework\EasyArchitecture.Plugins.EntityFramework.csproj">
+      <Project>{3ACCD6FE-781F-46C6-888C-F00FBA6BD591}</Project>
+      <Name>EasyArchitecture.Plugins.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\plugins\EasyArchitecture.Plugins.Log4net\EasyArchitecture.Plugins.Log4net.csproj">
       <Project>{13B2D49C-45D2-43AD-99A3-FF1F66AEAA3F}</Project>
@@ -107,6 +112,10 @@
       <Project>{21CEB06D-9A61-4331-95EA-7BE413A29D76}</Project>
       <Name>Application4Test.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserCode\Application\" />
+    <Folder Include="UserCode\Copy of Application\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

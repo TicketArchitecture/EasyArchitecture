@@ -6,61 +6,59 @@ namespace EasyArchitecture.Plugins.Unity
 {
     public class UnityDependencyInjectionPlugin:IDependencyInjectionPlugin
     {
-        private IUnityContainer Container;
+        private readonly IUnityContainer _container;
 
         public UnityDependencyInjectionPlugin()
         {
-            if (Container != null) return;
+            if (_container != null) return;
 
-            Container = new UnityContainer();
-            Container.AddNewExtension<Interception>();
+            _container = new UnityContainer();
+            _container.AddNewExtension<Interception>();
 
             ConfigurePoliceInterceptor();
         }
 
         public void Register<T, T1>() where T1 : T
         {
-            Container.RegisterType<T, T1>();
+            _container.RegisterType<T, T1>();
         }
 
-        public T GetInstance<T>()
+        public T Resolve<T>()
         {
-            return Container.Resolve<T>();
+            return _container.Resolve<T>();
         }
 
-        public void RegisterType(Type interfaceType, Type implementationType, bool useInterception)
+        public void Register(Type interfaceType, Type implementationType, bool useInterception)
         {
             if (useInterception)
             {
-                Container.RegisterType(
+                _container.RegisterType(
                     interfaceType, implementationType,
                     new InterceptionBehavior<PolicyInjectionBehavior>(),
-                    new Interceptor<VirtualMethodInterceptor>());
-
-
+                    new Interceptor<InterfaceInterceptor>());
             }
             else
             {
-                Container.RegisterType(interfaceType, implementationType, null, null);
+                _container.RegisterType(interfaceType, implementationType, null, null);
             }
         }
 
 
         private void ConfigurePoliceInterceptor()
         {
-            Container.Configure<Interception>()
+            _container.Configure<Interception>()
                 .AddPolicy("Context")
                 .AddMatchingRule<FacadeMatchingRule>(
                     new InjectionConstructor(
                         new InjectionParameter(true)))
                 .AddCallHandler(typeof(ContextHandler));
-            Container.Configure<Interception>()
+            _container.Configure<Interception>()
                 .AddPolicy("Loggining")
                 .AddMatchingRule<FacadeMatchingRule>(
                     new InjectionConstructor(
                         new InjectionParameter(true)))
                 .AddCallHandler(typeof(LoggingHandler));
-            Container.Configure<Interception>()
+            _container.Configure<Interception>()
                 .AddPolicy("Transaction")
                 .AddMatchingRule<FacadeMatchingRule>(
                     new InjectionConstructor(

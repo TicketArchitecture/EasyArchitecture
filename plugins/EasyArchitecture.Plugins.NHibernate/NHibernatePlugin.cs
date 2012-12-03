@@ -8,30 +8,28 @@ namespace EasyArchitecture.Plugins.NHibernate
 {
     public class NHibernatePlugin : IPersistencePlugin
     {
-        private static readonly Dictionary<string,PersistenceConfiguration> PersitenceConfigurations = new Dictionary<string, PersistenceConfiguration>();
-        private static readonly Dictionary<string, ISessionFactory> SessionFactories =new Dictionary<string, ISessionFactory>();
+        private static readonly Dictionary<string, PersistenceConfiguration> PersitenceConfigurations = new Dictionary<string, PersistenceConfiguration>();
+        private static readonly Dictionary<string, ISessionFactory> SessionFactories = new Dictionary<string, ISessionFactory>();
         private static readonly object PersistenceLock = new object();
 
-        public void Configure(string businessModuleName, string connectionString, Assembly assembly)
+        public void Configure(string businessModuleName, Assembly assembly)
         {
-                        var nhibernateConfigurationType = Array.Find(assembly.GetExportedTypes(), t => t.IsSubclassOf(typeof (NHibernateConfiguration)));
+            var nhibernateConfigurationType = Array.Find(assembly.GetExportedTypes(), t => typeof(INHibernateConfiguration).IsAssignableFrom(t));
 
-            NHibernateConfiguration nhibernateConfiguration = null;
+            INHibernateConfiguration nhibernateConfiguration = null;
             if (nhibernateConfigurationType != null)
             {
-                nhibernateConfiguration = (NHibernateConfiguration)nhibernateConfigurationType.Assembly.CreateInstance(nhibernateConfigurationType.FullName);
-                if (nhibernateConfiguration != null) nhibernateConfiguration.ConnectionString = connectionString;
+                nhibernateConfiguration = (INHibernateConfiguration)nhibernateConfigurationType.Assembly.CreateInstance(nhibernateConfigurationType.FullName);
             }
 
             var config = new PersistenceConfiguration
                              {
-                                 Name = businessModuleName,
-                                 ConnectionString = connectionString,
                                  MappingAssembly = assembly,
                                  NHibernateConfiguration = nhibernateConfiguration
-                        };
-            
-            PersitenceConfigurations.Add(businessModuleName, config);
+                             };
+
+            //PersitenceConfigurations.Add(businessModuleName, config);
+            PersitenceConfigurations[businessModuleName] = config;
 
             //Log.To(typeof(PersistenceManagerInitializer)).Message("Assigned connection string [{0}] to [{1}] business module", connectionString, businessModuleName).Debug();
             //Log.To(typeof(PersistenceManagerInitializer)).Message("Mapped [{0}] to persistence", assembly).Debug();
@@ -79,7 +77,6 @@ namespace EasyArchitecture.Plugins.NHibernate
             {
                 aaa.Transaction.Rollback();
                 aaa.Close();
-                //aaa.Flush();
             }
         }
 
@@ -102,6 +99,5 @@ namespace EasyArchitecture.Plugins.NHibernate
         {
             return PersitenceConfigurations[businessModuleName];
         }
-
     }
 }

@@ -4,8 +4,8 @@ namespace EasyArchitecture.Plugins
 {
     public interface IDependencyInjectionPlugin
     {
-        void Register<T, T1>() where T1 : T;
-        T GetInstance<T>();
-        void RegisterType(Type interfaceType, Type implementationType, bool useInterception);
+        void Register<T, TU>() where TU : T;
+        T Resolve<T>();
+        void Register(Type interfaceType, Type implementationType, bool useInterception);
     }
 }

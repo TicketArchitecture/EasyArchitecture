@@ -9,16 +9,14 @@ namespace EasyArchitecture.Plugins.Default.DI
             Container.Register<T,T1>();
         }
 
-        public T GetInstance<T>()
+        public T Resolve<T>()
         {
             return Container.Resolve<T>();
         }
 
-        //TODO: useInterception
-        public void RegisterType(Type interfaceType, Type implementationType, bool useInterception)
+        public void Register(Type interfaceType, Type implementationType, bool useInterception)
         {
             Container.RegisterType(interfaceType,implementationType);
-            
         }
     }
 }

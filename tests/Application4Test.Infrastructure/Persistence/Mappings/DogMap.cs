@@ -1,7 +1,7 @@
 ﻿using FluentNHibernate.Mapping;
 using Application4Test.Domain;
 
-namespace Application4Test.Infrastructure.Configuration.Mappings
+namespace Application4Test.Infrastructure.Persistence.Mappings
 {
     public class DogMap : ClassMap<Dog>
     {

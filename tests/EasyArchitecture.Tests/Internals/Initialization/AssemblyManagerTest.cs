@@ -1,7 +1,6 @@
 ﻿using EasyArchitecture.Internal;
 using EasyArchitecture.Tests.Stuff.Helpers;
 using NUnit.Framework;
-using EasyArchitecture.Initialization;
 
 namespace EasyArchitecture.Tests.Internals.Initialization
 {
