@@ -4,7 +4,7 @@ using EasyArchitecture.Plugins.EntityFramework;
 
 namespace Application4Test.Infrastructure.Persistence.Repositories
 {
-    public class Dog1Repository : EntityRepository<Dog>, IDogRepository
+    public class DogEntityRepository : EntityRepository<Dog>, IDogRepository
     {
 
 

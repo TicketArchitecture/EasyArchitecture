@@ -55,6 +55,8 @@
     <Compile Include="Instances\Translator.cs" />
     <Compile Include="Mechanisms\DependencyInjection.cs" />
     <Compile Include="Mechanisms\PersistenceManager.cs" />
+    <Compile Include="Plugins\Default\Persistence\MemoryRepository.cs" />
+    <Compile Include="Plugins\Default\Persistence\Session.cs" />
     <Compile Include="Plugins\Default\Validation\ValidatorPlugin.cs" />
     <Compile Include="Plugins\IValidatorPlugin.cs" />
     <Compile Include="Internal\EasyConfig.cs" />
@@ -69,7 +71,6 @@
     <Compile Include="Instances\DependencyInjection.cs" />
     <Compile Include="Mechanisms\Validator.cs" />
     <Compile Include="Mechanisms\ValidatorExpression.cs" />
-    <Compile Include="Plugins\Default\Persistence\LocalRepository.cs" />
     <Compile Include="Plugins\IDependencyInjectionPlugin.cs" />
     <Compile Include="Plugins\Default\DI\InjectionPlugin.cs" />
     <Compile Include="Plugins\Default\DI\Container.cs" />

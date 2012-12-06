@@ -19,7 +19,7 @@ namespace EasyArchitecture.Tests.Plugins.EntityFramework
         [SetUp]
         public void Setup()
         {
-            Configuration
+            Configure
                 .For("Application4Test")
                 .Log<Log4NetPlugin>()                                   //Stable
                 .DependencyInjection<UnityDependencyInjectionPlugin>()  //Stable
@@ -28,7 +28,7 @@ namespace EasyArchitecture.Tests.Plugins.EntityFramework
                 .Done();
 
             //Garantir que sera usado a implementacao do entityframework
-            DependencyInjection.Register<IDogRepository, Dog1Repository>();
+            DependencyInjection.Register<IDogRepository, DogEntityRepository>();
 
 
         }

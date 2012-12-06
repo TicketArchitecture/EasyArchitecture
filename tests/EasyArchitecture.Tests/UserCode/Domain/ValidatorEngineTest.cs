@@ -14,7 +14,7 @@ namespace EasyArchitecture.Tests.UserCode.Domain
         [SetUp]
         public void SetUp()
         {
-            Configuration
+            Configure
                 .For("Application4Test")
                     .Done();
 

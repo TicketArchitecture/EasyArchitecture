@@ -16,7 +16,7 @@ namespace EasyArchitecture.Tests.UserCode
         [Test]
         public void Should_use_default_plugins_if_no_configuration_are_specified()
         {
-            Configuration
+            Configure
                 .For("Application4Test")
                 .Done();
 
@@ -26,7 +26,7 @@ namespace EasyArchitecture.Tests.UserCode
         [Test]
         public void Should_use_default_plugins_if_they_are_not_specified()
         {
-            Configuration
+            Configure
                 .For("Application4Test")
                     .Log()
                     .ObjectMapper()
@@ -41,7 +41,7 @@ namespace EasyArchitecture.Tests.UserCode
         [Test]
         public void Should_use_specified_plugins_implementations()
         {
-            Configuration
+            Configure
                     .For("Application4Test")
                         .Log(new LogPlugin())
                         .ObjectMapper(new ObjectMapperPlugin())
@@ -56,7 +56,7 @@ namespace EasyArchitecture.Tests.UserCode
         [Test]
         public void Should_use_specified_plugin_types()
         {
-            Configuration
+            Configure
                 .For("Application4Test")
                         .Log<LogPlugin>()
                         .ObjectMapper<ObjectMapperPlugin>()

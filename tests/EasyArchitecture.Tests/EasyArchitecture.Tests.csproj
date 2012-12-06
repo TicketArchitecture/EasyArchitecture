@@ -54,6 +54,7 @@
     <Compile Include="Internals\DependencyInjection\Stuff\DummyImplementation.cs" />
     <Compile Include="Internals\DependencyInjection\Stuff\NewDummyImplementation.cs" />
     <Compile Include="Plugins\EntityFramework\EntityFrameworkTest.cs" />
+    <Compile Include="Plugins\InMemoryDb\InMemoryDbTest.cs" />
     <Compile Include="Plugins\NHibernate\NHibernateTest.cs" />
     <Compile Include="UserCode\ConfigurationTest.cs" />
     <Compile Include="UserCode\ObjectMapperTest.cs" />

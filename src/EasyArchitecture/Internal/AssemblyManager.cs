@@ -12,31 +12,31 @@ namespace EasyArchitecture.Internal
         private const string Domain = ".Domain";
         private const string Infrastructure = ".Infrastructure";
 
-        internal static Assembly GetDomainAssembly(string businessModuleName)
+        internal static Assembly GetDomainAssembly(string moduleName)
         {
-            return GetAssembly(Domain, businessModuleName);
+            return GetAssembly(Domain, moduleName);
         }
 
-        internal static Assembly GetInfrastructureAssembly(string businessModuleName)
+        internal static Assembly GetInfrastructureAssembly(string moduleName)
         {
-            return GetAssembly(Infrastructure, businessModuleName);
+            return GetAssembly(Infrastructure, moduleName);
         }
 
-        internal static Assembly GetApplicationAssembly(string businessModuleName)
+        internal static Assembly GetApplicationAssembly(string moduleName)
         {
-            return GetAssembly(Application, businessModuleName);
+            return GetAssembly(Application, moduleName);
         }
 
-        private static Assembly GetAssembly(string assemblyType, string businessModuleName)
+        private static Assembly GetAssembly(string assemblyType, string moduleName)
         {
-            var assemblyName = businessModuleName + assemblyType;
+            var assemblyName = moduleName + assemblyType;
             return AppDomain.CurrentDomain.Load(assemblyName);
         }
 
         //TODO: must be internal
-        internal static string RemoveAssemblySufix(string name)
+        internal static string RemoveAssemblySufix(string assemblyName)
         {
-            var sb = new StringBuilder(name);
+            var sb = new StringBuilder(assemblyName);
 
             sb.Replace(Contract, String.Empty);
             sb.Replace(Application, String.Empty);

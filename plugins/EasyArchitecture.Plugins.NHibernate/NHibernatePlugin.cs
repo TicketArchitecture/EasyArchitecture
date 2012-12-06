@@ -12,7 +12,7 @@ namespace EasyArchitecture.Plugins.NHibernate
         private static readonly Dictionary<string, ISessionFactory> SessionFactories = new Dictionary<string, ISessionFactory>();
         private static readonly object PersistenceLock = new object();
 
-        public void Configure(string businessModuleName, Assembly assembly)
+        public void Configure(string moduleName, Assembly assembly)
         {
             var nhibernateConfigurationType = Array.Find(assembly.GetExportedTypes(), t => typeof(INHibernateConfiguration).IsAssignableFrom(t));
 
@@ -29,39 +29,39 @@ namespace EasyArchitecture.Plugins.NHibernate
                              };
 
             //PersitenceConfigurations.Add(businessModuleName, config);
-            PersitenceConfigurations[businessModuleName] = config;
+            PersitenceConfigurations[moduleName] = config;
 
             //Log.To(typeof(PersistenceManagerInitializer)).Message("Assigned connection string [{0}] to [{1}] business module", connectionString, businessModuleName).Debug();
             //Log.To(typeof(PersistenceManagerInitializer)).Message("Mapped [{0}] to persistence", assembly).Debug();
             //Log.To(typeof(PersistenceManagerInitializer)).Message("Loaded [{0}] to configure persistence", nhibernateConfiguration).Debug();            
         }
 
-        private static ISessionFactory GetSessionFactory(string businessModuleName)
+        private static ISessionFactory GetSessionFactory(string moduleName)
         {
             lock (PersistenceLock)
             {
-                if (SessionFactories.ContainsKey(businessModuleName))
-                    return SessionFactories[businessModuleName];
+                if (SessionFactories.ContainsKey(moduleName))
+                    return SessionFactories[moduleName];
 
-                var config = GetConfiguration(businessModuleName);
+                var config = GetConfiguration(moduleName);
 
                 var sessionFactory = GetConfiguredSessionFactory(config);
 
-                SessionFactories.Add(businessModuleName, sessionFactory);
+                SessionFactories.Add(moduleName, sessionFactory);
 
                 return sessionFactory;
             }
         }
 
-        public void BeginTransaction(object session)
+        public void BeginTransaction(object persistenceSession)
         {
-            var aaa = session as ISession;
+            var aaa = persistenceSession as ISession;
             if (aaa != null) aaa.BeginTransaction();
         }
 
-        public void CommitTransaction(object session)
+        public void CommitTransaction(object persistenceSession)
         {
-            var aaa = session as ISession;
+            var aaa = persistenceSession as ISession;
             if (aaa != null)
             {
                 aaa.Transaction.Commit();
@@ -70,9 +70,9 @@ namespace EasyArchitecture.Plugins.NHibernate
             }
         }
 
-        public void RollbackTransaction(object session)
+        public void RollbackTransaction(object persistenceSession)
         {
-            var aaa = session as ISession;
+            var aaa = persistenceSession as ISession;
             if (aaa != null)
             {
                 aaa.Transaction.Rollback();
@@ -95,9 +95,9 @@ namespace EasyArchitecture.Plugins.NHibernate
                 .BuildSessionFactory();
         }
 
-        private static PersistenceConfiguration GetConfiguration(string businessModuleName)
+        private static PersistenceConfiguration GetConfiguration(string moduleName)
         {
-            return PersitenceConfigurations[businessModuleName];
+            return PersitenceConfigurations[moduleName];
         }
     }
 }

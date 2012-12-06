@@ -4,7 +4,7 @@ using EasyArchitecture.Plugins.NHibernate;
 
 namespace Application4Test.Infrastructure.Persistence.Repositories
 {
-    public class DogRepository : NHibernateRepository<Dog>, IDogRepository
+    public class DogNHibernateRepository : NHibernateRepository<Dog>, IDogRepository
     {
 
 

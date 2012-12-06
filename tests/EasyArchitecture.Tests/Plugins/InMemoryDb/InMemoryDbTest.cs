@@ -5,14 +5,13 @@ using Application4Test.Infrastructure.Persistence.Repositories;
 using EasyArchitecture.Mechanisms;
 using EasyArchitecture.Plugins.Automapper;
 using EasyArchitecture.Plugins.Log4net;
-using EasyArchitecture.Plugins.NHibernate;
 using EasyArchitecture.Plugins.Unity;
 using NUnit.Framework;
 
-namespace EasyArchitecture.Tests.Plugins.NHibernate
+namespace EasyArchitecture.Tests.Plugins.InMemoryDb
 {
     [TestFixture]
-    public class NHibernateTest
+    public class InMemoryDbTest
     {
 
         [SetUp]
@@ -22,13 +21,13 @@ namespace EasyArchitecture.Tests.Plugins.NHibernate
                 .For("Application4Test")
                 .Log<Log4NetPlugin>()                                   //Stable
                 .DependencyInjection<UnityDependencyInjectionPlugin>()  //Stable
-                .Persistence<NHibernatePlugin>()
+                //.Persistence<NHibernatePlugin>()
                 .ObjectMapper<AutoMapperPlugin>()                       //Stable
                 .Done();
 
 
-            //Garantir que sera usado a implementacao do nhibernate
-            DependencyInjection.Register<IDogRepository, DogNHibernateRepository>();
+            //Garantir que sera usado a implementacao de persistencia local
+            DependencyInjection.Register<IDogRepository, DogMemoryRepository>();
 
         }
 

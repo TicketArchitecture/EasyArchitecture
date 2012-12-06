@@ -19,7 +19,7 @@ namespace EasyArchitecture.Internal
 
         internal static EasyConfig SelectorByThread()
         {
-            return Selector(LocalThreadStorage.GetCurrentBusinessModuleName());
+            return Selector(LocalThreadStorage.GetCurrentModuleName());
         }
 
         private static EasyConfig Selector(string moduleName)

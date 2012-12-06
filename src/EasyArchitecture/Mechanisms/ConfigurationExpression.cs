@@ -7,9 +7,9 @@ namespace EasyArchitecture.Mechanisms
     {
         private readonly EasyConfig _easyConfig;
 
-        internal ConfigurationExpression(string businessModule)
+        internal ConfigurationExpression(string moduleName)
         {
-            _easyConfig = new EasyConfig(businessModule);
+            _easyConfig = new EasyConfig(moduleName);
         }
 
         public ConfigurationExpression Log()

@@ -7,13 +7,13 @@ namespace EasyArchitecture.Tests.Internals.Initialization
     [TestFixture]
     public class AssemblyManagerTest
     {
-        private const string BusinessModuleName = "Application4Test";
+        private const string ModuleName = "Application4Test";
 
         [Test]
         public void Can_get_domain_assemblies()
         {
             var expected = AssemblyLoader.LoadAssemblyFromFile(AssemblyLoader.DomainAssemblyName);
-            var actual = AssemblyManager.GetDomainAssembly(BusinessModuleName);
+            var actual = AssemblyManager.GetDomainAssembly(ModuleName);
 
             Assert.That(actual,Is.EqualTo(expected));
         }
@@ -22,7 +22,7 @@ namespace EasyArchitecture.Tests.Internals.Initialization
         public void Can_get_infrastructure_assemblies()
         {
             var expected = AssemblyLoader.LoadAssemblyFromFile(AssemblyLoader.InfrastructureAssemblyName);
-            var actual = AssemblyManager.GetInfrastructureAssembly(BusinessModuleName);
+            var actual = AssemblyManager.GetInfrastructureAssembly(ModuleName);
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -31,7 +31,7 @@ namespace EasyArchitecture.Tests.Internals.Initialization
         public void Can_get_application_assemblies()
         {
             var expected = AssemblyLoader.LoadAssemblyFromFile(AssemblyLoader.ApplicationAssemblyName);
-            var actual = AssemblyManager.GetApplicationAssembly(BusinessModuleName);
+            var actual = AssemblyManager.GetApplicationAssembly(ModuleName);
 
             Assert.That(actual, Is.EqualTo(expected));
         }

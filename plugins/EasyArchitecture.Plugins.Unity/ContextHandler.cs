@@ -13,7 +13,7 @@ namespace EasyArchitecture.Plugins.Unity
             //LocalThreadStorage.SetCurrentBusinessModuleName(moduleName);
 
             //TODO: nao devia ser chamado diretamente
-            LocalThreadStorage.SetCurrentBusinessModuleName(input.MethodBase.DeclaringType);
+            LocalThreadStorage.SetCurrentModuleName(input.MethodBase.DeclaringType);
 
             return getNext()(input, getNext);
         }

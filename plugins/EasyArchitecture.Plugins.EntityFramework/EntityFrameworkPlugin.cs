@@ -10,56 +10,55 @@ namespace EasyArchitecture.Plugins.EntityFramework
         private static readonly Dictionary<string, Type> DbContextTypes = new Dictionary<string, Type>();
         private static readonly object PersistenceLock = new object();
 
-        public void Configure(string businessModuleName, Assembly assembly)
+        public void Configure(string moduleName, Assembly assembly)
         {
-            var nhibernateConfigurationType = Array.Find(assembly.GetExportedTypes(), t => t.IsSubclassOf(typeof(DbContext)));
-            if (nhibernateConfigurationType != null)
+            var dbContextType = Array.Find(assembly.GetExportedTypes(), t => t.IsSubclassOf(typeof(DbContext)));
+            if (dbContextType != null)
             {
-                //DbContextTypes.Add(businessModuleName,nhibernateConfigurationType);
-                DbContextTypes[businessModuleName] = nhibernateConfigurationType;
+                DbContextTypes[moduleName] = dbContextType;
             }
         }
 
-        private static Type GetSessionFactory(string businessModuleName)
+        private static Type GetSessionFactory(string moduleName)
         {
             lock (PersistenceLock)
             {
-                if (DbContextTypes.ContainsKey(businessModuleName))
-                    return DbContextTypes[businessModuleName];
+                if (DbContextTypes.ContainsKey(moduleName))
+                    return DbContextTypes[moduleName];
 
                 return null;
             }
         }
 
-        public void BeginTransaction(object session)
+        public void BeginTransaction(object persistenceSession)
         {
             //var aaa = session as DbContext;
             //if (aaa != null) aaa..BeginTransaction();
         }
 
-        public void CommitTransaction(object session)
+        public void CommitTransaction(object persistenceSession)
         {
-            var aaa = session as DbContext;
-            if (aaa != null)
+            var session = persistenceSession as DbContext;
+            if (session != null)
             {
-                aaa.SaveChanges();
+                session.SaveChanges();
             }
         }
 
-        public void RollbackTransaction(object session)
+        public void RollbackTransaction(object persistenceSession)
         {
-            var aaa = session as DbContext;
-            //if (aaa != null)
+            var session = persistenceSession as DbContext;
+            //if (session != null)
             //{
-            //    aaa..Transaction.Rollback();
-            //    aaa.Close();
+            //    session..Transaction.Rollback();
+            //    session.Close();
             //}
         }
 
         public object GetSession(string moduleName)
         {
-            var nhibernateConfigurationType = GetSessionFactory(moduleName);
-            var context= (DbContext)nhibernateConfigurationType.Assembly.CreateInstance(nhibernateConfigurationType.FullName);
+            var dbContextType = GetSessionFactory(moduleName);
+            var context = (DbContext)dbContextType.Assembly.CreateInstance(dbContextType.FullName);
             return context;
         }
     }

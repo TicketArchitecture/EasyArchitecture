@@ -53,10 +53,11 @@
   <ItemGroup>
     <Compile Include="ObjectMapper\Mappings\DogProfile.cs" />
     <Compile Include="Persistence\Configuration\DogContext.cs" />
-    <Compile Include="Persistence\Repositories\Dog1Repository.cs" />
+    <Compile Include="Persistence\Repositories\DogMemoryRepository.cs" />
+    <Compile Include="Persistence\Repositories\DogEntityRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Persistence\Queriers\DogQuerier.cs" />
-    <Compile Include="Persistence\Repositories\DogRepository.cs" />
+    <Compile Include="Persistence\Repositories\DogNHibernateRepository.cs" />
     <Compile Include="Persistence\Configuration\NHibernateConfig.cs" />
     <Compile Include="Persistence\Mappings\DogMap.cs" />
     <Compile Include="Validators\DogValidator.cs" />

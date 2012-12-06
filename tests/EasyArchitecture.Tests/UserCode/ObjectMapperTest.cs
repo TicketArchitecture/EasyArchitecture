@@ -12,7 +12,7 @@ namespace EasyArchitecture.Tests.UserCode
         [SetUp]
         public void Setup()
         {
-            Configuration
+            Configure
                 .For("Application4Test")
                     .ObjectMapper<AutoMapperPlugin>()
                     .Done();
