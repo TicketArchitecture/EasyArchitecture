@@ -36,9 +36,9 @@ namespace EasyArchitecture.Tests.Plugins.EntityFramework
         [Test]
         public void Can_call_facade()
         {
-            var facade = DependencyInjection.Resolve<IDogFacade>();
+            //var facade = DependencyInjection.Resolve<IDogFacade>();
 
-            facade.CreateDog(new DogDto() { Name = "Teste", Age = 10 });
+            //facade.CreateDog(new DogDto() { Name = "Teste", Age = 10 });
 
             Assert.Inconclusive("Unfinished");
             
