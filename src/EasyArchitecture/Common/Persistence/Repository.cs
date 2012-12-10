@@ -1,4 +1,4 @@
-﻿using EasyArchitecture.Mechanisms;
+﻿using EasyArchitecture.Internal;
 
 namespace EasyArchitecture.Common.Persistence
 {
@@ -6,7 +6,8 @@ namespace EasyArchitecture.Common.Persistence
     {
         protected object GetSession()
         {
-            return PersistenceManager.GetSession();
+            //return Persistence.GetSession();
+            return EasyConfigurations.SelectorByThread().Persistence.GetSession();
         }
     }
 }

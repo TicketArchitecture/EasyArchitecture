@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Application4Test.Application.Queries;
+using System.Diagnostics.Contracts;
 using EasyArchitecture.Common;
 using EasyArchitecture.Common.Persistence;
 using Application4Test.Application.Contracts;
@@ -21,6 +21,9 @@ namespace Application4Test.Application
 
         public DogDto GetDog(DogDto dog)
         {
+            Contract.Requires(dog != null);
+
+
             var entity = _dogRepository.Get(dog.Id);
             var dto = Translator.This(entity).To<DogDto>();
 
@@ -29,6 +32,9 @@ namespace Application4Test.Application
 
         public DogDto CreateDog(DogDto dog)
         {
+            Contract.Requires(dog != null);
+
+
             var entity = Translator.This(dog).To<Dog>();
 
             _dogRepository.Save(entity);
@@ -40,6 +46,8 @@ namespace Application4Test.Application
 
         public void UpdateDog(DogDto dto)
         {
+            Contract.Requires(dto != null);
+
             Logger.Message("Teste").Debug();
 
             var entity = _dogRepository.Get(dto.Id);
@@ -53,13 +61,15 @@ namespace Application4Test.Application
         [QueryMethod]
         public IList<DogDto> GetAllOldDogs(int age)
         {
-            return Querier.Execute(new GetAgedDogs(age));
+            Contract.Requires(age >0);
+
+            return PersistenceQuerier.Execute<DogDto>("GetAgedDogs",age);
         }
 
         [QueryMethod]
         public IList<DogDto> GetAllDogs()
         {
-            return Querier.Execute(new GetAllDogs());
+            return PersistenceQuerier.Execute<DogDto>("GetAllDogs");
         }
     }
 }

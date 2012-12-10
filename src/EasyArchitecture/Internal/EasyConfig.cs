@@ -5,8 +5,8 @@ using EasyArchitecture.Common.Diagnostic;
 using EasyArchitecture.Plugins;
 using EasyArchitecture.Plugins.Default.DI;
 using EasyArchitecture.Plugins.Default.Log;
-using EasyArchitecture.Plugins.Default.Map;
 using EasyArchitecture.Plugins.Default.Persistence;
+using EasyArchitecture.Plugins.Default.Translation;
 using EasyArchitecture.Plugins.Default.Validation;
 
 namespace EasyArchitecture.Internal
@@ -46,12 +46,12 @@ namespace EasyArchitecture.Internal
             //set defaults
             if (!Plugins.ContainsKey(typeof(IPersistencePlugin)) )
                 Plugins[typeof(IPersistencePlugin)] = new PersistencePlugin();
-            if (!Plugins.ContainsKey(typeof(ILogPlugin)))
-                Plugins[typeof(ILogPlugin)] = new LogPlugin();
+            if (!Plugins.ContainsKey(typeof(ILoggerPlugin)))
+                Plugins[typeof(ILoggerPlugin)] = new LoggerPlugin();
             if (!Plugins.ContainsKey(typeof(IDependencyInjectionPlugin)))
                 Plugins[typeof(IDependencyInjectionPlugin)] = new InjectionPlugin();
-            if (!Plugins.ContainsKey(typeof( IObjectMapperPlugin)))
-                Plugins[typeof(IObjectMapperPlugin)] = new ObjectMapperPlugin();
+            if (!Plugins.ContainsKey(typeof( ITranslatorPlugin)))
+                Plugins[typeof(ITranslatorPlugin)] = new TranslatorPlugin();
             if (!Plugins.ContainsKey(typeof(IValidatorPlugin)))
                 Plugins[typeof(IValidatorPlugin)] = new ValidatorPlugin();
 

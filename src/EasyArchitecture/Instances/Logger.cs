@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using EasyArchitecture.Common.Diagnostic;
 using EasyArchitecture.Internal;
 using EasyArchitecture.Plugins;
@@ -7,20 +9,28 @@ namespace EasyArchitecture.Instances
 {
     internal class Logger
     {
-        private readonly ILogPlugin _plugin;
+        private readonly ILoggerPlugin _plugin;
         private readonly string _moduleName;
+        private readonly LogLevel _logLevel;
+        private static readonly List<LogLevel> SequencialListOfLogLevel= new List<LogLevel>{LogLevel.Debug,LogLevel.Info,LogLevel.Warn,LogLevel.Error,LogLevel.Fatal};
 
         internal Logger(EasyConfig easyConfig)
         {
             _moduleName = easyConfig.ModuleName;
-            _plugin = (ILogPlugin)easyConfig.Plugins[typeof(ILogPlugin)];
-
-            _plugin.Configure(_moduleName, GetLogLevel("debug"));
+            _logLevel = LoadRuntimeConfiguration(_moduleName);
+            _plugin = (ILoggerPlugin)easyConfig.Plugins[typeof(ILoggerPlugin)];
+            _plugin.Configure(_moduleName);
         }
 
         internal void Log(LogLevel logLevel, object message, Exception exception)
         {
-            _plugin.Log(logLevel, _moduleName, message, exception);
+            if (ShouldSendToLog(logLevel,_logLevel))
+                _plugin.Log(logLevel, message, exception);
+        }
+
+        private static bool ShouldSendToLog(LogLevel logLevel,LogLevel defaultLogLevel)
+        {
+            return SequencialListOfLogLevel.FindIndex(l => l == logLevel) >= SequencialListOfLogLevel.FindIndex(l => l == defaultLogLevel);
         }
 
         private static LogLevel GetLogLevel(string logLevel)
@@ -51,5 +61,11 @@ namespace EasyArchitecture.Instances
             return _logLevel;
         }
 
+        private static LogLevel LoadRuntimeConfiguration(string moduleName)
+        {
+            var key = string.Format("Easy.Logger.Level.{0}", moduleName);
+            var value = ConfigurationManager.AppSettings[key];
+            return (GetLogLevel(value));
+        }
     }
 }

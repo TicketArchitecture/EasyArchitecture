@@ -45,9 +45,7 @@
     <Compile Include="Contracts\DTOs\DogDto.cs" />
     <Compile Include="Contracts\IDogFacade.cs" />
     <Compile Include="DogFacade.cs" />
-    <Compile Include="Queries\GetAgedDogs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\GetAllDogs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\EasyArchitecture\EasyArchitecture.csproj">

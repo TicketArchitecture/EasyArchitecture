@@ -6,13 +6,13 @@ namespace EasyArchitecture.Instances
     internal class Translator
     {
         private readonly EasyConfig _easyCofig;
-        private readonly IObjectMapperPlugin _plugin;
+        private readonly ITranslatorPlugin _plugin;
 
         internal Translator(EasyConfig easyCofig)
         {
             _easyCofig = easyCofig;
 
-            _plugin = (IObjectMapperPlugin)_easyCofig.Plugins[typeof(IObjectMapperPlugin)];
+            _plugin = (ITranslatorPlugin)_easyCofig.Plugins[typeof(ITranslatorPlugin)];
             _plugin.Configure(_easyCofig.InfrastructureAssembly);
         }
 

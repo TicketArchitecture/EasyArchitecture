@@ -1,15 +1,24 @@
-using System.Collections.Generic;
-using EasyArchitecture.Mechanisms;
+﻿using System.Collections.Generic;
+using EasyArchitecture.Internal;
 
 namespace EasyArchitecture.Common.Persistence
 {
-    public static class Querier
+    public abstract class Querier<T>
     {
-        public static IList<T> Execute<T>(NamedQuery<T> namedQuery)
+        //public abstract IList<T> Execute(string namedQuery, params object[] @params);
+        public IList<T> Execute(string namedQuery, params object[] @params)
         {
-            var querier = DependencyInjection.Resolve<QuerierBase<T>>();
-            var ret = querier.Execute(namedQuery);
-            return ret;
+            //TODO: por reflection executar o metodo namedQuery, passando parametrosd
+
+            return null;
         }
+
+        protected object GetSession()
+        {
+            return EasyConfigurations.SelectorByThread().Persistence.GetSession();
+        }
+
     }
 }
+
+

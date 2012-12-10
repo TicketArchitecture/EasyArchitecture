@@ -1,11 +1,11 @@
-using System.Collections.Generic;
 using System.Reflection;
 
 namespace EasyArchitecture.Plugins
 {
-    public interface IValidatorPlugin
+    public interface ITranslatorPlugin
     {
         void Configure(Assembly assembly);
-        List<string> Validate<T>(T obj);
+        T1 Map<T, T1>(T p0);
+        T1 Map<T, T1>(T p0, T1 p1);
     }
 }

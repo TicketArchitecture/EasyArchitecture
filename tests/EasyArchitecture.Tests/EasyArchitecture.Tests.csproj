@@ -48,55 +48,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Internals\DependencyInjection\DependencyInjectionTest.cs" />
-    <Compile Include="Internals\DependencyInjection\Stuff\DummyStrangeImplementation.cs" />
-    <Compile Include="Internals\DependencyInjection\Stuff\IDummyInterface.cs" />
-    <Compile Include="Internals\DependencyInjection\Stuff\DummyImplementation.cs" />
-    <Compile Include="Internals\DependencyInjection\Stuff\NewDummyImplementation.cs" />
-    <Compile Include="Plugins\EntityFramework\EntityFrameworkTest.cs" />
-    <Compile Include="Plugins\InMemoryDb\InMemoryDbTest.cs" />
-    <Compile Include="Plugins\NHibernate\NHibernateTest.cs" />
-    <Compile Include="UserCode\ConfigurationTest.cs" />
-    <Compile Include="UserCode\ObjectMapperTest.cs" />
-    <Compile Include="UserCode\Domain\ValidatorEngineTest.cs" />
+    <Compile Include="Plugins\TranslatorTest.cs" />
+    <Compile Include="Plugins\LoggerTest.cs" />
+    <Compile Include="Stuff\Translation\Dog.cs" />
+    <Compile Include="Stuff\Translation\DogDto.cs" />
+    <Compile Include="Stuff\DI\DummyStrangeImplementation.cs" />
+    <Compile Include="Stuff\DI\IDummyInterface.cs" />
+    <Compile Include="Stuff\DI\DummyImplementation.cs" />
+    <Compile Include="Stuff\DI\NewDummyImplementation.cs" />
+    <Compile Include="Plugins\DependencyInjectionTest.cs" />
+    <Compile Include="Plugins\InMemoryDbTest.cs" />
+    <Compile Include="Mechanisms\ConfigurationTest.cs" />
+    <Compile Include="Mechanisms\ObjectMapperTest.cs" />
+    <Compile Include="Mechanisms\ValidatorTest.cs" />
     <Compile Include="Stuff\DummyDogFacade.cs" />
     <Compile Include="Stuff\Helpers\AssemblyLoader.cs" />
     <Compile Include="Internals\Initialization\AssemblyManagerTest.cs" />
     <Compile Include="Stuff\DummyCatFacade.cs" />
     <Compile Include="Stuff\ICatFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserCode\DependencyInjectionTest.cs" />
-    <Compile Include="UserCode\Querier\QuerierTest.cs" />
+    <Compile Include="Mechanisms\DependencyInjectionTest.cs" />
+    <Compile Include="Mechanisms\Querier\QuerierTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\plugins\EasyArchitecture.Plugins.Automapper\EasyArchitecture.Plugins.Automapper.csproj">
-      <Project>{46C70FC2-29AC-4F11-AC70-CC3D066C90ED}</Project>
-      <Name>EasyArchitecture.Plugins.Automapper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\plugins\EasyArchitecture.Plugins.EntityFramework\EasyArchitecture.Plugins.EntityFramework.csproj">
-      <Project>{3ACCD6FE-781F-46C6-888C-F00FBA6BD591}</Project>
-      <Name>EasyArchitecture.Plugins.EntityFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\plugins\EasyArchitecture.Plugins.Log4net\EasyArchitecture.Plugins.Log4net.csproj">
-      <Project>{13B2D49C-45D2-43AD-99A3-FF1F66AEAA3F}</Project>
-      <Name>EasyArchitecture.Plugins.Log4net</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\plugins\EasyArchitecture.Plugins.NHibernate\EasyArchitecture.Plugins.NHibernate.csproj">
-      <Project>{2A920002-A724-469C-9330-57482D1A01F3}</Project>
-      <Name>EasyArchitecture.Plugins.NHibernate</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\plugins\EasyArchitecture.Plugins.Unity\EasyArchitecture.Plugins.Unity.csproj">
-      <Project>{E03E3582-FA3F-436C-B84A-32313E5033BD}</Project>
-      <Name>EasyArchitecture.Plugins.Unity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\EasyArchitecture\EasyArchitecture.csproj">
       <Project>{09A7AA21-ED65-409C-8442-E0ADA02A7AAF}</Project>
       <Name>EasyArchitecture</Name>
@@ -114,7 +91,9 @@
       <Name>Application4Test.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="readme.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
