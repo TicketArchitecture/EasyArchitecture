@@ -12,20 +12,73 @@ namespace EasyArchitecture.Tests.Plugins
         private const string DefaultPath = "Log";
         private const string DefaultExtension = ".log";
 
-        //deve criar arquivo, se nao existir
         [Test]
         public void Should_create_log_file_if_not_exists()
         {
             var moduleName = Guid.NewGuid().ToString();
 
-            var logger = LoggerPlugin(moduleName,LogLevel.Debug);
+            var logger = LoggerPlugin(moduleName, LogLevel.Debug);
 
             logger.Log(LogLevel.Debug, "message", null);
 
             var file = FileInfo(moduleName);
-            //clean?
-            //file.Delete();
-            Assert.That(file,Is.Not.Null);
+
+            Assert.That(file, Is.Not.Null);
+
+            file.Delete();
+        }
+
+
+        [Test]
+        public void Should_log_message()
+        {
+            var moduleName = Guid.NewGuid().ToString();
+            var message = Guid.NewGuid().ToString();
+
+            var logger = LoggerPlugin(moduleName, LogLevel.Fatal);
+
+            logger.Log(LogLevel.Debug, message, null);
+
+            var file = FileInfo(moduleName);
+            
+            var reader = file.OpenText();
+
+            var content = reader.ReadToEnd();
+            reader.Close();
+
+            Assert.That(content, Is.StringContaining(message));
+
+            file.Delete();
+
+        }
+
+        [Test]
+        public void Should_log_message_with_format()
+        {
+            var moduleName = Guid.NewGuid().ToString();
+            var message = Guid.NewGuid().ToString();
+
+            //2012-12-10 11:46:03,911 [CurrentAppDomainHost.ExecuteNodes] Debug e5ea10da-6545-400a-a130-f036648b3293
+
+            var msgToLocate = string.Format("[CurrentAppDomainHost.ExecuteNodes] DEBUG {0}", message);
+            var dateOfMessage = DateTime.Now.ToString("yyyy-MM-dd");
+
+            var logger = LoggerPlugin(moduleName, LogLevel.Fatal);
+
+            logger.Log(LogLevel.Debug, message, null);
+
+            var file = FileInfo(moduleName);
+
+            var reader = file.OpenText();
+
+            var content = reader.ReadToEnd();
+            reader.Close();
+
+            Assert.That(content.Substring(0, 10), Is.StringContaining(dateOfMessage));
+            Assert.That(content, Is.StringContaining(msgToLocate));
+
+            file.Delete();
+
         }
 
         private static LoggerPlugin LoggerPlugin(string moduleName, LogLevel logLevel)
@@ -43,23 +96,6 @@ namespace EasyArchitecture.Tests.Plugins
 
             var file = new FileInfo(logFile);
             return file;
-        }
-
-
-        [Test]
-        public void Should_log_message()
-        {
-            var moduleName = Guid.NewGuid().ToString();
-            var message = Guid.NewGuid().ToString();
-
-            var logger = LoggerPlugin(moduleName,LogLevel.Fatal);
-
-            logger.Log(LogLevel.Debug, message, null);
-
-            var file = FileInfo(moduleName);
-            var content = file.OpenText().ReadToEnd();
-
-            Assert.That(content, Is.StringContaining(message));
         }
     }
 }

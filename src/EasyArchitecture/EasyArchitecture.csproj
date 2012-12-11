@@ -54,6 +54,7 @@
     <Compile Include="Instances\Logger.cs" />
     <Compile Include="Instances\PersistenceManager.cs" />
     <Compile Include="Instances\Translator.cs" />
+    <Compile Include="Internal\TypeManager.cs" />
     <Compile Include="Mechanisms\Cache.cs" />
     <Compile Include="Mechanisms\DependencyInjection.cs" />
     <Compile Include="Mechanisms\remove\Persistence.cs" />
@@ -61,11 +62,7 @@
     <Compile Include="Mechanisms\Storage.cs" />
     <Compile Include="Plugins\Default\Persistence\MemoryRepository.cs" />
     <Compile Include="Plugins\Default\Persistence\Session.cs" />
-    <Compile Include="Plugins\Default\Translation\MapRule.cs" />
-    <Compile Include="Plugins\Default\Translation\Helper.cs" />
-    <Compile Include="Plugins\Default\Translation\RuleMap.cs" />
     <Compile Include="Plugins\Default\Translation\TypeMap.cs" />
-    <Compile Include="Plugins\Default\Translation\Translator.cs" />
     <Compile Include="Plugins\Default\Validation\ValidatorPlugin.cs" />
     <Compile Include="Plugins\IValidatorPlugin.cs" />
     <Compile Include="Internal\EasyConfig.cs" />

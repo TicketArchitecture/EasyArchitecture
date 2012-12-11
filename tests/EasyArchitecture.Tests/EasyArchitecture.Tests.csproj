@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Plugins\TranslatorTest.cs" />
     <Compile Include="Plugins\LoggerTest.cs" />
+    <Compile Include="Stuff\Translation\AnotherDogDto.cs" />
     <Compile Include="Stuff\Translation\Dog.cs" />
     <Compile Include="Stuff\Translation\DogDto.cs" />
     <Compile Include="Stuff\DI\DummyStrangeImplementation.cs" />

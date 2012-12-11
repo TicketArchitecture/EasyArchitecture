@@ -18,12 +18,12 @@ namespace EasyArchitecture.Instances
 
         internal T1 Translate<T, T1>(T p0)
         {
-            return _plugin.Map<T,T1>(p0);
+            return _plugin.Translate<T,T1>(p0);
         }
 
         internal T1 Translate<T, T1>(T p0, T1 obj1)
         {
-            return _plugin.Map(p0, obj1);
+            return _plugin.Translate(p0, obj1);
         }
     }
 }
