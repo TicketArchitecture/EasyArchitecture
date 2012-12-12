@@ -15,7 +15,7 @@ namespace EasyArchitecture.Plugins.Default.Translation
         {
             //locate mapped types 
 
-            //load typer to MappedTypes
+            //load type to MappedTypes
         }
 
         public T1 Translate<T, T1>(T source) 
@@ -40,7 +40,6 @@ namespace EasyArchitecture.Plugins.Default.Translation
 
             return Translate(source, target);
         }
-
 
         public T1 Translate<T, T1>(T source, T1 target)
         {

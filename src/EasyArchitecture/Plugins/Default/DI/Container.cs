@@ -55,19 +55,19 @@ namespace EasyArchitecture.Plugins.Default.DI
             T instance = default(T);
 
             //se houver constructor default, instanciar
-            if(constructorDefault != null)
+            if(constructorDefault != null || constructors.Length==0)
                 instance = (T) implementationType.Assembly.CreateInstance(implementationType.FullName);
 
 
-            //take the first
-            var constructor = constructors[0];
+            ////take the first
+            //var constructor = constructors[0];
 
-            foreach (var parameterInfo in constructor.GetParameters())
-            {
-                var paramType = parameterInfo.GetType();
-                //var paramInstance = this.
+            //foreach (var parameterInfo in constructor.GetParameters())
+            //{
+            //    var paramType = parameterInfo.GetType();
+            //    //var paramInstance = this.
 
-            }
+            //}
                 //se houver dependencias
             //loop pelas dependencias (recursividade)
             //ateh completa-las

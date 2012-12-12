@@ -41,7 +41,6 @@ namespace EasyArchitecture.Tests.Plugins
             const string expectedMethodReturn = "DummyMethod";
 
             Assert.That(methodReturn, Is.EqualTo(expectedMethodReturn));
-            Assert.Inconclusive("Not implemented yet");
         }
 
         [Test]
