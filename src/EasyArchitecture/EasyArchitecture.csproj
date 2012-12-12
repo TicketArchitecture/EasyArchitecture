@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Instances\Cache.cs" />
     <Compile Include="Instances\Logger.cs" />
     <Compile Include="Instances\PersistenceManager.cs" />
     <Compile Include="Instances\Translator.cs" />
