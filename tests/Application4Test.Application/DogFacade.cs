@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using EasyArchitecture.Common;
-using EasyArchitecture.Common.Persistence;
 using Application4Test.Application.Contracts;
 using Application4Test.Application.Contracts.DTOs;
 using Application4Test.Domain;
@@ -23,7 +22,6 @@ namespace Application4Test.Application
         {
             Contract.Requires(dog != null);
 
-
             var entity = _dogRepository.Get(dog.Id);
             var dto = Translator.This(entity).To<DogDto>();
 
@@ -33,7 +31,6 @@ namespace Application4Test.Application
         public DogDto CreateDog(DogDto dog)
         {
             Contract.Requires(dog != null);
-
 
             var entity = Translator.This(dog).To<Dog>();
 

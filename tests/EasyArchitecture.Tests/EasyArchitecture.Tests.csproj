@@ -48,8 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mechanisms\CacheTest.cs" />
+    <Compile Include="Mechanisms\StorageTest.cs" />
+    <Compile Include="Mechanisms\LoggerTest.cs" />
+    <Compile Include="Mechanisms\PersistenceQuerierTest.cs" />
+    <Compile Include="Mechanisms\ResourceTest.cs" />
+    <Compile Include="Plugins\CacheTest.cs" />
+    <Compile Include="Plugins\StorageTest.cs" />
+    <Compile Include="Plugins\ResourceTest.cs" />
     <Compile Include="Plugins\TranslatorTest.cs" />
     <Compile Include="Plugins\LoggerTest.cs" />
+    <Compile Include="Plugins\ValidatorTest.cs" />
     <Compile Include="Stuff\Translation\AnotherDogDto.cs" />
     <Compile Include="Stuff\Translation\Dog.cs" />
     <Compile Include="Stuff\Translation\DogDto.cs" />
@@ -60,7 +69,7 @@
     <Compile Include="Plugins\DependencyInjectionTest.cs" />
     <Compile Include="Plugins\InMemoryDbTest.cs" />
     <Compile Include="Mechanisms\ConfigurationTest.cs" />
-    <Compile Include="Mechanisms\ObjectMapperTest.cs" />
+    <Compile Include="Mechanisms\TranslatorTest.cs" />
     <Compile Include="Mechanisms\ValidatorTest.cs" />
     <Compile Include="Stuff\DummyDogFacade.cs" />
     <Compile Include="Stuff\Helpers\AssemblyLoader.cs" />

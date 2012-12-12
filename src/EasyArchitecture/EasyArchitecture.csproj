@@ -61,6 +61,9 @@
     <Compile Include="Mechanisms\remove\Persistence.cs" />
     <Compile Include="Mechanisms\Resource.cs" />
     <Compile Include="Mechanisms\Storage.cs" />
+    <Compile Include="Plugins\Default\Cache\Cache.cs" />
+    <Compile Include="Plugins\Default\Cache\CacheItem.cs" />
+    <Compile Include="Plugins\ICachePlugin.cs" />
     <Compile Include="Plugins\Default\Persistence\MemoryRepository.cs" />
     <Compile Include="Plugins\Default\Persistence\Session.cs" />
     <Compile Include="Plugins\Default\Translation\TypeMap.cs" />
