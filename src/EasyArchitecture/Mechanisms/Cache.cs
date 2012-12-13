@@ -1,48 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using EasyArchitecture.Internal;
 
 namespace EasyArchitecture.Mechanisms
 {
-    public class Cache
+    public static class Cache
     {
-        //private static readonly ICacheManager CacheInstance = CacheFactory.GetCacheManager();
-        private static readonly EasyArchitecture.Instances.Cache CacheInstance = new EasyArchitecture.Instances.Cache();
-
-        public static void Add(string key, object obj)
+        public static CacheThisExpression This(object item)
         {
-            CacheInstance.Add(key, obj);
+            return new CacheThisExpression(item);
         }
 
-        public static void Add(string key, object obj, TimeSpan expiration)
+        public static CacheAtExistsExpression Exists
         {
-            //CacheInstance.Add(key, obj, CacheItemPriority.Normal, null, new SlidingTime(expiration));
+            get { return new CacheAtExistsExpression(); }
         }
 
-        public static void Remove(string key)
+        public static CacheAtGetExpression Get
         {
-            CacheInstance.Remove(key);
+            get { return new CacheAtGetExpression(); }
         }
 
-        public static void Flush()
+        public static CacheAtRemoveExpression Remove
         {
-            CacheInstance.Flush();
+            get { return new CacheAtRemoveExpression(); }
         }
 
-        public static object GetData(string key)
+        public static void Clear()
         {
-            return CacheInstance.GetData(key);
-        }
-
-        public static T GetData<T>(string key)
-        {
-            return (T)CacheInstance.GetData(key);
-        }
-
-        public static bool Contains(string key)
-        {
-            return CacheInstance.Contains(key);
+            EasyConfigurations.SelectorByThread().Cache.Flush();
         }
     }
 }

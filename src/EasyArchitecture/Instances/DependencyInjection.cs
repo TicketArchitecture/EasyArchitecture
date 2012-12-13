@@ -8,13 +8,13 @@ namespace EasyArchitecture.Instances
     internal class DependencyInjection 
     {
         private readonly EasyConfig _easyConfig;
-        private readonly IDependencyInjectionPlugin _plugin;
+        private readonly IIoCPlugin _plugin;
 
         internal DependencyInjection(EasyConfig easyConfig)
         {
             _easyConfig = easyConfig;
 
-            _plugin = (IDependencyInjectionPlugin)_easyConfig.Plugins[typeof(IDependencyInjectionPlugin)];
+            _plugin = (IIoCPlugin)_easyConfig.Plugins[typeof(IIoCPlugin)];
 
             AutoRegister(easyConfig.DomainAssembly, easyConfig.InfrastructureAssembly, false);
             AutoRegister(easyConfig.ApplicationAssembly, easyConfig.ApplicationAssembly, true);

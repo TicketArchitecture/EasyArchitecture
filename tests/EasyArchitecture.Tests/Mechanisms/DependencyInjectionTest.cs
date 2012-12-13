@@ -1,4 +1,5 @@
 ﻿using Application4Test.Application.Contracts;
+using EasyArchitecture.Internal;
 using EasyArchitecture.Mechanisms;
 using EasyArchitecture.Tests.Stuff;
 using NUnit.Framework;
@@ -15,6 +16,8 @@ namespace EasyArchitecture.Tests.Mechanisms
             Configure
                 .For("Application4Test")
                 .Done();
+            
+            LocalThreadStorage.SetCurrentModuleName("Application4Test");
         }
 
         [Test]

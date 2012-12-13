@@ -1,5 +1,6 @@
 ﻿using Application4Test.Domain;
 using EasyArchitecture.Common;
+using EasyArchitecture.Internal;
 using EasyArchitecture.Mechanisms;
 using NUnit.Framework;
 using Dog = EasyArchitecture.Tests.Stuff.Translation.Dog;
@@ -18,6 +19,9 @@ namespace EasyArchitecture.Tests.Mechanisms
             Configure
                 .For("Application4Test")
                     .Done();
+
+            LocalThreadStorage.SetCurrentModuleName("Application4Test");
+
 
             _oldDog = new Dog { Age = 15, Name = "Old Dog" };
             _youngDog = new Dog { Age = 5, Name = "Young Dog" };

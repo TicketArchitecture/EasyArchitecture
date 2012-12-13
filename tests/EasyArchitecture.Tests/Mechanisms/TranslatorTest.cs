@@ -1,5 +1,6 @@
 ﻿using Application4Test.Application.Contracts.DTOs;
 using Application4Test.Domain;
+using EasyArchitecture.Internal;
 using EasyArchitecture.Mechanisms;
 using NUnit.Framework;
 using Dog = EasyArchitecture.Tests.Stuff.Translation.Dog;
@@ -16,10 +17,13 @@ namespace EasyArchitecture.Tests.Mechanisms
             Configure
                 .For("Application4Test")
                 .Done();
+
+            LocalThreadStorage.SetCurrentModuleName("Application4Test");
+
         }
 
         [Test]
-        [Ignore("Need to correct thread selector")]
+//        [Ignore("Need to correct thread selector")]
         public void Can_get_a_dto_from_an_entity()
         {
             var entity = new Dog() { Id = 1, Age = 10, Name = "New Dog" };
@@ -33,7 +37,7 @@ namespace EasyArchitecture.Tests.Mechanisms
         }
 
         [Test]
-        [Ignore("Need to correct thread selector")]
+//        [Ignore("Need to correct thread selector")]
         public void Can_get_an_entity_from_a_dto()
         {
             var dto = new DogDto() { Id = 1, Age = 10, Name = "New Dog" };

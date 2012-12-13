@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-using EasyArchitecture.Plugins.Default.Cache;
+using EasyArchitecture.Plugins.BuiltIn.Cache;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Tests.Plugins

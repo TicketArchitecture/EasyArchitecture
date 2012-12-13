@@ -1,10 +1,12 @@
 ﻿using EasyArchitecture.Mechanisms;
 using EasyArchitecture.Plugins;
-using EasyArchitecture.Plugins.Default.DI;
-using EasyArchitecture.Plugins.Default.Log;
-using EasyArchitecture.Plugins.Default.Persistence;
-using EasyArchitecture.Plugins.Default.Translation;
-using EasyArchitecture.Plugins.Default.Validation;
+using EasyArchitecture.Plugins.BuiltIn.IoC;
+using EasyArchitecture.Plugins.BuiltIn.Log;
+using EasyArchitecture.Plugins.BuiltIn.Persistence;
+using EasyArchitecture.Plugins.BuiltIn.Resource;
+using EasyArchitecture.Plugins.BuiltIn.Storage;
+using EasyArchitecture.Plugins.BuiltIn.Translation;
+using EasyArchitecture.Plugins.BuiltIn.Validation;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Tests.Mechanisms
@@ -41,6 +43,8 @@ namespace EasyArchitecture.Tests.Mechanisms
                     .ObjectMapper()
                     .Persistence()
                     .DependencyInjection()
+                    .Storage()
+                    .Resource()
                     .Validator()
                     .Done();
 
@@ -51,13 +55,15 @@ namespace EasyArchitecture.Tests.Mechanisms
         public void Should_use_specified_plugins_implementations()
         {
             Configure
-                    .For("Application4Test")
-                        .Log(new LoggerPlugin())
-                        .ObjectMapper(new TranslatorPlugin())
-                        .Persistence(new PersistencePlugin())
-                        .DependencyInjection(new InjectionPlugin())
-                        .Validator(new ValidatorPlugin())
-                        .Done();
+                .For("Application4Test")
+                    .Log(new LoggerPlugin())
+                    .ObjectMapper(new TranslatorPlugin())
+                    .Persistence(new PersistencePlugin())
+                    .DependencyInjection(new IocPlugin())
+                    .Storage(new StoragePlugin())
+                    .Resource(new ResourcePlugin())
+                    .Validator(new ValidatorPlugin())
+                    .Done();
 
             Verify();
         }
@@ -67,12 +73,15 @@ namespace EasyArchitecture.Tests.Mechanisms
         {
             Configure
                 .For("Application4Test")
-                        .Log<LoggerPlugin>()
-                        .ObjectMapper<TranslatorPlugin>()
-                        .Persistence<PersistencePlugin>()
-                        .DependencyInjection<InjectionPlugin>()
-                        .Validator<ValidatorPlugin>()
-                        .Done();
+                    .Log<LoggerPlugin>()
+                    .ObjectMapper<TranslatorPlugin>()
+                    .Persistence<PersistencePlugin>()
+                    .DependencyInjection<IocPlugin>()
+                    .Storage<StoragePlugin>()
+                    .Resource<ResourcePlugin>()
+                    .Validator<ValidatorPlugin>()
+                    .Done();
+
             Verify();
         }
 
@@ -81,14 +90,18 @@ namespace EasyArchitecture.Tests.Mechanisms
             var logPlugin = Internal.EasyConfigurations.Configurations["Application4Test"].Plugins[typeof(ILoggerPlugin)];
             var objectMapperPlugin = Internal.EasyConfigurations.Configurations["Application4Test"].Plugins[typeof(ITranslatorPlugin)];
             var persistencePlugin = Internal.EasyConfigurations.Configurations["Application4Test"].Plugins[typeof(IPersistencePlugin)];
-            var dependencyInjectionPlugin = Internal.EasyConfigurations.Configurations["Application4Test"].Plugins[typeof(IDependencyInjectionPlugin)];
+            var dependencyInjectionPlugin = Internal.EasyConfigurations.Configurations["Application4Test"].Plugins[typeof(IIoCPlugin)];
             var validatorPlugin = Internal.EasyConfigurations.Configurations["Application4Test"].Plugins[typeof(IValidatorPlugin)];
+            var storagePlugin = Internal.EasyConfigurations.Configurations["Application4Test"].Plugins[typeof(IStoragePlugin)];
+            var resourcePlugin = Internal.EasyConfigurations.Configurations["Application4Test"].Plugins[typeof(IResourcePlugin)];
 
             Assert.That(logPlugin, Is.TypeOf<LoggerPlugin>());
             Assert.That(objectMapperPlugin, Is.TypeOf<TranslatorPlugin>());
             Assert.That(persistencePlugin, Is.TypeOf<PersistencePlugin>());
-            Assert.That(dependencyInjectionPlugin, Is.TypeOf<InjectionPlugin>());
+            Assert.That(dependencyInjectionPlugin, Is.TypeOf<IocPlugin>());
             Assert.That(validatorPlugin, Is.TypeOf<ValidatorPlugin>());
+            Assert.That(storagePlugin, Is.TypeOf<StoragePlugin>());
+            Assert.That(resourcePlugin, Is.TypeOf<ResourcePlugin>());
         }
     }
 }

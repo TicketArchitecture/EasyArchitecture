@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using EasyArchitecture.Plugins.Default.Translation;
+using EasyArchitecture.Plugins.BuiltIn.Translation;
 using EasyArchitecture.Tests.Stuff.Translation;
 using NUnit.Framework;
 

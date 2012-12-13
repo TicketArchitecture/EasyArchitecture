@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using EasyArchitecture.Common.Diagnostic;
-using EasyArchitecture.Plugins.Default.Log;
+using EasyArchitecture.Plugins.BuiltIn.Log;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Tests.Plugins

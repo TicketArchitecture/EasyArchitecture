@@ -1,48 +1,54 @@
 ﻿using System;
+using EasyArchitecture.Internal;
+using EasyArchitecture.Plugins;
 
 namespace EasyArchitecture.Instances
 {
     public class Cache
     {
-//                private static readonly ICacheManager CacheInstance = CacheFactory.GetCacheManager();
+        private readonly EasyConfig _easyCofig;
+        private readonly ICachePlugin _plugin;
+
+        internal Cache(EasyConfig easyCofig)
+        {
+            _easyCofig = easyCofig;
+
+            _plugin = (ICachePlugin)_easyCofig.Plugins[typeof(ICachePlugin)];
+        }
 
         public void Add(string key, object obj)
         {
-            //CacheInstance.Add(key,obj);
+            _plugin.Add(key, obj);
         }
 
         public void Add(string key, object obj, TimeSpan expiration)
         {
-            //CacheInstance.Add(key, obj, CacheItemPriority.Normal, null, new SlidingTime(expiration));
+            _plugin.Add(key, obj, expiration);
         }
 
         public void Remove(string key)
         {
-            //CacheInstance.Remove(key);
+            _plugin.Remove(key);
         }
 
         public void Flush()
         {
-            //CacheInstance.Flush();
+            _plugin.Flush();
         }
 
         public object GetData(string key)
         {
-            //return CacheInstance.GetData(key);
-            return null;
+            return _plugin.GetData(key);
         }
 
         public T GetData<T>(string key)
         {
-            //return (T)CacheInstance.GetData(key);
-            return default(T);
+            return _plugin.GetData<T>(key);
         }
 
         public bool Contains(string key)
         {
-            //return CacheInstance.Contains(key);
-            return false;
+            return _plugin.Contains(key);
         }
     }
-    
 }
