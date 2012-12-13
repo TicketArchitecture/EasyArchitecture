@@ -1,4 +1,4 @@
-﻿using EasyArchitecture.Plugins.BuiltIn.IoC;
+﻿using EasyArchitecture.IoC.Plugin.BultIn;
 using EasyArchitecture.Tests.Stuff.DI;
 using NUnit.Framework;
 

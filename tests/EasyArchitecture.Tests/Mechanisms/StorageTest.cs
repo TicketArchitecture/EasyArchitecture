@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using EasyArchitecture.Common;
-using EasyArchitecture.Internal;
-using EasyArchitecture.Mechanisms;
+using EasyArchitecture.Configuration;
+using EasyArchitecture.Runtime;
+using EasyArchitecture.Storage;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Tests.Mechanisms
@@ -10,7 +10,7 @@ namespace EasyArchitecture.Tests.Mechanisms
     [TestFixture]
     public class StorageTest
     {
-        private FileInfo file;
+        private byte[] _buffer;
 
         [SetUp]
         public void SetUp()
@@ -21,44 +21,61 @@ namespace EasyArchitecture.Tests.Mechanisms
 
             LocalThreadStorage.SetCurrentModuleName("Application4Test");
 
-         //   _key = Guid.NewGuid().ToString();
             var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,@"Stuff\File", "Metallica-SadButTrue.txt");
-            file = new FileInfo(filePath);
-
+            var file = new FileInfo(filePath);
+            _buffer = new byte[file.Length];
+            file.OpenRead().Read(_buffer, 0, (int)file.Length);
         }
 
         [Test]
         public void Should_store_file()
         {
-            //load file from disck
-
-            var buffer = new byte[10000];
-            var n = file.OpenRead().Read(buffer,0,(int) file.Length);
             Guid? id = null;
 
-            Assert.That(() => { id = Storage.Save(buffer); },Throws.Nothing);
+            Assert.That(() => { id = Storer.Save(_buffer); },Throws.Nothing);
             Assert.That( id , Is.Not.Null);
-            
-            
+        }
 
-            //Storage.This(id).Exists();
-            //Storage.This(id).Get();
+        [Test]
+        public void Should_recover_file()
+        {
+            var id = Storer.Save(_buffer);
+            
+            var expected = _buffer;
+            var actual = Storer.Get(id);
+
+            Assert.That(actual,Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void Should_not_recover_an_inexistent_file()
+        {
+            var id = Guid.NewGuid();
+
+            Assert.That(() => { Storer.Get(id); }, Throws.Exception); //TODO: create specific exception StorageFileNotFoundException
+        }
+
+
+        [Test]
+        public void Should_confirm_file_existence()
+        {
+            var id = Storer.Save(_buffer);
+
+            var actual = Storer.Exists(id);
+
+            Assert.That(actual, Is.True);
 
         }
 
-        //[Test]
-        //public void Should_store_file()
-        //{
-        //    //load file from disck
-        //    var buffer = new byte[100];
+        [Test]
+        public void Should_confirm_file_inexistence()
+        {
+            var id = Guid.NewGuid();
 
-        //    var id = Storage.Save(buffer);
+            var actual = Storer.Exists(id);
 
+            Assert.That(actual, Is.False);
 
-        //    //Storage.This(id).Exists();
-        //    //Storage.This(id).Get();
-
-        //}
-
+        }
     }
 }

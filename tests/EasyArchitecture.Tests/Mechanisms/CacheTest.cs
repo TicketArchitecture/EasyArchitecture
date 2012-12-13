@@ -1,7 +1,8 @@
 using System;
 using System.Threading;
-using EasyArchitecture.Internal;
-using EasyArchitecture.Mechanisms;
+using EasyArchitecture.Caching;
+using EasyArchitecture.Configuration;
+using EasyArchitecture.Runtime;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Tests.Mechanisms

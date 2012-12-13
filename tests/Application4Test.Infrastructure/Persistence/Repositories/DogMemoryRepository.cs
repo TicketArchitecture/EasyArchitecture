@@ -1,6 +1,6 @@
 using Application4Test.Domain;
 using Application4Test.Domain.Repositories;
-using EasyArchitecture.Plugins.BuiltIn.Persistence;
+using EasyArchitecture.Persistence.Plugin.BultIn;
 
 namespace Application4Test.Infrastructure.Persistence.Repositories
 {

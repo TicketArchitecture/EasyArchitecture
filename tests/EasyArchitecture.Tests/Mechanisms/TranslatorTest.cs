@@ -1,7 +1,6 @@
-﻿using Application4Test.Application.Contracts.DTOs;
-using Application4Test.Domain;
-using EasyArchitecture.Internal;
-using EasyArchitecture.Mechanisms;
+﻿using EasyArchitecture.Configuration;
+using EasyArchitecture.Runtime;
+using EasyArchitecture.Translation;
 using NUnit.Framework;
 using Dog = EasyArchitecture.Tests.Stuff.Translation.Dog;
 using DogDto = EasyArchitecture.Tests.Stuff.Translation.DogDto;
@@ -21,6 +20,7 @@ namespace EasyArchitecture.Tests.Mechanisms
             LocalThreadStorage.SetCurrentModuleName("Application4Test");
 
         }
+
 
         [Test]
 //        [Ignore("Need to correct thread selector")]

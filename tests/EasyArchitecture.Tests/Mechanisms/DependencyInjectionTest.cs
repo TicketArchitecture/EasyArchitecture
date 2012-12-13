@@ -1,9 +1,9 @@
 ﻿using Application4Test.Application.Contracts;
-using EasyArchitecture.Internal;
-using EasyArchitecture.Mechanisms;
+using EasyArchitecture.Configuration;
+using EasyArchitecture.IoC.Mechanism;
+using EasyArchitecture.Runtime;
 using EasyArchitecture.Tests.Stuff;
 using NUnit.Framework;
-using DogDto = EasyArchitecture.Tests.Stuff.Translation.DogDto;
 
 namespace EasyArchitecture.Tests.Mechanisms
 {
@@ -23,7 +23,7 @@ namespace EasyArchitecture.Tests.Mechanisms
         [Test]
         public void Can_get_a_facade()
         {
-            var facade = DependencyInjection.Resolve<IDogFacade>();
+            var facade = ServiceLocator.Resolve<IDogFacade>();
             Assert.That(facade, Is.InstanceOf<IDogFacade>());
         }
 
@@ -31,9 +31,9 @@ namespace EasyArchitecture.Tests.Mechanisms
         [Test]
         public void Can_get_a_overrided_facade()
         {
-            DependencyInjection.Register<IDogFacade, DummyDogFacade>();
+            ServiceLocator.Register<IDogFacade, DummyDogFacade>();
 
-            var facade = DependencyInjection.Resolve<IDogFacade>();
+            var facade = ServiceLocator.Resolve<IDogFacade>();
 
             Assert.That(facade, Is.InstanceOf<IDogFacade>());
 

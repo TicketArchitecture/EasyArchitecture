@@ -1,5 +1,5 @@
 ﻿using Application4Test.Domain;
-using EasyArchitecture.Plugins.BuiltIn.Validation;
+using EasyArchitecture.Validation.Plugin.BultIn;
 
 namespace Application4Test.Infrastructure.Validators
 {

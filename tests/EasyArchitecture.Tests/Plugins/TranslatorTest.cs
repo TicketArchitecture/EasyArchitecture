@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using EasyArchitecture.Plugins.BuiltIn.Translation;
 using EasyArchitecture.Tests.Stuff.Translation;
+using EasyArchitecture.Translation.Plugin.BultIn;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Tests.Plugins

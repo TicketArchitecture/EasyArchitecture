@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Application4Test.Application.Contracts.DTOs;
-using EasyArchitecture.Common.Persistence;
+using EasyArchitecture.Persistence.Plugin.BultIn;
 
 namespace Application4Test.Infrastructure.Persistence.Queriers
 {

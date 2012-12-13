@@ -49,13 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mechanisms\CacheTest.cs" />
+    <Compile Include="Mechanisms\RepositoryTest.cs" />
     <Compile Include="Mechanisms\StorageTest.cs" />
     <Compile Include="Mechanisms\LoggerTest.cs" />
-    <Compile Include="Mechanisms\PersistenceQuerierTest.cs" />
-    <Compile Include="Mechanisms\ResourceTest.cs" />
+    <Compile Include="Mechanisms\QuerierTest.cs" />
     <Compile Include="Plugins\CacheTest.cs" />
     <Compile Include="Plugins\StorageTest.cs" />
-    <Compile Include="Plugins\ResourceTest.cs" />
     <Compile Include="Plugins\TranslatorTest.cs" />
     <Compile Include="Plugins\LoggerTest.cs" />
     <Compile Include="Plugins\ValidatorTest.cs" />

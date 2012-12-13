@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using EasyArchitecture.Common;
 using Application4Test.Application.Contracts;
 using Application4Test.Application.Contracts.DTOs;
 using Application4Test.Domain;
 using Application4Test.Domain.Repositories;
-using EasyArchitecture.Mechanisms;
+using EasyArchitecture.Log;
+using EasyArchitecture.Persistence.Mechanism;
+using EasyArchitecture.Persistence.Plugin.Contracts;
+using EasyArchitecture.Translation;
 
 namespace Application4Test.Application
 {

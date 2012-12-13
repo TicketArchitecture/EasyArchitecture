@@ -1,9 +1,9 @@
 ﻿using Application4Test.Domain;
-using EasyArchitecture.Common;
-using EasyArchitecture.Internal;
-using EasyArchitecture.Mechanisms;
+using EasyArchitecture.Configuration;
+using EasyArchitecture.Runtime;
+using EasyArchitecture.Validation;
+using EasyArchitecture.Validation.Plugin.Contracts;
 using NUnit.Framework;
-using Dog = EasyArchitecture.Tests.Stuff.Translation.Dog;
 
 namespace EasyArchitecture.Tests.Mechanisms
 {
