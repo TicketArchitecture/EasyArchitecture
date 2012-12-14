@@ -8,7 +8,6 @@ namespace EasyArchitecture.Tests.Plugins
     [TestFixture]
     public class DependencyInjectionTest
     {
-
         private IocPlugin _plugin;
 
         [SetUp]
@@ -18,7 +17,7 @@ namespace EasyArchitecture.Tests.Plugins
         }
 
         [Test]
-        public void Can_register_interfaces()
+        public void Should_register_interfaces()
         {
             _plugin.Register<IDummyInterface, DummyImplementation>();
 
@@ -28,7 +27,7 @@ namespace EasyArchitecture.Tests.Plugins
         }
 
         [Test]
-        public void Can_override_register()
+        public void Should_override_register()
         {
             _plugin.Register<IDummyInterface, DummyImplementation>();
             _plugin.Register<IDummyInterface, NewDummyImplementation>();
@@ -39,7 +38,7 @@ namespace EasyArchitecture.Tests.Plugins
         }
 
         [Test]
-        public void Can_resolve_interfaces()
+        public void Should_resolve_interfaces()
         {
             _plugin.Register<IDummyInterface, DummyImplementation>();
 
@@ -63,7 +62,7 @@ namespace EasyArchitecture.Tests.Plugins
         }
 
         [Test]
-        public void Shouldnt_Register_Class_That_Dont_Implement_The_Provided_Interface()
+        public void Should_not_register_class_that_dont_implement_the_provided_interface()
         {
             ////Garantido pela constraint de U:T
             //Assert.That(
@@ -87,8 +86,22 @@ namespace EasyArchitecture.Tests.Plugins
             const string expectedMethodReturn = "RequiredMethod";
 
             Assert.That(methodReturn, Is.EqualTo(expectedMethodReturn));
-
-
         }
+
+        [Test]
+        public void Should_resolve_interfaces_with_proxy()
+        {
+            _plugin.Register<IDummyInterface, DummyImplementation>();
+
+            var implementation = _plugin.Resolve<IDummyInterface>();
+
+            Assert.That(implementation, Is.AssignableTo<IDummyInterface>());
+
+            var methodReturn = implementation.DummyMethod();
+            const string expectedMethodReturn = "DummyMethod";
+
+            Assert.That(methodReturn, Is.EqualTo(expectedMethodReturn));
+        }
+
     }
 }

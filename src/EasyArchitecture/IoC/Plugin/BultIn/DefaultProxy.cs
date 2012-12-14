@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Reflection;
+using EasyArchitecture.IoC.Plugin.Contracts;
 
 namespace EasyArchitecture.IoC.Plugin.BultIn
 {
     internal class DefaultProxy : IProxyInvocationHandler
 	{
-        Object obj = null;
+        readonly Object _obj = null;
 
         public DefaultProxy( Object obj ) {
-            this.obj = obj;
+            _obj = obj;
         }
 
         public static Object NewInstance( Object obj ) {
@@ -17,22 +19,44 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
 
         public Object Invoke(Object proxy, System.Reflection.MethodInfo method, Object[] parameters) {
 
-            Object retVal = null;
+            //return InterceptionHook.GetChain(()=>method.Invoke(_obj, parameters));
+            var methodCall = new ProxyMethodCall(_obj, method, parameters);
+            //return new InterceptionHook(method, () => method.Invoke(_obj, parameters)).Execute();
+            return new InterceptionHook(methodCall ).Execute();
 
-            //TODO: remove
-            Console.WriteLine("Bye bye");
-
-            //TODO: call chain
-
-
-            // The actual method is invoked
-            retVal = method.Invoke( obj, parameters );
-
-            return retVal;
         }
     }
 
+    public class ProxyMethodCall
+    {
+        private readonly object _o;
+        private readonly MethodInfo _method;
+        private readonly object[] _parameters;
 
+        public ProxyMethodCall(object o, MethodInfo method, object[] parameters)
+        {
+            _o = o;
+            _method = method;
+            _parameters = parameters;
+        }
+        public object Invoke()
+        {
+            return _method.Invoke(_o, _parameters);
+        }
+
+        public MethodInfo Method
+        {
+            get { return _method; }
+        }
+        public object [] Parameters
+        {
+            get { return _parameters; }
+        }
+        public Object ObjOrigin
+        {
+            get { return _o; }
+        }
+    }
 }
 
 

@@ -7,7 +7,7 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
     /// <summary>
     /// Factory class used to cache Types instances
     /// </summary>
-    internal class MetaDataFactory
+    public class MetaDataFactory
     {
         private static Hashtable typeMap = new Hashtable(); 
         

@@ -4,7 +4,6 @@ using System.Text;
 
 namespace EasyArchitecture.Runtime
 {
-    //TODO: must be internal
     internal static class AssemblyManager
     {
         private const string Application = ".Application";
@@ -33,7 +32,6 @@ namespace EasyArchitecture.Runtime
             return AppDomain.CurrentDomain.Load(assemblyName);
         }
 
-        //TODO: must be internal
         internal static string RemoveAssemblySufix(string assemblyName)
         {
             var sb = new StringBuilder(assemblyName);
@@ -51,12 +49,11 @@ namespace EasyArchitecture.Runtime
             return ModuleName(typeof (T));
         }
 
-        internal static string ModuleName(Type type)
+        private static string ModuleName(Type type)
         {
             var assemblyName = type.Assembly.GetName().Name;
             var moduleName = RemoveAssemblySufix(assemblyName);
             return moduleName;
         }
-
     }
 }

@@ -48,10 +48,16 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caching\Instance\Cache.cs" />
+    <Compile Include="IoC\Plugin\Contracts\InterceptionHook.cs" />
+    <Compile Include="Persistence\Aspects\TransactionInterceptor.cs" />
+    <Compile Include="Runtime\Aspects\ContextInterceptor.cs" />
+    <Compile Include="IoC\Instance\Interceptor.cs" />
+    <Compile Include="Log\Aspects\LogInterceptor.cs" />
     <Compile Include="Storage\Instance\Storer.cs" />
     <Compile Include="Log\Instance\Logger.cs" />
     <Compile Include="Persistence\Instance\PersistenceManager.cs" />
@@ -85,7 +91,7 @@
     <Compile Include="Persistence\Plugin\Contracts\Repository.cs" />
     <Compile Include="Persistence\Plugin\BultIn\Querier.cs" />
     <Compile Include="Persistence\Mechanism\PersistenceQuerier.cs" />
-    <Compile Include="IoC\Plugin\BultIn\NotInterfaceException.cs" />
+    <Compile Include="IoC\Plugin\Contracts\NotInterfaceException.cs" />
     <Compile Include="Configuration\Instance\ConfigurationSelector.cs" />
     <Compile Include="IoC\Instance\ServiceLocator.cs" />
     <Compile Include="Validation\Validator.cs" />
