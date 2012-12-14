@@ -92,7 +92,6 @@
     <Compile Include="Validation\Expressions\ThisExpression.cs" />
     <Compile Include="IoC\Plugin\Contracts\IIoCPlugin.cs" />
     <Compile Include="IoC\Plugin\BultIn\InjectionPlugin.cs" />
-    <Compile Include="IoC\Plugin\BultIn\Container.cs" />
     <Compile Include="IoC\Plugin\BultIn\DefaultProxy.cs" />
     <Compile Include="IoC\Plugin\BultIn\IProxyInvocationHandler.cs" />
     <Compile Include="IoC\Plugin\BultIn\MetaDataFactory.cs" />
