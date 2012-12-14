@@ -1,4 +1,5 @@
-﻿using EasyArchitecture.IoC.Plugin.BultIn;
+﻿using System;
+using EasyArchitecture.IoC.Plugin.BultIn;
 using EasyArchitecture.Tests.Stuff.DI;
 using NUnit.Framework;
 
@@ -7,33 +8,42 @@ namespace EasyArchitecture.Tests.Plugins
     [TestFixture]
     public class DependencyInjectionTest
     {
+
+        private IocPlugin _plugin;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _plugin = new IocPlugin();
+        }
+
         [Test]
         public void Can_register_interfaces()
         {
-            Container.Register<IDummyInterface, DummyImplementation>();
+            _plugin.Register<IDummyInterface, DummyImplementation>();
 
-            var type = Container.Verify<IDummyInterface>();
+            var actual = _plugin.Resolve<IDummyInterface>();
 
-            Assert.That(type, Is.EqualTo(typeof(DummyImplementation)));
+            Assert.That(actual, Is.TypeOf<DummyImplementation>());
         }
 
         [Test]
         public void Can_override_register()
         {
-            Container.Register<IDummyInterface, DummyImplementation>();
-            Container.Register<IDummyInterface, NewDummyImplementation>();
+            _plugin.Register<IDummyInterface, DummyImplementation>();
+            _plugin.Register<IDummyInterface, NewDummyImplementation>();
 
-            var type = Container.Verify<IDummyInterface>();
+            var actual = _plugin.Resolve<IDummyInterface>();
 
-            Assert.That(type, Is.EqualTo(typeof(NewDummyImplementation)));
+            Assert.That(actual, Is.TypeOf<NewDummyImplementation>());
         }
 
         [Test]
         public void Can_resolve_interfaces()
         {
-            Container.Register<IDummyInterface, DummyImplementation>();
+            _plugin.Register<IDummyInterface, DummyImplementation>();
 
-            var implementation = Container.Resolve<IDummyInterface>();
+            var implementation = _plugin.Resolve<IDummyInterface>();
 
             Assert.That(implementation, Is.AssignableTo<IDummyInterface>());
 
@@ -47,7 +57,7 @@ namespace EasyArchitecture.Tests.Plugins
         public void Should_not_register_classes()
         {
             Assert.That(
-                () => Container.Register<DummyImplementation, DummyImplementation>(),
+                () => _plugin.Register<DummyImplementation, DummyImplementation>(),
                 Throws.InstanceOf<NotInterfaceException>()
             );
         }
@@ -55,13 +65,30 @@ namespace EasyArchitecture.Tests.Plugins
         [Test]
         public void Shouldnt_Register_Class_That_Dont_Implement_The_Provided_Interface()
         {
-            //Garantido pela constraint de U:T
+            ////Garantido pela constraint de U:T
             //Assert.That(
-            //    () => Container.Register<IDummyInterface, DummyStrangeImplementation>(),
+            //    () => _plugin.Register<IDummyInterface, DummyStrangeImplementation>(),
             //    Throws.InstanceOf<Exception>()
             //);
             Assert.Pass();
         }
 
+        [Test]
+        public void Should_resolve_dependencies()
+        {
+            _plugin.Register<IDummyInterface, DependencyImplementation>();
+            _plugin.Register<IDummyRequiredObjectInterface, DummyRequiredObjectImplementation>();
+
+            var implementation = _plugin.Resolve<IDummyInterface>();
+
+            Assert.That(implementation, Is.AssignableTo<IDummyInterface>());
+
+            var methodReturn = implementation.DummyMethod();
+            const string expectedMethodReturn = "RequiredMethod";
+
+            Assert.That(methodReturn, Is.EqualTo(expectedMethodReturn));
+
+
+        }
     }
 }

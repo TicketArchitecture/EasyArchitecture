@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using EasyArchitecture.Configuration.Instance;
+using EasyArchitecture.IoC.Plugin.BultIn;
 using EasyArchitecture.IoC.Plugin.Contracts;
 
 namespace EasyArchitecture.IoC.Instance
@@ -44,11 +45,17 @@ namespace EasyArchitecture.IoC.Instance
 
         internal T Resolve<T>()
         {
+            if (!typeof(T).IsInterface)
+                throw new NotInterfaceException();
+
             return _plugin.Resolve<T>();
         }
 
         internal void Register<T, T1>() where T1 : T
         {
+            if (!typeof(T).IsInterface)
+                throw new NotInterfaceException();
+
             _plugin.Register<T, T1>();
         }
     }
