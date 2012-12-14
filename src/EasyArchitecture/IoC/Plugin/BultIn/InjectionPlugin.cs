@@ -77,7 +77,7 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
 
             //HACK: analisar qndo executar
             //se for marcado interception, gerar proxy
-            return ProxyFactory.NewInstance(instance);
+            //return ProxyFactory.NewInstance(instance);
 
             //devolver
             return instance;

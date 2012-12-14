@@ -53,15 +53,6 @@ namespace EasyArchitecture.Tests.Plugins
         }
 
         [Test]
-        public void Should_not_register_classes()
-        {
-            Assert.That(
-                () => _plugin.Register<DummyImplementation, DummyImplementation>(),
-                Throws.InstanceOf<NotInterfaceException>()
-            );
-        }
-
-        [Test]
         public void Should_not_register_class_that_dont_implement_the_provided_interface()
         {
             ////Garantido pela constraint de U:T

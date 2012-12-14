@@ -3,6 +3,7 @@ using System.IO;
 using EasyArchitecture.Log.Plugin.BultIn;
 using EasyArchitecture.Log.Plugin.Contracts;
 using NUnit.Framework;
+using System.Threading;
 
 namespace EasyArchitecture.Tests.Plugins
 {
@@ -60,7 +61,7 @@ namespace EasyArchitecture.Tests.Plugins
 
             //2012-12-10 11:46:03,911 [CurrentAppDomainHost.ExecuteNodes] Debug e5ea10da-6545-400a-a130-f036648b3293
 
-            var msgToLocate = string.Format("[CurrentAppDomainHost.ExecuteNodes] DEBUG {0}", message);
+			var msgToLocate = string.Format("[{0}] DEBUG {1}", Thread.CurrentThread.Name, message);
             var dateOfMessage = DateTime.Now.ToString("yyyy-MM-dd");
 
             var logger = LoggerPlugin(moduleName, LogLevel.Fatal);

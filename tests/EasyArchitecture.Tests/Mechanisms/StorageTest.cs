@@ -21,7 +21,7 @@ namespace EasyArchitecture.Tests.Mechanisms
 
             LocalThreadStorage.SetCurrentModuleName("Application4Test");
 
-            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,@"Stuff\File", "Metallica-SadButTrue.txt");
+            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,@"Stuff/File", "Metallica-SadButTrue.txt");
             var file = new FileInfo(filePath);
             _buffer = new byte[file.Length];
             file.OpenRead().Read(_buffer, 0, (int)file.Length);
