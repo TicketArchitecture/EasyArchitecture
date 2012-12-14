@@ -1,13 +1,12 @@
-﻿using EasyArchitecture.Configuration.Instance;
+﻿using System.Collections.Generic;
 
 namespace EasyArchitecture.Persistence.Plugin.Contracts
 {
-    public abstract class Repository<T> where T : class
+    public interface IRepository<T> where T : class
     {
-        protected object GetSession()
-        {
-            //return Persistence.GetSession();
-            return EasyConfigurations.SelectorByThread().Persistence.GetSession();
-        }
+        void Save(T entity);
+        void Update(T entity);
+        void Delete(T entity);
+        IList<T> Get(object specification);
     }
 }

@@ -24,7 +24,7 @@ namespace Application4Test.Application
         {
             Contract.Requires(dog != null);
 
-            var entity = _dogRepository.Get(dog.Id);
+            var entity = _dogRepository.Get((int) dog.Id);
             var dto = Translator.This(entity).To<DogDto>();
 
             return dto;
@@ -49,7 +49,7 @@ namespace Application4Test.Application
 
             Logger.Message("Teste").Debug();
 
-            var entity = _dogRepository.Get(dto.Id);
+            var entity = _dogRepository.Get((int) dto.Id);
 
             Translator.This(dto).To(entity);
 

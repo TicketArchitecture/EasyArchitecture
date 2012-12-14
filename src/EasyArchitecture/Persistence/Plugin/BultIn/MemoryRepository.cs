@@ -1,37 +1,31 @@
 using System.Collections.Generic;
+using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Persistence.Plugin.Contracts;
 
 namespace EasyArchitecture.Persistence.Plugin.BultIn
 {
-    public class MemoryRepository<T> : Repository<T> where T : class
+    public class MemoryRepository<T> : IRepository<T> where T : class
     {
-        //TODO: method name conflict
-        private Session GetLocalSession()
-        {
-            return (Session) base.GetSession();
+        private static Session GetLocalSession(){
+            return (Session) ConfigurationSelector.SelectorByThread().Persistence.GetSession();
         }
 
-        public  void Save(T obj)
+        public void Save(T entity)
         {
-            GetLocalSession().Save(obj);
+            GetLocalSession().Save(entity);
         }
 
-        public  void Update(T obj)
+        public void Update(T entity)
         {
-            GetLocalSession().Update(obj);
+            GetLocalSession().Update(entity);
         }
 
-        public  void Delete(T obj)
+        public  void Delete(T entity)
         {
-            GetLocalSession().Delete(obj);
+            GetLocalSession().Delete(entity);
         }
 
-        public  T Get(object key)
-        {
-            return GetLocalSession().Get<T>(key);
-        }
-
-        public  IList<T> Get()
+        public IList<T> Get(object specification)
         {
             return GetLocalSession().Get<T>();
         }

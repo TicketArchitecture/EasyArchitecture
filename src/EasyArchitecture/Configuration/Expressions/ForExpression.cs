@@ -11,11 +11,11 @@ namespace EasyArchitecture.Configuration.Expressions
 {
     public class ForExpression
     {
-        private readonly EasyConfig _easyConfig;
+        private readonly ModuleConfiguration _moduleConfiguration;
 
         internal ForExpression(string moduleName)
         {
-            _easyConfig = new EasyConfig(moduleName);
+            _moduleConfiguration = new ModuleConfiguration(moduleName);
         }
 
         public ForExpression Log()
@@ -25,13 +25,13 @@ namespace EasyArchitecture.Configuration.Expressions
 
         public ForExpression Log(ILoggerPlugin plugin)
         {
-            _easyConfig.Register(plugin);
+            _moduleConfiguration.Register(plugin);
             return this;
         }
 
         public ForExpression Log<T>() where T : ILoggerPlugin
         {
-            _easyConfig.Register<ILoggerPlugin, T>();
+            _moduleConfiguration.Register<ILoggerPlugin, T>();
             return this;
         }
 
@@ -42,13 +42,13 @@ namespace EasyArchitecture.Configuration.Expressions
 
         public ForExpression Translation(ITranslatorPlugin plugin)
         {
-            _easyConfig.Register(plugin);
+            _moduleConfiguration.Register(plugin);
             return this;
         }
 
         public ForExpression Translation<T>() where T : ITranslatorPlugin
         {
-            _easyConfig.Register<ITranslatorPlugin,T>();
+            _moduleConfiguration.Register<ITranslatorPlugin,T>();
             return this;
         }
 
@@ -59,13 +59,13 @@ namespace EasyArchitecture.Configuration.Expressions
 
         public ForExpression Persistence(IPersistencePlugin plugin)
         {
-            _easyConfig.Register(plugin);
+            _moduleConfiguration.Register(plugin);
             return this;
         }
 
         public ForExpression Persistence<T>() where T : IPersistencePlugin
         {
-            _easyConfig.Register<IPersistencePlugin, T>();
+            _moduleConfiguration.Register<IPersistencePlugin, T>();
             return this;
         }
 
@@ -76,13 +76,13 @@ namespace EasyArchitecture.Configuration.Expressions
 
         public ForExpression DependencyInjection(IIoCPlugin plugin)
         {
-            _easyConfig.Register(plugin);
+            _moduleConfiguration.Register(plugin);
             return this;
         }
 
         public ForExpression DependencyInjection<T>() where T : IIoCPlugin
         {
-            _easyConfig.Register<IIoCPlugin, T>();
+            _moduleConfiguration.Register<IIoCPlugin, T>();
             return this;
         }
 
@@ -93,13 +93,13 @@ namespace EasyArchitecture.Configuration.Expressions
 
         public ForExpression Validator(IValidatorPlugin plugin)
         {
-            _easyConfig.Register(plugin);
+            _moduleConfiguration.Register(plugin);
             return this;
         }
 
         public ForExpression Validator<T>() where T : IValidatorPlugin
         {
-            _easyConfig.Register<IValidatorPlugin, T>();
+            _moduleConfiguration.Register<IValidatorPlugin, T>();
             return this;
         }
 
@@ -110,13 +110,13 @@ namespace EasyArchitecture.Configuration.Expressions
 
         public ForExpression Cache(ICachePlugin plugin)
         {
-            _easyConfig.Register(plugin);
+            _moduleConfiguration.Register(plugin);
             return this;
         }
 
         public ForExpression Cache<T>() where T : ICachePlugin
         {
-            _easyConfig.Register<ICachePlugin, T>();
+            _moduleConfiguration.Register<ICachePlugin, T>();
             return this;
         }
 
@@ -127,19 +127,19 @@ namespace EasyArchitecture.Configuration.Expressions
 
         public ForExpression Storage(IStoragePlugin plugin)
         {
-            _easyConfig.Register(plugin);
+            _moduleConfiguration.Register(plugin);
             return this;
         }
 
         public ForExpression Storage<T>() where T : IStoragePlugin
         {
-            _easyConfig.Register<IStoragePlugin, T>();
+            _moduleConfiguration.Register<IStoragePlugin, T>();
             return this;
         }
 
         public void Done()
         {
-            _easyConfig.Start();
+            _moduleConfiguration.Start();
         }
 
     }

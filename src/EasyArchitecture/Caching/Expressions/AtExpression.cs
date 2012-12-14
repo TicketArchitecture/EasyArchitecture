@@ -21,7 +21,7 @@ namespace EasyArchitecture.Caching.Expressions
 
         public void At(string key)
         {
-            var instance = EasyConfigurations.SelectorByThread().Cache;
+            var instance = ConfigurationSelector.SelectorByThread().Cache;
 
             if (_timeSpan.Ticks==0)
             {

@@ -1,4 +1,6 @@
-﻿using EasyArchitecture.Configuration;
+﻿using EasyArchitecture.Caching.Plugin.BultIn;
+using EasyArchitecture.Caching.Plugin.Contracts;
+using EasyArchitecture.Configuration;
 using EasyArchitecture.Configuration.Exceptions;
 using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.IoC.Plugin.BultIn;
@@ -36,7 +38,7 @@ namespace EasyArchitecture.Tests.Mechanisms
         public void Should_not_find_configuration_instance()
         {
             LocalThreadStorage.SetCurrentModuleName("None");
-            Assert.That(() => EasyConfigurations.SelectorByThread(), Throws.TypeOf<NotConfiguredModuleException>());
+            Assert.That(() => ConfigurationSelector.SelectorByThread(), Throws.TypeOf<NotConfiguredModuleException>());
         }
 
         [Test]
@@ -58,6 +60,7 @@ namespace EasyArchitecture.Tests.Mechanisms
                     .Translation()
                     .Persistence()
                     .DependencyInjection()
+                    .Cache()
                     .Storage()
                     .Validator()
                     .Done();
@@ -74,6 +77,7 @@ namespace EasyArchitecture.Tests.Mechanisms
                     .Translation(new TranslatorPlugin())
                     .Persistence(new PersistencePlugin())
                     .DependencyInjection(new IocPlugin())
+                    .Cache(new CachePlugin())
                     .Storage(new StoragePlugin())
                     .Validator(new ValidatorPlugin())
                     .Done();
@@ -90,6 +94,7 @@ namespace EasyArchitecture.Tests.Mechanisms
                     .Translation<TranslatorPlugin>()
                     .Persistence<PersistencePlugin>()
                     .DependencyInjection<IocPlugin>()
+                    .Cache<CachePlugin>()
                     .Storage<StoragePlugin>()
                     .Validator<ValidatorPlugin>()
                     .Done();
@@ -99,18 +104,20 @@ namespace EasyArchitecture.Tests.Mechanisms
 
         private static void Verify()
         {
-            var loggerPlugin = EasyConfigurations.Configurations["Application4Test"].Plugins[typeof(ILoggerPlugin)];
-            var translatorPlugin = EasyConfigurations.Configurations["Application4Test"].Plugins[typeof(ITranslatorPlugin)];
-            var persistencePlugin = EasyConfigurations.Configurations["Application4Test"].Plugins[typeof(IPersistencePlugin)];
-            var iocPlugin = EasyConfigurations.Configurations["Application4Test"].Plugins[typeof(IIoCPlugin)];
-            var validatorPlugin = EasyConfigurations.Configurations["Application4Test"].Plugins[typeof(IValidatorPlugin)];
-            var storagePlugin = EasyConfigurations.Configurations["Application4Test"].Plugins[typeof(IStoragePlugin)];
+            var loggerPlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(ILoggerPlugin)];
+            var translatorPlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(ITranslatorPlugin)];
+            var persistencePlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(IPersistencePlugin)];
+            var iocPlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(IIoCPlugin)];
+            var validatorPlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(IValidatorPlugin)];
+            var cachePlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(ICachePlugin)];
+            var storagePlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(IStoragePlugin)];
 
             Assert.That(loggerPlugin, Is.TypeOf<LoggerPlugin>());
             Assert.That(translatorPlugin, Is.TypeOf<TranslatorPlugin>());
             Assert.That(persistencePlugin, Is.TypeOf<PersistencePlugin>());
             Assert.That(iocPlugin, Is.TypeOf<IocPlugin>());
             Assert.That(validatorPlugin, Is.TypeOf<ValidatorPlugin>());
+            Assert.That(cachePlugin, Is.TypeOf<CachePlugin>());
             Assert.That(storagePlugin, Is.TypeOf<StoragePlugin>());
         }
     }

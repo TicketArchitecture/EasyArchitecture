@@ -6,10 +6,10 @@ namespace EasyArchitecture.Caching.Instance
 {
     internal class Cache
     {
-        private readonly EasyConfig _easyCofig;
+        private readonly ModuleConfiguration _easyCofig;
         private readonly ICachePlugin _plugin;
 
-        internal Cache(EasyConfig easyCofig)
+        internal Cache(ModuleConfiguration easyCofig)
         {
             _easyCofig = easyCofig;
             _plugin = (ICachePlugin)_easyCofig.Plugins[typeof(ICachePlugin)];

@@ -27,7 +27,7 @@ namespace EasyArchitecture.Caching
 
         public static void Clear()
         {
-            EasyConfigurations.SelectorByThread().Cache.Flush();
+            ConfigurationSelector.SelectorByThread().Cache.Flush();
         }
     }
 }

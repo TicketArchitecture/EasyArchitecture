@@ -9,7 +9,7 @@ namespace EasyArchitecture.Persistence.Instance
         private readonly string _moduleName;
         private readonly IPersistencePlugin _plugin;
 
-        internal PersistenceManager(EasyConfig easyConfig)
+        internal PersistenceManager(ModuleConfiguration easyConfig)
         {
             _moduleName = easyConfig.ModuleName;
 

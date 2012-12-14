@@ -7,10 +7,10 @@ namespace EasyArchitecture.IoC.Instance
 {
     internal class ServiceLocator 
     {
-        private readonly EasyConfig _easyConfig;
+        private readonly ModuleConfiguration _easyConfig;
         private readonly IIoCPlugin _plugin;
 
-        internal ServiceLocator(EasyConfig easyConfig)
+        internal ServiceLocator(ModuleConfiguration easyConfig)
         {
             _easyConfig = easyConfig;
 

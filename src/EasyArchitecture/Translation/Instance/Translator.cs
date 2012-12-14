@@ -5,10 +5,10 @@ namespace EasyArchitecture.Translation.Instance
 {
     internal class Translator
     {
-        private readonly EasyConfig _easyCofig;
+        private readonly ModuleConfiguration _easyCofig;
         private readonly ITranslatorPlugin _plugin;
 
-        internal Translator(EasyConfig easyCofig)
+        internal Translator(ModuleConfiguration easyCofig)
         {
             _easyCofig = easyCofig;
 

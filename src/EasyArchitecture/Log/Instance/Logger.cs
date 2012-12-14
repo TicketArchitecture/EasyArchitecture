@@ -13,7 +13,7 @@ namespace EasyArchitecture.Log.Instance
         private readonly LogLevel _logLevel;
         private static readonly List<LogLevel> SequencialListOfLogLevel= new List<LogLevel>{LogLevel.Debug,LogLevel.Info,LogLevel.Warn,LogLevel.Error,LogLevel.Fatal};
 
-        internal Logger(EasyConfig easyConfig)
+        internal Logger(ModuleConfiguration easyConfig)
         {
             _moduleName = easyConfig.ModuleName;
             _logLevel = LoadRuntimeConfiguration(_moduleName);

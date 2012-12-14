@@ -78,6 +78,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Mechanisms\DependencyInjectionTest.cs" />
     <Compile Include="Mechanisms\Querier\QuerierTest.cs" />
+    <Compile Include="UserCode\CacheTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

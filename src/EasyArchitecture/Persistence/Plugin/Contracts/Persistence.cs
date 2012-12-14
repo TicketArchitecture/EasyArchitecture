@@ -6,22 +6,22 @@ namespace EasyArchitecture.Persistence.Plugin.Contracts
     {
         public static object GetSession()
         {
-            return EasyConfigurations.SelectorByThread().Persistence.GetSession();
+            return ConfigurationSelector.SelectorByThread().Persistence.GetSession();
         }
 
         public static void CommitTransaction()
         {
-            EasyConfigurations.SelectorByThread().Persistence.CommitTransaction();
+            ConfigurationSelector.SelectorByThread().Persistence.CommitTransaction();
         }
 
         public static void RollbackTransaction()
         {
-            EasyConfigurations.SelectorByThread().Persistence.RollbackTransaction();
+            ConfigurationSelector.SelectorByThread().Persistence.RollbackTransaction();
         }
 
         public static void BeginTransaction()
         {
-            EasyConfigurations.SelectorByThread().Persistence.BeginTransaction();
+            ConfigurationSelector.SelectorByThread().Persistence.BeginTransaction();
         }
     }
 }

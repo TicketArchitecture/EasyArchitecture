@@ -15,13 +15,13 @@ namespace EasyArchitecture.Validation.Expressions
         public void IsValid()
         {
             //EasyConfigurations.Selector<T>().Validator.IsValid(_obj);
-            EasyConfigurations.SelectorByThread().Validator.IsValid(_obj);
+            ConfigurationSelector.SelectorByThread().Validator.IsValid(_obj);
         }
 
         public IList<string> HasMessages()
         {
             //return  EasyConfigurations.Selector<T>().Validator.GetMessages(_obj);
-            return EasyConfigurations.SelectorByThread().Validator.GetMessages(_obj);
+            return ConfigurationSelector.SelectorByThread().Validator.GetMessages(_obj);
         }
     }
 }

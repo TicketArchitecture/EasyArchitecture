@@ -6,7 +6,7 @@ namespace EasyArchitecture.Caching.Expressions
     {
         public object At(string key)
         {
-            return EasyConfigurations.SelectorByThread().Cache.GetData(key);
+            return ConfigurationSelector.SelectorByThread().Cache.GetData(key);
         }
     }
 }

@@ -3,7 +3,7 @@
     public interface IDogRepository
     {
         void Save(Dog dog);
-        Dog Get(object id);
+        Dog Get(int id);
         void Update(Dog dog);
     }
 }

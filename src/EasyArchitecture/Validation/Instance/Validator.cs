@@ -6,10 +6,10 @@ namespace EasyArchitecture.Validation.Instance
 {
     internal class Validator
     {
-        private readonly EasyConfig _easyCofig;
+        private readonly ModuleConfiguration _easyCofig;
         private readonly IValidatorPlugin _plugin;
 
-        internal Validator(EasyConfig easyCofig)
+        internal Validator(ModuleConfiguration easyCofig)
         {
             _easyCofig = easyCofig;
 

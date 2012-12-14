@@ -19,7 +19,7 @@ namespace EasyArchitecture.Tests.Plugins
 
 
             //Garantir que sera usado a implementacao de persistencia local
-            ServiceLocator.Register<IDogRepository, DogMemoryRepository>();
+            ServiceLocator.Register<IDogRepository, DogRepository>();
 
         }
 
