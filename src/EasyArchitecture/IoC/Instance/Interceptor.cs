@@ -1,4 +1,5 @@
 using EasyArchitecture.IoC.Plugin.BultIn;
+using EasyArchitecture.IoC.Plugin.Contracts;
 
 namespace EasyArchitecture.IoC.Instance
 {

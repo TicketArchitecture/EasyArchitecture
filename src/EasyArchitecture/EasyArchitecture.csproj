@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caching\Instance\Cache.cs" />
+    <Compile Include="IoC\Plugin\Contracts\ProxyMethodCall.cs" />
     <Compile Include="IoC\Plugin\Contracts\InterceptionHook.cs" />
     <Compile Include="Persistence\Aspects\TransactionInterceptor.cs" />
     <Compile Include="Runtime\Aspects\ContextInterceptor.cs" />

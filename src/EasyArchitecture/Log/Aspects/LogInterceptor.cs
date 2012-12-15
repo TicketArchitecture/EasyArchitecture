@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using EasyArchitecture.IoC.Instance;
 using EasyArchitecture.IoC.Plugin.BultIn;
+using EasyArchitecture.IoC.Plugin.Contracts;
 
 namespace EasyArchitecture.Log.Aspects
 {

@@ -19,5 +19,12 @@ _NCrunch*
 # mstest test results
 TestResults
 
-# nunit on monodevelop
+
+
+#------------- 
+# monodevelop 
+#------------- 
+# nunit
 test-results
+# user preferences
+*.userprefs

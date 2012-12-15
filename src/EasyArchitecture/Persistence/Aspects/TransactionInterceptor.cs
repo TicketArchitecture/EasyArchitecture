@@ -2,6 +2,7 @@ using System;
 using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.IoC.Instance;
 using EasyArchitecture.IoC.Plugin.BultIn;
+using EasyArchitecture.IoC.Plugin.Contracts;
 using EasyArchitecture.Runtime.Aspects;
 
 namespace EasyArchitecture.Persistence.Aspects
