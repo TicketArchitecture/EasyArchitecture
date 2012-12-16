@@ -1,6 +1,6 @@
 using System;
 
-namespace EasyArchitecture.IoC.Plugin.BultIn
+namespace EasyArchitecture.IoC.Instance
 {
     internal class NotInterfaceException : Exception
     {

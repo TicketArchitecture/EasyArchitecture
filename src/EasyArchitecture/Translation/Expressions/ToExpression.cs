@@ -1,4 +1,4 @@
-using EasyArchitecture.Configuration.Instance;
+using EasyArchitecture.Runtime;
 
 namespace EasyArchitecture.Translation.Expressions
 {
@@ -13,12 +13,12 @@ namespace EasyArchitecture.Translation.Expressions
 
         public T1 To<T1>()
         {
-            return ConfigurationSelector.Selector().Translator.Translate<T, T1>(_obj);
+            return InstanceProvider.GetInstance<Instance.Translator>().Translate<T, T1>(_obj);
         }
 
         public T1 To<T1>(T1 obj)
         {
-            return ConfigurationSelector.Selector().Translator.Translate(_obj, obj);
+            return InstanceProvider.GetInstance<Instance.Translator>().Translate(_obj, obj);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using EasyArchitecture.Configuration.Instance;
+using EasyArchitecture.Runtime;
 
 namespace EasyArchitecture.Caching.Expressions
 {
@@ -21,7 +22,7 @@ namespace EasyArchitecture.Caching.Expressions
 
         public void At(string key)
         {
-            var instance = ConfigurationSelector.Selector().Cache;
+            var instance = InstanceProvider.GetInstance<Instance.Cache>();
 
             if (_timeSpan.Ticks==0)
             {

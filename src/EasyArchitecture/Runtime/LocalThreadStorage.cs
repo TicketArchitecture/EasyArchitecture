@@ -20,6 +20,19 @@ namespace EasyArchitecture.Runtime
             Thread.SetData(slot, moduleName);
         }
 
+        internal static void SetInstance<T>(T instance)
+        {
+            var name = typeof (T).Name;
+            var slot = Thread.GetNamedDataSlot(name);
+            Thread.SetData(slot, instance);
+        }
+        internal static T GetInstance<T>()
+        {
+            var name = typeof(T).Name;
+            var slot = Thread.GetNamedDataSlot(name);
+            return (T)Thread.GetData(slot);
+        }
+
         internal static void SetCurrentModuleName(Type type)
         {
             var moduleName = AssemblyManager.RemoveAssemblySufix(type.Namespace);

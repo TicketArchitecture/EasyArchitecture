@@ -8,13 +8,13 @@ namespace EasyArchitecture.Tests.Plugins
     [TestFixture]
     public class CacheTest
     {
-        private CachePlugin _cachePlugin;
+        private Cache _cachePlugin;
         private string _key;
 
         [SetUp]
         public void SetUp()
         {
-            _cachePlugin = new CachePlugin();
+            _cachePlugin = new Cache();
             _key = Guid.NewGuid().ToString();
         }
 

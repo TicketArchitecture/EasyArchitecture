@@ -15,7 +15,7 @@ namespace EasyArchitecture.Validation.Instance
             _easyCofig = easyCofig;
         }
 
-        public void Configure(ConfigHelper config)
+        public void Configure(PluginConfiguration config)
         {
             _plugin = config.GetPlugin<IValidatorPlugin>();
             _plugin.Configure(_easyCofig.InfrastructureAssembly);

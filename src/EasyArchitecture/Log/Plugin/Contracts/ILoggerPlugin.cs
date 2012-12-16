@@ -1,10 +1,8 @@
-using System;
+using EasyArchitecture.Runtime.Plugin;
 
 namespace EasyArchitecture.Log.Plugin.Contracts
 {
-    public interface ILoggerPlugin
+    public interface ILoggerPlugin:IConfigurablePlugin,IInstanceProvider<ILogger>
     {
-        void Log(LogLevel logLevel, object message, Exception exception);
-        void Configure(string moduleName);
     }
 }

@@ -53,13 +53,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caching\Instance\Cache.cs" />
-    <Compile Include="Configuration\Expressions\ConfigHelper.cs" />
-    <Compile Include="Configuration\Expressions\FactoryInitializer.cs" />
-    <Compile Include="Configuration\Expressions\ModuleConfigurationNormalizer.cs" />
-    <Compile Include="Configuration\Instance\FactoryDiscovery.cs" />
-    <Compile Include="Configuration\Instance\ModuleConfiguration.cs" />
-    <Compile Include="IoC\Plugin\Contracts\ProxyMethodCall.cs" />
+    <Compile Include="Caching\Instance\CacheFactory.cs" />
+    <Compile Include="Caching\Plugin\BultIn\CachePlugin.cs" />
+    <Compile Include="Caching\Plugin\Contracts\ICache.cs" />
+    <Compile Include="IoC\Container.cs" />
+    <Compile Include="IoC\Instance\Container.cs" />
+    <Compile Include="IoC\Plugin\BultIn\Container.cs" />
+    <Compile Include="IoC\Plugin\BultIn\ContainerPlugin.cs" />
+    <Compile Include="IoC\Plugin\Contracts\IContainerPlugin.cs" />
+    <Compile Include="IoC\Plugin\Contracts\IContainer.cs" />
+    <Compile Include="Persistence\Plugin\Contracts\IPersistencePlugin.cs" />
+    <Compile Include="Runtime\ModuleConfigurationList.cs" />
+    <Compile Include="Runtime\ModuleConfiguration.cs" />
+    <Compile Include="Configuration\Instance\PluginConfiguration.cs" />
+    <Compile Include="Runtime\FactoryInitializer.cs" />
+    <Compile Include="Runtime\PluginConfigurationNormalizer.cs" />
+    <Compile Include="Runtime\FactoryDiscovery.cs" />
+    <Compile Include="IoC\Instance\ProxyMethodCall.cs" />
     <Compile Include="IoC\Plugin\Contracts\InterceptionHook.cs" />
+    <Compile Include="Log\Instance\LoggerFactory.cs" />
+    <Compile Include="Log\Plugin\BultIn\Logger.cs" />
+    <Compile Include="Log\Plugin\Contracts\ILogger.cs" />
     <Compile Include="Persistence\Aspects\TransactionInterceptor.cs" />
     <Compile Include="Runtime\Aspects\ContextInterceptor.cs" />
     <Compile Include="IoC\Instance\Interceptor.cs" />
@@ -67,7 +81,8 @@
     <Compile Include="Runtime\InternalLog.cs" />
     <Compile Include="Storage\Instance\Storer.cs" />
     <Compile Include="Log\Instance\Logger.cs" />
-    <Compile Include="Persistence\Instance\PersistenceManager.cs" />
+    <Compile Include="Persistence\Instance\Persistence.cs" />
+    <Compile Include="Storage\Instance\StorerFactory.cs" />
     <Compile Include="Storage\Plugin\BultIn\Storage.cs" />
     <Compile Include="Storage\Plugin\Contracts\IStorage.cs" />
     <Compile Include="Translation\Instance\Translator.cs" />
@@ -80,9 +95,8 @@
     <Compile Include="Caching\Expressions\AtRemoveExpression.cs" />
     <Compile Include="Caching\Expressions\AtExpression.cs" />
     <Compile Include="Caching\Cache.cs" />
-    <Compile Include="IoC\Mechanism\ServiceLocator.cs" />
     <Compile Include="Caching\Expressions\WithExpression.cs" />
-    <Compile Include="Persistence\Plugin\Contracts\Persistence.cs" />
+    <Compile Include="Persistence\Plugin\BultIn\Persistence.cs" />
     <Compile Include="Storage\Storer.cs" />
     <Compile Include="Caching\Plugin\BultIn\Cache.cs" />
     <Compile Include="Caching\Plugin\BultIn\CacheItem.cs" />
@@ -91,6 +105,7 @@
     <Compile Include="Caching\Plugin\Contracts\ICachePlugin.cs" />
     <Compile Include="Persistence\Plugin\BultIn\MemoryRepository.cs" />
     <Compile Include="Persistence\Plugin\BultIn\Session.cs" />
+    <Compile Include="Translation\Instance\TranslatorFactory.cs" />
     <Compile Include="Translation\Plugin\BultIn\Translator.cs" />
     <Compile Include="Translation\Plugin\BultIn\TypeMap.cs" />
     <Compile Include="Runtime\InstanceProvider.cs" />
@@ -105,19 +120,13 @@
     <Compile Include="Runtime\Plugin\IInstanceProvider.cs" />
     <Compile Include="Validation\Plugin\Contracts\IValidatorPlugin.cs" />
     <Compile Include="Validation\Plugin\Contracts\IValidator.cs" />
-    <Compile Include="Configuration\Instance\ModuleAssemblies.cs" />
+    <Compile Include="Runtime\ModuleAssemblies.cs" />
     <Compile Include="Configuration\Configure.cs" />
     <Compile Include="Configuration\Expressions\ForExpression.cs" />
     <Compile Include="Persistence\Plugin\Contracts\Repository.cs" />
-    <Compile Include="Persistence\Plugin\BultIn\Querier.cs" />
-    <Compile Include="Persistence\Mechanism\PersistenceQuerier.cs" />
-    <Compile Include="IoC\Plugin\Contracts\NotInterfaceException.cs" />
-    <Compile Include="Configuration\Instance\ConfigurationSelector.cs" />
-    <Compile Include="IoC\Instance\ServiceLocator.cs" />
+    <Compile Include="IoC\Instance\NotInterfaceException.cs" />
     <Compile Include="Validation\Validator.cs" />
     <Compile Include="Validation\Expressions\ThisExpression.cs" />
-    <Compile Include="IoC\Plugin\Contracts\IIoCPlugin.cs" />
-    <Compile Include="IoC\Plugin\BultIn\InjectionPlugin.cs" />
     <Compile Include="IoC\Plugin\BultIn\DefaultProxy.cs" />
     <Compile Include="IoC\Plugin\BultIn\IProxyInvocationHandler.cs" />
     <Compile Include="IoC\Plugin\BultIn\MetaDataFactory.cs" />
@@ -127,7 +136,7 @@
     <Compile Include="Log\Logger.cs" />
     <Compile Include="Log\Plugin\Contracts\ILoggerPlugin.cs" />
     <Compile Include="Translation\Plugin\Contracts\ITranslatorPlugin.cs" />
-    <Compile Include="Persistence\Plugin\Contracts\IPersistencePlugin.cs" />
+    <Compile Include="Persistence\Plugin\Contracts\IPersistence.cs" />
     <Compile Include="Persistence\Plugin\Contracts\QueryMethodAttribute.cs" />
     <Compile Include="Runtime\LocalThreadStorage.cs" />
     <Compile Include="Validation\Instance\InvalidEntityException.cs" />
@@ -142,10 +151,7 @@
     <Compile Include="Translation\Expressions\ToExpression.cs" />
     <Compile Include="Translation\Translator.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Log\Mechanism\" />
-    <Folder Include="Storage\Mechanism\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /> -->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

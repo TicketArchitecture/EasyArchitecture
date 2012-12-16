@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using EasyArchitecture.IoC.Instance;
 using EasyArchitecture.Log.Aspects;
 using EasyArchitecture.Persistence.Aspects;
 using EasyArchitecture.Runtime.Aspects;

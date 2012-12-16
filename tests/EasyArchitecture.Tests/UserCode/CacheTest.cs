@@ -4,7 +4,7 @@ using Application4Test.Application.Contracts;
 using Application4Test.Application.Contracts.DTOs;
 using EasyArchitecture.Caching.Plugin.BultIn;
 using EasyArchitecture.Configuration;
-using EasyArchitecture.IoC.Mechanism;
+using EasyArchitecture.IoC;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Tests.UserCode
@@ -25,7 +25,7 @@ namespace EasyArchitecture.Tests.UserCode
         public void Can_call_facade()
         {
 
-            var facade = ServiceLocator.Resolve<IDogFacade>();
+            var facade = Container.Resolve<IDogFacade>();
             var dog = facade.CreateDog(new DogDto() {Age = 10, Name = "Rex"});
         }
 

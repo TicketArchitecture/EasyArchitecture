@@ -4,7 +4,7 @@ using EasyArchitecture.IoC.Plugin.Contracts;
 
 namespace EasyArchitecture.IoC.Plugin.BultIn
 {
-    internal class IocPlugin : IIoCPlugin
+    internal class Container : IContainer
     {
         private readonly Dictionary<Type, Type> _registeredTypes = new Dictionary<Type, Type>();
 
@@ -13,14 +13,26 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
             RegisterType(typeof (T), typeof (T1));
         }
 
-        public T Resolve<T>()
-        {
-            return (T) Resolve(typeof (T));
-        }
-
         public void Register(Type interfaceType, Type implementationType, bool useInterception)
         {
             RegisterType(interfaceType, implementationType);
+        }
+
+        private void RegisterType(Type interfaceType, Type implementationType)
+        {
+            if (_registeredTypes.ContainsKey(interfaceType))
+            {
+                _registeredTypes[interfaceType] = implementationType;
+            }
+            else
+            {
+                _registeredTypes.Add(interfaceType, implementationType);
+            }
+        }
+
+        public T Resolve<T>()
+        {
+            return (T)Resolve(typeof(T));
         }
 
         private object Resolve(Type interfaceType)
@@ -81,18 +93,6 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
 
             //devolver
             return instance;
-        }
-
-        private void RegisterType(Type interfaceType, Type implementationType)
-        {
-            if (_registeredTypes.ContainsKey(interfaceType))
-            {
-                _registeredTypes[interfaceType] = implementationType;
-            }
-            else
-            {
-                _registeredTypes.Add(interfaceType, implementationType);
-            }
         }
     }
 

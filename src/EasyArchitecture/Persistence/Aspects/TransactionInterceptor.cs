@@ -1,9 +1,4 @@
-using System;
-using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.IoC.Instance;
-using EasyArchitecture.IoC.Plugin.BultIn;
-using EasyArchitecture.IoC.Plugin.Contracts;
-using EasyArchitecture.Runtime.Aspects;
 
 namespace EasyArchitecture.Persistence.Aspects
 {
@@ -11,21 +6,22 @@ namespace EasyArchitecture.Persistence.Aspects
     {
         public override object Invoke(ProxyMethodCall methodCall)
         {
-            object ret;
+            object ret = null;
             
-            ConfigurationSelector.Selector().Persistence.BeginTransaction();
-            try
-            {
-                ret = Next(methodCall);
-            }
-            catch (Exception)
-            {
-                ConfigurationSelector.Selector().Persistence.RollbackTransaction();
-                throw;
-            }
+            //TODO: call InstanceProvider.GetInstance<IPersi>()
+            //ConfigurationSelector.Selector().Persistence.BeginTransaction();
+            //try
+            //{
+            //    ret = Next(methodCall);
+            //}
+            //catch (Exception)
+            //{
+            //    ConfigurationSelector.Selector().Persistence.RollbackTransaction();
+            //    throw;
+            //}
 
-            ConfigurationSelector.Selector().Persistence.CommitTransaction();
-            return ret;
+            //ConfigurationSelector.Selector().Persistence.CommitTransaction();
+            return null;
         }
     }
 }

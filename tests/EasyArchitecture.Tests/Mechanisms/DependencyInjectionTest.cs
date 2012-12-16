@@ -1,6 +1,6 @@
 ﻿using Application4Test.Application.Contracts;
 using EasyArchitecture.Configuration;
-using EasyArchitecture.IoC.Mechanism;
+using EasyArchitecture.IoC;
 using EasyArchitecture.Runtime;
 using EasyArchitecture.Tests.Stuff;
 using NUnit.Framework;
@@ -23,7 +23,7 @@ namespace EasyArchitecture.Tests.Mechanisms
         [Test]
         public void Can_get_a_facade()
         {
-            var facade = ServiceLocator.Resolve<IDogFacade>();
+            var facade = Container.Resolve<IDogFacade>();
             Assert.That(facade, Is.InstanceOf<IDogFacade>());
         }
 
@@ -31,9 +31,9 @@ namespace EasyArchitecture.Tests.Mechanisms
         [Test]
         public void Can_get_a_overrided_facade()
         {
-            ServiceLocator.Register<IDogFacade, DummyDogFacade>();
+            Container.Register<IDogFacade, DummyDogFacade>();
 
-            var facade = ServiceLocator.Resolve<IDogFacade>();
+            var facade = Container.Resolve<IDogFacade>();
 
             Assert.That(facade, Is.InstanceOf<IDogFacade>());
 

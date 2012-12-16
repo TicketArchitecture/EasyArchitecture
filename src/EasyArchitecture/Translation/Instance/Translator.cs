@@ -1,19 +1,14 @@
-using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Translation.Plugin.Contracts;
 
 namespace EasyArchitecture.Translation.Instance
 {
     internal class Translator
     {
-        private readonly ModuleConfiguration _easyCofig;
-        private readonly ITranslatorPlugin _plugin;
+        private readonly ITranslator _plugin;
 
-        internal Translator(ModuleConfiguration easyCofig)
+        internal Translator(ITranslator plugin)
         {
-            _easyCofig = easyCofig;
-
-            _plugin = (ITranslatorPlugin)_easyCofig.Plugins[typeof(ITranslatorPlugin)];
-            _plugin.Configure(_easyCofig.InfrastructureAssembly);
+            _plugin = plugin;
         }
 
         internal T1 Translate<T, T1>(T p0)

@@ -1,4 +1,4 @@
-using EasyArchitecture.Configuration.Instance;
+using EasyArchitecture.Runtime;
 
 namespace EasyArchitecture.Caching.Expressions
 {
@@ -6,7 +6,7 @@ namespace EasyArchitecture.Caching.Expressions
     {
         public void At(string key)
         {
-            ConfigurationSelector.Selector().Cache.Remove(key);
+            InstanceProvider.GetInstance<Instance.Cache>().Remove(key);
         }
     }
 }

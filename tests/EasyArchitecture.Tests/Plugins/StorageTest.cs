@@ -1,5 +1,6 @@
 ﻿using System;
 using EasyArchitecture.Storage.Plugin.BultIn;
+using EasyArchitecture.Storage.Plugin.Contracts;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Tests.Plugins
@@ -8,12 +9,13 @@ namespace EasyArchitecture.Tests.Plugins
     public class StorageTest
     {
         private byte[] _buffer;
-        private StoragePlugin _plugin;
+        private IStorage _plugin;
+
 
         [SetUp]
         public void SetUp()
         {
-            _plugin = new StoragePlugin();
+            _plugin = new StoragePlugin().GetInstance();
             _buffer = new byte[] { 1, 2, 3, 4 };
         }
 

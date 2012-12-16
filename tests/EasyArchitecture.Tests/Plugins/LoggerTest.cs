@@ -18,7 +18,7 @@ namespace EasyArchitecture.Tests.Plugins
         {
             var moduleName = Guid.NewGuid().ToString();
 
-            var logger = LoggerPlugin(moduleName, LogLevel.Debug);
+            var logger = LoggerPlugin(moduleName, LogLevel.Debug).GetInstance();
 
             logger.Log(LogLevel.Debug, "message", null);
 
@@ -36,7 +36,7 @@ namespace EasyArchitecture.Tests.Plugins
             var moduleName = Guid.NewGuid().ToString();
             var message = Guid.NewGuid().ToString();
 
-            var logger = LoggerPlugin(moduleName, LogLevel.Fatal);
+            var logger = LoggerPlugin(moduleName, LogLevel.Fatal).GetInstance();
 
             logger.Log(LogLevel.Debug, message, null);
 
@@ -64,7 +64,7 @@ namespace EasyArchitecture.Tests.Plugins
 			var msgToLocate = string.Format("[{0}] DEBUG {1}", Thread.CurrentThread.Name, message);
             var dateOfMessage = DateTime.Now.ToString("yyyy-MM-dd");
 
-            var logger = LoggerPlugin(moduleName, LogLevel.Fatal);
+            var logger = LoggerPlugin(moduleName, LogLevel.Fatal).GetInstance();
 
             logger.Log(LogLevel.Debug, message, null);
 

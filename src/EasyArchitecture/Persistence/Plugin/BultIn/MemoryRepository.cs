@@ -1,13 +1,16 @@
 using System.Collections.Generic;
 using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Persistence.Plugin.Contracts;
+using EasyArchitecture.Runtime;
 
 namespace EasyArchitecture.Persistence.Plugin.BultIn
 {
     public class MemoryRepository<T> : IRepository<T> where T : class
     {
-        private static Session GetLocalSession(){
-            return (Session) ConfigurationSelector.Selector().Persistence.GetSession();
+        private static Session GetLocalSession()
+        {
+            return (Session) InstanceProvider.GetInstance<Instance.Persistence>().GetSession();
+            //return (Session) ConfigurationSelector.Selector().Persistence.GetSession();
         }
 
         public void Save(T entity)

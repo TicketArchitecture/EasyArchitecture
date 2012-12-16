@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using EasyArchitecture.Caching.Plugin.BultIn;
 using EasyArchitecture.Caching.Plugin.Contracts;
+using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.IoC.Plugin.BultIn;
 using EasyArchitecture.IoC.Plugin.Contracts;
 using EasyArchitecture.Log.Plugin.BultIn;
@@ -15,26 +16,26 @@ using EasyArchitecture.Translation.Plugin.Contracts;
 using EasyArchitecture.Validation.Plugin.BultIn;
 using EasyArchitecture.Validation.Plugin.Contracts;
 
-namespace EasyArchitecture.Configuration.Expressions
+namespace EasyArchitecture.Runtime
 {
-    public static class ModuleConfigurationNormalizer
+    public static class PluginConfigurationNormalizer
     {
         private static readonly Dictionary<Type, Type> BuiltinPlugins = new Dictionary<Type, Type>();
 
-        static ModuleConfigurationNormalizer()
+        static PluginConfigurationNormalizer()
         {
             BuiltinPlugins.Add(typeof (IValidatorPlugin), typeof (ValidatorPlugin));
             BuiltinPlugins.Add(typeof (ILoggerPlugin), typeof (LoggerPlugin));
             BuiltinPlugins.Add(typeof (ITranslatorPlugin), typeof (TranslatorPlugin));
-            BuiltinPlugins.Add(typeof (ICachePlugin), typeof (CachePlugin));
+            BuiltinPlugins.Add(typeof (ICachePlugin), typeof (Cache));
             BuiltinPlugins.Add(typeof (IStoragePlugin), typeof (StoragePlugin));
             BuiltinPlugins.Add(typeof (IPersistencePlugin), typeof (PersistencePlugin));
-            BuiltinPlugins.Add(typeof(IIoCPlugin), typeof(IocPlugin));
+            BuiltinPlugins.Add(typeof(IContainerPlugin), typeof(ContainerPlugin));
         }
 
-        public static void Normalize( ConfigHelper configHelper)
+        public static void Normalize( PluginConfiguration pluginConfiguration)
         {
-            var configuredPlugins =  configHelper.GetConfiguredPlugins();
+            var configuredPlugins =  pluginConfiguration.GetConfiguredPlugins();
 
             //complete configuration
             foreach (var builtinPlugin in BuiltinPlugins)
@@ -42,7 +43,7 @@ namespace EasyArchitecture.Configuration.Expressions
                 if(!configuredPlugins.ContainsKey(builtinPlugin.Key))
                 {
                     var plugin = Activator.CreateInstance(builtinPlugin.Value);
-                    configHelper.Register(plugin);
+                    pluginConfiguration.Register(plugin);
                 }
             }
 

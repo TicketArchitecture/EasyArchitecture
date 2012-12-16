@@ -1,5 +1,4 @@
 using EasyArchitecture.IoC.Instance;
-using EasyArchitecture.IoC.Plugin.BultIn;
 using EasyArchitecture.IoC.Plugin.Contracts;
 
 namespace EasyArchitecture.Runtime.Aspects

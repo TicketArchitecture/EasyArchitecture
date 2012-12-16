@@ -14,7 +14,7 @@ namespace EasyArchitecture.Tests.Plugins
             var entity = new Dog() { Age = 15, Id = 8, Name = "Rex" };
             var expected = new DogDto() { Age = 15, Id = 8, Name = "Rex" };
 
-            var actual = new TranslatorPlugin().Translate<Dog, DogDto>(entity);
+            var actual = new TranslatorPlugin().GetInstance().Translate<Dog, DogDto>(entity);
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -25,7 +25,7 @@ namespace EasyArchitecture.Tests.Plugins
             var entity = new Dog() { Age = 15, Id = 8, Name = "Rex" };
             var expected = new AnotherDogDto() { Id = 8, Name = "Rex" };
 
-            var actual = new TranslatorPlugin().Translate<Dog, AnotherDogDto>(entity);
+            var actual = new TranslatorPlugin().GetInstance().Translate<Dog, AnotherDogDto>(entity);
 
             Assert.That(actual, Is.EqualTo(expected));
 
@@ -38,18 +38,18 @@ namespace EasyArchitecture.Tests.Plugins
             var expected = new DogDto() { Age = 16, Id = 8, Name = "NewName" };
 
 
-            TranslatorPlugin.MapType<Dog, DogDto>(
-                (source,target) =>
-                    {
-                        target.Id = source.Id;
-                        target.Age = source.Age + 1;
-                        target.Name = "NewName";
-                        return target;
-                    }
-                );
+            //TranslatorPlugin().GetInstance().MapType<Dog, DogDto>(
+            //    (source,target) =>
+            //        {
+            //            target.Id = source.Id;
+            //            target.Age = source.Age + 1;
+            //            target.Name = "NewName";
+            //            return target;
+            //        }
+            //    );
 
 
-            var actual = new TranslatorPlugin().Translate<Dog, DogDto>(entity);
+            var actual = new TranslatorPlugin().GetInstance().Translate<Dog, DogDto>(entity);
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -73,7 +73,7 @@ namespace EasyArchitecture.Tests.Plugins
 
                     };
 
-            var actual = new TranslatorPlugin().Translate<List<Dog>, List<DogDto>>(entityList);
+            var actual = new TranslatorPlugin().GetInstance().Translate<List<Dog>, List<DogDto>>(entityList);
 
             Assert.That(actual, Is.EqualTo(expected));
 

@@ -1,14 +1,8 @@
-using System;
+using EasyArchitecture.Runtime.Plugin;
 
 namespace EasyArchitecture.Caching.Plugin.Contracts
 {
-    public interface ICachePlugin
+    public interface ICachePlugin : IConfigurablePlugin, IInstanceProvider<ICache>
     {
-        void Add(string key, object obj);
-        void Add(string key, object obj, TimeSpan expiration);
-        void Remove(string key);
-        void Flush();
-        object GetData(string key);
-        bool Contains(string key);
     }
 }

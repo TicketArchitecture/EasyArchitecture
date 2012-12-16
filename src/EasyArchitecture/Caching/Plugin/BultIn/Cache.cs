@@ -1,10 +1,11 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
 using EasyArchitecture.Caching.Plugin.Contracts;
 
 namespace EasyArchitecture.Caching.Plugin.BultIn
 {
-    internal class CachePlugin : ICachePlugin
+    internal class Cache : ICache
     {
         private readonly Dictionary<string, CacheItem> _cache = new Dictionary<string, CacheItem>();
 

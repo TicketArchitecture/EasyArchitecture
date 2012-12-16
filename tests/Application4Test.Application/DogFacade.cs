@@ -5,7 +5,6 @@ using Application4Test.Application.Contracts.DTOs;
 using Application4Test.Domain;
 using Application4Test.Domain.Repositories;
 using EasyArchitecture.Log;
-using EasyArchitecture.Persistence.Mechanism;
 using EasyArchitecture.Persistence.Plugin.Contracts;
 using EasyArchitecture.Translation;
 
@@ -56,19 +55,19 @@ namespace Application4Test.Application
             _dogRepository.Update(entity);
         }
 
-        //TODO: mount by reflection
-        [QueryMethod]
-        public IList<DogDto> GetAllOldDogs(int age)
-        {
-            Contract.Requires(age >0);
+        ////TODO: mount by reflection
+        //[QueryMethod]
+        //public IList<DogDto> GetAllOldDogs(int age)
+        //{
+        //    Contract.Requires(age >0);
 
-            return PersistenceQuerier.Execute<DogDto>("GetAgedDogs",age);
-        }
+        //    return PersistenceQuerier.Execute<DogDto>("GetAgedDogs",age);
+        //}
 
-        [QueryMethod]
-        public IList<DogDto> GetAllDogs()
-        {
-            return PersistenceQuerier.Execute<DogDto>("GetAllDogs");
-        }
+        //[QueryMethod]
+        //public IList<DogDto> GetAllDogs()
+        //{
+        //    return PersistenceQuerier.Execute<DogDto>("GetAllDogs");
+        //}
     }
 }

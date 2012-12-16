@@ -1,13 +1,10 @@
 using System.Reflection;
+using EasyArchitecture.Runtime.Plugin;
 
 namespace EasyArchitecture.Persistence.Plugin.Contracts
 {
-    public interface IPersistencePlugin
+    public interface IPersistencePlugin:IConfigurablePlugin,IInstanceProvider<IPersistence>
     {
         void Configure(string moduleName, Assembly assembly);
-        void BeginTransaction(object session);
-        void CommitTransaction(object session);
-        void RollbackTransaction(object session);
-        object GetSession(string moduleName);
     }
 }

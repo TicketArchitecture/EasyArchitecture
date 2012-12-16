@@ -1,6 +1,7 @@
 using System;
 using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Log.Plugin.Contracts;
+using EasyArchitecture.Runtime;
 
 namespace EasyArchitecture.Log.Expressions
 {
@@ -58,7 +59,7 @@ namespace EasyArchitecture.Log.Expressions
 
         private void Log()
         {
-            ConfigurationSelector.Selector().Logger.Log(_logLevel,  _message, _exception);
+            InstanceProvider.GetInstance<Instance.Logger>().Log(_logLevel,  _message, _exception);
         }
     }
 }

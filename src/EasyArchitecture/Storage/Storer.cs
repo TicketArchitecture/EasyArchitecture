@@ -1,5 +1,5 @@
 ﻿using System;
-using EasyArchitecture.Configuration.Instance;
+using EasyArchitecture.Runtime;
 
 namespace EasyArchitecture.Storage
 {
@@ -7,17 +7,17 @@ namespace EasyArchitecture.Storage
     {
         public static Guid Save(byte[] buffer)
         {
-            return ConfigurationSelector.Selector().Storage.Save(buffer);
+            return InstanceProvider.GetInstance<Instance.Storer>().Save(buffer);
         }
 
         public static byte[] Get(Guid id)
         {
-            return ConfigurationSelector.Selector().Storage.Get(id);
+            return InstanceProvider.GetInstance<Instance.Storer>().Get(id);
         }
 
         public static bool Exists(Guid id)
         {
-            return ConfigurationSelector.Selector().Storage.Exists(id);
+            return InstanceProvider.GetInstance<Instance.Storer>().Exists(id);
         }
     }
 }

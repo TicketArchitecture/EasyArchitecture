@@ -1,5 +1,6 @@
 ﻿using EasyArchitecture.Caching.Expressions;
 using EasyArchitecture.Configuration.Instance;
+using EasyArchitecture.Runtime;
 
 namespace EasyArchitecture.Caching
 {
@@ -27,7 +28,7 @@ namespace EasyArchitecture.Caching
 
         public static void Clear()
         {
-            ConfigurationSelector.Selector().Cache.Flush();
+            InstanceProvider.GetInstance<Instance.Cache>().Flush();
         }
     }
 }

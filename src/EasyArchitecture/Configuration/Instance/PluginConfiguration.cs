@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace EasyArchitecture.Configuration.Expressions
+namespace EasyArchitecture.Configuration.Instance
 {
-    public class ConfigHelper
+    public class PluginConfiguration
     {
-        //TODO: rename to moduleconfiguration
         private readonly Dictionary<Type, object> _plugins = new Dictionary<Type, object>();
 
         internal void Register<T>(T plugin)

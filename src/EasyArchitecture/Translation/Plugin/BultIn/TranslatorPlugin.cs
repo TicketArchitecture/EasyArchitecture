@@ -14,5 +14,10 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
 
             //load type to MappedTypes
         }
+
+        public ITranslator GetInstance()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

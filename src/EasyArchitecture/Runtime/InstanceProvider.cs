@@ -1,25 +1,15 @@
-using EasyArchitecture.Configuration.Instance;
-using EasyArchitecture.Validation.Instance;
-
 namespace EasyArchitecture.Runtime
 {
     public static class InstanceProvider
     {
-        public static T GetInstance<T>()
+        public static T GetInstance<T>() where T : class
         {
-            object instance = null;
-
-            //locate at thread
-            //var instance = ThreadStorage.GetInstance<T>();
-
+            var instance =  LocalThreadStorage.GetInstance<T>();
             if (instance==null)
             {
                 instance = FactoryDiscovery.Discover<T>().GetInstance();
-                //put at thread
-                //ThreadStorage.SaveInstance<T>(instance);
-
+                LocalThreadStorage.SetInstance<T>(instance);
             }
-
             return (T) instance;
         }
     }

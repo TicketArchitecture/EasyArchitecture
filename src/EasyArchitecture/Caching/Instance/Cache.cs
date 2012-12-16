@@ -1,18 +1,15 @@
 ﻿using System;
 using EasyArchitecture.Caching.Plugin.Contracts;
-using EasyArchitecture.Configuration.Instance;
 
 namespace EasyArchitecture.Caching.Instance
 {
     internal class Cache
     {
-        private readonly ModuleConfiguration _easyCofig;
-        private readonly ICachePlugin _plugin;
+        private readonly ICache _plugin;
 
-        internal Cache(ModuleConfiguration easyCofig)
+        internal Cache(ICache plugin)
         {
-            _easyCofig = easyCofig;
-            _plugin = (ICachePlugin)_easyCofig.Plugins[typeof(ICachePlugin)];
+            _plugin = plugin;
         }
 
         internal void Add(string key, object item)

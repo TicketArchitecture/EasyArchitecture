@@ -1,7 +1,7 @@
 ﻿using Application4Test.Domain.Repositories;
 using Application4Test.Infrastructure.Persistence.Repositories;
 using EasyArchitecture.Configuration;
-using EasyArchitecture.IoC.Mechanism;
+using EasyArchitecture.IoC;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Tests.Plugins
@@ -19,7 +19,7 @@ namespace EasyArchitecture.Tests.Plugins
 
 
             //Garantir que sera usado a implementacao de persistencia local
-            ServiceLocator.Register<IDogRepository, DogRepository>();
+            Container.Register<IDogRepository, DogRepository>();
 
         }
 

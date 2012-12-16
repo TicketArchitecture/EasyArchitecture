@@ -1,19 +1,15 @@
 ﻿using System;
-using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Storage.Plugin.Contracts;
 
 namespace EasyArchitecture.Storage.Instance
 {
     internal class Storer
     {
-        private readonly ModuleConfiguration _easyCofig;
-        private readonly IStoragePlugin _plugin;
+        private readonly IStorage _plugin;
 
-        internal Storer(ModuleConfiguration easyCofig)
+        internal Storer(IStorage plugin)
         {
-            _easyCofig = easyCofig;
-            _plugin = (IStoragePlugin)_easyCofig.Plugins[typeof(IStoragePlugin)];
-            
+            _plugin = plugin;
         }
 
         internal Guid Save(byte[] buffer)
