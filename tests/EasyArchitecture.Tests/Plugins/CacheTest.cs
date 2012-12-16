@@ -8,25 +8,25 @@ namespace EasyArchitecture.Tests.Plugins
     [TestFixture]
     public class CacheTest
     {
-        private Cache _cachePlugin;
+        private Cache _cache;
         private string _key;
 
         [SetUp]
         public void SetUp()
         {
-            _cachePlugin = new Cache();
+            _cache = new Cache();
             _key = Guid.NewGuid().ToString();
         }
 
         [Test]
         public void Can_add_new_item()
         {
-            Assert.That(() => _cachePlugin.Add(_key, 1), Throws.Nothing);
+            Assert.That(() => _cache.Add(_key, 1), Throws.Nothing);
 
-            var found = _cachePlugin.Contains(_key);
+            var found = _cache.Contains(_key);
             Assert.That(found, Is.True);
 
-            var actual = _cachePlugin.GetData(_key);
+            var actual = _cache.GetData(_key);
             Assert.That(actual, Is.EqualTo(1));
 
         }
@@ -34,41 +34,41 @@ namespace EasyArchitecture.Tests.Plugins
         [Test]
         public void Can_add_item_that_already_exists()
         {
-            _cachePlugin.Add(_key, 1);
+            _cache.Add(_key, 1);
 
-            Assert.That(() => _cachePlugin.Add(_key, 2), Throws.Nothing);
+            Assert.That(() => _cache.Add(_key, 2), Throws.Nothing);
 
-            var found = _cachePlugin.Contains(_key);
+            var found = _cache.Contains(_key);
             Assert.That(found, Is.True);
 
-            var actual = _cachePlugin.GetData(_key);
+            var actual = _cache.GetData(_key);
             Assert.That(actual, Is.EqualTo(2));
         }
 
         [Test]
         public void Can_remove_existent_item()
         {
-            _cachePlugin.Add(_key, 1);
-            _cachePlugin.Remove(_key);
+            _cache.Add(_key, 1);
+            _cache.Remove(_key);
 
-            var found = _cachePlugin.Contains(_key);
+            var found = _cache.Contains(_key);
             Assert.That(found, Is.False);
         }
 
         [Test]
         public void Can_remove_inexistent_item()
         {
-            Assert.That(() => _cachePlugin.Remove(_key), Throws.Nothing);
+            Assert.That(() => _cache.Remove(_key), Throws.Nothing);
         }
 
         [Test]
         public void Can_clear_cache()
         {
-            _cachePlugin.Add(_key, 1);
+            _cache.Add(_key, 1);
 
-            Assert.That(()=>_cachePlugin.Flush(),Throws.Nothing);
+            Assert.That(()=>_cache.Flush(),Throws.Nothing);
 
-            var found = _cachePlugin.Contains(_key);
+            var found = _cache.Contains(_key);
             Assert.That(found, Is.False);
         }
 
@@ -77,16 +77,16 @@ namespace EasyArchitecture.Tests.Plugins
         [Test]
         public void Can_verify_item_existence()
         {
-            _cachePlugin.Add(_key, 1);
+            _cache.Add(_key, 1);
             
-            var found = _cachePlugin.Contains(_key);
+            var found = _cache.Contains(_key);
             Assert.That(found, Is.True);
         }
 
         [Test]
         public void Can_verify_non_existence_of_item()
         {
-            var found = _cachePlugin.Contains(_key);
+            var found = _cache.Contains(_key);
             Assert.That(found, Is.False);
         }
 
@@ -94,15 +94,15 @@ namespace EasyArchitecture.Tests.Plugins
         [Test]
         public void Should_not_item_stills_on_cache_after_expiration()
         {
-            _cachePlugin.Add(_key, 1,new TimeSpan(0,0,1));
+            _cache.Add(_key, 1,new TimeSpan(0,0,1));
 
-            var found = _cachePlugin.Contains(_key);
+            var found = _cache.Contains(_key);
             Assert.That(found,Is.True);
             
             //sleep
             Thread.Sleep(2000);
 
-            found =_cachePlugin.Contains(_key);
+            found =_cache.Contains(_key);
             Assert.That(found, Is.False);
         }
     }

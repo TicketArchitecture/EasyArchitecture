@@ -11,15 +11,16 @@ namespace EasyArchitecture.Tests.Mechanisms
     public class CacheTest
     {
         private string _key;
+        private const string ModuleName = "Application4Test";
 
         [SetUp]
         public void SetUp()
         {
             Configure
-                .For("Application4Test")
+                .For(ModuleName)
                 .Done();
 
-            LocalThreadStorage.SetCurrentModuleName("Application4Test");
+            LocalThreadStorage.SetCurrentModuleName(ModuleName);
 
             _key = Guid.NewGuid().ToString();
         }
@@ -34,7 +35,6 @@ namespace EasyArchitecture.Tests.Mechanisms
 
             var actual = Cache.Get.At(_key);
             Assert.That(actual, Is.EqualTo(1));
-
         }
 
         [Test]

@@ -2,7 +2,7 @@
 using EasyArchitecture.Tests.Stuff.Helpers;
 using NUnit.Framework;
 
-namespace EasyArchitecture.Tests.Internals.Initialization
+namespace EasyArchitecture.Tests.Runtime
 {
     [TestFixture]
     public class AssemblyManagerTest
