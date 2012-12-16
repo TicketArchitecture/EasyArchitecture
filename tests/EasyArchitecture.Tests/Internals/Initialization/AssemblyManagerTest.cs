@@ -13,7 +13,7 @@ namespace EasyArchitecture.Tests.Internals.Initialization
         public void Can_get_domain_assemblies()
         {
             var expected = AssemblyLoader.LoadAssemblyFromFile(AssemblyLoader.DomainAssemblyName);
-            var actual = AssemblyManager.GetDomainAssembly(ModuleName);
+            var actual = AssemblyManager.GetModuleAssemblies(ModuleName).DomainAssembly;
 
             Assert.That(actual,Is.EqualTo(expected));
         }
@@ -22,7 +22,7 @@ namespace EasyArchitecture.Tests.Internals.Initialization
         public void Can_get_infrastructure_assemblies()
         {
             var expected = AssemblyLoader.LoadAssemblyFromFile(AssemblyLoader.InfrastructureAssemblyName);
-            var actual = AssemblyManager.GetInfrastructureAssembly(ModuleName);
+            var actual = AssemblyManager.GetModuleAssemblies(ModuleName).InfrastructureAssembly;
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -31,7 +31,7 @@ namespace EasyArchitecture.Tests.Internals.Initialization
         public void Can_get_application_assemblies()
         {
             var expected = AssemblyLoader.LoadAssemblyFromFile(AssemblyLoader.ApplicationAssemblyName);
-            var actual = AssemblyManager.GetApplicationAssembly(ModuleName);
+            var actual = AssemblyManager.GetModuleAssemblies(ModuleName).ApplicationAssembly;
 
             Assert.That(actual, Is.EqualTo(expected));
         }

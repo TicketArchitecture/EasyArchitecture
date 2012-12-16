@@ -1,9 +1,9 @@
 ﻿using Application4Test.Domain;
 using EasyArchitecture.Configuration;
 using EasyArchitecture.Runtime;
-using EasyArchitecture.Validation;
-using EasyArchitecture.Validation.Plugin.Contracts;
+using EasyArchitecture.Validation.Instance;
 using NUnit.Framework;
+using Validator = EasyArchitecture.Validation.Validator;
 
 namespace EasyArchitecture.Tests.Mechanisms
 {

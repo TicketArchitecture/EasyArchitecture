@@ -38,7 +38,7 @@ namespace EasyArchitecture.Tests.Mechanisms
         public void Should_not_find_configuration_instance()
         {
             LocalThreadStorage.SetCurrentModuleName("None");
-            Assert.That(() => ConfigurationSelector.SelectorByThread(), Throws.TypeOf<NotConfiguredModuleException>());
+            Assert.That(() => ConfigurationSelector.Selector(), Throws.TypeOf<NotConfiguredModuleException>());
         }
 
         [Test]
@@ -47,23 +47,6 @@ namespace EasyArchitecture.Tests.Mechanisms
             Configure
                 .For<Application4Test.Application.Contracts.IDogFacade>()
                 .Done();
-
-            Verify();
-        }
-
-        [Test]
-        public void Should_use_default_plugins_if_they_are_not_specified()
-        {
-            Configure
-                .For("Application4Test")
-                    .Log()
-                    .Translation()
-                    .Persistence()
-                    .DependencyInjection()
-                    .Cache()
-                    .Storage()
-                    .Validator()
-                    .Done();
 
             Verify();
         }
@@ -79,7 +62,7 @@ namespace EasyArchitecture.Tests.Mechanisms
                     .DependencyInjection(new IocPlugin())
                     .Cache(new CachePlugin())
                     .Storage(new StoragePlugin())
-                    .Validator(new ValidatorPlugin())
+                    .Validator(new ValidatorInstance())
                     .Done();
 
             Verify();
@@ -96,7 +79,7 @@ namespace EasyArchitecture.Tests.Mechanisms
                     .DependencyInjection<IocPlugin>()
                     .Cache<CachePlugin>()
                     .Storage<StoragePlugin>()
-                    .Validator<ValidatorPlugin>()
+                    .Validator<ValidatorInstance>()
                     .Done();
 
             Verify();
@@ -108,7 +91,7 @@ namespace EasyArchitecture.Tests.Mechanisms
             var translatorPlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(ITranslatorPlugin)];
             var persistencePlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(IPersistencePlugin)];
             var iocPlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(IIoCPlugin)];
-            var validatorPlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(IValidatorPlugin)];
+            var validatorPlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(IValidatorInstance)];
             var cachePlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(ICachePlugin)];
             var storagePlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(IStoragePlugin)];
 
@@ -116,7 +99,7 @@ namespace EasyArchitecture.Tests.Mechanisms
             Assert.That(translatorPlugin, Is.TypeOf<TranslatorPlugin>());
             Assert.That(persistencePlugin, Is.TypeOf<PersistencePlugin>());
             Assert.That(iocPlugin, Is.TypeOf<IocPlugin>());
-            Assert.That(validatorPlugin, Is.TypeOf<ValidatorPlugin>());
+            Assert.That(validatorPlugin, Is.TypeOf<ValidatorInstance>());
             Assert.That(cachePlugin, Is.TypeOf<CachePlugin>());
             Assert.That(storagePlugin, Is.TypeOf<StoragePlugin>());
         }
