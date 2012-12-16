@@ -18,7 +18,7 @@ namespace EasyArchitecture.Configuration.Expressions
         internal ForExpression(string moduleName)
         {
             _moduleName = moduleName;
-            _pluginConfiguration = new PluginConfiguration();
+            _pluginConfiguration = new PluginConfiguration(moduleName);
         }
 
         public ForExpression Log(ILoggerPlugin plugin)

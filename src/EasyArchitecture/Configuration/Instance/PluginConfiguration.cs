@@ -5,7 +5,13 @@ namespace EasyArchitecture.Configuration.Instance
 {
     public class PluginConfiguration
     {
+        private readonly string _moduleName;
         private readonly Dictionary<Type, object> _plugins = new Dictionary<Type, object>();
+
+        public PluginConfiguration(string moduleName)
+        {
+            _moduleName = moduleName;
+        }
 
         internal void Register<T>(T plugin)
         {

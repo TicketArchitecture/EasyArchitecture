@@ -2,6 +2,7 @@
 using System.IO;
 using EasyArchitecture.Log.Plugin.BultIn;
 using EasyArchitecture.Log.Plugin.Contracts;
+using EasyArchitecture.Runtime;
 using NUnit.Framework;
 using System.Threading;
 
@@ -10,19 +11,30 @@ namespace EasyArchitecture.Tests.Plugins
     [TestFixture]
     public class LoggerTest
     {
+        private string _moduleName;
+        private ILogger _logger;
         private const string DefaultPath = "Log";
         private const string DefaultExtension = ".log";
+
+        [SetUp]
+        public void SetUp()
+        {
+            _moduleName = Guid.NewGuid().ToString();
+            
+            var loggerPlugin = new LoggerPlugin();
+            loggerPlugin.Configure(new ModuleAssemblies(null,null,null){ModuleName = _moduleName});
+            _logger = loggerPlugin.GetInstance();
+
+        }
+
 
         [Test]
         public void Should_create_log_file_if_not_exists()
         {
-            var moduleName = Guid.NewGuid().ToString();
+            
+            _logger.Log(LogLevel.Debug, "message", null);
 
-            var logger = LoggerPlugin(moduleName, LogLevel.Debug).GetInstance();
-
-            logger.Log(LogLevel.Debug, "message", null);
-
-            var file = FileInfo(moduleName);
+            var file = FileInfo(_moduleName);
 
             Assert.That(file, Is.Not.Null);
 
@@ -33,14 +45,11 @@ namespace EasyArchitecture.Tests.Plugins
         [Test]
         public void Should_log_message()
         {
-            var moduleName = Guid.NewGuid().ToString();
             var message = Guid.NewGuid().ToString();
 
-            var logger = LoggerPlugin(moduleName, LogLevel.Fatal).GetInstance();
+            _logger.Log(LogLevel.Debug, message, null);
 
-            logger.Log(LogLevel.Debug, message, null);
-
-            var file = FileInfo(moduleName);
+            var file = FileInfo(_moduleName);
             
             var reader = file.OpenText();
 
@@ -56,7 +65,6 @@ namespace EasyArchitecture.Tests.Plugins
         [Test]
         public void Should_log_message_with_format()
         {
-            var moduleName = Guid.NewGuid().ToString();
             var message = Guid.NewGuid().ToString();
 
             //2012-12-10 11:46:03,911 [CurrentAppDomainHost.ExecuteNodes] Debug e5ea10da-6545-400a-a130-f036648b3293
@@ -64,11 +72,9 @@ namespace EasyArchitecture.Tests.Plugins
 			var msgToLocate = string.Format("[{0}] DEBUG {1}", Thread.CurrentThread.Name, message);
             var dateOfMessage = DateTime.Now.ToString("yyyy-MM-dd");
 
-            var logger = LoggerPlugin(moduleName, LogLevel.Fatal).GetInstance();
+            _logger.Log(LogLevel.Debug, message, null);
 
-            logger.Log(LogLevel.Debug, message, null);
-
-            var file = FileInfo(moduleName);
+            var file = FileInfo(_moduleName);
 
             var reader = file.OpenText();
 
@@ -81,14 +87,6 @@ namespace EasyArchitecture.Tests.Plugins
             file.Delete();
 
         }
-
-        private static LoggerPlugin LoggerPlugin(string moduleName, LogLevel logLevel)
-        {
-            var logger = new LoggerPlugin();
-            logger.Configure(moduleName);
-            return logger;
-        }
-
         private static FileInfo FileInfo(string moduleName)
         {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DefaultPath);

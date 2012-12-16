@@ -7,6 +7,12 @@ namespace EasyArchitecture.Log.Plugin.BultIn
     internal class Logger : ILogger
     {
         private FileInfo _arquivo;
+
+        public Logger(FileInfo arquivo)
+        {
+            _arquivo = arquivo;
+        }
+
         private const string DefaultPath = "Log";
         private const string DefaultExtension = ".log";
 

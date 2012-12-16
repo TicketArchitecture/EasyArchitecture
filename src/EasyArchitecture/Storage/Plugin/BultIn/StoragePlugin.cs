@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using EasyArchitecture.Runtime;
 using EasyArchitecture.Storage.Plugin.Contracts;
 
 namespace EasyArchitecture.Storage.Plugin.BultIn
@@ -12,7 +13,7 @@ namespace EasyArchitecture.Storage.Plugin.BultIn
             return new Storage();
         }
 
-        public void Configure(Assembly assembly)
+        public void Configure(ModuleAssemblies moduleAssemblies)
         {
             throw new NotImplementedException();
         }

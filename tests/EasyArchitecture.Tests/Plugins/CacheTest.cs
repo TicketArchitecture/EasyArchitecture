@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using EasyArchitecture.Caching.Plugin.BultIn;
+using EasyArchitecture.Caching.Plugin.Contracts;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Tests.Plugins
@@ -8,13 +9,13 @@ namespace EasyArchitecture.Tests.Plugins
     [TestFixture]
     public class CacheTest
     {
-        private Cache _cache;
+        private ICache _cache;
         private string _key;
 
         [SetUp]
         public void SetUp()
         {
-            _cache = new Cache();
+            _cache =  new CachePlugin().GetInstance();
             _key = Guid.NewGuid().ToString();
         }
 

@@ -1,5 +1,6 @@
 using System.Reflection;
 using EasyArchitecture.Persistence.Plugin.Contracts;
+using EasyArchitecture.Runtime;
 
 namespace EasyArchitecture.Persistence.Plugin.BultIn
 {
@@ -39,7 +40,7 @@ namespace EasyArchitecture.Persistence.Plugin.BultIn
 
         //}
 
-        public void Configure(Assembly assembly)
+        public void Configure(ModuleAssemblies moduleAssemblies )
         {
             throw new System.NotImplementedException();
         }

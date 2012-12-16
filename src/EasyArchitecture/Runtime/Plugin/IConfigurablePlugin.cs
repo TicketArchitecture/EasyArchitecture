@@ -1,9 +1,9 @@
-using System.Reflection;
+using EasyArchitecture.Configuration.Instance;
 
 namespace EasyArchitecture.Runtime.Plugin
 {
     public interface IConfigurablePlugin
     {
-        void Configure(Assembly assembly);
+        void Configure(ModuleAssemblies moduleAssemblies);
     }
 }

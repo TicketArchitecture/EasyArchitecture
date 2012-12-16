@@ -37,19 +37,20 @@ namespace EasyArchitecture.Tests.Plugins
             var entity = new Dog() { Age = 15, Id = 8, Name = "Rex" };
             var expected = new DogDto() { Age = 16, Id = 8, Name = "NewName" };
 
+            var translator = new TranslatorPlugin().GetInstance();
 
-            //TranslatorPlugin().GetInstance().MapType<Dog, DogDto>(
-            //    (source,target) =>
-            //        {
-            //            target.Id = source.Id;
-            //            target.Age = source.Age + 1;
-            //            target.Name = "NewName";
-            //            return target;
-            //        }
-            //    );
+            Translator.MapType<Dog, DogDto>(
+                (source, target) =>
+                {
+                    target.Id = source.Id;
+                    target.Age = source.Age + 1;
+                    target.Name = "NewName";
+                    return target;
+                }
+                );
 
 
-            var actual = new TranslatorPlugin().GetInstance().Translate<Dog, DogDto>(entity);
+            var actual = translator.Translate<Dog, DogDto>(entity);
 
             Assert.That(actual, Is.EqualTo(expected));
         }
