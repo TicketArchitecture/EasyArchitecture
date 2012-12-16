@@ -1,30 +1,25 @@
 using System.Collections.Generic;
 using EasyArchitecture.Runtime;
-using EasyArchitecture.Validation.Instance;
 
 namespace EasyArchitecture.Validation.Expressions
 {
     public class ThisExpression<T>
     {
-        private readonly T _obj;
+        private readonly T _entity;
 
-        internal ThisExpression(T obj)
+        internal ThisExpression(T entity)
         {
-            _obj = obj;
+            _entity = entity;
         }
 
         public void IsValid()
         {
-            //EasyConfigurations.Selector<T>().Validator.IsValid(_obj);
-            InstanceProvider.GetInstance<Instance.Validator>().IsValid(_obj);
-            //ConfigurationSelector.Selector().ValidatorFactory.GetInstance().IsValid(_obj);
+            InstanceProvider.GetInstance<Instance.Validator>().IsValid(_entity);
         }
 
         public IList<string> HasMessages()
         {
-            //return  EasyConfigurations.Selector<T>().Validator.GetMessages(_obj);
-            //return ConfigurationSelector.Selector().ValidatorFactory.GetInstance().GetMessages(_obj);
-            return InstanceProvider.GetInstance<Instance.Validator>().GetMessages(_obj);
+            return InstanceProvider.GetInstance<Instance.Validator>().GetMessages(_entity);
         }
     }
 }

@@ -1,11 +1,8 @@
-using System.Reflection;
+using EasyArchitecture.Runtime.Plugin;
 
 namespace EasyArchitecture.Translation.Plugin.Contracts
 {
-    public interface ITranslatorPlugin
+    public interface ITranslatorPlugin : IInstanceProvider<ITranslator>, IConfigurablePlugin
     {
-        void Configure(Assembly assembly);
-        T1 Translate<T, T1>(T p0);
-        T1 Translate<T, T1>(T p0, T1 p1);
     }
 }

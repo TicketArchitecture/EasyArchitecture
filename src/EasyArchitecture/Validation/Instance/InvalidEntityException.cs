@@ -1,6 +1,4 @@
-﻿using EasyArchitecture.Validation.Plugin.Contracts;
-
-namespace EasyArchitecture.Validation.Instance
+﻿namespace EasyArchitecture.Validation.Instance
 {
     public class InvalidEntityException : DomainException
     {

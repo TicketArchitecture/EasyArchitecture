@@ -62,7 +62,7 @@ namespace EasyArchitecture.Tests.Mechanisms
                     .DependencyInjection(new IocPlugin())
                     .Cache(new CachePlugin())
                     .Storage(new StoragePlugin())
-                    .Validator(new ValidatorInstance())
+                    //.Validator(new ValidatorPlugin())
                     .Done();
 
             Verify();
@@ -79,7 +79,7 @@ namespace EasyArchitecture.Tests.Mechanisms
                     .DependencyInjection<IocPlugin>()
                     .Cache<CachePlugin>()
                     .Storage<StoragePlugin>()
-                    .Validator<ValidatorInstance>()
+                    .Validator<Validator>()
                     .Done();
 
             Verify();
@@ -91,7 +91,7 @@ namespace EasyArchitecture.Tests.Mechanisms
             var translatorPlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(ITranslatorPlugin)];
             var persistencePlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(IPersistencePlugin)];
             var iocPlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(IIoCPlugin)];
-            var validatorPlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(IValidatorInstance)];
+            var validatorPlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(IValidator)];
             var cachePlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(ICachePlugin)];
             var storagePlugin = ConfigurationSelector.Configurations["Application4Test"].Plugins[typeof(IStoragePlugin)];
 
@@ -99,7 +99,7 @@ namespace EasyArchitecture.Tests.Mechanisms
             Assert.That(translatorPlugin, Is.TypeOf<TranslatorPlugin>());
             Assert.That(persistencePlugin, Is.TypeOf<PersistencePlugin>());
             Assert.That(iocPlugin, Is.TypeOf<IocPlugin>());
-            Assert.That(validatorPlugin, Is.TypeOf<ValidatorInstance>());
+            Assert.That(validatorPlugin, Is.TypeOf<Validator>());
             Assert.That(cachePlugin, Is.TypeOf<CachePlugin>());
             Assert.That(storagePlugin, Is.TypeOf<StoragePlugin>());
         }

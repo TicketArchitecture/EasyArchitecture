@@ -1,23 +1,29 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using EasyArchitecture.Validation.Plugin.Contracts;
 
 namespace EasyArchitecture.Validation.Plugin.BultIn
 {
-    public abstract class Validator<T>
+    internal class Validator : IValidator
     {
-        private readonly List<ValidationRule<T>> _validationRules = new List<ValidationRule<T>>();
+        private readonly Dictionary<Type, object> _validationRuleSets;
 
-        public IEnumerable<string> Validate(T entity)
+        public Validator(Dictionary<Type, object> validationRuleDefinitions)
         {
-            return (from validationRule in _validationRules
-                    where validationRule.Rule.Invoke(entity)
-                    select validationRule.Message).ToList();
+            _validationRuleSets = validationRuleDefinitions;
         }
 
-        protected void AddRule(Func<T, bool> rule, string message)
+        public List<string> Validate<T>(T entity)
         {
-            _validationRules.Add(new ValidationRule<T>() { Rule = rule, Message = message });
+            var list = new List<string>();
+
+            if (_validationRuleSets.ContainsKey(typeof(T)))
+            {
+                var ruleSet = (ValidationRuleSet<T>)_validationRuleSets[typeof(T)];
+                list.AddRange(ruleSet.Apply(entity));
+            }
+
+            return list;
         }
     }
 }

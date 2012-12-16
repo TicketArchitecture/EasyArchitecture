@@ -13,6 +13,7 @@ namespace EasyArchitecture.Storage.Instance
         {
             _easyCofig = easyCofig;
             _plugin = (IStoragePlugin)_easyCofig.Plugins[typeof(IStoragePlugin)];
+            
         }
 
         internal Guid Save(byte[] buffer)

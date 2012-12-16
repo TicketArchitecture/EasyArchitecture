@@ -5,9 +5,9 @@ namespace EasyArchitecture.Validation.Instance
 {
     internal class Validator
     {
-        private readonly IValidatorInstance _plugin;
+        private readonly IValidator _plugin;
 
-        internal Validator(IValidatorInstance plugin)
+        internal Validator(IValidator plugin)
         {
             _plugin = plugin;
         }

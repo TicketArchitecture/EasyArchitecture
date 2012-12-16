@@ -1,11 +1,8 @@
-﻿using System;
+﻿using EasyArchitecture.Runtime.Plugin;
 
 namespace EasyArchitecture.Storage.Plugin.Contracts
 {
-    public interface IStoragePlugin
+    public interface IStoragePlugin : IInstanceProvider<IStorage>, IConfigurablePlugin
     {
-        Guid Save(byte[] buffer);
-        byte[] Get(Guid id);
-        bool Exists (Guid id);
     }
 }

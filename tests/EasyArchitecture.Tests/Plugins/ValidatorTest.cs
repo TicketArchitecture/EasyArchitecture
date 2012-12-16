@@ -11,7 +11,7 @@ namespace EasyArchitecture.Tests.Plugins
     {
         private Dog _oldDog;
         private Dog _youngDog;
-        private ValidatorInstance _plugin;
+        private Validator _plugin;
 
         [SetUp]
         public void SetUp()
@@ -19,7 +19,7 @@ namespace EasyArchitecture.Tests.Plugins
             _oldDog = new Dog { Age = 15, Name = "Old Dog" };
             _youngDog = new Dog { Age = 5, Name = "Young Dog" };
 
-            _plugin = new ValidatorInstance();
+            //_plugin = new Validator();
         }
 
         [Test]

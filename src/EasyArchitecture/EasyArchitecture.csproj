@@ -53,6 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caching\Instance\Cache.cs" />
+    <Compile Include="Configuration\Expressions\ConfigHelper.cs" />
+    <Compile Include="Configuration\Expressions\FactoryInitializer.cs" />
+    <Compile Include="Configuration\Expressions\ModuleConfigurationNormalizer.cs" />
+    <Compile Include="Configuration\Instance\FactoryDiscovery.cs" />
     <Compile Include="Configuration\Instance\ModuleConfiguration.cs" />
     <Compile Include="IoC\Plugin\Contracts\ProxyMethodCall.cs" />
     <Compile Include="IoC\Plugin\Contracts\InterceptionHook.cs" />
@@ -60,10 +64,12 @@
     <Compile Include="Runtime\Aspects\ContextInterceptor.cs" />
     <Compile Include="IoC\Instance\Interceptor.cs" />
     <Compile Include="Log\Aspects\LogInterceptor.cs" />
-    <Compile Include="Runtime\Class1.cs" />
+    <Compile Include="Runtime\InternalLog.cs" />
     <Compile Include="Storage\Instance\Storer.cs" />
     <Compile Include="Log\Instance\Logger.cs" />
     <Compile Include="Persistence\Instance\PersistenceManager.cs" />
+    <Compile Include="Storage\Plugin\BultIn\Storage.cs" />
+    <Compile Include="Storage\Plugin\Contracts\IStorage.cs" />
     <Compile Include="Translation\Instance\Translator.cs" />
     <Compile Include="Configuration\Exceptions\NotConfiguredModuleException.cs" />
     <Compile Include="Runtime\TypeManager.cs" />
@@ -85,14 +91,20 @@
     <Compile Include="Caching\Plugin\Contracts\ICachePlugin.cs" />
     <Compile Include="Persistence\Plugin\BultIn\MemoryRepository.cs" />
     <Compile Include="Persistence\Plugin\BultIn\Session.cs" />
+    <Compile Include="Translation\Plugin\BultIn\Translator.cs" />
     <Compile Include="Translation\Plugin\BultIn\TypeMap.cs" />
     <Compile Include="Runtime\InstanceProvider.cs" />
+    <Compile Include="Runtime\Contracts\IProviderFactory.cs" />
+    <Compile Include="Runtime\Contracts\IConfigurableFactory.cs" />
+    <Compile Include="Translation\Plugin\Contracts\ITranslator.cs" />
     <Compile Include="Validation\Instance\Validator.cs" />
     <Compile Include="Validation\Instance\ValidatorFactory.cs" />
-    <Compile Include="Validation\Plugin\BultIn\ValidatorInstance.cs" />
+    <Compile Include="Validation\Plugin\BultIn\Validator.cs" />
     <Compile Include="Validation\Plugin\BultIn\ValidatorPlugin.cs" />
+    <Compile Include="Runtime\Plugin\IConfigurablePlugin.cs" />
+    <Compile Include="Runtime\Plugin\IInstanceProvider.cs" />
     <Compile Include="Validation\Plugin\Contracts\IValidatorPlugin.cs" />
-    <Compile Include="Validation\Plugin\Contracts\IValidatorInstance.cs" />
+    <Compile Include="Validation\Plugin\Contracts\IValidator.cs" />
     <Compile Include="Configuration\Instance\ModuleAssemblies.cs" />
     <Compile Include="Configuration\Configure.cs" />
     <Compile Include="Configuration\Expressions\ForExpression.cs" />
@@ -121,8 +133,7 @@
     <Compile Include="Validation\Instance\InvalidEntityException.cs" />
     <Compile Include="Validation\Instance\DomainException.cs" />
     <Compile Include="Validation\Plugin\BultIn\ValidationRule.cs" />
-    <Compile Include="Validation\Plugin\BultIn\Validator.cs" />
-    <Compile Include="Validation\Instance\Validator-old.cs" />
+    <Compile Include="Validation\Plugin\BultIn\ValidationRuleSet.cs" />
     <Compile Include="Runtime\AssemblyManager.cs" />
     <Compile Include="Log\Plugin\BultIn\LoggerPlugin.cs" />
     <Compile Include="Translation\Plugin\BultIn\TranslatorPlugin.cs" />

@@ -1,11 +1,10 @@
-using System;
-using System.Reflection;
+using EasyArchitecture.Runtime.Plugin;
 
 namespace EasyArchitecture.Validation.Plugin.Contracts
 {
-    public interface IValidatorPlugin
+    public interface IValidatorPlugin:IConfigurablePlugin,IInstanceProvider<IValidator>
     {
-        void Configure(Assembly assembly);
-        IValidatorInstance GetInstance();
+        //void Configure(Assembly assembly);
+        //IValidator GetInstance();
     }
 }
