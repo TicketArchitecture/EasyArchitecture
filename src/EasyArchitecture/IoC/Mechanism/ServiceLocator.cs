@@ -6,12 +6,12 @@ namespace EasyArchitecture.IoC.Mechanism
     {
         public static T Resolve<T>()
         {
-            return ConfigurationSelector.SelectorByThread().ServiceLocator.Resolve<T>();
+            return ConfigurationSelector.Selector().ServiceLocator.Resolve<T>();
         }
 
         public static void Register<T, T1>() where T1 : T
         {
-            ConfigurationSelector.SelectorByThread().ServiceLocator.Register<T, T1>();
+            ConfigurationSelector.Selector().ServiceLocator.Register<T, T1>();
         }
     }
 }

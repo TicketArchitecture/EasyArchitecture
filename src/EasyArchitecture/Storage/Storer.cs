@@ -7,17 +7,17 @@ namespace EasyArchitecture.Storage
     {
         public static Guid Save(byte[] buffer)
         {
-            return ConfigurationSelector.SelectorByThread().Storage.Save(buffer);
+            return ConfigurationSelector.Selector().Storage.Save(buffer);
         }
 
         public static byte[] Get(Guid id)
         {
-            return ConfigurationSelector.SelectorByThread().Storage.Get(id);
+            return ConfigurationSelector.Selector().Storage.Get(id);
         }
 
         public static bool Exists(Guid id)
         {
-            return ConfigurationSelector.SelectorByThread().Storage.Exists(id);
+            return ConfigurationSelector.Selector().Storage.Exists(id);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using EasyArchitecture.Configuration.Instance;
+using EasyArchitecture.Runtime;
+using EasyArchitecture.Validation.Instance;
 
 namespace EasyArchitecture.Validation.Expressions
 {
@@ -15,13 +16,15 @@ namespace EasyArchitecture.Validation.Expressions
         public void IsValid()
         {
             //EasyConfigurations.Selector<T>().Validator.IsValid(_obj);
-            ConfigurationSelector.SelectorByThread().Validator.IsValid(_obj);
+            InstanceProvider.GetInstance<Instance.Validator>().IsValid(_obj);
+            //ConfigurationSelector.Selector().ValidatorFactory.GetInstance().IsValid(_obj);
         }
 
         public IList<string> HasMessages()
         {
             //return  EasyConfigurations.Selector<T>().Validator.GetMessages(_obj);
-            return ConfigurationSelector.SelectorByThread().Validator.GetMessages(_obj);
+            //return ConfigurationSelector.Selector().ValidatorFactory.GetInstance().GetMessages(_obj);
+            return InstanceProvider.GetInstance<Instance.Validator>().GetMessages(_obj);
         }
     }
 }

@@ -53,12 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caching\Instance\Cache.cs" />
+    <Compile Include="Configuration\Instance\ModuleConfiguration.cs" />
     <Compile Include="IoC\Plugin\Contracts\ProxyMethodCall.cs" />
     <Compile Include="IoC\Plugin\Contracts\InterceptionHook.cs" />
     <Compile Include="Persistence\Aspects\TransactionInterceptor.cs" />
     <Compile Include="Runtime\Aspects\ContextInterceptor.cs" />
     <Compile Include="IoC\Instance\Interceptor.cs" />
     <Compile Include="Log\Aspects\LogInterceptor.cs" />
+    <Compile Include="Runtime\Class1.cs" />
     <Compile Include="Storage\Instance\Storer.cs" />
     <Compile Include="Log\Instance\Logger.cs" />
     <Compile Include="Persistence\Instance\PersistenceManager.cs" />
@@ -84,9 +86,14 @@
     <Compile Include="Persistence\Plugin\BultIn\MemoryRepository.cs" />
     <Compile Include="Persistence\Plugin\BultIn\Session.cs" />
     <Compile Include="Translation\Plugin\BultIn\TypeMap.cs" />
+    <Compile Include="Runtime\InstanceProvider.cs" />
+    <Compile Include="Validation\Instance\Validator.cs" />
+    <Compile Include="Validation\Instance\ValidatorFactory.cs" />
+    <Compile Include="Validation\Plugin\BultIn\ValidatorInstance.cs" />
     <Compile Include="Validation\Plugin\BultIn\ValidatorPlugin.cs" />
     <Compile Include="Validation\Plugin\Contracts\IValidatorPlugin.cs" />
-    <Compile Include="Configuration\Instance\ModuleConfiguration.cs" />
+    <Compile Include="Validation\Plugin\Contracts\IValidatorInstance.cs" />
+    <Compile Include="Configuration\Instance\ModuleAssemblies.cs" />
     <Compile Include="Configuration\Configure.cs" />
     <Compile Include="Configuration\Expressions\ForExpression.cs" />
     <Compile Include="Persistence\Plugin\Contracts\Repository.cs" />
@@ -111,11 +118,11 @@
     <Compile Include="Persistence\Plugin\Contracts\IPersistencePlugin.cs" />
     <Compile Include="Persistence\Plugin\Contracts\QueryMethodAttribute.cs" />
     <Compile Include="Runtime\LocalThreadStorage.cs" />
-    <Compile Include="Validation\Plugin\Contracts\InvalidEntityException.cs" />
-    <Compile Include="Validation\Plugin\Contracts\DomainException.cs" />
+    <Compile Include="Validation\Instance\InvalidEntityException.cs" />
+    <Compile Include="Validation\Instance\DomainException.cs" />
     <Compile Include="Validation\Plugin\BultIn\ValidationRule.cs" />
     <Compile Include="Validation\Plugin\BultIn\Validator.cs" />
-    <Compile Include="Validation\Instance\Validator.cs" />
+    <Compile Include="Validation\Instance\Validator-old.cs" />
     <Compile Include="Runtime\AssemblyManager.cs" />
     <Compile Include="Log\Plugin\BultIn\LoggerPlugin.cs" />
     <Compile Include="Translation\Plugin\BultIn\TranslatorPlugin.cs" />

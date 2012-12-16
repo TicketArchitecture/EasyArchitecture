@@ -1,23 +1,16 @@
 ﻿using System.Collections.Generic;
-using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Validation.Plugin.Contracts;
 
 namespace EasyArchitecture.Validation.Instance
 {
     internal class Validator
     {
-        private readonly ModuleConfiguration _easyCofig;
-        private readonly IValidatorPlugin _plugin;
+        private readonly IValidatorInstance _plugin;
 
-        internal Validator(ModuleConfiguration easyCofig)
+        internal Validator(IValidatorInstance plugin)
         {
-            _easyCofig = easyCofig;
-
-            _plugin = (IValidatorPlugin)_easyCofig.Plugins[typeof(IValidatorPlugin)];
-
-            _plugin.Configure(_easyCofig.InfrastructureAssembly);
+            _plugin = plugin;
         }
-
 
         internal List<string> GetMessages<T>(T entity)
         {

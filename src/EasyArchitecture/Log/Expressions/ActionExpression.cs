@@ -58,7 +58,7 @@ namespace EasyArchitecture.Log.Expressions
 
         private void Log()
         {
-            ConfigurationSelector.SelectorByThread().Logger.Log(_logLevel,  _message, _exception);
+            ConfigurationSelector.Selector().Logger.Log(_logLevel,  _message, _exception);
         }
     }
 }

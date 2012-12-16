@@ -13,18 +13,18 @@ namespace EasyArchitecture.Persistence.Aspects
         {
             object ret;
             
-            ConfigurationSelector.SelectorByThread().Persistence.BeginTransaction();
+            ConfigurationSelector.Selector().Persistence.BeginTransaction();
             try
             {
                 ret = Next(methodCall);
             }
             catch (Exception)
             {
-                ConfigurationSelector.SelectorByThread().Persistence.RollbackTransaction();
+                ConfigurationSelector.Selector().Persistence.RollbackTransaction();
                 throw;
             }
 
-            ConfigurationSelector.SelectorByThread().Persistence.CommitTransaction();
+            ConfigurationSelector.Selector().Persistence.CommitTransaction();
             return ret;
         }
     }

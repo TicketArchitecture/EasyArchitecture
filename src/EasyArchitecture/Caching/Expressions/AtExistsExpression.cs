@@ -6,7 +6,7 @@ namespace EasyArchitecture.Caching.Expressions
     {
         public bool At(string key)
         {
-            return ConfigurationSelector.SelectorByThread().Cache.Contains(key);
+            return ConfigurationSelector.Selector().Cache.Contains(key);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace EasyArchitecture.Persistence.Plugin.BultIn
     public class MemoryRepository<T> : IRepository<T> where T : class
     {
         private static Session GetLocalSession(){
-            return (Session) ConfigurationSelector.SelectorByThread().Persistence.GetSession();
+            return (Session) ConfigurationSelector.Selector().Persistence.GetSession();
         }
 
         public void Save(T entity)

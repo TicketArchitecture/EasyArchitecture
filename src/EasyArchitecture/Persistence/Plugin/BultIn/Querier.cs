@@ -15,7 +15,7 @@ namespace EasyArchitecture.Persistence.Plugin.BultIn
 
         protected object GetSession()
         {
-            return ConfigurationSelector.SelectorByThread().Persistence.GetSession();
+            return ConfigurationSelector.Selector().Persistence.GetSession();
         }
 
     }

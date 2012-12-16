@@ -29,6 +29,7 @@ namespace EasyArchitecture.Configuration.Instance
     internal class ModuleConfiguration
     {
         internal string ModuleName { get; private set; }
+        //TODO: remove
         internal Assembly DomainAssembly;
         internal Assembly ApplicationAssembly;
         internal Assembly InfrastructureAssembly;
@@ -41,7 +42,7 @@ namespace EasyArchitecture.Configuration.Instance
         internal Logger Logger;
         internal PersistenceManager Persistence;
         internal ServiceLocator ServiceLocator;
-        internal Validator Validator;
+        internal ValidatorFactory ValidatorFactory;
         internal Cache Cache;
         internal Storer Storage;
 
@@ -52,38 +53,53 @@ namespace EasyArchitecture.Configuration.Instance
 
         internal void Start()
         {
-            //load assemblies
-            ApplicationAssembly = AssemblyManager.GetApplicationAssembly(ModuleName);
-            DomainAssembly = AssemblyManager.GetDomainAssembly(ModuleName);
-            InfrastructureAssembly = AssemblyManager.GetInfrastructureAssembly(ModuleName);
+            //---------------------------------
+            // INIT MECHANISMS
+            //---------------------------------
 
+
+            
+
+            //if (!Plugins.ContainsKey(typeof(IValidatorPlugin)))
+            //    Plugins[typeof(IValidatorPlugin)] = new ValidatorPlugin();
+            //ValidatorFactory = new ValidatorFactory(moduleAssemblies, (IValidatorPlugin)Plugins[typeof(IValidatorPlugin)]);
+            //ValidatorFactory.RegisterPlugin(ModuleName, (IValidatorPlugin)Plugins[typeof(IValidatorPlugin)]);
+
+
+            if (!Plugins.ContainsKey(typeof(ILoggerPlugin)))
+                Plugins[typeof(ILoggerPlugin)] = new LoggerPlugin();
+            Logger = new Logger(this);
+            
+
+            if (!Plugins.ContainsKey(typeof(ITranslatorPlugin)))
+                Plugins[typeof(ITranslatorPlugin)] = new TranslatorPlugin();
+            Translator = new Translator(this);
+
+
+            if (!Plugins.ContainsKey(typeof(ICachePlugin)))
+                Plugins[typeof(ICachePlugin)] = new CachePlugin();
+            Cache = new Cache(this);
+            
+            if (!Plugins.ContainsKey(typeof(IStoragePlugin)))
+                Plugins[typeof(IStoragePlugin)] = new StoragePlugin();
+            Storage = new Storer(this);
+
+            if (!Plugins.ContainsKey(typeof(IPersistencePlugin)))
+                Plugins[typeof(IPersistencePlugin)] = new PersistencePlugin();
+            Persistence = new PersistenceManager(this);
+
+            if (!Plugins.ContainsKey(typeof(IIoCPlugin)))
+                Plugins[typeof(IIoCPlugin)] = new IocPlugin();
+            ServiceLocator = new ServiceLocator(this);
+
+
+            //---------------------------------
+            // SAVE CONFIG FOR MODULE -> GO
+            //---------------------------------
             //put yourself on config list
             ConfigurationSelector.Configurations[this.ModuleName] = this;
 
-            //set defaults
-            if (!Plugins.ContainsKey(typeof(IPersistencePlugin)) )
-                Plugins[typeof(IPersistencePlugin)] = new PersistencePlugin();
-            if (!Plugins.ContainsKey(typeof(ILoggerPlugin)))
-                Plugins[typeof(ILoggerPlugin)] = new LoggerPlugin();
-            if (!Plugins.ContainsKey(typeof(IIoCPlugin)))
-                Plugins[typeof(IIoCPlugin)] = new IocPlugin();
-            if (!Plugins.ContainsKey(typeof( ITranslatorPlugin)))
-                Plugins[typeof(ITranslatorPlugin)] = new TranslatorPlugin();
-            if (!Plugins.ContainsKey(typeof(IValidatorPlugin)))
-                Plugins[typeof(IValidatorPlugin)] = new ValidatorPlugin();
-            if (!Plugins.ContainsKey(typeof(ICachePlugin)))
-                Plugins[typeof(ICachePlugin)] = new CachePlugin();
-            if (!Plugins.ContainsKey(typeof(IStoragePlugin)))
-                Plugins[typeof(IStoragePlugin)] = new StoragePlugin();
-            
-            //hey... im your father
-            Translator = new Translator(this);
-            Logger = new Logger(this);
-            Persistence = new PersistenceManager(this);
-            ServiceLocator = new ServiceLocator(this);
-            Validator = new Validator(this);
-            Cache = new Cache(this);
-            Storage = new Storer(this);
+
         }
 
         internal void Register<T>(T plugin)

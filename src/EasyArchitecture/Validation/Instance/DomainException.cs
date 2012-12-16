@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EasyArchitecture.Validation.Plugin.Contracts
+namespace EasyArchitecture.Validation.Instance
 {
     public abstract class DomainException : Exception
     {

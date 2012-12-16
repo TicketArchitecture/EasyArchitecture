@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.Text;
+using EasyArchitecture.Configuration.Instance;
 
 namespace EasyArchitecture.Runtime
 {
@@ -11,20 +12,20 @@ namespace EasyArchitecture.Runtime
         private const string Domain = ".Domain";
         private const string Infrastructure = ".Infrastructure";
 
-        internal static Assembly GetDomainAssembly(string moduleName)
-        {
-            return GetAssembly(Domain, moduleName);
-        }
+        //internal static Assembly GetDomainAssembly(string moduleName)
+        //{
+        //    return GetAssembly(Domain, moduleName);
+        //}
 
-        internal static Assembly GetInfrastructureAssembly(string moduleName)
-        {
-            return GetAssembly(Infrastructure, moduleName);
-        }
+        //internal static Assembly GetInfrastructureAssembly(string moduleName)
+        //{
+        //    return GetAssembly(Infrastructure, moduleName);
+        //}
 
-        internal static Assembly GetApplicationAssembly(string moduleName)
-        {
-            return GetAssembly(Application, moduleName);
-        }
+        //internal static Assembly GetApplicationAssembly(string moduleName)
+        //{
+        //    return GetAssembly(Application, moduleName);
+        //}
 
         private static Assembly GetAssembly(string assemblyType, string moduleName)
         {
@@ -54,6 +55,15 @@ namespace EasyArchitecture.Runtime
             var assemblyName = type.Assembly.GetName().Name;
             var moduleName = RemoveAssemblySufix(assemblyName);
             return moduleName;
+        }
+
+        public static ModuleAssemblies GetModuleAssemblies(string moduleName)
+        {
+            return new ModuleAssemblies(
+                GetAssembly(Application, moduleName),
+                GetAssembly(Domain, moduleName),
+                GetAssembly(Infrastructure, moduleName)
+                );
         }
     }
 }

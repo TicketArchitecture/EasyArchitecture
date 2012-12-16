@@ -6,7 +6,7 @@ namespace EasyArchitecture.Caching.Expressions
     {
         public void At(string key)
         {
-            ConfigurationSelector.SelectorByThread().Cache.Remove(key);
+            ConfigurationSelector.Selector().Cache.Remove(key);
         }
     }
 }

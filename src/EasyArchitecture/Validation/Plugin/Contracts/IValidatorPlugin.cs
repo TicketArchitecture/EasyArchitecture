@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using System.Reflection;
 
 namespace EasyArchitecture.Validation.Plugin.Contracts
@@ -6,6 +6,6 @@ namespace EasyArchitecture.Validation.Plugin.Contracts
     public interface IValidatorPlugin
     {
         void Configure(Assembly assembly);
-        List<string> Validate<T>(T obj);
+        IValidatorInstance GetInstance();
     }
 }

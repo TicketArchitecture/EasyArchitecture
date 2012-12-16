@@ -1,6 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using EasyArchitecture.Configuration.Exceptions;
 using EasyArchitecture.Runtime;
+using EasyArchitecture.Validation.Instance;
 
 namespace EasyArchitecture.Configuration.Instance
 {
@@ -8,28 +9,34 @@ namespace EasyArchitecture.Configuration.Instance
     {
         internal static readonly ConcurrentDictionary<string, ModuleConfiguration> Configurations = new ConcurrentDictionary<string, ModuleConfiguration>();
 
-        //internal static EasyConfig Selector<T>()
-        //{
-        //    var type = typeof (T);
-        //    if(type.IsGenericType)
-        //        type= type.GetGenericArguments().FirstOrDefault();
-
-        //    return Selector(AssemblyManager.ModuleName(type));
-        //}
-
-        internal static ModuleConfiguration SelectorByThread()
+        internal static ModuleConfiguration Selector()
         {
-            return Selector(LocalThreadStorage.GetCurrentModuleName());
-        }
-
-        private static ModuleConfiguration Selector(string moduleName)
-        {
+            var moduleName = LocalThreadStorage.GetCurrentModuleName();
             ModuleConfiguration instance;
 
             if (!ConfigurationSelector.Configurations.TryGetValue(moduleName, out instance))
                 throw new NotConfiguredModuleException(moduleName);
 
             return instance;
+
         }
     }
+
+    internal static class FactoryDiscovery
+    {
+        //internal static readonly ConcurrentDictionary<string, ModuleConfiguration> Configurations = new ConcurrentDictionary<string, ModuleConfiguration>();
+
+        internal static IProviderFactory<T> Discover<T>()
+        {
+            //var moduleName = LocalThreadStorage.GetCurrentModuleName();
+            //ModuleConfiguration instance;
+
+            //if (!ConfigurationSelector.Configurations.TryGetValue(moduleName, out instance))
+            //    throw new NotConfiguredModuleException(moduleName);
+
+            //return instance;
+            return default(IProviderFactory<T>) ;
+        }
+    }
+
 }
