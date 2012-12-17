@@ -4,6 +4,7 @@ using EasyArchitecture.Caching.Instance;
 using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.IoC.Instance;
 using EasyArchitecture.Log.Instance;
+using EasyArchitecture.Persistence.Instance;
 using EasyArchitecture.Runtime.Contracts;
 using EasyArchitecture.Storage.Instance;
 using EasyArchitecture.Translation.Instance;
@@ -25,6 +26,7 @@ namespace EasyArchitecture.Runtime
             AllowedFactories.Add(typeof(Logger), typeof(LoggerFactory));
             AllowedFactories.Add(typeof(Storer), typeof(StorerFactory));
             AllowedFactories.Add(typeof(Container), typeof(ContainerFactory));
+            AllowedFactories.Add(typeof(Persistence.Instance.Persistence), typeof(PersistenceFactory));
         }
 
         public static ModuleConfiguration Exec(PluginConfiguration pluginConfiguration)

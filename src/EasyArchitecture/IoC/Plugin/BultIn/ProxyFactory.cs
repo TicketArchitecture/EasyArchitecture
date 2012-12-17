@@ -302,6 +302,7 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
             }
         }
 
+        //TODO: BUG when return type is void
         public static Object NewInstance(Object obj)
         {
             return ProxyFactory.GetInstance().Create(

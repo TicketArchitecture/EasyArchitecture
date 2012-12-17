@@ -42,17 +42,19 @@ namespace Application4Test.Application
             return dto;
         }
 
-        public void UpdateDog(DogDto dto)
+        public int UpdateDog(DogDto dog)
         {
-            Contract.Requires(dto != null);
+            Contract.Requires(dog != null);
 
             Logger.Message("Teste").Debug();
 
-            var entity = _dogRepository.Get((int) dto.Id);
+            var entity = _dogRepository.Get((int)dog.Id);
 
-            Translator.This(dto).To(entity);
+            Translator.This(dog).To(entity);
 
             _dogRepository.Update(entity);
+
+            return 0;
         }
 
         ////TODO: mount by reflection

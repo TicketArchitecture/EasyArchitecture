@@ -5,33 +5,34 @@ namespace EasyArchitecture.Persistence.Instance
     internal class Persistence
     {
         private readonly IPersistence _plugin;
-        private object session;
+        private object _session;
 
         internal Persistence(IPersistence plugin)
         {
             _plugin = plugin;
-            
         }
 
         internal object GetSession()
         {
-            session = _plugin.GetSession("");
-            return session;
+            if (_session == null)
+                _session = _plugin.GetSession("");
+            return _session;
         }
 
         internal void BeginTransaction()
         {
-            _plugin.BeginTransaction(session);
+            this.GetSession();
+            _plugin.BeginTransaction(_session);
         }
 
         internal void CommitTransaction()
         {
-            _plugin.CommitTransaction(session);
+            _plugin.CommitTransaction(_session);
         }
 
         internal void RollbackTransaction()
         {
-            _plugin.RollbackTransaction(session);
+            _plugin.RollbackTransaction(_session);
         }
     }
 }

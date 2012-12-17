@@ -7,7 +7,7 @@ namespace Application4Test.Application.Contracts
     {
         DogDto GetDog(DogDto dog);
         DogDto CreateDog(DogDto dog);
-        void UpdateDog(DogDto dog);
+        int UpdateDog(DogDto dog);
         //IList<DogDto> GetAllOldDogs(int age);
         //IList<DogDto> GetAllDogs();
     }

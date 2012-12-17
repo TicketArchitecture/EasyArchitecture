@@ -1,8 +1,5 @@
-using System;
-using System.Threading;
 using Application4Test.Application.Contracts;
 using Application4Test.Application.Contracts.DTOs;
-using EasyArchitecture.Caching.Plugin.BultIn;
 using EasyArchitecture.Configuration;
 using EasyArchitecture.IoC;
 using NUnit.Framework;
@@ -16,17 +13,51 @@ namespace EasyArchitecture.Tests.UserCode
         public void SetUp()
         {
             Configure
-                .For<Application4Test.Application.Contracts.IDogFacade>()
+                .For<IDogFacade>()
                 .Done();
 
         }
 
         [Test]
-        public void Can_call_facade()
+        public void Can_create_entity()
         {
-
             var facade = Container.Resolve<IDogFacade>();
-            var dog = facade.CreateDog(new DogDto() {Age = 10, Name = "Rex"});
+
+            var expected = new DogDto() { Age = 10, Name = "Rex" };
+
+            var actual = facade.CreateDog(new DogDto() {Age = 10, Name = "Rex"});
+
+            Assert.That(actual,Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void Can_get_entity()
+        {
+            var facade = Container.Resolve<IDogFacade>();
+
+            var expected = new DogDto() { Age = 10, Name = "Rex" };
+
+            facade.CreateDog(new DogDto() { Age = 10, Name = "Rex" });
+            var actual = facade.GetDog(new DogDto(){Age=10});
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void Can_update_entity()
+        {
+            var facade = Container.Resolve<IDogFacade>();
+
+            var expected = new DogDto() { Age = 200, Name = "Rex" };
+
+            var actual = facade.CreateDog(new DogDto() { Age = 10, Name = "Rex" });
+            actual.Age = 200;
+
+            facade.UpdateDog(actual);
+            
+            actual = facade.GetDog(new DogDto() { Name="Rex" });
+
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
    }

@@ -70,7 +70,6 @@
     <Compile Include="Stuff\DI\DummyImplementation.cs" />
     <Compile Include="Stuff\DI\NewDummyImplementation.cs" />
     <Compile Include="Plugins\ContainerTest.cs" />
-    <Compile Include="Plugins\RepositoryTest.cs" />
     <Compile Include="Services\ConfigurationTest.cs" />
     <Compile Include="Services\TranslatorTest.cs" />
     <Compile Include="Services\ValidatorTest.cs" />

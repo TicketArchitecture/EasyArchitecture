@@ -1,5 +1,4 @@
 using EasyArchitecture.IoC.Instance;
-using EasyArchitecture.IoC.Plugin.Contracts;
 
 namespace EasyArchitecture.Runtime.Aspects
 {
@@ -7,6 +6,7 @@ namespace EasyArchitecture.Runtime.Aspects
     {
         public override object Invoke(ProxyMethodCall methodCall)
         {
+            //LocalThreadStorage.ClearThread();
             LocalThreadStorage.SetCurrentModuleName(methodCall.Method.DeclaringType);
             return Next(methodCall);
         }

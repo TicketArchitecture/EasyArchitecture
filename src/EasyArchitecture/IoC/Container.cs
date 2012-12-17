@@ -10,6 +10,12 @@ namespace EasyArchitecture.IoC
         }
         public static T Resolve<T>()
         {
+            //TODO: eh o unico caso pois via container q a facade eh inicializada
+            //descobrir o module name para T
+            //var modName = AssemblyManager.ModuleName<T>();
+            //LocalThreadStorage.SetCurrentModuleName(modName);
+            LocalThreadStorage.SetCurrentModuleName(typeof(T));
+
             return InstanceProvider.GetInstance<Instance.Container>().Resolve<T>();
         }
 
