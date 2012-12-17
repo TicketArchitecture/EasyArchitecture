@@ -5,7 +5,7 @@ using EasyArchitecture.Configuration;
 using EasyArchitecture.Runtime;
 using NUnit.Framework;
 
-namespace EasyArchitecture.Tests.Mechanisms
+namespace EasyArchitecture.Tests.Services
 {
     [TestFixture]
     public class CacheTest

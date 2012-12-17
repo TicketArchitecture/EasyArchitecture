@@ -1,4 +1,6 @@
+using System;
 using EasyArchitecture.IoC.Instance;
+using EasyArchitecture.Runtime;
 
 namespace EasyArchitecture.Persistence.Aspects
 {
@@ -8,20 +10,19 @@ namespace EasyArchitecture.Persistence.Aspects
         {
             object ret = null;
             
-            //TODO: call InstanceProvider.GetInstance<IPersi>()
-            //ConfigurationSelector.Selector().Persistence.BeginTransaction();
-            //try
-            //{
-            //    ret = Next(methodCall);
-            //}
-            //catch (Exception)
-            //{
-            //    ConfigurationSelector.Selector().Persistence.RollbackTransaction();
-            //    throw;
-            //}
+            InstanceProvider.GetInstance<Instance.Persistence>().BeginTransaction();
+            try
+            {
+                ret = Next(methodCall);
+            }
+            catch (Exception)
+            {
+                InstanceProvider.GetInstance<Instance.Persistence>().RollbackTransaction();
+                throw;
+            }
 
-            //ConfigurationSelector.Selector().Persistence.CommitTransaction();
-            return null;
+            InstanceProvider.GetInstance<Instance.Persistence>().CommitTransaction();
+            return ret;
         }
     }
 }

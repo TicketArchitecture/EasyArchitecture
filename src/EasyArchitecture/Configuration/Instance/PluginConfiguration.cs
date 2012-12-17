@@ -7,10 +7,12 @@ namespace EasyArchitecture.Configuration.Instance
     {
         private readonly string _moduleName;
         private readonly Dictionary<Type, object> _plugins = new Dictionary<Type, object>();
+        public string ModuleName;
 
         public PluginConfiguration(string moduleName)
         {
             _moduleName = moduleName;
+            ModuleName = moduleName;
         }
 
         internal void Register<T>(T plugin)
@@ -33,6 +35,11 @@ namespace EasyArchitecture.Configuration.Instance
         public T GetPlugin<T>()
         {
             return (T) _plugins[typeof(T)];
+        }
+
+        public void Register(Type pluginType, object o)
+        {
+            _plugins.Add(pluginType, o);
         }
     }
 }

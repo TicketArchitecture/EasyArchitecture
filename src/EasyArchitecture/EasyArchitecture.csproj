@@ -58,10 +58,15 @@
     <Compile Include="Caching\Plugin\Contracts\ICache.cs" />
     <Compile Include="IoC\Container.cs" />
     <Compile Include="IoC\Instance\Container.cs" />
+    <Compile Include="IoC\Instance\LoggerFactory.cs" />
     <Compile Include="IoC\Plugin\BultIn\Container.cs" />
     <Compile Include="IoC\Plugin\BultIn\ContainerPlugin.cs" />
+    <Compile Include="IoC\Plugin\BultIn\TypeRegistry.cs" />
     <Compile Include="IoC\Plugin\Contracts\IContainerPlugin.cs" />
     <Compile Include="IoC\Plugin\Contracts\IContainer.cs" />
+    <Compile Include="Persistence\Instance\PersistenceFactory.cs" />
+    <Compile Include="Persistence\Plugin\BultIn\NotInTransactionException.cs" />
+    <Compile Include="Persistence\Repository.cs" />
     <Compile Include="Persistence\Plugin\Contracts\IPersistencePlugin.cs" />
     <Compile Include="Runtime\ModuleConfigurationList.cs" />
     <Compile Include="Runtime\ModuleConfiguration.cs" />
@@ -103,7 +108,6 @@
     <Compile Include="Storage\Plugin\BultIn\StoragePlugin.cs" />
     <Compile Include="Storage\Plugin\Contracts\IStoragePlugin.cs" />
     <Compile Include="Caching\Plugin\Contracts\ICachePlugin.cs" />
-    <Compile Include="Persistence\Plugin\BultIn\MemoryRepository.cs" />
     <Compile Include="Persistence\Plugin\BultIn\Session.cs" />
     <Compile Include="Translation\Instance\TranslatorFactory.cs" />
     <Compile Include="Translation\Plugin\BultIn\Translator.cs" />
@@ -123,7 +127,6 @@
     <Compile Include="Runtime\ModuleAssemblies.cs" />
     <Compile Include="Configuration\Configure.cs" />
     <Compile Include="Configuration\Expressions\ForExpression.cs" />
-    <Compile Include="Persistence\Plugin\Contracts\Repository.cs" />
     <Compile Include="IoC\Instance\NotInterfaceException.cs" />
     <Compile Include="Validation\Validator.cs" />
     <Compile Include="Validation\Expressions\ThisExpression.cs" />
@@ -137,7 +140,7 @@
     <Compile Include="Log\Plugin\Contracts\ILoggerPlugin.cs" />
     <Compile Include="Translation\Plugin\Contracts\ITranslatorPlugin.cs" />
     <Compile Include="Persistence\Plugin\Contracts\IPersistence.cs" />
-    <Compile Include="Persistence\Plugin\Contracts\QueryMethodAttribute.cs" />
+    <Compile Include="Persistence\Aspects\QueryMethodAttribute.cs" />
     <Compile Include="Runtime\LocalThreadStorage.cs" />
     <Compile Include="Validation\Instance\InvalidEntityException.cs" />
     <Compile Include="Validation\Instance\DomainException.cs" />

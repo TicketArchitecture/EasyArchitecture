@@ -22,7 +22,7 @@ namespace EasyArchitecture.Tests.Plugins
             _moduleName = Guid.NewGuid().ToString();
             
             var loggerPlugin = new LoggerPlugin();
-            loggerPlugin.Configure(new ModuleAssemblies(null,null,null){ModuleName = _moduleName});
+            loggerPlugin.Configure(new ModuleAssemblies(_moduleName, null,null,null));
             _logger = loggerPlugin.GetInstance();
 
         }

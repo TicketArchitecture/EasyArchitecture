@@ -6,27 +6,32 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
 {
     internal class Container : IContainer
     {
-        private readonly Dictionary<Type, Type> _registeredTypes = new Dictionary<Type, Type>();
+        private readonly Dictionary<Type, TypeRegistry> _registeredTypes;
+
+        public Container(Dictionary<Type, TypeRegistry> registeredTypes)
+        {
+            _registeredTypes = registeredTypes;
+        }
 
         public void Register<T, T1>() where T1 : T
         {
-            RegisterType(typeof (T), typeof (T1));
+            RegisterType(typeof (T), typeof (T1), false);
         }
 
         public void Register(Type interfaceType, Type implementationType, bool useInterception)
         {
-            RegisterType(interfaceType, implementationType);
+            RegisterType(interfaceType, implementationType, useInterception);
         }
 
-        private void RegisterType(Type interfaceType, Type implementationType)
+        private void RegisterType(Type interfaceType, Type implementationType, bool useInterception)
         {
             if (_registeredTypes.ContainsKey(interfaceType))
             {
-                _registeredTypes[interfaceType] = implementationType;
+                _registeredTypes[interfaceType] = new TypeRegistry(implementationType, useInterception);
             }
             else
             {
-                _registeredTypes.Add(interfaceType, implementationType);
+                _registeredTypes.Add(interfaceType, new TypeRegistry(implementationType, useInterception));
             }
         }
 
@@ -45,7 +50,8 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
             if (!_registeredTypes.ContainsKey(interfaceType))
                 throw new ArgumentException("Type not registered", interfaceType.ToString());
             //resolve
-            var implementationType = _registeredTypes[interfaceType];
+            //var implementationType = _registeredTypes[interfaceType].Type;
+            var typeInfo = _registeredTypes[interfaceType];
 
 
             /*-------------
@@ -57,7 +63,7 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
 
             //-----------------------caminho feliz
             //ha 1 constructor default (parameterless)
-            var constructors = implementationType.GetConstructors();
+            var constructors = typeInfo.Type.GetConstructors();
 
             //e se nao tiver nenhum constructor? //exception --> cannot build
 
@@ -65,7 +71,7 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
             if (parameterlessConstructor != null)
             {
                 //instance = implementationType.Assembly.CreateInstance(implementationType.FullName);
-                instance = Activator.CreateInstance(implementationType);
+                instance = Activator.CreateInstance(typeInfo.Type);
             }
             else
             {
@@ -84,16 +90,10 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
                 }
 
                 //instance = implementationType.Assembly.CreateInstance(implementationType.FullName,);
-                instance = Activator.CreateInstance(implementationType, objects.ToArray());
+                instance = Activator.CreateInstance(typeInfo.Type, objects.ToArray());
             }
 
-            //HACK: analisar qndo executar
-            //se for marcado interception, gerar proxy
-            //return ProxyFactory.NewInstance(instance);
-
-            //devolver
-            return instance;
+            return typeInfo.IsInteceptable ? ProxyFactory.NewInstance(instance) : instance;
         }
     }
-
 }

@@ -10,7 +10,12 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
 {
     internal class Translator : ITranslator
     {
-        private static readonly List<TypeMap> MappedTypes = new List<TypeMap>();
+        private readonly List<TypeMap> MappedTypes ;
+
+        public Translator(List<TypeMap> mappedTypes)
+        {
+            MappedTypes = mappedTypes;
+        }
 
         public T1 Translate<T, T1>(T source) 
         {
@@ -63,7 +68,7 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
             return target;
         }
 
-        private static object TranslateObject<T, T1>(T source, T1 target)
+        private  object TranslateObject<T, T1>(T source, T1 target)
         {
             //se ha mapeamento manual, executa delegate
             var typeMap = MappedTypes.Find(m => m.Source == typeof(T) && m.Target == typeof(T1));
@@ -95,7 +100,7 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
             return target;
         }
 
-        private static object ConvertValue(Type source, Type target, object value)
+        private  object ConvertValue(Type source, Type target, object value)
         {
             //TODO: teste
             //verificar se é lista genérica, se for, manda traduzir os itens da lista
@@ -132,7 +137,7 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
             return value;
         }
 
-        public static void MapType<T, TD>(Func<T, TD, TD> func)
+        public  void MapType<T, TD>(Func<T, TD, TD> func)
         {
             MappedTypes.Add(new TypeMap() { Source = typeof(T), Target = typeof(TD), DeclaredMap = func });
         }
@@ -158,7 +163,7 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
             return ThisIsGenericList(obj.GetType());
         }
 
-        private static IList TranslateGenericList(object source, Type target)
+        private  IList TranslateGenericList(object source, Type target)
         {
             IList targetList = null;
 

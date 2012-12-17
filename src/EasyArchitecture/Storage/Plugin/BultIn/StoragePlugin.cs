@@ -15,7 +15,7 @@ namespace EasyArchitecture.Storage.Plugin.BultIn
 
         public void Configure(ModuleAssemblies moduleAssemblies)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

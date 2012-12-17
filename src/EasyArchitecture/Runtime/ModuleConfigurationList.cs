@@ -8,7 +8,18 @@ namespace EasyArchitecture.Runtime
 
         public static void Add(string moduleName, ModuleConfiguration moduleConfiguration)
         {
-            List.Add(moduleName,moduleConfiguration);
+            if (List.ContainsKey(moduleName))
+            {
+                List[moduleName] = moduleConfiguration;
+            }
+            else
+            {
+                List.Add(moduleName, moduleConfiguration);    
+            }
+            
+
+
+            
         }
 
         public static ModuleConfiguration Get(string moduleName)

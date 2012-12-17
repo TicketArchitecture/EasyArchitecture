@@ -6,12 +6,12 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
 {
     internal class TranslatorPlugin : ITranslatorPlugin
     {
-        private static readonly List<TypeMap> MappedTypes = new List<TypeMap>();
+        private readonly List<TypeMap> MappedTypes = new List<TypeMap>();
 
 
         public ITranslator GetInstance()
         {
-            return new Translator();
+            return new Translator(MappedTypes);
         }
 
         public void Configure(ModuleAssemblies moduleAssemblies)

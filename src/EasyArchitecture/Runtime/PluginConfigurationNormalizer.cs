@@ -27,7 +27,7 @@ namespace EasyArchitecture.Runtime
             BuiltinPlugins.Add(typeof (IValidatorPlugin), typeof (ValidatorPlugin));
             BuiltinPlugins.Add(typeof (ILoggerPlugin), typeof (LoggerPlugin));
             BuiltinPlugins.Add(typeof (ITranslatorPlugin), typeof (TranslatorPlugin));
-            BuiltinPlugins.Add(typeof (ICachePlugin), typeof (Cache));
+            BuiltinPlugins.Add(typeof (ICachePlugin), typeof (CachePlugin));
             BuiltinPlugins.Add(typeof (IStoragePlugin), typeof (StoragePlugin));
             BuiltinPlugins.Add(typeof (IPersistencePlugin), typeof (PersistencePlugin));
             BuiltinPlugins.Add(typeof(IContainerPlugin), typeof(ContainerPlugin));
@@ -43,7 +43,7 @@ namespace EasyArchitecture.Runtime
                 if(!configuredPlugins.ContainsKey(builtinPlugin.Key))
                 {
                     var plugin = Activator.CreateInstance(builtinPlugin.Value);
-                    pluginConfiguration.Register(plugin);
+                    pluginConfiguration.Register(builtinPlugin.Key,plugin);
                 }
             }
 

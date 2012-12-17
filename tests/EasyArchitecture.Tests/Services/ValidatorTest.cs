@@ -5,7 +5,7 @@ using EasyArchitecture.Validation.Instance;
 using NUnit.Framework;
 using Validator = EasyArchitecture.Validation.Validator;
 
-namespace EasyArchitecture.Tests.Mechanisms
+namespace EasyArchitecture.Tests.Services
 {
     [TestFixture]
     public class ValidatorTest

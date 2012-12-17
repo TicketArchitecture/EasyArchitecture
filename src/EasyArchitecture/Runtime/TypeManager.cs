@@ -30,6 +30,14 @@ namespace EasyArchitecture.Runtime
             return (T) Activator.CreateInstance(specificType);
         }
 
+        internal static object CreateGenericList(Type typeOfList)
+        {
+            var genericList = typeof(List<>);
+            
+            var specificType = genericList.MakeGenericType(new[] { typeOfList });
+            return Activator.CreateInstance(specificType);
+        }
+
         private static Type ThisIsGenericList(Type type)
         {
             Type typeGeneric = null;

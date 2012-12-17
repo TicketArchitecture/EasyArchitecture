@@ -60,6 +60,7 @@ namespace EasyArchitecture.Runtime
         public static ModuleAssemblies GetModuleAssemblies(string moduleName)
         {
             return new ModuleAssemblies(
+                moduleName,
                 GetAssembly(Application, moduleName),
                 GetAssembly(Domain, moduleName),
                 GetAssembly(Infrastructure, moduleName)

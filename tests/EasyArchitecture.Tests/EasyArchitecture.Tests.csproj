@@ -52,11 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Intances\CacheTest.cs" />
-    <Compile Include="Mechanisms\CacheTest.cs" />
-    <Compile Include="Mechanisms\RepositoryTest.cs" />
-    <Compile Include="Mechanisms\StorageTest.cs" />
-    <Compile Include="Mechanisms\LoggerTest.cs" />
-    <Compile Include="Mechanisms\QuerierTest.cs" />
+    <Compile Include="Plugins\PersistenceTest.cs" />
+    <Compile Include="Services\CacheTest.cs" />
+    <Compile Include="Services\RepositoryTest.cs" />
+    <Compile Include="Services\StorageTest.cs" />
+    <Compile Include="Services\LoggerTest.cs" />
     <Compile Include="Plugins\CacheTest.cs" />
     <Compile Include="Plugins\StorageTest.cs" />
     <Compile Include="Plugins\TranslatorTest.cs" />
@@ -69,18 +69,18 @@
     <Compile Include="Stuff\DI\IDummyInterface.cs" />
     <Compile Include="Stuff\DI\DummyImplementation.cs" />
     <Compile Include="Stuff\DI\NewDummyImplementation.cs" />
-    <Compile Include="Plugins\DependencyInjectionTest.cs" />
-    <Compile Include="Plugins\InMemoryDbTest.cs" />
-    <Compile Include="Mechanisms\ConfigurationTest.cs" />
-    <Compile Include="Mechanisms\TranslatorTest.cs" />
-    <Compile Include="Mechanisms\ValidatorTest.cs" />
+    <Compile Include="Plugins\ContainerTest.cs" />
+    <Compile Include="Plugins\RepositoryTest.cs" />
+    <Compile Include="Services\ConfigurationTest.cs" />
+    <Compile Include="Services\TranslatorTest.cs" />
+    <Compile Include="Services\ValidatorTest.cs" />
     <Compile Include="Stuff\DummyDogFacade.cs" />
     <Compile Include="Stuff\Helpers\AssemblyLoader.cs" />
     <Compile Include="Runtime\AssemblyManagerTest.cs" />
     <Compile Include="Stuff\DummyCatFacade.cs" />
     <Compile Include="Stuff\ICatFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Mechanisms\DependencyInjectionTest.cs" />
+    <Compile Include="Services\ContainerTest.cs" />
     <Compile Include="UserCode\FacadeTest.cs" />
   </ItemGroup>
   <ItemGroup>

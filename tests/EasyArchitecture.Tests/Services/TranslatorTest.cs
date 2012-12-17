@@ -1,11 +1,10 @@
 ﻿using EasyArchitecture.Configuration;
 using EasyArchitecture.Runtime;
+using EasyArchitecture.Tests.Stuff.Translation;
 using EasyArchitecture.Translation;
 using NUnit.Framework;
-using Dog = EasyArchitecture.Tests.Stuff.Translation.Dog;
-using DogDto = EasyArchitecture.Tests.Stuff.Translation.DogDto;
 
-namespace EasyArchitecture.Tests.Mechanisms
+namespace EasyArchitecture.Tests.Services
 {
     [TestFixture]
     public class TranslatorTest

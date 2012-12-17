@@ -1,9 +1,9 @@
 using NUnit.Framework;
 
-namespace EasyArchitecture.Tests.Mechanisms
+namespace EasyArchitecture.Tests.Services
 {
     [TestFixture]
-    public class QuerierTest
+    public class RepositoryTest
     {
         [Test]
         [Ignore("Not implemented")]

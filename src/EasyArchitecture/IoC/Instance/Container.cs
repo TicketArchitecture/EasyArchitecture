@@ -17,27 +17,27 @@ namespace EasyArchitecture.IoC.Instance
             //AutoRegister(easyConfig.ApplicationAssembly, easyConfig.ApplicationAssembly, true);
         }
 
-        private void AutoRegister(Assembly interfacesAssembly, Assembly implementationsAssembly, bool useInterception)
-        {
-            var implementationTypes = implementationsAssembly.GetExportedTypes();
-            var interfaceTypes = interfacesAssembly.GetExportedTypes();
+        //private void AutoRegister(Assembly interfacesAssembly, Assembly implementationsAssembly, bool useInterception)
+        //{
+        //    var implementationTypes = implementationsAssembly.GetExportedTypes();
+        //    var interfaceTypes = interfacesAssembly.GetExportedTypes();
 
-            foreach (var exportedType in interfaceTypes)
-            {
-                if (!exportedType.IsInterface) continue;
+        //    foreach (var exportedType in interfaceTypes)
+        //    {
+        //        if (!exportedType.IsInterface) continue;
 
-                var type = exportedType;
-                var implementationType = Array.Find(implementationTypes,
-                                                    t => type.IsAssignableFrom(t) && !type.Equals(t));
+        //        var type = exportedType;
+        //        var implementationType = Array.Find(implementationTypes,
+        //                                            t => type.IsAssignableFrom(t) && !type.Equals(t));
 
-                if (implementationType == null)
-                {
-                    continue;
-                }
+        //        if (implementationType == null)
+        //        {
+        //            continue;
+        //        }
 
-                _plugin.Register(exportedType, implementationType, useInterception);
-            }
-        }
+        //        _plugin.Register(exportedType, implementationType, useInterception);
+        //    }
+        //}
 
         internal void Register<T, T1>() where T1 : T
         {

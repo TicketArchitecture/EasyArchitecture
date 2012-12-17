@@ -5,10 +5,10 @@ using EasyArchitecture.Runtime;
 using EasyArchitecture.Tests.Stuff;
 using NUnit.Framework;
 
-namespace EasyArchitecture.Tests.Mechanisms
+namespace EasyArchitecture.Tests.Services
 {
     [TestFixture]
-    public class DependencyInjectionTest
+    public class ContainerTest
     {
         [SetUp]
         public void Setup()

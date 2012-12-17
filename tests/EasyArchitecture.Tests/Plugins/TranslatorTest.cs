@@ -39,7 +39,9 @@ namespace EasyArchitecture.Tests.Plugins
 
             var translator = new TranslatorPlugin().GetInstance();
 
-            Translator.MapType<Dog, DogDto>(
+            //TODO: not allowed, just for test
+            var internalTranslator = (Translator)translator;
+            internalTranslator.MapType<Dog, DogDto>(
                 (source, target) =>
                 {
                     target.Id = source.Id;
