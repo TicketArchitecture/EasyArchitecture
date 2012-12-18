@@ -1,5 +1,3 @@
-using System.Reflection;
-
 namespace EasyArchitecture.Translation.Plugin.Contracts
 {
     public interface ITranslator

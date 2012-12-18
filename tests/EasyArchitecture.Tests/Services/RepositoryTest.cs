@@ -1,5 +1,6 @@
 using System;
 using Application4Test.Domain;
+using EasyArchitecture.Configuration;
 using EasyArchitecture.Persistence;
 using EasyArchitecture.Runtime;
 using EasyArchitecture.Tests.Stuff.Helpers;
@@ -17,15 +18,13 @@ namespace EasyArchitecture.Tests.Plugins
         [SetUp]
         public void SetUp()
         {
+            Configure
+                .For("Application4Test")
+                .Done();
+
             _dog = new Dog { Age = 15, Name = "Old Dog" };
 
-            //var _moduleName = Guid.NewGuid().ToString();
-
-            //var validatorPlugin = new ValidatorPlugin();
-            //var infraAssembly = AssemblyLoader.LoadAssemblyFromFile(AssemblyLoader.InfrastructureAssemblyName);
-
-            //validatorPlugin.Configure(new ModuleAssemblies(_moduleName, null, null, infraAssembly));
-            //_plugin = validatorPlugin.GetInstance();
+            LocalThreadStorage.SetCurrentModuleName("Application4Test");
         }
 
         [Test]

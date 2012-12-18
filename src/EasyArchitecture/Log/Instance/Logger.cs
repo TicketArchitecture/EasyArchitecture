@@ -10,7 +10,7 @@ namespace EasyArchitecture.Log.Instance
     {
         private readonly ILogger _plugin;
         private readonly string _moduleName;
-        private readonly LogLevel _logLevel;
+        private readonly LogLevel _logLevel=LogLevel.Debug;//TODO: allow configuration
         private static readonly List<LogLevel> SequencialListOfLogLevel= new List<LogLevel>{LogLevel.Debug,LogLevel.Info,LogLevel.Warn,LogLevel.Error,LogLevel.Fatal};
 
         //internal Logger(ModuleConfiguration easyConfig)
