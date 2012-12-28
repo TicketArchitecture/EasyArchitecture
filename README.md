@@ -1,48 +1,47 @@
 EasyArchitecture
 ================
 
-pt-br
-Um framework leve para acelerar a construção de API's
+Um framework simples e leve para acelerar a construção de API's
 
-Objetivos:
-- Evitar erros de digitação através do uso de interfaces fluentes
-- Proteger o modelo de domínio
-- Permitir decisão tardia de tecnologias
+##Objetivos:
+* Dar suporte a pequenos e grandes sistemas
+* Proteger o modelo de domínio
+* Permitir decisão tardia de tecnologias
+* Permitir testabilidade
 
-Mecanismos:
-- Log
-- Armazenagem
-- Tradução de objetos
-- Inversão de Controle
-- 
+##Serviços de infra-estrutura:
+* Log
+* Armazenagem
+* Tradução de objetos
+* Inversão de Controle
+* Cache
+* Persistência
+* Validação de objetos
 
+##Extensão:
+	Através de plugins, os serviços de infra-estrutura podem ser extendidos.
+	Há diversos serviços disponíveis no projeto: [EasyArchitecture.Plugins](https://github.com/henriquericcio/EasyArchitecture.Plugins)
 
-Cenários:
-- Prototipação de API's
-- Testes unitários
-
-Extensão:
-- Através de plugins: EasyArchitecture.Plugins
-
-Ambientes:
-- Roda no Mono!
-
+##Ambientes:
+* Linux: Mono 
+* Windows: .Net Framework
 
 
+##Testes
+	Descritos do nível mais baixo para o mais alto.
 
-en-us
-A lightweight framework to accelerate API building
+1. Testes de Runtime
+	Validam as funcionalidades do núcleo do framework.
 
-Objectives:
-- Avoid typo mistakes using 
-- Protect domain model
-- Allow late-decision about technology
+1.  Plugins
+	Testa diretamente os plugins.
 
+1. Intances
+	Verifica se as chamadas aos plugins estao sendo realizadas.
 
+1. Services
+	Tenta capturar erros do comportamento dos serviços de infra-estrutura.
 
-Uses following libs:
-- FluentNHibernate - http://fluentnhibernate.org/
-- Unity Container - http://unity.codeplex.com/
-- AutoMapper - http://automapper.org/
-- log4net - http://logging.apache.org/log4net/
-- NUnit - http://www.nunit.org/
+1. User code
+	Simula o uso do código de usuário.
+

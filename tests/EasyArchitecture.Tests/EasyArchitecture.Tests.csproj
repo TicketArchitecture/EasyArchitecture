@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Intances\CacheTest.cs" />
+    <Compile Include="Instances\CacheTest.cs" />
     <Compile Include="Plugins\PersistenceTest.cs" />
     <Compile Include="Services\CacheTest.cs" />
     <Compile Include="Services\RepositoryTest.cs" />
@@ -104,7 +104,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="readme.txt" />
     <Content Include="Stuff\File\Metallica-SadButTrue.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

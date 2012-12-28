@@ -1,10 +1,10 @@
 using System;
+using EasyArchitecture.Caching.Instance;
 using EasyArchitecture.Caching.Plugin.Contracts;
 using NUnit.Framework;
 using Rhino.Mocks;
-using Cache = EasyArchitecture.Caching.Instance.Cache;
 
-namespace EasyArchitecture.Tests.Intances
+namespace EasyArchitecture.Tests.Instances
 {
     [TestFixture]
     public class CacheTest
