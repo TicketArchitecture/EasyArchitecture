@@ -44,4 +44,3 @@ Um framework simples e leve para acelerar a construção de API's
 
 1. User code
 	Simula o uso do código de usuário.
-
