@@ -20,7 +20,11 @@ O EasyArchiteture provê serviços de infra-estrutura.
 Através de uma interface simples e intuítiva é possível logar mensagens e exceptions.
 
 ```csharp
-        Logger.Message("Uma mensagem de debug").Debug();
+Logger.Message("Este é a {0} de {1} mensagens", "primeira","muitas").Info();
+
+Logger.Exception(exception).Fatal();
+
+Logger.Raw(complexObject).Debug();
 ```
 
 ### Armazenagem
