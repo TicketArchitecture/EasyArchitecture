@@ -26,20 +26,9 @@ Há diversos serviços disponíveis no projeto: [EasyArchitecture.Plugins](https
 * Linux: Mono 
 * Windows: .Net Framework
 
-##Testes
-Descritos do nível mais baixo para o mais alto.
+##Comece a usar
+[Nuget Package](http://nuget.org/packages/easyarchitecture)
 
-1. Testes de Runtime
-Validam as funcionalidades do núcleo do framework.
+##Conheça mais
+[Documentação](http://henriquericcio.github.com/EasyArchitecture/)
 
-1.  Plugins
-Testa diretamente os plugins.
-
-1. Intances
-Verifica se as chamadas aos plugins estao sendo realizadas.
-
-1. Services
-Tenta capturar erros do comportamento dos serviços de infra-estrutura.
-
-1. User code
-Simula o uso do código de usuário.
