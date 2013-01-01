@@ -19,6 +19,10 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
         private const string MODULE_NAME        = "ProxyModule";
         private const string HANDLER_NAME       = "handler";
 
+        private static readonly MethodInfo INVOKE_METHOD = typeof(IProxyInvocationHandler).GetMethod("Invoke");
+        private static readonly MethodInfo GET_METHODINFO_METHOD = typeof(MetaDataFactory).GetMethod("GetMethod", new Type[] { typeof(string), typeof(int) });
+
+
         // Initialize the value type mapper.  This is needed for methods with intrinsic 
         // return types, used in the Emit process.
         static ProxyFactory() {
@@ -144,163 +148,102 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
             return retVal;
         }
 
+
         private void GenerateMethod( Type interfaceType, FieldBuilder handlerField, TypeBuilder typeBuilder ) {
             MetaDataFactory.Add( interfaceType );
             MethodInfo[] interfaceMethods = interfaceType.GetMethods();
-            if ( interfaceMethods != null ) {
+            PropertyInfo[] props = interfaceType.GetProperties();
 
-                for ( int i = 0; i < interfaceMethods.Length; i++ ) {
-                    MethodInfo methodInfo = interfaceMethods[i];
-                    // Get the method parameters since we need to create an array
-                    // of parameter types                         
-                    ParameterInfo[] methodParams = methodInfo.GetParameters();
-                    int numOfParams = methodParams.Length;
-                    Type[] methodParameters = new Type[ numOfParams ];
+            for ( int i = 0; i < interfaceMethods.Length; i++ ) {
+                MethodInfo methodInfo = interfaceMethods[i];
 
-                    // convert the ParameterInfo objects into Type
-                    for ( int j = 0; j < numOfParams; j++ ) {
-                        methodParameters[j] = methodParams[j].ParameterType;
-                    }
+                // Get the method parameters since we need to create an array
+                // of parameter types
+                ParameterInfo[] methodParams = methodInfo.GetParameters();
+                int numOfParams = methodParams.Length;
+                Type[] methodParameters = new Type[ numOfParams ];
 
-                    // create a new builder for the method in the interface
-                    MethodBuilder methodBuilder = typeBuilder.DefineMethod(
-                        methodInfo.Name, 
-                        MethodAttributes.Public | MethodAttributes.Virtual,
-                        CallingConventions.Standard,
-                        methodInfo.ReturnType, methodParameters );                                                   
-
-                    #region( "Handler Method IL Code" )
-                    ILGenerator methodIL = methodBuilder.GetILGenerator();
-                            
-                    // Emit a declaration of a local variable if there is a return
-                    // type defined
-                    if ( !methodInfo.ReturnType.Equals( typeof( void ) ) ) {
-                        methodIL.DeclareLocal( methodInfo.ReturnType );
-                        if ( methodInfo.ReturnType.IsValueType && !methodInfo.ReturnType.IsPrimitive ) {
-                            methodIL.DeclareLocal( methodInfo.ReturnType );
-                        }
-                    }
-                            
-                    // if we have any parameters for the method, then declare an 
-                    // Object array local var.
-                    if ( numOfParams > 0 ) {
-                        methodIL.DeclareLocal( typeof( System.Object[] ) );
-                    }
-
-                    // declare a label for invoking the handler
-                    Label handlerLabel = methodIL.DefineLabel();                            
-                    // declare a lable for returning from the mething
-                    Label returnLabel = methodIL.DefineLabel();
-                                                      
-                    // load "this"
-                    methodIL.Emit( OpCodes.Ldarg_0 );
-                    // load the handler instance variable
-                    methodIL.Emit( OpCodes.Ldfld, handlerField );
-                    // jump to the handlerLabel if the handler instance variable is not null
-                    methodIL.Emit( OpCodes.Brtrue_S, handlerLabel );                                                        
-                    // the handler is null, so return null if the return type of
-                    // the method is not void, otherwise return nothing
-                    if ( !methodInfo.ReturnType.Equals( typeof( void ) ) ) {                                 
-                        if ( methodInfo.ReturnType.IsValueType && !methodInfo.ReturnType.IsPrimitive && !methodInfo.ReturnType.IsEnum ) {
-                            methodIL.Emit( OpCodes.Ldloc_1 );                                 
-                        } else {
-                            // load null onto the stack
-                            methodIL.Emit( OpCodes.Ldnull );
-                        }
-                        // store the null return value
-                        methodIL.Emit( OpCodes.Stloc_0 );
-                        // jump to return
-                        methodIL.Emit( OpCodes.Br_S, returnLabel );                        
-                    }                                                        
- 
-                    // the handler is not null, so continue with execution
-                    methodIL.MarkLabel( handlerLabel );
-                            
-                    // load "this"
-                    methodIL.Emit( OpCodes.Ldarg_0 );
-                    // load the handler
-                    methodIL.Emit( OpCodes.Ldfld, handlerField );
-                    // load "this" since its needed for the call to invoke
-                    methodIL.Emit( OpCodes.Ldarg_0 );
-                    // load the name of the interface, used to get the MethodInfo object
-                    // from MetaDataFactory
-                    methodIL.Emit( OpCodes.Ldstr, interfaceType.FullName );
-                    // load the index, used to get the MethodInfo object 
-                    // from MetaDataFactory 
-                    methodIL.Emit( OpCodes.Ldc_I4, i ); 
-                    // invoke GetMethod in MetaDataFactory
-                    methodIL.Emit( OpCodes.Call, 
-                                   typeof( MetaDataFactory ).GetMethod( 
-                                       "GetMethod", new Type[] { typeof( string ), typeof( int ) } ) );
-
-                    // load the number of parameters onto the stack
-                    methodIL.Emit( OpCodes.Ldc_I4, numOfParams );
-                    // create a new array, using the size that was just pused on the stack
-                    methodIL.Emit( OpCodes.Newarr, typeof( System.Object ) );
-                            
-                    // if we have any parameters, then iterate through and set the values
-                    // of each element to the corresponding arguments
-                    if ( numOfParams > 0 ) {
-                        methodIL.Emit( OpCodes.Stloc_1 );
-                        for ( int j = 0; j < numOfParams; j++ ) {
-                            methodIL.Emit( OpCodes.Ldloc_1 );
-                            methodIL.Emit( OpCodes.Ldc_I4, j );
-                            methodIL.Emit( OpCodes.Ldarg, j + 1 );
-                            if ( methodParameters[j].IsValueType ) {
-                                methodIL.Emit( OpCodes.Box, methodParameters[j] );
-                            }
-                            methodIL.Emit( OpCodes.Stelem_Ref );                                    
-                        }
-                        methodIL.Emit( OpCodes.Ldloc_1 );
-                    }
-
-                    // call the Invoke method
-                    methodIL.Emit( OpCodes.Callvirt, 
-                                   typeof( IProxyInvocationHandler ).GetMethod( "Invoke" ) );
-                            
-                    if ( !methodInfo.ReturnType.Equals( typeof( void ) ) ) { 
-                        // if the return type if a value type, then unbox the return value
-                        // so that we don't get junk.
-                        if ( methodInfo.ReturnType.IsValueType  ) {
-                            methodIL.Emit( OpCodes.Unbox, methodInfo.ReturnType );
-                            if ( methodInfo.ReturnType.IsEnum ) {
-                                methodIL.Emit( OpCodes.Ldind_I4 );
-                            } else if ( !methodInfo.ReturnType.IsPrimitive ) {
-                                methodIL.Emit( OpCodes.Ldobj, methodInfo.ReturnType );
-                            } else {
-                                methodIL.Emit( (OpCode) opCodeTypeMapper[ methodInfo.ReturnType ] );
-                            }
-                        }                                                                     
-                        
-                        // store the result
-                        methodIL.Emit( OpCodes.Stloc_0 );
-                        // jump to the return statement
-                        methodIL.Emit( OpCodes.Br_S, returnLabel );
-                        // mark the return statement
-                        methodIL.MarkLabel( returnLabel );
-                        // load the value stored before we return.  This will either be
-                        // null (if the handler was null) or the return value from Invoke
-                        methodIL.Emit( OpCodes.Ldloc_0 );
-                    } else {
-                        // pop the return value that Invoke returned from the stack since
-                        // the method's return type is void. 
-                        methodIL.Emit( OpCodes.Pop );
-                        //mark the return statement
-                        methodIL.MarkLabel( returnLabel );
-                    }
-                                                
-                    // Return
-                    methodIL.Emit( OpCodes.Ret );
-                    #endregion
-
+                // convert the ParameterInfo objects into Type
+                for ( int j = 0; j < numOfParams; j++ ) {
+                    methodParameters[j] = methodParams[j].ParameterType;
                 }
+
+                // create a new builder for the method in the interface
+                MethodBuilder methodBuilder = typeBuilder.DefineMethod(
+                    methodInfo.Name, 
+                    MethodAttributes.Public | MethodAttributes.Virtual,
+                    CallingConventions.Standard,
+                    methodInfo.ReturnType, methodParameters );                                                   
+
+                #region( "Handler Method IL Code" )
+                ILGenerator methodIL = methodBuilder.GetILGenerator();
+                        
+                // load "this"
+                methodIL.Emit( OpCodes.Ldarg_0 );
+                // load the handler
+                methodIL.Emit( OpCodes.Ldfld, handlerField );
+                // load "this" since its needed for the call to invoke
+                methodIL.Emit( OpCodes.Ldarg_0 );
+                // load the name of the interface, used to get the MethodInfo object
+                // from MetaDataFactory
+                methodIL.Emit( OpCodes.Ldstr, interfaceType.FullName );
+                // load the index, used to get the MethodInfo object 
+                // from MetaDataFactory 
+                methodIL.Emit( OpCodes.Ldc_I4, i ); 
+                // invoke GetMethod in MetaDataFactory
+                methodIL.Emit( OpCodes.Call, GET_METHODINFO_METHOD);
+
+                // load the number of parameters onto the stack
+                methodIL.Emit( OpCodes.Ldc_I4, numOfParams );
+                // create a new array, using the size that was just pused on the stack
+                methodIL.Emit( OpCodes.Newarr, typeof(object) );
+                        
+                // if we have any parameters, then iterate through and set the values
+                // of each element to the corresponding arguments
+                for ( int j = 0; j < numOfParams; j++ ) {
+                    methodIL.Emit( OpCodes.Dup );   // this copies the array
+                    methodIL.Emit( OpCodes.Ldc_I4, j );
+                    methodIL.Emit( OpCodes.Ldarg, j + 1 );
+                    if ( methodParameters[j].IsValueType ) {
+                        methodIL.Emit( OpCodes.Box, methodParameters[j] );
+                    }
+                    methodIL.Emit( OpCodes.Stelem_Ref );                                    
+                }
+
+                // call the Invoke method
+                methodIL.Emit( OpCodes.Callvirt, INVOKE_METHOD );
+                        
+                if ( methodInfo.ReturnType != typeof(void) ) { 
+                    // if the return type if a value type, then unbox the return value
+                    // so that we don't get junk.
+                    if ( methodInfo.ReturnType.IsValueType  ) {
+                        methodIL.Emit( OpCodes.Unbox, methodInfo.ReturnType );
+                        if ( methodInfo.ReturnType.IsEnum ) {
+                            methodIL.Emit( OpCodes.Ldind_I4 );
+                        } else if ( !methodInfo.ReturnType.IsPrimitive ) {
+                            methodIL.Emit( OpCodes.Ldobj, methodInfo.ReturnType );
+                        } else {
+                            methodIL.Emit( (OpCode) opCodeTypeMapper[ methodInfo.ReturnType ] );
+                        }
+                    }                                                                     
+                } else {
+                    // pop the return value that Invoke returned from the stack since
+                    // the method's return type is void. 
+                    methodIL.Emit( OpCodes.Pop );
+                }
+                                            
+                // Return
+                methodIL.Emit( OpCodes.Ret );
+                #endregion
             }
 
+           
             // Iterate through the parent interfaces and recursively call this method
             foreach ( Type parentType in interfaceType.GetInterfaces() ) {
                 GenerateMethod( parentType, handlerField, typeBuilder );            
             }
         }
+    
 
         //TODO: BUG when return type is void
         public static Object NewInstance(Object obj)

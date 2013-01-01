@@ -5,6 +5,7 @@
         public virtual string Name { get; set; }
         public virtual int Age { get; set; }
         public virtual int Id { get; set; }
+        public virtual bool IsSleeping { get; set; }
 
         public override bool Equals(object obj)
         {

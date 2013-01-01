@@ -4,6 +4,7 @@ using Application4Test.Application.Contracts;
 using Application4Test.Application.Contracts.DTOs;
 using Application4Test.Domain;
 using Application4Test.Domain.Repositories;
+using Application4Test.Domain.Services;
 using EasyArchitecture.Log;
 using EasyArchitecture.Persistence.Plugin.Contracts;
 using EasyArchitecture.Translation;
@@ -14,9 +15,12 @@ namespace Application4Test.Application
     {
         private readonly IDogRepository _dogRepository;
 
-        public DogFacade(IDogRepository dogRepository)
+        private readonly IDogService _dogService;
+
+        public DogFacade(IDogRepository dogRepository, IDogService dogService)
         {
             _dogRepository = dogRepository;
+            _dogService = dogService;
         }
 
         public DogDto GetDog(DogDto dog)
@@ -71,5 +75,19 @@ namespace Application4Test.Application
         //{
         //    return PersistenceQuerier.Execute<DogDto>("GetAllDogs");
         //}
+
+
+        public void PutDogToSleep(DogDto dog)
+        {
+
+            var entity = Translator.This<DogDto>(dog).To<Dog>();
+            _dogService.PutDogToSleep(entity);
+
+            
+
+
+        }
     }
+
+    
 }

@@ -10,5 +10,6 @@ namespace Application4Test.Application.Contracts
         int UpdateDog(DogDto dog);
         //IList<DogDto> GetAllOldDogs(int age);
         //IList<DogDto> GetAllDogs();
+        void PutDogToSleep(DogDto dog);
     }
 }

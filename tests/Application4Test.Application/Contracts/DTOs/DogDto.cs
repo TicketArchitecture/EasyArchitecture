@@ -7,7 +7,7 @@ namespace Application4Test.Application.Contracts.DTOs
         public string Name { get; set; }
         public int Age { get; set; }
         public long Id  { get; set; }
-
+        public bool isSleeping { get; set; }
 
 //not need, just for allow test
         public override bool Equals(object obj)
@@ -26,5 +26,7 @@ namespace Application4Test.Application.Contracts.DTOs
                    );
 
         }
+
+        public bool IsSleeping { get; set; }
     }
 }

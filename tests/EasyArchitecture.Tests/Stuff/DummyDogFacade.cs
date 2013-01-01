@@ -30,5 +30,11 @@ namespace EasyArchitecture.Tests.Stuff
         {
             throw new System.NotImplementedException();
         }
+
+
+        public void PutDogToSleep(DogDto dog)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
