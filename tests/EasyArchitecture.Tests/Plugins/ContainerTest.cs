@@ -2,6 +2,7 @@
 using EasyArchitecture.IoC.Plugin.Contracts;
 using EasyArchitecture.Tests.Stuff.DI;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace EasyArchitecture.Tests.Plugins
 {
@@ -95,6 +96,48 @@ namespace EasyArchitecture.Tests.Plugins
             const string expectedMethodReturn = "DummyMethod";
 
             Assert.That(methodReturn, Is.EqualTo(expectedMethodReturn));
+        }
+
+        [Test]
+        public void Should_be_possible_call_facade_methods_with_any_signature()
+        {
+
+            _container.Register<IDummyInterface, DummyImplementation>();
+
+            var implementation = _container.Resolve<IDummyInterface>();
+            const string voidmethodmessage = "VoidDummyMethodExecuted";
+
+            
+            implementation.VoidDummyMethod();
+            Assert.That(implementation.Message(), Is.EqualTo(voidmethodmessage));
+
+            const int expectedInt = 1;
+            Assert.That(implementation.PrimitiveWithOneArg(1),Is.EqualTo(expectedInt));
+
+            string expectedStr = "message1+message2";
+            Assert.That(implementation.withArgs("message1+", "message2"), Is.EqualTo(expectedStr));
+
+
+            var kvp = new KeyValuePair<int, DummyClass>(1, new DummyClass());
+            Assert.That(implementation.WithTypedInterfaceArg(kvp), Is.EqualTo(kvp.Value.GetType()));
+
+            Assert.That(implementation.EnumWithEnumArg(DummyEnum.Second), Is.EqualTo(DummyEnum.Second));
+
+            string[] expectedArr = { "message1", "message2" };
+            string[] strArr = { "message1", "message2" };
+
+            var returnedStrArr = implementation.ArrayWithArrArg(strArr);
+            Assert.That(returnedStrArr, Is.EqualTo(expectedArr));
+
+            IList<DummyClass> expectedLst = new List<DummyClass>();
+            expectedLst.Add(new DummyClass());
+
+            IList<DummyClass> testLst = new List<DummyClass>();
+            testLst.Add(new DummyClass());
+
+            var receivedLst = implementation.TypedInterfaceWithoutArgs();
+            Assert.That(testLst, Is.EqualTo(expectedLst));
+
         }
 
     }

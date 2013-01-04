@@ -44,22 +44,6 @@ namespace EasyArchitecture.Tests.UserCode
             Assert.That(actual, Is.EqualTo(expected));
         }
 
-        [Test]
-        public void Can_update_entity()
-        {
-            var facade = Container.Resolve<IDogFacade>();
-
-            var expected = new DogDto() { Age = 200, Name = "Rex" };
-
-            var actual = facade.CreateDog(new DogDto() { Age = 10, Name = "Rex" });
-            actual.Age = 200;
-
-            facade.UpdateDog(actual);
-            
-            actual = facade.GetDog(new DogDto() { Name="Rex" });
-
-            Assert.That(actual, Is.EqualTo(expected));
-        }
 
         [Test]
         public void Can_put_dog_to_sleep()
