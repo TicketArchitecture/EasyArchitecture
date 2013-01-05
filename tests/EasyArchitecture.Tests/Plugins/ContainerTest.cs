@@ -132,11 +132,8 @@ namespace EasyArchitecture.Tests.Plugins
             IList<DummyClass> expectedLst = new List<DummyClass>();
             expectedLst.Add(new DummyClass());
 
-            IList<DummyClass> testLst = new List<DummyClass>();
-            testLst.Add(new DummyClass());
-
             var receivedLst = implementation.TypedInterfaceWithoutArgs();
-            Assert.That(testLst, Is.EqualTo(expectedLst));
+            Assert.That(receivedLst, Is.EqualTo(expectedLst));
 
         }
 
