@@ -7,7 +7,6 @@ Com EasyArchitecture é possível:
 * Prototipar
 * Deixar para decidir mais tarde qual tecnologia usar
 * Efetuar testes unitários
-* 
 * Permitir testabilidade
 
 
@@ -121,5 +120,5 @@ Há diversos serviços disponíveis no projeto: [EasyArchitecture.Plugins](https
 [Nuget Package](http://nuget.org/packages/easyarchitecture)
 
 # Conheça mais
-[Documentação](http://henriquericcio.github.com/EasyArchitecture/)
-
+* [Documentação Oficial](http://henriquericcio.github.com/EasyArchitecture/) - Em andamento
+* [Blog do idealizador](http://henriquericcio.com/category/easyarchitecture/) - Aqui estão comentadas e documentadas as idéias e decisões
