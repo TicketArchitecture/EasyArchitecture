@@ -186,7 +186,6 @@ namespace EasyArchitecture.Tests.Plugins
             var actualLst = implementation.TypedInterfaceWithoutArgs();
 
             Assert.That(actualLst, Is.EqualTo(expectedLst));
-
         }
         
    
