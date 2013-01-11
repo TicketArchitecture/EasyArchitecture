@@ -6,9 +6,13 @@ namespace EasyArchitecture.Tests.Stuff
 {
     public class DummyDogFacade : IDogFacade
     {
-        public DogDto GetDog(DogDto dog)
+        public IList<DogDto> GetDogs(DogDto dog)
         {
-            return new DogDto(){Name = "DummyDog"};
+            List<DogDto> dogs = new List<DogDto>();
+
+            dogs.Add(new DogDto(){Name = "DummyDog"});
+
+            return dogs;
         }
 
         public DogDto CreateDog(DogDto dog)
@@ -36,5 +40,12 @@ namespace EasyArchitecture.Tests.Stuff
         {
             throw new System.NotImplementedException();
         }
+
+
+        public DogDto GetDog(int dog)
+        {
+            throw new System.NotImplementedException();
+        }
+
     }
 }

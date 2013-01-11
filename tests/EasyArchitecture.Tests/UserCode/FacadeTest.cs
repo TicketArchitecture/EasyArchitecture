@@ -39,9 +39,9 @@ namespace EasyArchitecture.Tests.UserCode
             var expected = new DogDto() { Age = 10, Name = "Rex" };
 
             facade.CreateDog(new DogDto() { Age = 10, Name = "Rex" });
-            var actual = facade.GetDog(new DogDto(){Age=10});
+            var actual = facade.GetDogs(new DogDto(){Age=10});
 
-            Assert.That(actual, Is.EqualTo(expected));
+            Assert.That(actual.Count, Is.GreaterThan(0));
         }
 
 
@@ -54,9 +54,9 @@ namespace EasyArchitecture.Tests.UserCode
 
             facade.PutDogToSleep(dogDto);
 
-            var sleepingDog = facade.GetDog(dogDto);
+            var dog = facade.GetDog(100);
 
-            Assert.IsTrue(sleepingDog.IsSleeping);
+            Assert.IsTrue(dog.IsSleeping);
         }
            
 

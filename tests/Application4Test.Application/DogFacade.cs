@@ -23,11 +23,11 @@ namespace Application4Test.Application
             _dogService = dogService;
         }
 
-        public DogDto GetDog(DogDto dog)
+        public DogDto GetDog(int id)
         {
-            Contract.Requires(dog != null);
+            Contract.Requires(id > 0);
 
-            var entity = _dogRepository.Get((int) dog.Id);
+            var entity = _dogRepository.Get(id);
             var dto = Translator.This(entity).To<DogDto>();
 
             return dto;
@@ -87,6 +87,19 @@ namespace Application4Test.Application
 
 
         }
+
+
+        public IList<DogDto> GetDogs(DogDto qbeDog)
+        {
+
+            Contract.Requires(qbeDog != null);
+            var dogEntity = Translator.This(qbeDog).To<Dog>();
+            var entityLst = _dogRepository.Get(dogEntity);
+            var dtoLst = Translator.This(entityLst).To<IList<DogDto>>();
+
+            return dtoLst;
+        }
+        
     }
 
     
