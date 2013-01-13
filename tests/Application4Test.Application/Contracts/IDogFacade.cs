@@ -5,7 +5,8 @@ namespace Application4Test.Application.Contracts
 {
     public interface IDogFacade
     {
-        DogDto GetDog(DogDto dog);
+        IList<DogDto> GetDogs(DogDto dog);
+        DogDto GetDog(int dog);
         DogDto CreateDog(DogDto dog);
         int UpdateDog(DogDto dog);
         //IList<DogDto> GetAllOldDogs(int age);

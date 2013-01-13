@@ -103,12 +103,19 @@ namespace EasyArchitecture.Persistence.Plugin.BultIn
             if (list != null) list.Remove(o);
         }
 
-        public IList<T> Get<T>(object key)
+        /// <summary>
+        /// Retrieves all existent objects according to the given example.
+        /// </summary>
+        /// <remarks>Not initialized primitive properties as well as null references are ignored.</remarks>
+        /// <typeparam name="T">Type of the given example</typeparam>
+        /// <param name="qbe">Query By Example object</param>
+        /// <returns>A list containing objects found according to the <paramref name="qbe"/>, if any.</returns>
+        public IList<T> Get<T>(object qbe)
         {
             //localiza objeto na lista geral
-            var db = _dataBase[typeof(T)];
+            //var db = _dataBase[typeof(T)];
             //var o = db.find(key);
-            var o = new object();
+           // var o = new object();
 
             //if (_inTransaction)
             //{
@@ -127,7 +134,7 @@ namespace EasyArchitecture.Persistence.Plugin.BultIn
             var listlistlist = new ArrayList();
 
 
-            var dictionary = new Dictionary<string, object>();
+           // var dictionary = new Dictionary<string, object>();
 
 
 //obtem a lista de propriedades/valores, q devem ser usados na comparacao
@@ -147,7 +154,7 @@ namespace EasyArchitecture.Persistence.Plugin.BultIn
             foreach (var item in list)
             {
                 //compara o item
-                if(itemok(item,properties,key   ))
+                if(exampleMatchesItem(item,properties,qbe))
                 {
                     listlistlist.Add(item);
                 }
@@ -164,17 +171,21 @@ namespace EasyArchitecture.Persistence.Plugin.BultIn
             return listlistlistlist;
         }
 
-        private bool itemok(object item, PropertyInfo[] dictionary, object key)
+        private bool exampleMatchesItem(object item, PropertyInfo[] typeProperties, object qbe)
         {
-            var ok = true;
-            foreach (var o in dictionary)
+            var ok = false;
+
+            foreach (var property in typeProperties)
             {
-                var value = o.GetValue(key, BindingFlags.Default, null, null, null);
-                if(value == null )
+                
+                var qbeValue = property.GetValue(qbe, BindingFlags.Default, null, null, null);
+
+                //ignore all these non initialized properties
+                if(qbeValue == null || qbeValue is bool || qbeValue.Equals(0) || qbeValue.Equals(""))
                     continue;
 
-                var value1 = o.GetValue(item, BindingFlags.Default, null, null, null);
-                ok = value.Equals(value1);
+                var itemValue = property.GetValue(item, BindingFlags.Default, null, null, null);
+                ok = qbeValue.Equals(itemValue);
                 if (!ok)
                     break;
             }

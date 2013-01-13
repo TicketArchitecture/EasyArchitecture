@@ -29,8 +29,9 @@ namespace EasyArchitecture.Persistence
 
         public IList<T> Get(object specification)
         {
-            return GetSession().Get<T>();
+            return GetSession().Get<T>(specification);
         }
+
     }
 }
  

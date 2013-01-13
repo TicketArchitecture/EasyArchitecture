@@ -99,44 +99,96 @@ namespace EasyArchitecture.Tests.Plugins
         }
 
         [Test]
-        public void Should_be_possible_call_facade_methods_with_any_signature()
+        public void Should_be_possible_call_void_facade_methods()
         {
-
             _container.Register<IDummyInterface, DummyImplementation>();
 
             var implementation = _container.Resolve<IDummyInterface>();
             const string voidmethodmessage = "VoidDummyMethodExecuted";
 
-            
+
             implementation.VoidDummyMethod();
             Assert.That(implementation.Message(), Is.EqualTo(voidmethodmessage));
 
+        }
+
+        [Test]
+        public void Should_be_possible_call_facade_methods_containing_primitive_type_arg_and_return()
+        {
+            _container.Register<IDummyInterface, DummyImplementation>();
+            var implementation = _container.Resolve<IDummyInterface>();
+
             const int expectedInt = 1;
-            Assert.That(implementation.PrimitiveWithOneArg(1),Is.EqualTo(expectedInt));
+            Assert.That(implementation.PrimitiveWithOneArg(1), Is.EqualTo(expectedInt));
+        
+
+        }
+
+        [Test]
+        public void Should_be_possible_call_facade_methods_containing_two_primitive_type_args()
+        {
+            _container.Register<IDummyInterface, DummyImplementation>();
+            var implementation = _container.Resolve<IDummyInterface>();
 
             string expectedStr = "message1+message2";
             Assert.That(implementation.withArgs("message1+", "message2"), Is.EqualTo(expectedStr));
+            
 
+        }
+
+        [Test]
+        public void Should_be_possible_call_facade_methods_containing_generic_type_return_and_user_defined_class_arg()
+        {
+            _container.Register<IDummyInterface, DummyImplementation>();
+            var implementation = _container.Resolve<IDummyInterface>();
 
             var kvp = new KeyValuePair<int, DummyClass>(1, new DummyClass());
             Assert.That(implementation.WithTypedInterfaceArg(kvp), Is.EqualTo(kvp.Value.GetType()));
 
+        }
+
+        [Test]
+        public void Should_be_possible_call_facade_methods_containing_enum_arg_and_return()
+        {
+            _container.Register<IDummyInterface, DummyImplementation>();
+            var implementation = _container.Resolve<IDummyInterface>();
+
             Assert.That(implementation.EnumWithEnumArg(DummyEnum.Second), Is.EqualTo(DummyEnum.Second));
+          
+
+        }
+
+
+        [Test]
+        public void Should_be_possible_call_facade_methods_containing_array_arg_and_return()
+        {
+            _container.Register<IDummyInterface, DummyImplementation>();
+            var implementation = _container.Resolve<IDummyInterface>();
 
             string[] expectedArr = { "message1", "message2" };
             string[] strArr = { "message1", "message2" };
 
             var returnedStrArr = implementation.ArrayWithArrArg(strArr);
             Assert.That(returnedStrArr, Is.EqualTo(expectedArr));
+        }
+
+
+        [Test]
+        public void Should_be_possible_call_facade_methods_containing_generic_return_with_user_defined_type()
+        {
+
+            _container.Register<IDummyInterface, DummyImplementation>();
+            var implementation = _container.Resolve<IDummyInterface>();
 
             IList<DummyClass> expectedLst = new List<DummyClass>();
             expectedLst.Add(new DummyClass());
 
-            var receivedLst = implementation.TypedInterfaceWithoutArgs();
-            Assert.That(receivedLst, Is.EqualTo(expectedLst));
+            var actualLst = implementation.TypedInterfaceWithoutArgs();
 
+            Assert.That(actualLst, Is.EqualTo(expectedLst));
         }
-
+        
+   
     }
 
 }

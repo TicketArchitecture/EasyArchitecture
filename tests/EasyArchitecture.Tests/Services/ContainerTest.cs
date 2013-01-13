@@ -4,6 +4,9 @@ using EasyArchitecture.IoC;
 using EasyArchitecture.Runtime;
 using EasyArchitecture.Tests.Stuff;
 using NUnit.Framework;
+using System.Collections.Generic;
+using Application4Test.Application.Contracts.DTOs;
+
 
 namespace EasyArchitecture.Tests.Services
 {
@@ -37,8 +40,15 @@ namespace EasyArchitecture.Tests.Services
 
             Assert.That(facade, Is.InstanceOf<IDogFacade>());
 
-            var dto = facade.GetDog(new Application4Test.Application.Contracts.DTOs.DogDto());
-            Assert.That(dto.Name, Is.EqualTo("DummyDog"));
+            var dtos = facade.GetDogs(new DogDto());
+            List<DogDto> l = dtos as List<DogDto>;
+            var actualDog = l.Find(
+                delegate(DogDto dog)
+                {
+
+                    return dog.Name.Equals("DummyDog");
+                });
+            Assert.That(actualDog !=null);
         }
 
         //TODO: this test

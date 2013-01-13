@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using Application4Test.Domain;
 using Application4Test.Domain.Repositories;
 using EasyArchitecture.Persistence;
+using System.Collections.Generic;
 
 namespace Application4Test.Infrastructure.Persistence.Repositories
 {
@@ -13,6 +14,12 @@ namespace Application4Test.Infrastructure.Persistence.Repositories
         {
             Expression<Func<Dog, bool>> predicate =  d => d.Id == id;
             return base.Get(predicate).FirstOrDefault();
+        }
+
+
+        public IList<Dog> Get(Dog dog) 
+        {
+            return base.Get(dog);
         }
     }
 }
