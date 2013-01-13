@@ -3,6 +3,7 @@ using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Log.Plugin.Contracts;
 using EasyArchitecture.Runtime;
 using EasyArchitecture.Runtime.Contracts;
+using EasyArchitecture.Runtime.Plugin;
 
 namespace EasyArchitecture.Log.Instance
 {
@@ -16,10 +17,10 @@ namespace EasyArchitecture.Log.Instance
             _moduleAssemblies = moduleAssemblies;
         }
 
-        public void Configure(PluginConfiguration config)
+        public void Configure(PluginConfiguration pluginConfiguration, out PluginInspector pluginInspector)
         {
-            _plugin = config.GetPlugin<ILoggerPlugin>();
-            _plugin.Configure(_moduleAssemblies);
+            _plugin = pluginConfiguration.GetPlugin<ILoggerPlugin>();
+            _plugin.Configure(_moduleAssemblies, out pluginInspector);
         }
 
         public Logger GetInstance()

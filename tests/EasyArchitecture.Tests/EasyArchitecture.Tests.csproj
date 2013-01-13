@@ -52,6 +52,9 @@
   <ItemGroup>
     <Compile Include="Instances\CacheTest.cs" />
     <Compile Include="Plugins\PersistenceTest.cs" />
+    <Compile Include="Runtime\Stuff\BuggedPlugin.cs" />
+    <Compile Include="Runtime\Stuff\DummyPlugin.cs" />
+    <Compile Include="Runtime\PluginInspectorTest.cs" />
     <Compile Include="Services\CacheTest.cs" />
     <Compile Include="Services\RepositoryTest.cs" />
     <Compile Include="Services\StorageTest.cs" />

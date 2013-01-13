@@ -2,6 +2,7 @@
 using EasyArchitecture.Persistence.Plugin.Contracts;
 using EasyArchitecture.Runtime;
 using EasyArchitecture.Runtime.Contracts;
+using EasyArchitecture.Runtime.Plugin;
 
 namespace EasyArchitecture.Persistence.Instance
 {
@@ -15,10 +16,10 @@ namespace EasyArchitecture.Persistence.Instance
             _moduleAssemblies = moduleAssemblies;
         }
 
-        public void Configure(PluginConfiguration config)
+        public void Configure(PluginConfiguration pluginConfiguration, out PluginInspector pluginInspector)
         {
-            _plugin = config.GetPlugin<IPersistencePlugin>();
-            _plugin.Configure(_moduleAssemblies);
+            _plugin = pluginConfiguration.GetPlugin<IPersistencePlugin>();
+            _plugin.Configure(_moduleAssemblies, out pluginInspector);
         }
 
         public Persistence GetInstance()

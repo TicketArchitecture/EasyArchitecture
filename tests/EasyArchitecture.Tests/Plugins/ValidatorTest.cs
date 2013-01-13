@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using Application4Test.Domain;
 using EasyArchitecture.Runtime;
+using EasyArchitecture.Runtime.Plugin;
 using EasyArchitecture.Tests.Stuff.Helpers;
 using EasyArchitecture.Validation.Plugin.BultIn;
 using EasyArchitecture.Validation.Plugin.Contracts;
@@ -25,9 +26,11 @@ namespace EasyArchitecture.Tests.Plugins
             var _moduleName = Guid.NewGuid().ToString();
 
             var validatorPlugin = new ValidatorPlugin();
+            PluginInspector pluginInspector;
+
             var infraAssembly = AssemblyLoader.LoadAssemblyFromFile(AssemblyLoader.InfrastructureAssemblyName);
 
-            validatorPlugin.Configure(new ModuleAssemblies(_moduleName, null, null, infraAssembly));
+            validatorPlugin.Configure(new ModuleAssemblies(_moduleName, null, null, infraAssembly), out pluginInspector);
             _plugin = validatorPlugin.GetInstance();
         }
 

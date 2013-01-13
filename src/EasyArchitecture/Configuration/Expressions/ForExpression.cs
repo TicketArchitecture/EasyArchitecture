@@ -4,6 +4,7 @@ using EasyArchitecture.IoC.Plugin.Contracts;
 using EasyArchitecture.Log.Plugin.Contracts;
 using EasyArchitecture.Persistence.Plugin.Contracts;
 using EasyArchitecture.Runtime;
+using EasyArchitecture.Runtime.Plugin;
 using EasyArchitecture.Storage.Plugin.Contracts;
 using EasyArchitecture.Translation.Plugin.Contracts;
 using EasyArchitecture.Validation.Plugin.Contracts;
@@ -87,7 +88,7 @@ namespace EasyArchitecture.Configuration.Expressions
             return this;
         }
 
-        public ForExpression Cache<T>() where T : ICachePlugin
+        public ForExpression Cache<T>() where T :ICachePlugin
         {
             _pluginConfiguration.Register<ICachePlugin, T>();
             return this;

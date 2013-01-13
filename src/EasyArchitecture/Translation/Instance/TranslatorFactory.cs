@@ -1,7 +1,7 @@
-﻿using EasyArchitecture.Configuration.Expressions;
-using EasyArchitecture.Configuration.Instance;
+﻿using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Runtime;
 using EasyArchitecture.Runtime.Contracts;
+using EasyArchitecture.Runtime.Plugin;
 using EasyArchitecture.Translation.Plugin.Contracts;
 
 namespace EasyArchitecture.Translation.Instance
@@ -16,10 +16,10 @@ namespace EasyArchitecture.Translation.Instance
             _moduleAssemblies = moduleAssemblies;
         }
 
-        public void Configure(PluginConfiguration config)
+        public void Configure(PluginConfiguration pluginConfiguration, out PluginInspector pluginInspector)
         {
-            _plugin = config.GetPlugin<ITranslatorPlugin>();
-            _plugin.Configure(_moduleAssemblies);
+            _plugin = pluginConfiguration.GetPlugin<ITranslatorPlugin>();
+            _plugin.Configure(_moduleAssemblies, out pluginInspector);
         }
 
         public Translator GetInstance()

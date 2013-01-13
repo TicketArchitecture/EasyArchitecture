@@ -4,6 +4,7 @@ using EasyArchitecture.Persistence;
 using EasyArchitecture.Persistence.Plugin.BultIn;
 using EasyArchitecture.Persistence.Plugin.Contracts;
 using EasyArchitecture.Runtime;
+using EasyArchitecture.Runtime.Plugin;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Tests.Plugins
@@ -23,7 +24,8 @@ namespace EasyArchitecture.Tests.Plugins
             _moduleName = Guid.NewGuid().ToString();
 
             var plugin = new PersistencePlugin();
-            plugin.Configure(new ModuleAssemblies(_moduleName, null, null, null));
+            PluginInspector pluginInspector;
+            plugin.Configure(new ModuleAssemblies(_moduleName, null, null, null), out pluginInspector);
             _pluginInstance = plugin.GetInstance();
         }
 

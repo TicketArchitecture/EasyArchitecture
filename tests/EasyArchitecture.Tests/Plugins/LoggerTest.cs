@@ -3,6 +3,7 @@ using System.IO;
 using EasyArchitecture.Log.Plugin.BultIn;
 using EasyArchitecture.Log.Plugin.Contracts;
 using EasyArchitecture.Runtime;
+using EasyArchitecture.Runtime.Plugin;
 using NUnit.Framework;
 using System.Threading;
 
@@ -22,7 +23,8 @@ namespace EasyArchitecture.Tests.Plugins
             _moduleName = Guid.NewGuid().ToString();
             
             var loggerPlugin = new LoggerPlugin();
-            loggerPlugin.Configure(new ModuleAssemblies(_moduleName, null,null,null));
+            PluginInspector pluginInspector;
+            loggerPlugin.Configure(new ModuleAssemblies(_moduleName, null, null, null), out pluginInspector);
             _logger = loggerPlugin.GetInstance();
 
         }

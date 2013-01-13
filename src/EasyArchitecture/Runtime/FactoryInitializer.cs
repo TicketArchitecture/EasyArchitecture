@@ -1,22 +1,26 @@
 using System;
 using System.Collections.Generic;
 using EasyArchitecture.Caching.Instance;
+using EasyArchitecture.Caching.Plugin.BultIn;
 using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.IoC.Instance;
 using EasyArchitecture.Log.Instance;
+using EasyArchitecture.Log.Plugin.Contracts;
 using EasyArchitecture.Persistence.Instance;
 using EasyArchitecture.Runtime.Contracts;
+using EasyArchitecture.Runtime.Plugin;
 using EasyArchitecture.Storage.Instance;
 using EasyArchitecture.Translation.Instance;
 using EasyArchitecture.Validation.Instance;
+using Cache = EasyArchitecture.Caching.Instance.Cache;
 
 namespace EasyArchitecture.Runtime
 {
     public static class FactoryInitializer
     {
         //private static readonly List<Type> AllowedFactories=new List<Type>();
-        private static readonly Dictionary<Type,Type> AllowedFactories = new Dictionary<Type, Type>();
- 
+        private static readonly Dictionary<Type, Type> AllowedFactories = new Dictionary<Type, Type>();
+
         static FactoryInitializer()
         {
             //TODO: load all types that implements 2 required interfaces
@@ -32,16 +36,21 @@ namespace EasyArchitecture.Runtime
         public static ModuleConfiguration Exec(PluginConfiguration pluginConfiguration)
         {
             var moduleConfiguration = new ModuleConfiguration();
-
-            //
             var moduleAssemblies = AssemblyManager.GetModuleAssemblies(pluginConfiguration.ModuleName);
 
             foreach (var allowedFactory in AllowedFactories)
             {
-                var factory = (IConfigurableFactory) Activator.CreateInstance(allowedFactory.Value,moduleAssemblies);
-                factory.Configure(pluginConfiguration);
-                moduleConfiguration.Factories.Add(allowedFactory.Key,factory);
+                var factory = (IConfigurableFactory)Activator.CreateInstance(allowedFactory.Value, moduleAssemblies);
+                moduleConfiguration.Factories.Add(allowedFactory.Key, factory);
+
+                PluginInspector pluginInspector;
+                factory.Configure(pluginConfiguration, out pluginInspector);
+                moduleConfiguration.AddPluginConfigurationInfo(pluginInspector);
             }
+
+            //log after configuration because we must ensure that logger has been initialized
+            var loggerFactory= (LoggerFactory)moduleConfiguration.Factories[typeof(Logger)];
+            loggerFactory.GetInstance().Log(LogLevel.Debug, moduleConfiguration.GetPluginConfigurationInfo(), null);
 
             return moduleConfiguration;
         }

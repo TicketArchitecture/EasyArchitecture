@@ -3,21 +3,25 @@ using System.Collections.Generic;
 using System.Reflection;
 using EasyArchitecture.IoC.Plugin.Contracts;
 using EasyArchitecture.Runtime;
+using EasyArchitecture.Runtime.Plugin;
 
 namespace EasyArchitecture.IoC.Plugin.BultIn
 {
-    internal class ContainerPlugin : IContainerPlugin
+    internal class ContainerPlugin : AbstractPlugin, IContainerPlugin
     {
 
         private readonly Dictionary<Type, TypeRegistry> _registeredTypes = new Dictionary<Type, TypeRegistry>();
 
-        public void Configure(ModuleAssemblies moduleAssemblies)
+
+        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
         {
-            AutoRegister(moduleAssemblies.DomainAssembly, moduleAssemblies.InfrastructureAssembly, false);
-            AutoRegister(moduleAssemblies.ApplicationAssembly, moduleAssemblies.ApplicationAssembly, true);
+            //TODO: passar essa responsabilidade para o factory?
+            AutoRegister(moduleAssemblies.DomainAssembly, moduleAssemblies.InfrastructureAssembly, false,pluginInspector);
+            AutoRegister(moduleAssemblies.ApplicationAssembly, moduleAssemblies.ApplicationAssembly, true,pluginInspector);
+            
         }
 
-        private void AutoRegister(Assembly interfacesAssembly, Assembly implementationsAssembly, bool useInterception)
+        private void AutoRegister(Assembly interfacesAssembly, Assembly implementationsAssembly, bool useInterception, PluginInspector pluginInspector)
         {
             var implementationTypes = implementationsAssembly.GetExportedTypes();
             var interfaceTypes = interfacesAssembly.GetExportedTypes();
@@ -35,6 +39,9 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
                     continue;
                 }
 
+                pluginInspector.Log("Interface {0} are mapped to {1}, {2} interception", exportedType.FullName, implementationType.FullName,
+                    useInterception?"using":"not using");
+
                 _registeredTypes.Add(exportedType, new TypeRegistry(implementationType,useInterception));
                 //_plugin.Register(exportedType, implementationType, useInterception);
             }
@@ -43,6 +50,8 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
         {
             return new Container(_registeredTypes);
         }
+
+
     }
 
 }

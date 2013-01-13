@@ -1,13 +1,12 @@
-﻿using System.Reflection;
-using EasyArchitecture.Caching.Plugin.Contracts;
-using EasyArchitecture.Configuration.Instance;
+﻿using EasyArchitecture.Caching.Plugin.Contracts;
 using EasyArchitecture.Runtime;
+using EasyArchitecture.Runtime.Plugin;
 
 namespace EasyArchitecture.Caching.Plugin.BultIn
 {
-    internal class CachePlugin : ICachePlugin
+    internal class CachePlugin :AbstractPlugin,ICachePlugin
     {
-        public void Configure(ModuleAssemblies moduleAssemblies)
+        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
         {
         }
 

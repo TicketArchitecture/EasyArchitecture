@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using EasyArchitecture.Runtime;
+using EasyArchitecture.Runtime.Plugin;
 using EasyArchitecture.Validation.Plugin.Contracts;
 
 namespace EasyArchitecture.Validation.Plugin.BultIn
 {
-    internal class ValidatorPlugin : IValidatorPlugin
+    internal class ValidatorPlugin : AbstractPlugin, IValidatorPlugin
     {
         private readonly Dictionary<Type, object> _validationRuleDefinitions = new Dictionary<Type, object>();
 
-        public void Configure(ModuleAssemblies moduleAssemblies)
+
+        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
         {
             var assembly = moduleAssemblies.InfrastructureAssembly;
             foreach (var validator in from tipo in assembly.GetExportedTypes()
@@ -19,6 +21,7 @@ namespace EasyArchitecture.Validation.Plugin.BultIn
                                       select tipo.Assembly.CreateInstance(tipo.FullName))
             {
                 AddValidator(validator);
+                pluginInspector.Log("Adding validator for {0}", validator.GetType().Name);
             }
         }
 

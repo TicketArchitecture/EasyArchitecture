@@ -2,6 +2,7 @@
 using EasyArchitecture.IoC.Plugin.Contracts;
 using EasyArchitecture.Runtime;
 using EasyArchitecture.Runtime.Contracts;
+using EasyArchitecture.Runtime.Plugin;
 
 namespace EasyArchitecture.IoC.Instance
 {
@@ -15,10 +16,10 @@ namespace EasyArchitecture.IoC.Instance
             _moduleAssemblies = moduleAssemblies;
         }
 
-        public void Configure(PluginConfiguration config)
+        public void Configure(PluginConfiguration pluginConfiguration, out PluginInspector pluginInspector)
         {
-            _plugin = config.GetPlugin<IContainerPlugin>();
-            _plugin.Configure(_moduleAssemblies);
+            _plugin = pluginConfiguration.GetPlugin<IContainerPlugin>();
+            _plugin.Configure(_moduleAssemblies, out pluginInspector);
         }
 
         public Container GetInstance()

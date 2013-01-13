@@ -1,6 +1,7 @@
 ﻿using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Runtime;
 using EasyArchitecture.Runtime.Contracts;
+using EasyArchitecture.Runtime.Plugin;
 using EasyArchitecture.Storage.Plugin.Contracts;
 
 namespace EasyArchitecture.Storage.Instance
@@ -15,10 +16,10 @@ namespace EasyArchitecture.Storage.Instance
             _moduleAssemblies = moduleAssemblies;
         }
 
-        public void Configure(PluginConfiguration config)
+        public void Configure(PluginConfiguration pluginConfiguration, out PluginInspector pluginInspector)
         {
-            _plugin = config.GetPlugin<IStoragePlugin>();
-            _plugin.Configure(_moduleAssemblies);
+            _plugin = pluginConfiguration.GetPlugin<IStoragePlugin>();
+            _plugin.Configure(_moduleAssemblies, out pluginInspector);
         }
 
         public Storer GetInstance()

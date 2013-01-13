@@ -2,6 +2,7 @@
 using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Runtime;
 using EasyArchitecture.Runtime.Contracts;
+using EasyArchitecture.Runtime.Plugin;
 using EasyArchitecture.Validation.Plugin.Contracts;
 
 namespace EasyArchitecture.Validation.Instance
@@ -16,10 +17,10 @@ namespace EasyArchitecture.Validation.Instance
             _moduleAssemblies = moduleAssemblies;
         }
 
-        public void Configure(PluginConfiguration config)
+        public void Configure(PluginConfiguration pluginConfiguration, out PluginInspector pluginInspector)
         {
-            _plugin = config.GetPlugin<IValidatorPlugin>();
-            _plugin.Configure(_moduleAssemblies);
+            _plugin = pluginConfiguration.GetPlugin<IValidatorPlugin>();
+            _plugin.Configure(_moduleAssemblies, out pluginInspector);
         }
 
         public Validator GetInstance()

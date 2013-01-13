@@ -84,6 +84,9 @@
     <Compile Include="IoC\Instance\Interceptor.cs" />
     <Compile Include="Log\Aspects\LogInterceptor.cs" />
     <Compile Include="Runtime\InternalLog.cs" />
+    <Compile Include="Runtime\Plugin\AbstractPlugin.cs" />
+    <Compile Include="Runtime\Plugin\PluginConfigurationException.cs" />
+    <Compile Include="Runtime\Plugin\PluginInspector.cs" />
     <Compile Include="Storage\Instance\Storer.cs" />
     <Compile Include="Log\Instance\Logger.cs" />
     <Compile Include="Persistence\Instance\Persistence.cs" />

@@ -2,6 +2,7 @@
 using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Runtime;
 using EasyArchitecture.Runtime.Contracts;
+using EasyArchitecture.Runtime.Plugin;
 
 namespace EasyArchitecture.Caching.Instance
 {
@@ -15,10 +16,10 @@ namespace EasyArchitecture.Caching.Instance
             _moduleAssemblies = moduleAssemblies;
         }
 
-        public void Configure(PluginConfiguration config)
+        public void Configure(PluginConfiguration pluginConfiguration, out PluginInspector pluginInspector)
         {
-            _plugin = config.GetPlugin<ICachePlugin>();
-            _plugin.Configure(_moduleAssemblies);
+            _plugin = pluginConfiguration.GetPlugin<ICachePlugin>();
+            _plugin.Configure(_moduleAssemblies, out pluginInspector);
         }
 
         public Cache GetInstance()

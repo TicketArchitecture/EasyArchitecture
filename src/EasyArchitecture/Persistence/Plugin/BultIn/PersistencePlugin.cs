@@ -4,17 +4,17 @@ using System.Collections.Generic;
 using System.Reflection;
 using EasyArchitecture.Persistence.Plugin.Contracts;
 using EasyArchitecture.Runtime;
+using EasyArchitecture.Runtime.Plugin;
 
 namespace EasyArchitecture.Persistence.Plugin.BultIn
 {
-    internal class PersistencePlugin : IPersistencePlugin
+    internal class PersistencePlugin : AbstractPlugin,IPersistencePlugin
     {
         //database
         private Dictionary<Type, ArrayList> _dataBase = new Dictionary<Type, ArrayList>();
 
-        public void Configure(ModuleAssemblies moduleAssemblies )
+        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
         {
-            
         }
 
         public IPersistence GetInstance()

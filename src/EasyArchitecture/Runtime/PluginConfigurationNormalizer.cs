@@ -9,6 +9,7 @@ using EasyArchitecture.Log.Plugin.BultIn;
 using EasyArchitecture.Log.Plugin.Contracts;
 using EasyArchitecture.Persistence.Plugin.BultIn;
 using EasyArchitecture.Persistence.Plugin.Contracts;
+using EasyArchitecture.Runtime.Plugin;
 using EasyArchitecture.Storage.Plugin.BultIn;
 using EasyArchitecture.Storage.Plugin.Contracts;
 using EasyArchitecture.Translation.Plugin.BultIn;
