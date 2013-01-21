@@ -11,8 +11,7 @@ namespace EasyArchitecture.Runtime
 {
     internal static class LocalThreadStorage
     {
-        private const string ModuleNameKey = "bmn";
-        //private const string PersistenceSessionKey = "ps";
+        private const string ModuleNameKey = "mn";
 
         internal static string GetCurrentModuleName()
         {
@@ -45,24 +44,6 @@ namespace EasyArchitecture.Runtime
             var moduleName = AssemblyManager.RemoveAssemblySufix(type.Namespace);
             SetCurrentModuleName(moduleName);
         }
-
-        //internal static object RecoverSession(string moduleName)
-        //{
-        //    var slot = Thread.GetNamedDataSlot(PersistenceSessionKey + moduleName);
-        //    return Thread.GetData(slot);
-        //}
-
-        //internal static void ClearSession(string moduleName)
-        //{
-        //    var slot = Thread.GetNamedDataSlot(PersistenceSessionKey + moduleName);
-        //    Thread.SetData(slot, null);
-        //}
-
-        //internal static void StoreSession(string moduleName, object persistenceSession)
-        //{
-        //    var slot = Thread.GetNamedDataSlot(PersistenceSessionKey + moduleName);
-        //    Thread.SetData(slot, persistenceSession);
-        //}
 
         private static void ClearThread()
         {

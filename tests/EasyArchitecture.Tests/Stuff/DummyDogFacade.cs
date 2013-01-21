@@ -20,7 +20,7 @@ namespace EasyArchitecture.Tests.Stuff
             throw new System.NotImplementedException();
         }
 
-        public int UpdateDog(DogDto dog)
+        public void UpdateDog(DogDto dog)
         {
             throw new System.NotImplementedException();
         }

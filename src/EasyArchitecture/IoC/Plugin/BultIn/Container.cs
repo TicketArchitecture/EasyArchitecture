@@ -45,51 +45,36 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
             /*-----------------
              * RESOLVE T -> T1
              * ----------------*/
-            //find impl
             //TODO: create a NotRegisteredException
             if (!_registeredTypes.ContainsKey(interfaceType))
                 throw new ArgumentException("Type not registered", interfaceType.ToString());
-            //resolve
-            //var implementationType = _registeredTypes[interfaceType].Type;
             var typeInfo = _registeredTypes[interfaceType];
 
 
             /*-------------
              * BUILD
              * ------------*/
-
-            //todo trabalho para devolver esse kra preenchido
             object instance = null;
 
-            //-----------------------caminho feliz
-            //ha 1 constructor default (parameterless)
             var constructors = typeInfo.Type.GetConstructors();
-
-            //e se nao tiver nenhum constructor? //exception --> cannot build
 
             var parameterlessConstructor = Array.Find(constructors, c => c.GetParameters().Length == 0);
             if (parameterlessConstructor != null)
             {
-                //instance = implementationType.Assembly.CreateInstance(implementationType.FullName);
+                //ha 1 constructor default (parameterless)
                 instance = Activator.CreateInstance(typeInfo.Type);
             }
             else
             {
-                //-----------------------caminho triste
                 //ha 1 constructor com parametros
-
                 var constructor = constructors[0];
-                //var constructorParameters = constructor.GetParameters();
                 var objects = new List<object>();
-                //foreach parameter -> call recursivelly
+
                 foreach (var constructorParameter in constructor.GetParameters())
                 {
-                    //resolver parametros
-
                     objects.Add(this.Resolve(constructorParameter.ParameterType));
                 }
 
-                //instance = implementationType.Assembly.CreateInstance(implementationType.FullName,);
                 instance = Activator.CreateInstance(typeInfo.Type, objects.ToArray());
             }
 

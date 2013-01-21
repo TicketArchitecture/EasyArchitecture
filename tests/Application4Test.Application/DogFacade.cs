@@ -28,7 +28,7 @@ namespace Application4Test.Application
         {
             Contract.Requires(id > 0);
 
-            if(Cache.Exists.At(id.ToString()))
+            if (Cache.Exists.At(id.ToString()))
             {
                 return (DogDto)Cache.Get.At(id.ToString());
             }
@@ -57,7 +57,7 @@ namespace Application4Test.Application
         }
 
         //TODO: change return type to void, because bug has fixed
-        public int UpdateDog(DogDto dog)
+        public void UpdateDog(DogDto dog)
         {
             Contract.Requires(dog != null);
 
@@ -69,12 +69,7 @@ namespace Application4Test.Application
 
             _dogRepository.Update(entity);
 
-            //if (!Cache.Exists.At(dog.Id.ToString()))
-            //{
-                Cache.This(dog).With.NoExpiration.At(dog.Id.ToString());
-            //}
-
-            return 0;
+            Cache.This(dog).With.NoExpiration.At(dog.Id.ToString());
         }
 
         ////TODO: mount by reflection
@@ -95,13 +90,8 @@ namespace Application4Test.Application
 
         public void PutDogToSleep(DogDto dog)
         {
-
             var entity = Translator.This<DogDto>(dog).To<Dog>();
             _dogService.PutDogToSleep(entity);
-
-            //TODO: clean -> remove spaces
-
-
         }
 
 
@@ -110,9 +100,9 @@ namespace Application4Test.Application
             //TODO: ligar contract
             Contract.Requires(qbeDog != null);
 
-            if(Cache.Exists.At(qbeDog))
+            if (Cache.Exists.At(qbeDog))
             {
-                return (IList<DogDto>) Cache.Get.At(qbeDog);
+                return (IList<DogDto>)Cache.Get.At(qbeDog);
             }
 
             var dogEntity = Translator.This(qbeDog).To<Dog>();
@@ -123,8 +113,8 @@ namespace Application4Test.Application
 
             return dtoLst;
         }
-        
+
     }
 
-    
+
 }

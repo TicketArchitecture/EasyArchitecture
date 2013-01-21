@@ -236,7 +236,6 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
                 methodIL.Emit( OpCodes.Ret );
                 #endregion
             }
-
            
             // Iterate through the parent interfaces and recursively call this method
             foreach ( Type parentType in interfaceType.GetInterfaces() ) {
@@ -244,8 +243,6 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
             }
         }
     
-
-        //TODO: BUG when return type is void
         public static Object NewInstance(Object obj)
         {
             return ProxyFactory.GetInstance().Create(
