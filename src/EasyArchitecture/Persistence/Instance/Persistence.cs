@@ -1,4 +1,5 @@
 ﻿using EasyArchitecture.Persistence.Plugin.Contracts;
+using EasyArchitecture.Runtime.Log;
 
 namespace EasyArchitecture.Persistence.Instance
 {
@@ -16,6 +17,9 @@ namespace EasyArchitecture.Persistence.Instance
         {
             if (_session == null)
                 _session = _plugin.GetSession("");
+
+            InstanceLogger.Log(this, "GetSession", _session.GetHashCode());
+
             return _session;
         }
 
@@ -23,16 +27,22 @@ namespace EasyArchitecture.Persistence.Instance
         {
             this.GetSession();
             _plugin.BeginTransaction(_session);
+
+            InstanceLogger.Log(this, "BeginTransaction");
         }
 
         internal void CommitTransaction()
         {
             _plugin.CommitTransaction(_session);
+
+            InstanceLogger.Log(this, "CommitTransaction");
         }
 
         internal void RollbackTransaction()
         {
             _plugin.RollbackTransaction(_session);
+
+            InstanceLogger.Log(this, "RollbackTransaction");
         }
     }
 }

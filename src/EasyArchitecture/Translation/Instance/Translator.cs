@@ -1,3 +1,4 @@
+using EasyArchitecture.Runtime.Log;
 using EasyArchitecture.Translation.Plugin.Contracts;
 
 namespace EasyArchitecture.Translation.Instance
@@ -13,12 +14,20 @@ namespace EasyArchitecture.Translation.Instance
 
         internal T1 Translate<T, T1>(T p0)
         {
-            return _plugin.Translate<T,T1>(p0);
+            var ret=_plugin.Translate<T,T1>(p0);
+
+            InstanceLogger.Log(this, "Translate" ,p0.GetType().Name , p0, ret.GetType().Name, ret);
+
+            return ret;
         }
 
         internal T1 Translate<T, T1>(T p0, T1 obj1)
         {
-            return _plugin.Translate(p0, obj1);
+            var ret=_plugin.Translate(p0, obj1);
+
+            InstanceLogger.Log(this, "Translate", p0.GetType().Name, p0, obj1,ret.GetType().Name, ret);
+
+            return ret;
         }
     }
 }

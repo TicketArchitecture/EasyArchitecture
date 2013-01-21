@@ -64,10 +64,12 @@
     <Compile Include="IoC\Plugin\BultIn\TypeRegistry.cs" />
     <Compile Include="IoC\Plugin\Contracts\IContainerPlugin.cs" />
     <Compile Include="IoC\Plugin\Contracts\IContainer.cs" />
+    <Compile Include="Log\Aspects\LogInterceptor.cs" />
     <Compile Include="Persistence\Instance\PersistenceFactory.cs" />
     <Compile Include="Persistence\Plugin\BultIn\NotInTransactionException.cs" />
     <Compile Include="Persistence\Repository.cs" />
     <Compile Include="Persistence\Plugin\Contracts\IPersistencePlugin.cs" />
+    <Compile Include="Runtime\Log\InstanceLogger.cs" />
     <Compile Include="Runtime\ModuleConfigurationList.cs" />
     <Compile Include="Runtime\ModuleConfiguration.cs" />
     <Compile Include="Configuration\Instance\PluginConfiguration.cs" />
@@ -82,7 +84,7 @@
     <Compile Include="Persistence\Aspects\TransactionInterceptor.cs" />
     <Compile Include="Runtime\Aspects\ContextInterceptor.cs" />
     <Compile Include="IoC\Instance\Interceptor.cs" />
-    <Compile Include="Log\Aspects\LogInterceptor.cs" />
+    <Compile Include="Runtime\IO\SerializationHelper.cs" />
     <Compile Include="Runtime\InternalLog.cs" />
     <Compile Include="Runtime\Plugin\AbstractPlugin.cs" />
     <Compile Include="Runtime\Plugin\PluginConfigurationException.cs" />

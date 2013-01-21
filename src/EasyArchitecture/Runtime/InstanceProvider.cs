@@ -12,5 +12,11 @@ namespace EasyArchitecture.Runtime
             }
             return (T) instance;
         }
+        
+        public static T GetLocalInstance<T>() where T : class
+        {
+            var instance = LocalThreadStorage.GetInstance<T>();
+            return (T)instance;
+        }
     }
 }

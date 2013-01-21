@@ -7,7 +7,7 @@ namespace EasyArchitecture.Caching.Plugin.BultIn
 {
     internal class Cache : ICache
     {
-        private readonly Dictionary<string, CacheItem> _cache = new Dictionary<string, CacheItem>();
+        private static readonly Dictionary<string, CacheItem> _cache = new Dictionary<string, CacheItem>();
 
         public void Add(string key, object obj)
         {

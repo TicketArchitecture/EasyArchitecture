@@ -1,4 +1,5 @@
 ﻿using System;
+using EasyArchitecture.Runtime.Log;
 using EasyArchitecture.Storage.Plugin.Contracts;
 
 namespace EasyArchitecture.Storage.Instance
@@ -14,17 +15,29 @@ namespace EasyArchitecture.Storage.Instance
 
         internal Guid Save(byte[] buffer)
         {
-            return _plugin.Save(buffer);
+            var ret =_plugin.Save(buffer);
+            
+            InstanceLogger.Log(this, "Save",buffer,ret);
+            
+            return ret;
         }
 
         internal byte[] Get(Guid id)
         {
-            return _plugin.Get(id);
+            var ret=_plugin.Get(id);
+
+            InstanceLogger.Log(this, "Get", id, ret);
+
+            return ret;
         }
 
         internal bool Exists(Guid id)
         {
-            return _plugin.Exists(id);
+            var ret = _plugin.Exists(id);
+
+            InstanceLogger.Log(this, "Exists", id, ret);
+
+            return ret;
         }
     }
 }

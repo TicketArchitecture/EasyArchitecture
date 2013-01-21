@@ -2,6 +2,7 @@
 using System.Reflection;
 using EasyArchitecture.IoC.Plugin.BultIn;
 using EasyArchitecture.IoC.Plugin.Contracts;
+using EasyArchitecture.Runtime.Log;
 
 namespace EasyArchitecture.IoC.Instance
 {
@@ -13,10 +14,12 @@ namespace EasyArchitecture.IoC.Instance
         {
             _plugin = plugin;
 
+            //TODO: clean
             //AutoRegister(easyConfig.DomainAssembly, easyConfig.InfrastructureAssembly, false);
             //AutoRegister(easyConfig.ApplicationAssembly, easyConfig.ApplicationAssembly, true);
         }
 
+        //TODO: clean
         //private void AutoRegister(Assembly interfacesAssembly, Assembly implementationsAssembly, bool useInterception)
         //{
         //    var implementationTypes = implementationsAssembly.GetExportedTypes();
@@ -45,6 +48,8 @@ namespace EasyArchitecture.IoC.Instance
                 throw new NotInterfaceException();
 
             _plugin.Register<T, T1>();
+
+            InstanceLogger.Log(this, "Register", typeof(T).Name, typeof(T1).Name);
         }
 
         internal T Resolve<T>()
@@ -52,7 +57,11 @@ namespace EasyArchitecture.IoC.Instance
             if (!typeof(T).IsInterface)
                 throw new NotInterfaceException();
 
-            return _plugin.Resolve<T>();
+            var ret= _plugin.Resolve<T>();
+
+            InstanceLogger.Log(this, "Resolve", typeof(T).Name, ret.GetType().Name);
+
+            return ret;
         }
     }
 }

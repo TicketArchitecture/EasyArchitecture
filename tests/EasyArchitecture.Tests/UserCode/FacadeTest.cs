@@ -40,6 +40,7 @@ namespace EasyArchitecture.Tests.UserCode
 
             facade.CreateDog(new DogDto() { Age = 10, Name = "Rex" });
             var actual = facade.GetDogs(new DogDto(){Age=10});
+            actual = facade.GetDogs(new DogDto() { Age = 10 });
 
             Assert.That(actual.Count, Is.GreaterThan(0));
         }

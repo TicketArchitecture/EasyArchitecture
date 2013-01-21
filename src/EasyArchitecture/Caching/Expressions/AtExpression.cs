@@ -1,6 +1,7 @@
 using System;
 using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Runtime;
+using EasyArchitecture.Runtime.IO;
 
 namespace EasyArchitecture.Caching.Expressions
 {
@@ -31,6 +32,11 @@ namespace EasyArchitecture.Caching.Expressions
             {
                 instance.Add(key, _item, _timeSpan);
             }
+        }
+        
+        public void At(object key)
+        {
+            At(SerializationHelper.Mount(key));
         }
     }
 }

@@ -1,4 +1,5 @@
 using EasyArchitecture.Runtime;
+using EasyArchitecture.Runtime.IO;
 
 namespace EasyArchitecture.Caching.Expressions
 {
@@ -8,5 +9,11 @@ namespace EasyArchitecture.Caching.Expressions
         {
             return InstanceProvider.GetInstance<Instance.Cache>().GetData(key);
         }
+
+        public object At(object key)
+        {
+            return At(SerializationHelper.Mount(key));
+        }
+
     }
 }
