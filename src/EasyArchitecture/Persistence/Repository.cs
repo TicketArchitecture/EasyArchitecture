@@ -5,7 +5,7 @@ using EasyArchitecture.Runtime;
 
 namespace EasyArchitecture.Persistence
 {
-    public class Repository<T>
+    public class Repository<T> : IRepository<T>
     {
         private static Session GetSession()
         {
@@ -27,9 +27,14 @@ namespace EasyArchitecture.Persistence
             GetSession().Delete(entity);
         }
 
-        public IList<T> Get(object specification)
+        public IList<T> Get(T qbe)
         {
-            return GetSession().Get<T>(specification);
+            return GetSession().Get<T>(qbe);
+        }
+
+        public IList<T> Get()
+        {
+            return GetSession().Get<T>();
         }
 
     }

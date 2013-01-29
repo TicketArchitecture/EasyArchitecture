@@ -65,6 +65,7 @@
     <Compile Include="IoC\Plugin\Contracts\IContainerPlugin.cs" />
     <Compile Include="IoC\Plugin\Contracts\IContainer.cs" />
     <Compile Include="Log\Aspects\LogInterceptor.cs" />
+    <Compile Include="Persistence\IRepository.cs" />
     <Compile Include="Persistence\Instance\PersistenceFactory.cs" />
     <Compile Include="Persistence\Plugin\BultIn\NotInTransactionException.cs" />
     <Compile Include="Persistence\Repository.cs" />
