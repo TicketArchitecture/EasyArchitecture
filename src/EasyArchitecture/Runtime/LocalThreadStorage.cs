@@ -41,7 +41,7 @@ namespace EasyArchitecture.Runtime
 
         internal static void SetCurrentModuleName(Type type)
         {
-            var moduleName = AssemblyManager.RemoveAssemblySufix(type.Namespace);
+            var moduleName = AssemblyManager.RemoveAssemblySufix(type.Assembly.GetName().Name);
             SetCurrentModuleName(moduleName);
         }
 
