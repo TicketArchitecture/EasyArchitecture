@@ -4,9 +4,9 @@ namespace EasyArchitecture.Persistence
 {
     public interface IRepository<T>
     {
-        void Save(T o);
-        void Update(T o);
-        void Delete(T o);
+        void Save(T entity);
+        void Update(T entity);
+        void Delete(T entity);
         IList<T> Get(T qbe);
         IList<T> Get();
 
