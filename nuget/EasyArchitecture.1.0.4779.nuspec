@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>EasyArchitecture</id>
+        <version>1.0.4779</version>
+        <title />
+        <authors>Henrique Riccio</authors>
+        <owners>Henrique Riccio</owners>
+        <projectUrl>https://github.com/henriquericcio/EasyArchitecture</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Um framework simples e leve para acelerar a construção de API's</description>
+        <copyright>EasyArchitecture</copyright>
+        <language>pt-BR</language>
+        <tags>framework api</tags>
+    </metadata>
+    <files>
+        <file src="..\src\EasyArchitecture\bin\Debug\EasyArchitecture.dll" target="lib\net40\EasyArchitecture.dll" />
+    </files>
+</package>

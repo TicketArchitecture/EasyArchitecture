@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using EasyArchitecture.Persistence.Plugin.BultIn;
-using EasyArchitecture.Persistence.Plugin.Contracts;
 using EasyArchitecture.Runtime;
 
 namespace EasyArchitecture.Persistence
@@ -12,31 +11,30 @@ namespace EasyArchitecture.Persistence
             return (Session) InstanceProvider.GetInstance<Instance.Persistence>().GetSession();
         }
 
-        public void Save(T entity)
+        public virtual void Save(T entity)
         {
             GetSession().Save(entity);
         }
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             GetSession().Update(entity);
         }
 
-        public  void Delete(T entity)
+        public virtual void Delete(T entity)
         {
             GetSession().Delete(entity);
         }
 
-        public IList<T> Get(T qbe)
+        public virtual IList<T> Get(T qbe)
         {
             return GetSession().Get<T>(qbe);
         }
 
-        public IList<T> Get()
+        public virtual IList<T> Get()
         {
             return GetSession().Get<T>();
         }
-
     }
 }
  
