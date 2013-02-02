@@ -16,7 +16,7 @@ namespace EasyArchitecture.Translation.Instance
         {
             var ret=_plugin.Translate<T,T1>(p0);
 
-            InstanceLogger.Log(this, "Translate" ,p0.GetType().Name , p0, ret.GetType().Name, ret);
+            InstanceLogger.Log(this, "Translate" ,typeof(T).Name , p0, typeof(T1).Name, ret);
 
             return ret;
         }
@@ -25,7 +25,7 @@ namespace EasyArchitecture.Translation.Instance
         {
             var ret=_plugin.Translate(p0, obj1);
 
-            InstanceLogger.Log(this, "Translate", p0.GetType().Name, p0, obj1,ret.GetType().Name, ret);
+            InstanceLogger.Log(this, "Translate", typeof(T).Name, p0, typeof(T1).Name, ret);
 
             return ret;
         }
