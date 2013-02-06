@@ -9,7 +9,6 @@ using EasyArchitecture.Log.Plugin.BultIn;
 using EasyArchitecture.Log.Plugin.Contracts;
 using EasyArchitecture.Persistence.Plugin.BultIn;
 using EasyArchitecture.Persistence.Plugin.Contracts;
-using EasyArchitecture.Runtime.Plugin;
 using EasyArchitecture.Storage.Plugin.BultIn;
 using EasyArchitecture.Storage.Plugin.Contracts;
 using EasyArchitecture.Translation.Plugin.BultIn;
@@ -38,17 +37,19 @@ namespace EasyArchitecture.Runtime
         {
             var configuredPlugins =  pluginConfiguration.GetConfiguredPlugins();
 
-            //complete configuration
+            CompletePluginIntanceList(pluginConfiguration, configuredPlugins);
+        }
+
+        private static void CompletePluginIntanceList(PluginConfiguration pluginConfiguration, Dictionary<Type, object> configuredPlugins)
+        {
             foreach (var builtinPlugin in BuiltinPlugins)
             {
-                if(!configuredPlugins.ContainsKey(builtinPlugin.Key))
+                if (!configuredPlugins.ContainsKey(builtinPlugin.Key))
                 {
                     var plugin = Activator.CreateInstance(builtinPlugin.Value);
-                    pluginConfiguration.Register(builtinPlugin.Key,plugin);
+                    pluginConfiguration.Register(builtinPlugin.Key, plugin);
                 }
             }
-
-            
         }
     }
 }

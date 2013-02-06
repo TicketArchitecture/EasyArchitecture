@@ -21,9 +21,6 @@ namespace EasyArchitecture.IoC.Plugin.Contracts
             var transactionInterceptor = new TransactionInterceptor();
             _contextInterceptor = new ContextInterceptor();
 
-            //get rootInterceptor from configuration
-            
-
             //sequence
             _contextInterceptor.SetSuccessor(logInterceptor);
             logInterceptor.SetSuccessor(transactionInterceptor);
@@ -31,10 +28,6 @@ namespace EasyArchitecture.IoC.Plugin.Contracts
 
         public object Execute()
         {
-            //if rootInterceptor == null -> call _methodCall.Invoke;
-
-            //else _rootInterceptor.Invoke(_methodCall);
-
             return _contextInterceptor.Invoke(_methodCall);
         }
     }

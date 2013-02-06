@@ -54,8 +54,6 @@ namespace EasyArchitecture.Runtime
             return typeGeneric;
         }
 
-
-
         internal static bool IsGenericList(Type type)
         {
             return null != type.GetInterfaces().FirstOrDefault(t => t.IsGenericType && t.GetGenericTypeDefinition() == typeof(ICollection<>));

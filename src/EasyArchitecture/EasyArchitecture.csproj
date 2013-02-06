@@ -86,7 +86,6 @@
     <Compile Include="Runtime\Aspects\ContextInterceptor.cs" />
     <Compile Include="IoC\Instance\Interceptor.cs" />
     <Compile Include="Runtime\IO\SerializationHelper.cs" />
-    <Compile Include="Runtime\InternalLog.cs" />
     <Compile Include="Runtime\Plugin\AbstractPlugin.cs" />
     <Compile Include="Runtime\Plugin\PluginConfigurationException.cs" />
     <Compile Include="Runtime\Plugin\PluginInspector.cs" />

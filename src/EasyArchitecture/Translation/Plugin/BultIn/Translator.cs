@@ -2,19 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using EasyArchitecture.Runtime;
 using EasyArchitecture.Translation.Plugin.Contracts;
 
 namespace EasyArchitecture.Translation.Plugin.BultIn
 {
+    //TODO: esta classe precisa ser revista pois foi reaproveitada e há codigo desnecessário nela
     internal class Translator : ITranslator
     {
-        private readonly List<TypeMap> MappedTypes ;
+        private readonly List<TypeMap> _mappedTypes ;
 
         public Translator(List<TypeMap> mappedTypes)
         {
-            MappedTypes = mappedTypes;
+            _mappedTypes = mappedTypes;
         }
 
         public T1 Translate<T, T1>(T source) 
@@ -71,7 +71,7 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
         private  object TranslateObject<T, T1>(T source, T1 target)
         {
             //se ha mapeamento manual, executa delegate
-            var typeMap = MappedTypes.Find(m => m.Source == typeof(T) && m.Target == typeof(T1));
+            var typeMap = _mappedTypes.Find(m => m.Source == typeof(T) && m.Target == typeof(T1));
             if (typeMap != null)
             {
                 var func = (Func<T, T1, T1>)typeMap.DeclaredMap;
@@ -139,7 +139,7 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
 
         public  void MapType<T, TD>(Func<T, TD, TD> func)
         {
-            MappedTypes.Add(new TypeMap() { Source = typeof(T), Target = typeof(TD), DeclaredMap = func });
+            _mappedTypes.Add(new TypeMap() { Source = typeof(T), Target = typeof(TD), DeclaredMap = func });
         }
 
         private static Type ThisIsGenericList(Type type)

@@ -5,6 +5,5 @@
         public InvalidEntityException(params string[] messages):base(messages)
         {
         }
-
     }
 }

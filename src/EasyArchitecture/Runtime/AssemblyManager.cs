@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Reflection;
 using System.Text;
-using EasyArchitecture.Configuration.Instance;
 
 namespace EasyArchitecture.Runtime
 {
@@ -11,21 +10,6 @@ namespace EasyArchitecture.Runtime
         private const string Contract = ".Application.Contracts";
         private const string Domain = ".Domain";
         private const string Infrastructure = ".Infrastructure";
-
-        //internal static Assembly GetDomainAssembly(string moduleName)
-        //{
-        //    return GetAssembly(Domain, moduleName);
-        //}
-
-        //internal static Assembly GetInfrastructureAssembly(string moduleName)
-        //{
-        //    return GetAssembly(Infrastructure, moduleName);
-        //}
-
-        //internal static Assembly GetApplicationAssembly(string moduleName)
-        //{
-        //    return GetAssembly(Application, moduleName);
-        //}
 
         private static Assembly GetAssembly(string assemblyType, string moduleName)
         {

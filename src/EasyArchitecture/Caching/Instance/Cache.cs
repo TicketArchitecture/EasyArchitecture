@@ -1,8 +1,5 @@
 ﻿using System;
 using EasyArchitecture.Caching.Plugin.Contracts;
-using EasyArchitecture.Log.Plugin.Contracts;
-using EasyArchitecture.Runtime;
-using EasyArchitecture.Runtime.IO;
 using EasyArchitecture.Runtime.Log;
 
 namespace EasyArchitecture.Caching.Instance

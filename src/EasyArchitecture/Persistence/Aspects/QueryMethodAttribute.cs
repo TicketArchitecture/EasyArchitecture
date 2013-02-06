@@ -1,6 +1,6 @@
 using System;
 
-namespace EasyArchitecture.Persistence.Plugin.Contracts
+namespace EasyArchitecture.Persistence.Aspects
 {
     public class QueryMethodAttribute : Attribute
     {

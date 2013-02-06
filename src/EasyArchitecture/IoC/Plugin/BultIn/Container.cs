@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using EasyArchitecture.IoC.Plugin.Contracts;
 
 namespace EasyArchitecture.IoC.Plugin.BultIn
@@ -42,43 +43,37 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
 
         private object Resolve(Type interfaceType)
         {
-            /*-----------------
-             * RESOLVE T -> T1
-             * ----------------*/
-            //TODO: create a NotRegisteredException
-            if (!_registeredTypes.ContainsKey(interfaceType))
-                throw new ArgumentException("Type not registered", interfaceType.ToString());
-            var typeInfo = _registeredTypes[interfaceType];
+            var typeInfo = SearchType(interfaceType);
 
+            var instance = GetInstance(typeInfo);
 
-            /*-------------
-             * BUILD
-             * ------------*/
-            object instance = null;
+            return typeInfo.IsInteceptable ? ProxyFactory.NewInstance(instance) : instance;
+        }
 
+        private object GetInstance(TypeRegistry typeInfo)
+        {
             var constructors = typeInfo.Type.GetConstructors();
 
             var parameterlessConstructor = Array.Find(constructors, c => c.GetParameters().Length == 0);
             if (parameterlessConstructor != null)
             {
                 //ha 1 constructor default (parameterless)
-                instance = Activator.CreateInstance(typeInfo.Type);
+                return Activator.CreateInstance(typeInfo.Type);
             }
             else
             {
                 //ha 1 constructor com parametros
                 var constructor = constructors[0];
-                var objects = new List<object>();
-
-                foreach (var constructorParameter in constructor.GetParameters())
-                {
-                    objects.Add(this.Resolve(constructorParameter.ParameterType));
-                }
-
-                instance = Activator.CreateInstance(typeInfo.Type, objects.ToArray());
+                return  Activator.CreateInstance(typeInfo.Type, constructor.GetParameters().Select(constructorParameter => this.Resolve(constructorParameter.ParameterType)).ToArray());
             }
+        }
 
-            return typeInfo.IsInteceptable ? ProxyFactory.NewInstance(instance) : instance;
+        private TypeRegistry SearchType(Type interfaceType)
+        {
+            if (!_registeredTypes.ContainsKey(interfaceType))
+                throw new ArgumentException("Type not registered", interfaceType.ToString());//TODO: throws NotRegisteredException
+
+            return _registeredTypes[interfaceType];
         }
     }
 }

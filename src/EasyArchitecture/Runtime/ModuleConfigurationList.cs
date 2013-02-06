@@ -16,10 +16,6 @@ namespace EasyArchitecture.Runtime
             {
                 List.Add(moduleName, moduleConfiguration);    
             }
-            
-
-
-            
         }
 
         public static ModuleConfiguration Get(string moduleName)

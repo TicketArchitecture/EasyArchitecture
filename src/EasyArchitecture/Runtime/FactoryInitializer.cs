@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using EasyArchitecture.Caching.Instance;
-using EasyArchitecture.Caching.Plugin.BultIn;
 using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.IoC.Instance;
 using EasyArchitecture.Log.Instance;
@@ -18,7 +17,6 @@ namespace EasyArchitecture.Runtime
 {
     public static class FactoryInitializer
     {
-        //private static readonly List<Type> AllowedFactories=new List<Type>();
         private static readonly Dictionary<Type, Type> AllowedFactories = new Dictionary<Type, Type>();
 
         static FactoryInitializer()

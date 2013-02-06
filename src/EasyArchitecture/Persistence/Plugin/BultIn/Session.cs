@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using EasyArchitecture.Runtime;
 
 namespace EasyArchitecture.Persistence.Plugin.BultIn
 {

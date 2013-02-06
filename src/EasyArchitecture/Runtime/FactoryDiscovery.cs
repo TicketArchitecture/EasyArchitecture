@@ -1,5 +1,4 @@
 using EasyArchitecture.Configuration.Exceptions;
-using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Runtime.Contracts;
 
 namespace EasyArchitecture.Runtime

@@ -1,5 +1,3 @@
-using EasyArchitecture.IoC.Plugin.Contracts;
-
 namespace EasyArchitecture.IoC.Instance
 {
     public abstract class Interceptor

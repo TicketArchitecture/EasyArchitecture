@@ -5,38 +5,37 @@ namespace EasyArchitecture.Runtime.Plugin
 {
     public class PluginInspector
     {
-        private StringBuilder buffer = new StringBuilder();
-        private StringBuilder typeInfo = new StringBuilder();
-        private StringBuilder detailInfo= new StringBuilder();
+        private readonly StringBuilder _buffer = new StringBuilder();
+        private readonly StringBuilder _typeInfo = new StringBuilder();
+        private readonly StringBuilder _detailInfo= new StringBuilder();
 
         public PluginInspector(object plugin)
         {
-            typeInfo.AppendFormat("Assembly: {0}", plugin.GetType().Assembly.FullName);
-            typeInfo.AppendLine();
-            typeInfo.AppendFormat("Type: {0}", plugin.GetType().FullName);
-            typeInfo.AppendLine();
+            _typeInfo.AppendFormat("Assembly: {0}", plugin.GetType().Assembly.FullName);
+            _typeInfo.AppendLine();
+            _typeInfo.AppendFormat("Type: {0}", plugin.GetType().FullName);
+            _typeInfo.AppendLine();
         }
-
 
         public string ExtractInfo()
         {
-            buffer.AppendLine("Plugin Info");
-            buffer.Append(typeInfo);
+            _buffer.AppendLine("Plugin Info");
+            _buffer.Append(_typeInfo);
 
-            if (detailInfo.Length>0)
+            if (_detailInfo.Length>0)
             {
-                buffer.AppendLine("Configuration Details");
-                buffer.Append(detailInfo);
+                _buffer.AppendLine("Configuration Details");
+                _buffer.Append(_detailInfo);
             }
-            buffer.AppendLine("=============================================================================================");
-            return buffer.ToString();
+            _buffer.AppendLine("=============================================================================================");
+            return _buffer.ToString();
         }
 
         public void Log(string message, params object[] args)
         {
             message = "-> " + message;
-            detailInfo.AppendFormat(message, args);
-            detailInfo.AppendLine();
+            _detailInfo.AppendFormat(message, args);
+            _detailInfo.AppendLine();
         }
 
         public bool HasException { get; set; }
@@ -45,7 +44,7 @@ namespace EasyArchitecture.Runtime.Plugin
         {
             //TODO: format exception
             var message = "-> " + exception.Message;
-            detailInfo.AppendLine(message);
+            _detailInfo.AppendLine(message);
         }
     }
 }

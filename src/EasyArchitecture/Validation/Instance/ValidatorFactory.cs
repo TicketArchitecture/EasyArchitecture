@@ -1,5 +1,4 @@
-﻿using EasyArchitecture.Configuration.Expressions;
-using EasyArchitecture.Configuration.Instance;
+﻿using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Runtime;
 using EasyArchitecture.Runtime.Contracts;
 using EasyArchitecture.Runtime.Plugin;

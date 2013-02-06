@@ -1,5 +1,4 @@
 using System;
-using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Runtime;
 using EasyArchitecture.Runtime.IO;
 

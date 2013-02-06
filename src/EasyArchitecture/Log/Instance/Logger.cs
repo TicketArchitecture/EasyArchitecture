@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Log.Plugin.Contracts;
 
 namespace EasyArchitecture.Log.Instance
@@ -24,10 +23,6 @@ namespace EasyArchitecture.Log.Instance
         internal Logger(ILogger plugin)
         {
             _plugin = plugin;
-            //_moduleName = easyConfig.ModuleName;
-            //_logLevel = LoadRuntimeConfiguration(_moduleName);
-            //_plugin = (ILoggerPlugin)easyConfig.Plugins[typeof(ILoggerPlugin)];
-            //_plugin.Configure(_moduleName);
         }
 
         internal void Log(LogLevel logLevel, object message, Exception exception)

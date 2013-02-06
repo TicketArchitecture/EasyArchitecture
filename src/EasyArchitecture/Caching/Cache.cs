@@ -1,5 +1,4 @@
 ﻿using EasyArchitecture.Caching.Expressions;
-using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Runtime;
 
 namespace EasyArchitecture.Caching

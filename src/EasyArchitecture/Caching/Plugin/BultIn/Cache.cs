@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using EasyArchitecture.Caching.Plugin.Contracts;
 
@@ -7,7 +6,7 @@ namespace EasyArchitecture.Caching.Plugin.BultIn
 {
     internal class Cache : ICache
     {
-        private static readonly Dictionary<string, CacheItem> _cache = new Dictionary<string, CacheItem>();
+        private static readonly Dictionary<string, CacheItem> CacheData = new Dictionary<string, CacheItem>();
 
         public void Add(string key, object obj)
         {
@@ -17,24 +16,24 @@ namespace EasyArchitecture.Caching.Plugin.BultIn
         public void Add(string key, object obj, TimeSpan expiration)
         {
             if (ConfirmExistence(key))
-                _cache.Remove(key);
+                CacheData.Remove(key);
 
-            _cache.Add(key, new CacheItem(obj, DateTime.Now.Add(expiration)));
+            CacheData.Add(key, new CacheItem(obj, DateTime.Now.Add(expiration)));
         }
 
         public void Remove(string key)
         {
-            _cache.Remove(key);
+            CacheData.Remove(key);
         }
 
         public void Flush()
         {
-            _cache.Clear();
+            CacheData.Clear();
         }
 
         public object GetData(string key)
         {
-            return ConfirmExistence(key) ? _cache[key].Item : null;
+            return ConfirmExistence(key) ? CacheData[key].Item : null;
         }
 
         public T GetData<T>(string key)
@@ -49,19 +48,19 @@ namespace EasyArchitecture.Caching.Plugin.BultIn
 
         private void VerifyExpiration(string key)
         {
-            if (!_cache.ContainsKey(key)) return;
+            if (!CacheData.ContainsKey(key)) return;
 
-            var item = _cache[key];
+            var item = CacheData[key];
             if (item.ExpirationDate<=DateTime.Now)
             {
-                _cache.Remove(key);
+                CacheData.Remove(key);
             }
         }
 
         private bool ConfirmExistence(string key)
         {
             VerifyExpiration(key);
-            return (_cache.ContainsKey(key));
+            return (CacheData.ContainsKey(key));
         }
     }
 }

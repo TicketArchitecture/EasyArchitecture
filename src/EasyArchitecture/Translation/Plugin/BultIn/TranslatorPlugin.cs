@@ -7,7 +7,7 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
 {
     internal class TranslatorPlugin : AbstractPlugin, ITranslatorPlugin
     {
-        private readonly List<TypeMap> MappedTypes = new List<TypeMap>();
+        private readonly List<TypeMap> _mappedTypes = new List<TypeMap>();
 
         protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
         {
@@ -15,7 +15,7 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
 
         public ITranslator GetInstance()
         {
-            return new Translator(MappedTypes);
+            return new Translator(_mappedTypes);
         }
     }
 }

@@ -1,7 +1,5 @@
 using System;
 using System.IO;
-using System.Reflection;
-using EasyArchitecture.Configuration.Instance;
 using EasyArchitecture.Log.Plugin.Contracts;
 using EasyArchitecture.Runtime;
 using EasyArchitecture.Runtime.Plugin;

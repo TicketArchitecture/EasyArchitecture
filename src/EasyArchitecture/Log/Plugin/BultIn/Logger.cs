@@ -6,7 +6,7 @@ namespace EasyArchitecture.Log.Plugin.BultIn
 {
     internal class Logger : ILogger
     {
-        private FileInfo _arquivo;
+        private readonly FileInfo _arquivo;
 
         public Logger(FileInfo arquivo)
         {
