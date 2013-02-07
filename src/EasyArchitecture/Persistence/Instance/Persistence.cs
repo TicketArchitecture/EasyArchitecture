@@ -1,4 +1,5 @@
 ﻿using EasyArchitecture.Persistence.Plugin.Contracts;
+using EasyArchitecture.Runtime;
 using EasyArchitecture.Runtime.Log;
 
 namespace EasyArchitecture.Persistence.Instance
@@ -6,17 +7,20 @@ namespace EasyArchitecture.Persistence.Instance
     internal class Persistence
     {
         private readonly IPersistence _plugin;
-        private object _session;
+        private ISession _session;
 
         internal Persistence(IPersistence plugin)
         {
             _plugin = plugin;
         }
 
-        internal object GetSession()
+        internal ISession GetSession()
         {
             if (_session == null)
-                _session = _plugin.GetSession("");
+            {
+                var moduleName = LocalThreadStorage.GetCurrentModuleName();
+                _session = _plugin.GetSession(moduleName);
+            }
 
             InstanceLogger.Log(this, "GetSession", _session.GetHashCode());
 

@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using EasyArchitecture.Persistence.Plugin.Contracts;
 
 namespace EasyArchitecture.Persistence.Plugin.BultIn
 {
-    internal class Session
+    internal class Session : ISession
     {
         public Guid Id;
         //public readonly bool InTransaction = false;
@@ -29,8 +30,6 @@ namespace EasyArchitecture.Persistence.Plugin.BultIn
         public void CommitTransaction()
         {
             //copia da lista temp para lista final
-
-
             if(!InTransaction)
                 throw new NotInTransactionException();
 

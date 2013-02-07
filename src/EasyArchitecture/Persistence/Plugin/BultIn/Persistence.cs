@@ -14,22 +14,22 @@ namespace EasyArchitecture.Persistence.Plugin.BultIn
             _dataBase = dataBase;
         }
 
-        public void BeginTransaction(object session)
+        public void BeginTransaction(ISession session)
         {
-            ((Session)session).BeginTransaction();
+            session.BeginTransaction();
         }
 
-        public void CommitTransaction(object session)
+        public void CommitTransaction(ISession session)
         {
-            ((Session)session).CommitTransaction();
+            session.CommitTransaction();
         }
 
-        public void RollbackTransaction(object session)
+        public void RollbackTransaction(ISession session)
         {
-            ((Session)session).CommitTransaction();
+            session.RollbackTransaction();
         }
 
-        public object GetSession(string moduleName)
+        public ISession GetSession(string moduleName)
         {
             return new Session(_dataBase);
         }

@@ -67,6 +67,7 @@
     <Compile Include="Log\Aspects\LogInterceptor.cs" />
     <Compile Include="Persistence\IRepository.cs" />
     <Compile Include="Persistence\Instance\PersistenceFactory.cs" />
+    <Compile Include="Persistence\Plugin\Contracts\ISession.cs" />
     <Compile Include="Persistence\Plugin\BultIn\NotInTransactionException.cs" />
     <Compile Include="Persistence\Repository.cs" />
     <Compile Include="Persistence\Plugin\Contracts\IPersistencePlugin.cs" />

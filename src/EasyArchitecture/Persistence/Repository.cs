@@ -1,14 +1,14 @@
 using System.Collections.Generic;
-using EasyArchitecture.Persistence.Plugin.BultIn;
+using EasyArchitecture.Persistence.Plugin.Contracts;
 using EasyArchitecture.Runtime;
 
 namespace EasyArchitecture.Persistence
 {
     public class Repository<T> : IRepository<T>
     {
-        private static Session GetSession()
+        private static ISession GetSession()
         {
-            return (Session) InstanceProvider.GetInstance<Instance.Persistence>().GetSession();
+            return InstanceProvider.GetInstance<Instance.Persistence>().GetSession();
         }
 
         public virtual void Save(T entity)
