@@ -1,5 +1,5 @@
-﻿using EasyArchitecture.Persistence.Plugin.Contracts;
-using EasyArchitecture.Runtime;
+﻿using System.Collections.Generic;
+using EasyArchitecture.Persistence.Plugin.Contracts;
 using EasyArchitecture.Runtime.Log;
 
 namespace EasyArchitecture.Persistence.Instance
@@ -7,46 +7,71 @@ namespace EasyArchitecture.Persistence.Instance
     internal class Persistence
     {
         private readonly IPersistence _plugin;
-        private ISession _session;
 
         internal Persistence(IPersistence plugin)
         {
             _plugin = plugin;
         }
 
-        internal ISession GetSession()
-        {
-            if (_session == null)
-            {
-                var moduleName = LocalThreadStorage.GetCurrentModuleName();
-                _session = _plugin.GetSession(moduleName);
-            }
-
-            InstanceLogger.Log(this, "GetSession", _session.GetHashCode());
-
-            return _session;
-        }
-
         internal void BeginTransaction()
         {
-            this.GetSession();
-            _plugin.BeginTransaction(_session);
+            _plugin.BeginTransaction();
 
             InstanceLogger.Log(this, "BeginTransaction");
         }
 
         internal void CommitTransaction()
         {
-            _plugin.CommitTransaction(_session);
+            _plugin.CommitTransaction();
 
             InstanceLogger.Log(this, "CommitTransaction");
         }
 
         internal void RollbackTransaction()
         {
-            _plugin.RollbackTransaction(_session);
+            _plugin.RollbackTransaction();
 
             InstanceLogger.Log(this, "RollbackTransaction");
         }
+
+        internal void Save(object entity)
+        {
+            _plugin.Save(entity);
+            
+            InstanceLogger.Log(this, "Save",entity);
+        }
+    
+        internal void Update(object entity)
+        {
+            _plugin.Update(entity);
+
+            InstanceLogger.Log(this, "Save", entity);
+        }
+    
+        internal void Delete(object entity)
+        {
+            _plugin.Delete(entity);
+
+            InstanceLogger.Log(this, "Save", entity);
+        }
+
+        internal IList<T> Get<T>(object example)
+        {
+            var list = _plugin.Get<T>(example);
+
+            InstanceLogger.Log(this, "Get", example, list);
+
+            return list;
+        }
+
+        internal IList<T> Get<T>()
+        {
+            var list=_plugin.Get<T>();
+
+            InstanceLogger.Log(this, "Get", list);
+
+            return list;
+        }
+
     }
 }

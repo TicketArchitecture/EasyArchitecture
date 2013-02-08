@@ -7,8 +7,7 @@ namespace EasyArchitecture.Persistence
         void Save(T entity);
         void Update(T entity);
         void Delete(T entity);
-        IList<T> Get(T qbe);
+        IList<T> Get(T example);
         IList<T> Get();
-
     }
 }

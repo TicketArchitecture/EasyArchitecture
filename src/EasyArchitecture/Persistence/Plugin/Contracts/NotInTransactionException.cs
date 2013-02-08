@@ -1,6 +1,6 @@
 using System;
 
-namespace EasyArchitecture.Persistence.Plugin.BultIn
+namespace EasyArchitecture.Persistence.Plugin.Contracts
 {
     internal class NotInTransactionException : Exception
     {

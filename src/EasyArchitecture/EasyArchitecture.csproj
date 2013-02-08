@@ -67,10 +67,10 @@
     <Compile Include="Log\Aspects\LogInterceptor.cs" />
     <Compile Include="Persistence\IRepository.cs" />
     <Compile Include="Persistence\Instance\PersistenceFactory.cs" />
-    <Compile Include="Persistence\Plugin\Contracts\ISession.cs" />
-    <Compile Include="Persistence\Plugin\BultIn\NotInTransactionException.cs" />
+    <Compile Include="Persistence\Plugin\Contracts\NotInTransactionException.cs" />
     <Compile Include="Persistence\Repository.cs" />
     <Compile Include="Persistence\Plugin\Contracts\IPersistencePlugin.cs" />
+    <Compile Include="Runtime\IO\UnknowTypeDataContractSurrogate.cs" />
     <Compile Include="Runtime\Log\InstanceLogger.cs" />
     <Compile Include="Runtime\ModuleConfigurationList.cs" />
     <Compile Include="Runtime\ModuleConfiguration.cs" />
@@ -114,7 +114,6 @@
     <Compile Include="Storage\Plugin\BultIn\StoragePlugin.cs" />
     <Compile Include="Storage\Plugin\Contracts\IStoragePlugin.cs" />
     <Compile Include="Caching\Plugin\Contracts\ICachePlugin.cs" />
-    <Compile Include="Persistence\Plugin\BultIn\Session.cs" />
     <Compile Include="Translation\Instance\TranslatorFactory.cs" />
     <Compile Include="Translation\Plugin\BultIn\Translator.cs" />
     <Compile Include="Translation\Plugin\BultIn\TypeMap.cs" />
