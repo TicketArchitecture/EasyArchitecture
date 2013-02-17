@@ -5,6 +5,7 @@ using NUnit.Framework;
 namespace EasyArchitecture.Tests.Runtime
 {
     [TestFixture]
+    [Ignore("assemblies has removed from this project")]
     public class AssemblyManagerTest
     {
         private const string ModuleName = "Application4Test";

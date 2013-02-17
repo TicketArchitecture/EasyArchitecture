@@ -5,13 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture", "src\Eas
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8B654DAA-B565-4267-B9E8-7A97944DF48A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application4Test.Application", "tests\Application4Test.Application\Application4Test.Application.csproj", "{8AE9BF26-387B-49B9-8789-93BEA4B212AD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application4Test.Domain", "tests\Application4Test.Domain\Application4Test.Domain.csproj", "{82873FF4-1685-423F-B40B-1CF84AABBEAE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application4Test.Infrastructure", "tests\Application4Test.Infrastructure\Application4Test.Infrastructure.csproj", "{21CEB06D-9A61-4331-95EA-7BE413A29D76}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Tests", "tests\EasyArchitecture.Tests\EasyArchitecture.Tests.csproj", "{56157217-6DCD-4B47-8FBA-82C9C1E6E600}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Plugins.Validation", "tests\EasyArchitecture.Plugins.Validation\EasyArchitecture.Plugins.Validation.csproj", "{0658FF22-FD01-489F-B3E5-8C215FBCC276}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Plugins.BuiltIn.Tests", "tests\EasyArchitecture.Plugins.BuiltIn.Tests\EasyArchitecture.Plugins.BuiltIn.Tests.csproj", "{47D78380-B8D5-47E8-8B8D-B865164BC08A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,31 +21,26 @@ Global
 		{09A7AA21-ED65-409C-8442-E0ADA02A7AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09A7AA21-ED65-409C-8442-E0ADA02A7AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09A7AA21-ED65-409C-8442-E0ADA02A7AAF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8AE9BF26-387B-49B9-8789-93BEA4B212AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AE9BF26-387B-49B9-8789-93BEA4B212AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8AE9BF26-387B-49B9-8789-93BEA4B212AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8AE9BF26-387B-49B9-8789-93BEA4B212AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82873FF4-1685-423F-B40B-1CF84AABBEAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82873FF4-1685-423F-B40B-1CF84AABBEAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82873FF4-1685-423F-B40B-1CF84AABBEAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82873FF4-1685-423F-B40B-1CF84AABBEAE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{21CEB06D-9A61-4331-95EA-7BE413A29D76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21CEB06D-9A61-4331-95EA-7BE413A29D76}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21CEB06D-9A61-4331-95EA-7BE413A29D76}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21CEB06D-9A61-4331-95EA-7BE413A29D76}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56157217-6DCD-4B47-8FBA-82C9C1E6E600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{56157217-6DCD-4B47-8FBA-82C9C1E6E600}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56157217-6DCD-4B47-8FBA-82C9C1E6E600}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56157217-6DCD-4B47-8FBA-82C9C1E6E600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47D78380-B8D5-47E8-8B8D-B865164BC08A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47D78380-B8D5-47E8-8B8D-B865164BC08A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47D78380-B8D5-47E8-8B8D-B865164BC08A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47D78380-B8D5-47E8-8B8D-B865164BC08A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8AE9BF26-387B-49B9-8789-93BEA4B212AD} = {8B654DAA-B565-4267-B9E8-7A97944DF48A}
-		{82873FF4-1685-423F-B40B-1CF84AABBEAE} = {8B654DAA-B565-4267-B9E8-7A97944DF48A}
-		{21CEB06D-9A61-4331-95EA-7BE413A29D76} = {8B654DAA-B565-4267-B9E8-7A97944DF48A}
 		{56157217-6DCD-4B47-8FBA-82C9C1E6E600} = {8B654DAA-B565-4267-B9E8-7A97944DF48A}
+		{0658FF22-FD01-489F-B3E5-8C215FBCC276} = {8B654DAA-B565-4267-B9E8-7A97944DF48A}
+		{47D78380-B8D5-47E8-8B8D-B865164BC08A} = {8B654DAA-B565-4267-B9E8-7A97944DF48A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\Unity.2.1.505.2\lib\NET35;packages\Unity.Interception.2.1.505.2\lib\NET35
