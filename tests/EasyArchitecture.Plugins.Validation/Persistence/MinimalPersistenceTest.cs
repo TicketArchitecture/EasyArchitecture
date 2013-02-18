@@ -1,4 +1,5 @@
-﻿using EasyArchitecture.Persistence.Plugin.Contracts;
+﻿using System;
+using EasyArchitecture.Persistence.Plugin.Contracts;
 using EasyArchitecture.Plugins.Validation.Persistence.Stuff;
 using NUnit.Framework;
 
@@ -12,11 +13,13 @@ namespace EasyArchitecture.Plugins.Validation.Persistence
         [SetUp]
         public abstract void SetUp();
 
-
         [Test]
         public void Should_begin_transaction()
         {
             Assert.That(() => PluginInstance.BeginTransaction(), Throws.Nothing);
+
+            //just for remove lock
+            try {PluginInstance.RollbackTransaction();}catch {}
         }
 
         [Test]
@@ -48,18 +51,23 @@ namespace EasyArchitecture.Plugins.Validation.Persistence
         [Test]
         public void Should_save_entity()
         {
-            var dog = new Dog { Age = 15, Name = "Old Dog" };
+            var uniqueDogName = Guid.NewGuid().ToString();
+
+            var dog = new Dog { Age = 15, Name = uniqueDogName };
+            
             Assert.That(() => PluginInstance.Save(dog), Throws.Nothing);
         }
 
         [Test]
         public void Should_get_entity()
         {
-            var dog = new Dog { Age = 15, Name = "Old Dog" };
+            var uniqueDogName = Guid.NewGuid().ToString();
+
+            var dog = new Dog { Age = 15, Name = uniqueDogName };
 
             PluginInstance.Save(dog);
 
-            var dogs = PluginInstance.Get<Dog>(new Dog() { Age = 15 });
+            var dogs = PluginInstance.Get<Dog>(new Dog() { Age = 15 ,Name = uniqueDogName});
 
             Assert.That(dogs[0], Is.EqualTo(dog));
         }
@@ -67,30 +75,36 @@ namespace EasyArchitecture.Plugins.Validation.Persistence
         [Test]
         public void Should_get_list_of_entity()
         {
-            var dog = new Dog { Age = 15, Name = "Old Dog" };
+            var uniqueDogName = Guid.NewGuid().ToString();
 
-            PluginInstance.Save(dog);
+            var dogA = new Dog { Age = 10, Name = uniqueDogName };
+            var dogB = new Dog { Age = 15, Name = uniqueDogName };
+            var dogC = new Dog { Age = 25, Name = uniqueDogName };
 
-            var dogs = PluginInstance.Get<Dog>();
+            PluginInstance.Save(dogA);
+            PluginInstance.Save(dogB);
+            PluginInstance.Save(dogC);
 
-            Assert.That(dogs[0], Is.EqualTo(dog));
+            var dogs = PluginInstance.Get<Dog>(new Dog { Name = uniqueDogName });
+
+            Assert.That(dogs.Count, Is.EqualTo(3));
         }
 
 
         [Test]
         public void Should_update_entity()
         {
-            var dog = new Dog { Age = 15, Name = "Old Dog" };
+            var uniqueDogName = Guid.NewGuid().ToString();
+
+            var dog = new Dog { Age = 15, Name = uniqueDogName };
 
             PluginInstance.Save(dog);
 
-            var dogs = PluginInstance.Get<Dog>();
+            dog.Age = 200;
 
-            dogs[0].Age = 200;
+            PluginInstance.Update(dog);
 
-            PluginInstance.Update(dogs[0]);
-
-            dogs = PluginInstance.Get<Dog>();
+            var dogs = PluginInstance.Get<Dog>(new Dog { Name = uniqueDogName });
 
             Assert.That(dogs[0].Age, Is.EqualTo(200));
         }
@@ -98,17 +112,14 @@ namespace EasyArchitecture.Plugins.Validation.Persistence
         [Test]
         public void Should_delete_entity()
         {
-            var _dog = new Dog { Age = 15, Name = "Old Dog" };
+            var uniqueDogName = Guid.NewGuid().ToString();
 
-            PluginInstance.Save(_dog);
+            var dog = new Dog { Age = 15, Name = uniqueDogName };
 
-            var dogs = PluginInstance.Get<Dog>();
+            PluginInstance.Save(dog);
+            PluginInstance.Delete(dog);
 
-            dogs[0].Age = 200;
-
-            PluginInstance.Delete(dogs[0]);
-
-            dogs = PluginInstance.Get<Dog>();
+            var dogs = PluginInstance.Get<Dog>(new Dog {Age = 15, Name = uniqueDogName});
 
             Assert.That(dogs.Count, Is.EqualTo(0));
         }

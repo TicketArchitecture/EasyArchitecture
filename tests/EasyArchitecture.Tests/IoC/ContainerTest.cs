@@ -14,7 +14,6 @@ namespace EasyArchitecture.Tests.IoC
         private IContainer _instancePlugin;
 
         [SetUp]
-        [Ignore("Necessário rever forma como .Resolve inicializa")]
         public void Setup()
         {
             _mockery = new MockRepository();
@@ -24,6 +23,7 @@ namespace EasyArchitecture.Tests.IoC
         }
 
         [Test]
+        [Ignore("Necessário rever forma como .Resolve inicializa")]
         public void Can_get_a_facade()
         {
             Expect.Call(() => _instancePlugin.Resolve<IDogFacade>());
