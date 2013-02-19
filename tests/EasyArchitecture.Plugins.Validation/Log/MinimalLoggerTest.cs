@@ -20,9 +20,9 @@ namespace EasyArchitecture.Plugins.Validation.Log
         {
             Logger.Log(LogLevel.Debug, "message", null);
 
-            var file = GetFileInfo(ModuleName);
+            var content = GetFileContent(ModuleName);
 
-            Assert.That(file, Is.Not.Null);
+            Assert.That(content, Is.Not.Null);
         }
 
         [Test]
@@ -32,12 +32,7 @@ namespace EasyArchitecture.Plugins.Validation.Log
 
             Logger.Log(LogLevel.Debug, message, null);
 
-            var file = GetFileInfo(ModuleName);
-
-            var reader = file.OpenText();
-
-            var content = reader.ReadToEnd();
-            reader.Close();
+            var content = GetFileContent(ModuleName);
 
             Assert.That(content, Is.StringContaining(message));
         }
@@ -54,18 +49,13 @@ namespace EasyArchitecture.Plugins.Validation.Log
 
             Logger.Log(LogLevel.Debug, message, null);
 
-            var file = GetFileInfo(ModuleName);
-
-            var reader = file.OpenText();
-
-            var content = reader.ReadToEnd();
-            reader.Close();
+            var content = GetFileContent(ModuleName);
 
             Assert.That(content.Substring(0, 10), Is.StringContaining(dateOfMessage));
             Assert.That(content, Is.StringContaining(msgToLocate));
         }
 
-        private static FileInfo GetFileInfo(string moduleName)
+        private static string GetFileContent(string moduleName)
         {
             const string defaultPath = "Log";
             const string defaultExtension = ".log";
@@ -74,8 +64,16 @@ namespace EasyArchitecture.Plugins.Validation.Log
             var logFile = Path.ChangeExtension(moduleName, defaultExtension);
             logFile = Path.Combine(path, logFile);
 
-            var file = new FileInfo(logFile);
-            return file;
+            //var file = new FileInfo(logFile);
+            //file;
+            var ret = string.Empty;
+            using (var fs = new FileStream(logFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            //using (StreamWriter sw = new StreamWriter(fs))
+            using (var sw = new StreamReader(fs))
+            {
+                ret = sw.ReadToEnd();
+            }
+            return ret;
         }
     }
 }
