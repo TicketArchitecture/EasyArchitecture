@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caching\CacheInstanceTest.cs" />
+    <Compile Include="IoC\ContainerServiceTest.cs" />
     <Compile Include="IoC\Stuff\DogDto.cs" />
     <Compile Include="IoC\Stuff\IDogFacade.cs" />
     <Compile Include="Persistence\Stuff\Dog.cs" />

@@ -20,7 +20,7 @@ namespace EasyArchitecture.Runtime
 
         public static ModuleConfiguration Get(string moduleName)
         {
-            return List[moduleName];
+            return List.ContainsKey(moduleName) ? List[moduleName] : null;
         }
     }
 }
