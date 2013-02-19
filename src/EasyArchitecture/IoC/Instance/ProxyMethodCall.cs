@@ -17,7 +17,16 @@ namespace EasyArchitecture.IoC.Instance
         }
         public object Invoke()
         {
-            return _method.Invoke(_o, _parameters);
+            object ret = null;
+            try
+            {
+                ret = _method.Invoke(_o, _parameters);
+            }
+            catch (TargetInvocationException targetInvocationException)
+            {
+                throw targetInvocationException.InnerException;
+            }
+            return ret;
         }
 
         public MethodInfo Method

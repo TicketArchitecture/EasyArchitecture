@@ -1,4 +1,5 @@
-﻿using EasyArchitecture.IoC.Plugin.Contracts;
+﻿using System;
+using EasyArchitecture.IoC.Plugin.Contracts;
 using EasyArchitecture.Plugins.Validation.IoC.Stuff;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -78,6 +79,17 @@ namespace EasyArchitecture.Plugins.Validation.IoC
             const string expectedMethodReturn = "DummyMethod";
 
             Assert.That(methodReturn, Is.EqualTo(expectedMethodReturn));
+        }
+
+        [Test]
+        [Ignore("nao pode ser testado sem comentar a sequencia de interceptadores em InterceptionHook.cs")]
+        public void Proxy_should_return_original_exception()
+        {
+            Container.Register(typeof(IDummyInterface),typeof(NewDummyImplementation),true);
+
+            var implementation = Container.Resolve<IDummyInterface>();
+
+            Assert.That(()=>implementation.VoidDummyMethod(), Throws.InstanceOf<NotImplementedException>());
         }
 
         [Test]
