@@ -23,8 +23,6 @@ namespace EasyArchitecture.Plugins.Validation.Log
             var file = GetFileInfo(ModuleName);
 
             Assert.That(file, Is.Not.Null);
-
-            file.Delete();
         }
 
         [Test]
@@ -42,8 +40,6 @@ namespace EasyArchitecture.Plugins.Validation.Log
             reader.Close();
 
             Assert.That(content, Is.StringContaining(message));
-
-            file.Delete();
         }
 
         [Test]
@@ -67,8 +63,6 @@ namespace EasyArchitecture.Plugins.Validation.Log
 
             Assert.That(content.Substring(0, 10), Is.StringContaining(dateOfMessage));
             Assert.That(content, Is.StringContaining(msgToLocate));
-
-            file.Delete();
         }
 
         private static FileInfo GetFileInfo(string moduleName)
