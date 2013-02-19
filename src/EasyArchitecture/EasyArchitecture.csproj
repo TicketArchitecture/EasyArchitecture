@@ -115,6 +115,7 @@
     <Compile Include="Storage\Plugin\Contracts\IStoragePlugin.cs" />
     <Compile Include="Caching\Plugin\Contracts\ICachePlugin.cs" />
     <Compile Include="Translation\Instance\TranslatorFactory.cs" />
+    <Compile Include="Translation\Plugin\BultIn\MapRule.cs" />
     <Compile Include="Translation\Plugin\BultIn\Translator.cs" />
     <Compile Include="Translation\Plugin\BultIn\TypeMap.cs" />
     <Compile Include="Runtime\InstanceProvider.cs" />

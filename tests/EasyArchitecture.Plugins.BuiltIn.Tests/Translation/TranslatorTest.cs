@@ -1,4 +1,7 @@
-﻿using EasyArchitecture.Plugins.Validation.Translation;
+﻿using System.Reflection;
+using EasyArchitecture.Plugins.Validation.Translation;
+using EasyArchitecture.Runtime;
+using EasyArchitecture.Runtime.Plugin;
 using EasyArchitecture.Translation.Plugin.BultIn;
 using NUnit.Framework;
 
@@ -10,7 +13,13 @@ namespace EasyArchitecture.Plugins.BuiltIn.Tests.Translation
         [SetUp]
         public override void SetUp()
         {
-            Translator = new TranslatorPlugin().GetInstance();
+            var plugin = new TranslatorPlugin();
+
+            PluginInspector pluginInspector;
+            var infraAssembly = Assembly.GetExecutingAssembly();
+
+            plugin.Configure(new ModuleAssemblies(null, null, null, infraAssembly), out pluginInspector);
+            Translator = plugin.GetInstance();
         }
     }
 }

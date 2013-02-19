@@ -137,10 +137,10 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
             return value;
         }
 
-        public  void MapType<T, TD>(Func<T, TD, TD> func)
-        {
-            _mappedTypes.Add(new TypeMap() { Source = typeof(T), Target = typeof(TD), DeclaredMap = func });
-        }
+        //public  void MapType<T, TD>(Func<T, TD, TD> func)
+        //{
+        //    _mappedTypes.Add(new TypeMap() { Source = typeof(T), Target = typeof(TD), DeclaredMap = func });
+        //}
 
         private static Type ThisIsGenericList(Type type)
         {

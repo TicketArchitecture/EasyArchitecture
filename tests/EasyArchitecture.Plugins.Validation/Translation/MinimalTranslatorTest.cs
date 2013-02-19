@@ -35,28 +35,13 @@ namespace EasyArchitecture.Plugins.Validation.Translation
             Assert.That(actual, Is.EqualTo(expected));
         }
 
-        //TODO: translate specific
         [Test]
-        [Ignore("Need to analise")]
         public void Should_translate_using_custom_rule()
         {
             var entity = new Dog() { Age = 15, Id = 8, Name = "Rex" };
-            var expected = new DogDto() { Age = 16, Id = 8, Name = "NewName" };
+            var expected = new OtherDogDto() { Age = 16, Id = 8, Name = "NewName" };
 
-            ////TODO: not allowed, just for test
-            //var internalTranslator = (Translator)Translator;
-            //internalTranslator.MapType<Dog, DogDto>(
-            //    (source, target) =>
-            //    {
-            //        target.Id = source.Id;
-            //        target.Age = source.Age + 1;
-            //        target.Name = "NewName";
-            //        return target;
-            //    }
-            //    );
-
-
-            var actual = Translator.Translate<Dog, DogDto>(entity);
+            var actual = Translator.Translate<Dog, OtherDogDto>(entity);
 
             Assert.That(actual, Is.EqualTo(expected));
         }

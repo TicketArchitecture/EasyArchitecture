@@ -65,6 +65,7 @@
     <Compile Include="Translation\MinimalTranslatorTest.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Translation\Stuff\OtherDogDto.cs" />
     <Compile Include="Validation\Stuff\Dog.cs" />
     <Compile Include="Validation\ValidatorTest.cs">
       <SubType>Code</SubType>

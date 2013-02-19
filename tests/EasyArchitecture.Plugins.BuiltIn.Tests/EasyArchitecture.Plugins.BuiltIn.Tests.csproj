@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Caching\CacheTest.cs" />
     <Compile Include="IoC\ContainerTest.cs" />
+    <Compile Include="Translation\Stuff\CustomMap.cs" />
     <Compile Include="Validation\Stuff\DogValidator.cs" />
     <Compile Include="Log\LoggerTest.cs" />
     <Compile Include="Persistence\PersistenceTest.cs">
