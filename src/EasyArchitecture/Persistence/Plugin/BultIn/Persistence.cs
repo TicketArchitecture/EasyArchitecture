@@ -124,7 +124,12 @@ namespace EasyArchitecture.Persistence.Plugin.BultIn
 
             ArrayList specificTypeList = null;
             if (_dataBase.ContainsKey(typeof(T)))
+            {
                 specificTypeList = _dataBase[typeof(T)];
+            }
+            else {
+                return new List<T>();
+            }
 
             var type = typeof(T);
             var properties = type.GetProperties();
