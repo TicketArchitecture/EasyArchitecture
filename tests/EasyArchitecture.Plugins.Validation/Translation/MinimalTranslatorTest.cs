@@ -67,5 +67,16 @@ namespace EasyArchitecture.Plugins.Validation.Translation
 
             Assert.That(actual, Is.EqualTo(expected));
         }
+        
+        [Test]
+        public void Should_translate_inner_types()
+        {
+            var entity = new Holder { Internal = new Dog() { Age = 15, Id = 8, Name = "Rex" } };
+            var expected = new HolderDto { Internal = new DogDto() { Age = 15, Id = 8, Name = "Rex" } };
+
+            var actual = Translator.Translate<Holder, HolderDto>(entity);
+
+            Assert.That(actual.Internal, Is.EqualTo(expected.Internal));
+        }
     }
 }

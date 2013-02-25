@@ -7,17 +7,16 @@ using EasyArchitecture.Translation.Plugin.Contracts;
 
 namespace EasyArchitecture.Translation.Plugin.BultIn
 {
-    //TODO: esta classe precisa ser revista pois foi reaproveitada e há codigo desnecessário nela
     internal class Translator : ITranslator
     {
-        private readonly List<TypeMap> _mappedTypes ;
+        private readonly List<TypeMap> _mappedTypes;
 
         public Translator(List<TypeMap> mappedTypes)
         {
             _mappedTypes = mappedTypes;
         }
 
-        public T1 Translate<T, T1>(T source) 
+        public T1 Translate<T, T1>(T source)
         {
             if (typeof(T).IsValueType || typeof(T1).IsValueType)
                 throw new ArgumentException("Just class can be translated", "source");
@@ -68,9 +67,8 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
             return target;
         }
 
-        private  object TranslateObject<T, T1>(T source, T1 target)
+        private object TranslateObject<T, T1>(T source, T1 target)
         {
-            //se ha mapeamento manual, executa delegate
             var typeMap = _mappedTypes.Find(m => m.Source == typeof(T) && m.Target == typeof(T1));
             if (typeMap != null)
             {
@@ -78,32 +76,23 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
                 return func(source, target);
             }
 
-            //se nao ha regra para mapeamento, executa mapeamento por convencao
-
-            //look @ properties
             foreach (var property in source.GetType().GetProperties())
             {
-                //get source property value
                 var value = property.GetValue(source, null);
                 if (value == null) continue;
 
-                //get target property
                 var targetProperty = target.GetType().GetProperty(property.Name);
                 if (targetProperty == null) continue;
 
-                //convert value
                 value = ConvertValue(property.PropertyType, targetProperty.PropertyType, value);
 
-                //apply value
                 targetProperty.SetValue(target, value, null);
             }
             return target;
         }
 
-        private  object ConvertValue(Type source, Type target, object value)
+        private object ConvertValue(Type source, Type target, object value)
         {
-            //TODO: teste
-            //verificar se é lista genérica, se for, manda traduzir os itens da lista
             if (ThisIsGenericList(value) != null)
             {
                 value = TranslateGenericList(value, target);
@@ -125,9 +114,7 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
                 target = target.GetGenericArguments()[0];
             }
 
-            //TODO: verificar
-            //falta a condicao de obj->obj
-            if (target.Name.Contains("DTO") || target.Name.Contains("TO") || source.Name.Contains("DTO") || source.Name.Contains("TO"))
+            if (target.IsClass && source.IsClass)
             {
                 value = TranslateObject(value, TypeManager.InstanceCreator(target));
             }
@@ -136,11 +123,6 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
 
             return value;
         }
-
-        //public  void MapType<T, TD>(Func<T, TD, TD> func)
-        //{
-        //    _mappedTypes.Add(new TypeMap() { Source = typeof(T), Target = typeof(TD), DeclaredMap = func });
-        //}
 
         private static Type ThisIsGenericList(Type type)
         {
@@ -163,7 +145,7 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
             return ThisIsGenericList(obj.GetType());
         }
 
-        private  IList TranslateGenericList(object source, Type target)
+        private IList TranslateGenericList(object source, Type target)
         {
             IList targetList = null;
 
@@ -184,8 +166,7 @@ namespace EasyArchitecture.Translation.Plugin.BultIn
 
         private static object GetDefaultValue(Type type)
         {
-            return !type.IsValueType ? null : Activator.CreateInstance(type);
+            return type.IsValueType ? Activator.CreateInstance(type) : null;
         }
-
     }
 }
