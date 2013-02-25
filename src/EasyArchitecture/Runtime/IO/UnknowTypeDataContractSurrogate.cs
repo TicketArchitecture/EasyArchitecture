@@ -15,7 +15,7 @@ namespace EasyArchitecture.Runtime.IO
 
         public object GetObjectToSerialize(object obj, Type targetType)
         {
-            if(obj.GetType() != targetType)
+            if((obj.GetType() != targetType) && !targetType.IsInterface )
             {
                 obj = obj.GetType().Name;
             }
