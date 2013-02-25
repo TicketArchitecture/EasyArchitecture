@@ -4,9 +4,10 @@ namespace EasyArchitecture.IoC.Instance
     {
         private Interceptor _successor;
 
-        public void SetSuccessor(Interceptor successor)
+        public Interceptor SetSuccessor(Interceptor successor)
         {
             _successor = successor;
+            return this;
         }
 
         protected object Next(ProxyMethodCall methodCall)
