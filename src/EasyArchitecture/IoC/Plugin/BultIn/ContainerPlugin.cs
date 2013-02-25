@@ -9,16 +9,12 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
 {
     internal class ContainerPlugin : AbstractPlugin, IContainerPlugin
     {
-
         private readonly Dictionary<Type, TypeRegistry> _registeredTypes = new Dictionary<Type, TypeRegistry>();
-
 
         protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
         {
-            //TODO: passar essa responsabilidade para o factory?
             AutoRegister(moduleAssemblies.DomainAssembly, moduleAssemblies.InfrastructureAssembly, false,pluginInspector);
             AutoRegister(moduleAssemblies.ApplicationAssembly, moduleAssemblies.ApplicationAssembly, true,pluginInspector);
-            
         }
 
         private void AutoRegister(Assembly interfacesAssembly, Assembly implementationsAssembly, bool useInterception, PluginInspector pluginInspector)
@@ -43,15 +39,12 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
                     useInterception?"using":"not using");
 
                 _registeredTypes.Add(exportedType, new TypeRegistry(implementationType,useInterception));
-                //_plugin.Register(exportedType, implementationType, useInterception);
             }
         }
+ 
         public IContainer GetInstance()
         {
             return new Container(_registeredTypes);
         }
-
-
     }
-
 }

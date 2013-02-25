@@ -10,11 +10,9 @@ namespace EasyArchitecture.IoC
         }
         public static T Resolve<T>()
         {
-            //TODO: Container funciona apenas se chamado para resolver facade, pois assim marca de qual modulo pertence
             LocalThreadStorage.SetCurrentModuleName(typeof(T));
 
             return InstanceProvider.GetInstance<Instance.Container>().Resolve<T>();
         }
-
     }
 }

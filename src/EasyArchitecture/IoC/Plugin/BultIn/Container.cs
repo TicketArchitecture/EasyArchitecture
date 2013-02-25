@@ -57,12 +57,10 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
             var parameterlessConstructor = Array.Find(constructors, c => c.GetParameters().Length == 0);
             if (parameterlessConstructor != null)
             {
-                //ha 1 constructor default (parameterless)
                 return Activator.CreateInstance(typeInfo.Type);
             }
             else
             {
-                //ha 1 constructor com parametros
                 var constructor = constructors[0];
                 return  Activator.CreateInstance(typeInfo.Type, constructor.GetParameters().Select(constructorParameter => this.Resolve(constructorParameter.ParameterType)).ToArray());
             }
@@ -71,7 +69,7 @@ namespace EasyArchitecture.IoC.Plugin.BultIn
         private TypeRegistry SearchType(Type interfaceType)
         {
             if (!_registeredTypes.ContainsKey(interfaceType))
-                throw new ArgumentException("Type not registered", interfaceType.ToString());//TODO: throws NotRegisteredException
+                throw new ArgumentException("Type not registered", interfaceType.ToString());
 
             return _registeredTypes[interfaceType];
         }

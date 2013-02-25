@@ -42,7 +42,6 @@ namespace EasyArchitecture.Runtime.Plugin
 
         public void LogException(Exception exception)
         {
-            //TODO: format exception
             var message = "-> " + exception.Message;
             _detailInfo.AppendLine(message);
         }

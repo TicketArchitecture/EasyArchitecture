@@ -47,7 +47,6 @@ namespace EasyArchitecture.Runtime
 
         private static void ClearThread()
         {
-            //TODO: feio, mas o unit test mantem/reutiliza a thread
             Thread.FreeNamedDataSlot(typeof (Validator).Name);
             Thread.FreeNamedDataSlot(typeof(Cache).Name);
             Thread.FreeNamedDataSlot(typeof(Translator).Name);

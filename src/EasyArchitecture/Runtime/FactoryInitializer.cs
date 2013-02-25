@@ -21,7 +21,6 @@ namespace EasyArchitecture.Runtime
 
         static FactoryInitializer()
         {
-            //TODO: load all types that implements 2 required interfaces
             AllowedFactories.Add(typeof(Validator), typeof(ValidatorFactory));
             AllowedFactories.Add(typeof(Cache), typeof(CacheFactory));
             AllowedFactories.Add(typeof(Translator), typeof(TranslatorFactory));

@@ -11,7 +11,6 @@ namespace EasyArchitecture.Validation.Plugin.BultIn
     {
         private readonly Dictionary<Type, object> _validationRuleDefinitions = new Dictionary<Type, object>();
 
-
         protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
         {
             var assembly = moduleAssemblies.InfrastructureAssembly;
