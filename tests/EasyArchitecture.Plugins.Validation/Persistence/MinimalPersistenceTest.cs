@@ -30,22 +30,10 @@ namespace EasyArchitecture.Plugins.Validation.Persistence
         }
 
         [Test]
-        public void Should_not_commit_a_non_initialized_transaction()
-        {
-            Assert.That(() => PluginInstance.CommitTransaction(), Throws.Exception);
-        }
-
-        [Test]
         public void Should_rollback_transaction()
         {
             Assert.That(() => PluginInstance.BeginTransaction(), Throws.Nothing);
             Assert.That(() => PluginInstance.RollbackTransaction(), Throws.Nothing);
-        }
-
-        [Test]
-        public void Should_not_rollback_a_non_initialized_transaction()
-        {
-            Assert.That(() => PluginInstance.RollbackTransaction(), Throws.Exception);
         }
 
         [Test]
