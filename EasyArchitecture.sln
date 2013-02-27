@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture", "src\EasyArchitecture\EasyArchitecture.csproj", "{09A7AA21-ED65-409C-8442-E0ADA02A7AAF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8B654DAA-B565-4267-B9E8-7A97944DF48A}"
