@@ -87,5 +87,10 @@ namespace EasyArchitecture.Plugin.BultIn.Persistence
 
             return list;
         }
+
+        public object GetUnderlayerPersistenceObject()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

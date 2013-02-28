@@ -11,5 +11,6 @@ namespace Exemplo.Produto.Application.Contracts
         void Atualizar(ProdutoDTO produto);
         void Excluir(int id);
         void InserirProdutosIguais(ProdutoDTO produto);
+        IList<ProdutoDTO> ObterProdutosCadastradosAteHoje();
     }
 }

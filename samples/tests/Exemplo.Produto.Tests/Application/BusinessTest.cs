@@ -47,5 +47,15 @@ namespace Exemplo.Produto.Tests.Application
 
             Assert.That(produtos.Count, Is.EqualTo(3));
         }
+
+        [Test]
+        public void Consegue_executar_consulta()
+        {
+
+            var service = Container.Resolve<IProdutoFacade>();
+
+            //esse metodo insere 3 vezes o mesmo produto
+            var produtos = service.ObterProdutosCadastradosAteHoje();
+        }
     }
 }

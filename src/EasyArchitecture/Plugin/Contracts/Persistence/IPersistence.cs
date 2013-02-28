@@ -12,5 +12,6 @@ namespace EasyArchitecture.Plugin.Contracts.Persistence
         void Delete(object entity);
         IList<T> Get<T>(object example);
         IList<T> Get<T>();
+        object GetUnderlayerPersistenceObject();
     }
 }

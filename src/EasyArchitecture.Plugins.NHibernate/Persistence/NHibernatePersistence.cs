@@ -75,5 +75,10 @@ namespace EasyArchitecture.Plugins.NHibernate.Persistence
         {
             return _session.CreateCriteria(typeof(T)).List<T>();
         }
+
+        public object GetUnderlayerPersistenceObject()
+        {
+            return _session;
+        }
     }
 }

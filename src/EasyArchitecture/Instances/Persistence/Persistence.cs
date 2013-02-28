@@ -74,5 +74,9 @@ namespace EasyArchitecture.Instances.Persistence
             return list;
         }
 
+        public object GetUnderlayerPersistenceObject()
+        {
+            return _plugin.GetUnderlayerPersistenceObject();
+        }
     }
 }

@@ -29,6 +29,11 @@ namespace EasyArchitecture.Mechanisms.Persistence
         {
             return InstanceProvider.GetInstance<Instances.Persistence.Persistence>().Get<T>();
         }
+
+        protected object GetUnderlayerPersistence()
+        {
+            return InstanceProvider.GetInstance<Instances.Persistence.Persistence>().GetUnderlayerPersistenceObject();
+        }
     }
 }
  

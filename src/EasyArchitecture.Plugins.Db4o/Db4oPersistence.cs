@@ -53,5 +53,10 @@ namespace EasyArchitecture.Plugins.Db4o
         {
             return _db.Query<T>().ToList<T>();
         }
+
+        public object GetUnderlayerPersistenceObject()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

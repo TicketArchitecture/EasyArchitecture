@@ -53,5 +53,10 @@ namespace EasyArchitecture.Plugins.EntityFramework
         {
             throw new NotImplementedException();
         }
+
+        public object GetUnderlayerPersistenceObject()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

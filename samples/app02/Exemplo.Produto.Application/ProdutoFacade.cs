@@ -32,18 +32,14 @@ namespace Exemplo.Produto.Application
         {
             var entities = _produtoRepository.Get();
 
-            var dtos = Translator.This(entities).To<IList<ProdutoDTO>>();
-            
-            return dtos;
+            return Translator.This(entities).To<IList<ProdutoDTO>>();
         }
 
         public ProdutoDTO Obter(int id)
         {
             var entity = _produtoRepository.Get(new Domain.Entities.Produto(){Id = id}).FirstOrDefault();
 
-            var dto = Translator.This(entity).To<ProdutoDTO>();
-
-            return dto;
+            return Translator.This(entity).To<ProdutoDTO>();
         }
 
         public void Atualizar(ProdutoDTO produto)
@@ -76,6 +72,13 @@ namespace Exemplo.Produto.Application
             _produtoRepository.Save(entity3);
 
             Translator.This(entity1).To(produto);   
+        }
+
+        public IList<ProdutoDTO> ObterProdutosCadastradosAteHoje()
+        {
+            var entities = _produtoRepository.ObterProdutosCadastradosAteHoje();
+
+            return Translator.This(entities).To<IList<ProdutoDTO>>();
         }
     }
 }
