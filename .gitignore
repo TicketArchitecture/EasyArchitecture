@@ -7,7 +7,7 @@
 *.user
 
 # nuget
-#packages/
+packages/
 
 # resharper
 _ReSharper*
@@ -18,13 +18,3 @@ _NCrunch*
 
 # mstest test results
 TestResults
-
-
-
-#------------- 
-# monodevelop 
-#------------- 
-# nunit
-test-results
-# user preferences
-*.userprefs

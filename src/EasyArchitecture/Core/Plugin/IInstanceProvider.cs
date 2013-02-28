@@ -1,6 +1,6 @@
 namespace EasyArchitecture.Core.Plugin
 {
-    public interface IInstanceProvider<out T>
+    public interface IInstanceProvider<T>
     {
         T GetInstance();
     }

@@ -7,7 +7,7 @@ namespace EasyArchitecture.Plugins.BuiltIn.Tests.Translation.Stuff
     {
         public CustomMap()
         {
-            AddMapRule<Dog, OtherDogDto>((source, target) =>
+            AddMapRule<Cat, OtherCatDto>((source, target) =>
                 {
                     target.Id = source.Id;
                     target.Age = source.Age + 1;

@@ -16,10 +16,10 @@ namespace EasyArchitecture.Plugins.Validation.Translation
         [Test]
         public void Should_match_same_name_properties()
         {
-            var entity = new Dog() { Age = 15, Id = 8, Name = "Rex" };
-            var expected = new DogDto() { Age = 15, Id = 8, Name = "Rex" };
+            var entity = new Cat() { Age = 15, Id = 8, Name = "Rex" };
+            var expected = new CatDto() { Age = 15, Id = 8, Name = "Rex" };
 
-            var actual = Translator.Translate<Dog, DogDto>(entity);
+            var actual = Translator.Translate<Cat, CatDto>(entity);
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -27,10 +27,10 @@ namespace EasyArchitecture.Plugins.Validation.Translation
         [Test]
         public void Should_match_same_name_properties_only()
         {
-            var entity = new Dog() { Age = 15, Id = 8, Name = "Rex" };
-            var expected = new AnotherDogDto() { Id = 8, Name = "Rex" };
+            var entity = new Cat() { Age = 15, Id = 8, Name = "Rex" };
+            var expected = new AnotherCatDto() { Id = 8, Name = "Rex" };
 
-            var actual = Translator.Translate<Dog, AnotherDogDto>(entity);
+            var actual = Translator.Translate<Cat, AnotherCatDto>(entity);
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -38,10 +38,10 @@ namespace EasyArchitecture.Plugins.Validation.Translation
         [Test]
         public void Should_translate_using_custom_rule()
         {
-            var entity = new Dog() { Age = 15, Id = 8, Name = "Rex" };
-            var expected = new OtherDogDto() { Age = 16, Id = 8, Name = "NewName" };
+            var entity = new Cat() { Age = 15, Id = 8, Name = "Rex" };
+            var expected = new OtherCatDto() { Age = 16, Id = 8, Name = "NewName" };
 
-            var actual = Translator.Translate<Dog, OtherDogDto>(entity);
+            var actual = Translator.Translate<Cat, OtherCatDto>(entity);
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -49,21 +49,21 @@ namespace EasyArchitecture.Plugins.Validation.Translation
         [Test]
         public void Should_translate_lists()
         {
-            var entityList = new List<Dog>
+            var entityList = new List<Cat>
                                  {
-                                     new Dog() {Age = 15, Id = 8, Name = "Rex"},
-                                     new Dog() {Age = 4, Id = 1, Name = "Jimmy"},
-                                     new Dog() {Age = 95, Id = 3, Name = "Arthur"}
+                                     new Cat() {Age = 15, Id = 8, Name = "Rex"},
+                                     new Cat() {Age = 4, Id = 1, Name = "Jimmy"},
+                                     new Cat() {Age = 95, Id = 3, Name = "Arthur"}
                                  };
 
-            var expected = new List<DogDto>()
+            var expected = new List<CatDto>()
                     {
-                                     new DogDto() {Age = 15, Id = 8, Name = "Rex"},
-                                     new DogDto() {Age = 4, Id = 1, Name = "Jimmy"},
-                                     new DogDto() {Age = 95, Id = 3, Name = "Arthur"}
+                                     new CatDto() {Age = 15, Id = 8, Name = "Rex"},
+                                     new CatDto() {Age = 4, Id = 1, Name = "Jimmy"},
+                                     new CatDto() {Age = 95, Id = 3, Name = "Arthur"}
                     };
 
-            var actual = Translator.Translate<List<Dog>, List<DogDto>>(entityList);
+            var actual = Translator.Translate<List<Cat>, List<CatDto>>(entityList);
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -71,8 +71,8 @@ namespace EasyArchitecture.Plugins.Validation.Translation
         [Test]
         public void Should_translate_inner_types()
         {
-            var entity = new Holder { Internal = new Dog() { Age = 15, Id = 8, Name = "Rex" } };
-            var expected = new HolderDto { Internal = new DogDto() { Age = 15, Id = 8, Name = "Rex" } };
+            var entity = new Holder { Internal = new Cat() { Age = 15, Id = 8, Name = "Rex" } };
+            var expected = new HolderDto { Internal = new CatDto() { Age = 15, Id = 8, Name = "Rex" } };
 
             var actual = Translator.Translate<Holder, HolderDto>(entity);
 
