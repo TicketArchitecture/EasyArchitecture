@@ -6,13 +6,20 @@ namespace EasyArchitecture.IoC
     {
         public static void Register<T, T1>() where T1 : T
         {
+            CreateContext<T>();
             InstanceProvider.GetInstance<Instance.Container>().Register<T, T1>();
         }
+
         public static T Resolve<T>()
         {
-            LocalThreadStorage.SetCurrentModuleName(typeof(T));
-
+            CreateContext<T>();
             return InstanceProvider.GetInstance<Instance.Container>().Resolve<T>();
+        }
+
+        private static void CreateContext<T>()
+        {
+            var moduleName = AssemblyManager.RemoveAssemblySufix(typeof (T).Assembly.GetName().Name);
+            LocalThreadStorage.CreateContext(moduleName);
         }
     }
 }

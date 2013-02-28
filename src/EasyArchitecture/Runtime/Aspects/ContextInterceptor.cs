@@ -6,7 +6,7 @@ namespace EasyArchitecture.Runtime.Aspects
     {
         public override object Invoke(ProxyMethodCall methodCall)
         {
-            LocalThreadStorage.SetCurrentModuleName(methodCall.Method.DeclaringType);
+            LocalThreadStorage.GetCurrentContext().Initialize();
             return Next(methodCall);
         }
     }

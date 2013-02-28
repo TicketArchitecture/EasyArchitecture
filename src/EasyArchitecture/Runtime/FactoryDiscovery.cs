@@ -7,7 +7,7 @@ namespace EasyArchitecture.Runtime
     {
         internal static IProviderFactory<T> Discover<T>()
         {
-            var moduleName = LocalThreadStorage.GetCurrentModuleName();
+            var moduleName = LocalThreadStorage.GetCurrentContext().Name;
             var moduleConfiguration = ModuleConfigurationList.Get(moduleName);
 
             if (moduleConfiguration==null)

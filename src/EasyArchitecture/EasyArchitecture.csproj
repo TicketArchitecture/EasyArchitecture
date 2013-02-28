@@ -69,6 +69,7 @@
     <Compile Include="Persistence\Instance\PersistenceFactory.cs" />
     <Compile Include="Persistence\Repository.cs" />
     <Compile Include="Persistence\Plugin\Contracts\IPersistencePlugin.cs" />
+    <Compile Include="Runtime\ThreadContext.cs" />
     <Compile Include="Runtime\IO\UnknowTypeDataContractSurrogate.cs" />
     <Compile Include="Runtime\Log\InstanceLogger.cs" />
     <Compile Include="Runtime\ModuleConfigurationList.cs" />
