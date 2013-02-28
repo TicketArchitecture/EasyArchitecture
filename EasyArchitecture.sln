@@ -97,8 +97,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App02", "App02", "{AF7AEB30
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Tests", "samples\tests\Exemplo.Produto.Tests\Exemplo.Produto.Tests.csproj", "{6764ECFC-5E31-4B0C-94CC-071F14C518D3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{70BEAF7C-B350-456E-B0A5-44A7C63740FA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
