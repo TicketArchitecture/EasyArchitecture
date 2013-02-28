@@ -51,10 +51,7 @@ namespace Exemplo.Produto.Tests.Application
         [Test]
         public void Consegue_executar_consulta()
         {
-
             var service = Container.Resolve<IProdutoFacade>();
-
-            //esse metodo insere 3 vezes o mesmo produto
             var produtos = service.ObterProdutosCadastradosAteHoje();
         }
     }
