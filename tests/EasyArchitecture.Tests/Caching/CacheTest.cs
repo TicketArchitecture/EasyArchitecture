@@ -19,6 +19,7 @@ namespace EasyArchitecture.Tests.Caching
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<ICache>();
 
+            LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
             LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Caching.Cache(_instancePlugin));
         }
 

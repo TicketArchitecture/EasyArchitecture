@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using EasyArchitecture.Core.IO;
 using EasyArchitecture.Instances.Log;
 using EasyArchitecture.Plugin.Contracts.Log;
 

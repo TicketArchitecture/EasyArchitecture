@@ -8,7 +8,8 @@ namespace EasyArchitecture.Instances.Storage
     {
         private readonly IStorage _plugin;
 
-        internal Storer(IStorage plugin)
+        //TODO: must be internal but i did to activator use
+        public Storer(IStorage plugin)
         {
             _plugin = plugin;
         }

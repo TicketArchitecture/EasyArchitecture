@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EasyArchitecture.Core
+namespace EasyArchitecture.Plugin.BultIn.Translation
 {
     internal class TypeManager
     {

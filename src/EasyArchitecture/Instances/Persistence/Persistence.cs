@@ -8,7 +8,8 @@ namespace EasyArchitecture.Instances.Persistence
     {
         private readonly IPersistence _plugin;
 
-        internal Persistence(IPersistence plugin)
+        //TODO: must be internal but i did to activator use
+        public Persistence(IPersistence plugin)
         {
             _plugin = plugin;
         }

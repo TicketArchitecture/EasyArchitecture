@@ -2,7 +2,7 @@
 using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace EasyArchitecture.Core.IO
+namespace EasyArchitecture.Core.Log
 {
     internal static class SerializationHelper
     {

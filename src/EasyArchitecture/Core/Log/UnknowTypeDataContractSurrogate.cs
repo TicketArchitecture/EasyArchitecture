@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace EasyArchitecture.Core.IO
+namespace EasyArchitecture.Core.Log
 {
     public class UnknowTypeDataContractSurrogate : IDataContractSurrogate
     {

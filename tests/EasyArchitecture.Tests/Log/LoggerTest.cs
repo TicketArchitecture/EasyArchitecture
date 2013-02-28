@@ -18,6 +18,7 @@ namespace EasyArchitecture.Tests.Log
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<ILogger>();
 
+            LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
             LocalThreadStorage.GetCurrentContext().SetInstance(new Logger(_instancePlugin));
         }
 

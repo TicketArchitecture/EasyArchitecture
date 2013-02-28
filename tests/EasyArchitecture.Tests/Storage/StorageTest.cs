@@ -20,6 +20,7 @@ namespace EasyArchitecture.Tests.Storage
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<IStorage>();
 
+            LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
             LocalThreadStorage.GetCurrentContext().SetInstance(new Storer(_instancePlugin));
             _buffer = new byte[10];
         }

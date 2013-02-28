@@ -19,6 +19,7 @@ namespace EasyArchitecture.Tests.Translation
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<ITranslator>();
 
+            LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
             LocalThreadStorage.GetCurrentContext().SetInstance(new Translator(_instancePlugin));
         }
 

@@ -18,7 +18,7 @@ namespace EasyArchitecture.Mechanisms.Configuration.Expressions
         internal ForExpression(string moduleName)
         {
             _moduleName = moduleName;
-            _pluginConfiguration = new PluginConfiguration(moduleName);
+            _pluginConfiguration = PluginConfiguration.Create();
         }
 
         public ForExpression Log(ILoggerPlugin plugin)
@@ -107,10 +107,12 @@ namespace EasyArchitecture.Mechanisms.Configuration.Expressions
 
         public void Done()
         {
-            _pluginConfiguration.ModuleName = _moduleName;
-            PluginConfigurationNormalizer.Normalize( _pluginConfiguration);
-            var moduleConfiguration = FactoryInitializer.Exec(_pluginConfiguration);
-            ModuleConfigurationList.Add(_moduleName, moduleConfiguration);
+            InstanceProvider.Configure(_moduleName, _pluginConfiguration);
+            
+            //_pluginConfiguration.ModuleName = _moduleName;
+            //PluginConfigurationNormalizer.Normalize( _pluginConfiguration);
+            //var moduleConfiguration = FactoryInitializer.Exec(_pluginConfiguration);
+            //ModuleConfigurationList.Add(_moduleName, moduleConfiguration);
         }
     }
 }

@@ -1,21 +1,18 @@
-using System;
 using System.Collections.Generic;
 using System.Text;
-using EasyArchitecture.Core.Plugin;
 
-namespace EasyArchitecture.Core
+namespace EasyArchitecture.Core.Plugin
 {
-    public class ModuleConfiguration
+    public class PluginInspectorExtrator
     {
-        public readonly Dictionary<Type, object> Factories = new Dictionary<Type, object>();
-        private readonly List<PluginInspector> _inspectors = new List<PluginInspector>();
+        private readonly List<PluginInspector> _inspectors;
 
-        public void AddPluginConfigurationInfo(PluginInspector pluginInspector)
+        internal PluginInspectorExtrator(List<PluginInspector> inspectors)
         {
-            _inspectors.Add(pluginInspector);
+            _inspectors = inspectors;
         }
 
-        public string GetPluginConfigurationInfo()
+        public override string ToString()
         {
             var buffer = new StringBuilder();
             buffer.AppendLine("");

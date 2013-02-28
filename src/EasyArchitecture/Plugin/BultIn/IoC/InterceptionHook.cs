@@ -2,7 +2,7 @@
 using EasyArchitecture.Core.Aspects;
 using EasyArchitecture.Instances.IoC;
 
-namespace EasyArchitecture.Plugin.Contracts.IoC
+namespace EasyArchitecture.Plugin.BultIn.IoC
 {
     public class InterceptionHook
     {

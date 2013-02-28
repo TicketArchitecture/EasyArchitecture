@@ -21,6 +21,7 @@ namespace EasyArchitecture.Tests.Persistence
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<IPersistence>();
 
+            LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
             LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Persistence.Persistence(_instancePlugin));
 
             _dog = new Dog { Age = 15, Name = "Old Dog" };

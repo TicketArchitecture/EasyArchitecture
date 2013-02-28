@@ -25,7 +25,7 @@ namespace EasyArchitecture.Plugin.BultIn.Validation
 
         public IValidator GetInstance()
         {
-            return new EasyArchitecture.Plugin.BultIn.Validation.Validator(_validationRuleDefinitions);
+            return new Validator(_validationRuleDefinitions);
         }
 
 

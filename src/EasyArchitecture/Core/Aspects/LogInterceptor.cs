@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Text;
-using EasyArchitecture.Core.IO;
+using EasyArchitecture.Core.Log;
 using EasyArchitecture.Instances.IoC;
 using EasyArchitecture.Mechanisms.Log;
 

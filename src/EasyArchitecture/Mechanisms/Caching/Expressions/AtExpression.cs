@@ -1,6 +1,6 @@
 using System;
 using EasyArchitecture.Core;
-using EasyArchitecture.Core.IO;
+using EasyArchitecture.Core.Log;
 
 namespace EasyArchitecture.Mechanisms.Caching.Expressions
 {
