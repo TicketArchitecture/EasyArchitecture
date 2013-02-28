@@ -46,14 +46,14 @@ namespace EasyArchitecture.Instances.Persistence
         {
             _plugin.Update(entity);
 
-            InstanceLogger.Log(this, "Save", entity);
+            InstanceLogger.Log(this, "Update", entity);
         }
     
         internal void Delete(object entity)
         {
             _plugin.Delete(entity);
 
-            InstanceLogger.Log(this, "Save", entity);
+            InstanceLogger.Log(this, "Delete", entity);
         }
 
         internal IList<T> Get<T>(object example)
