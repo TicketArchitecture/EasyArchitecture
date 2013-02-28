@@ -84,7 +84,7 @@ namespace EasyArchitecture.Core
 
             //log after configuration because we must ensure that logger has been initialized
             LocalThreadStorage.CreateContext(moduleName);
-            GetInstance<Logger>().Log(LogLevel.Debug, pluginInfo, null);
+            GetInstance<Logger>().Log(LogLevel.Info, pluginInfo, null);
         }
     }
 

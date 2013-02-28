@@ -108,11 +108,6 @@ namespace EasyArchitecture.Mechanisms.Configuration.Expressions
         public void Done()
         {
             InstanceProvider.Configure(_moduleName, _pluginConfiguration);
-            
-            //_pluginConfiguration.ModuleName = _moduleName;
-            //PluginConfigurationNormalizer.Normalize( _pluginConfiguration);
-            //var moduleConfiguration = FactoryInitializer.Exec(_pluginConfiguration);
-            //ModuleConfigurationList.Add(_moduleName, moduleConfiguration);
         }
     }
 }
