@@ -1,5 +1,5 @@
 ﻿using System;
-using EasyArchitecture.Storage.Plugin.Contracts;
+using EasyArchitecture.Plugin.Contracts.Storage;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.Validation.Storage

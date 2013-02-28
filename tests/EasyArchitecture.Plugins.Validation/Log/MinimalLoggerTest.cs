@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using EasyArchitecture.Log.Plugin.Contracts;
+using EasyArchitecture.Plugin.Contracts.Log;
 using NUnit.Framework;
 using System.Threading;
 

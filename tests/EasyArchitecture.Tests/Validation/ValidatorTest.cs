@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using EasyArchitecture.Runtime;
+using EasyArchitecture.Core;
+using EasyArchitecture.Instances.Validation.Instance;
+using EasyArchitecture.Plugin.Contracts.Validation;
 using EasyArchitecture.Tests.Validation.Stuff;
-using EasyArchitecture.Validation.Instance;
-using EasyArchitecture.Validation.Plugin.Contracts;
 using NUnit.Framework;
 using Rhino.Mocks;
-using Validator = EasyArchitecture.Validation.Validator;
+using Validator = EasyArchitecture.Mechanisms.Validation.Validator;
 
 namespace EasyArchitecture.Tests.Validation
 {
@@ -23,7 +23,7 @@ namespace EasyArchitecture.Tests.Validation
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<IValidator>();
 
-            LocalThreadStorage.SetInstance(new EasyArchitecture.Validation.Instance.Validator(_instancePlugin));
+            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Validation.Instance.Validator(_instancePlugin));
 
             _oldDog = new Dog { Age = 15, Name = "Old Dog" };
             _youngDog = new Dog { Age = 5, Name = "Young Dog" };

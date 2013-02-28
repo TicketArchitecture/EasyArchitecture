@@ -1,8 +1,8 @@
 ﻿using System;
-using EasyArchitecture.Log.Plugin.BultIn;
+using EasyArchitecture.Core;
+using EasyArchitecture.Core.Plugin;
+using EasyArchitecture.Plugin.BultIn.Log;
 using EasyArchitecture.Plugins.Validation.Log;
-using EasyArchitecture.Runtime;
-using EasyArchitecture.Runtime.Plugin;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.BuiltIn.Tests.Log

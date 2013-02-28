@@ -1,9 +1,9 @@
 using System;
 using System.Reflection;
+using EasyArchitecture.Core;
+using EasyArchitecture.Core.Plugin;
+using EasyArchitecture.Plugin.BultIn.Validation;
 using EasyArchitecture.Plugins.Validation.Validation;
-using EasyArchitecture.Runtime;
-using EasyArchitecture.Runtime.Plugin;
-using EasyArchitecture.Validation.Plugin.BultIn;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.BuiltIn.Tests.Validation

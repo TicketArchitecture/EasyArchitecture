@@ -1,8 +1,8 @@
 ﻿using System;
-using EasyArchitecture.Persistence.Plugin.BultIn;
+using EasyArchitecture.Core;
+using EasyArchitecture.Core.Plugin;
+using EasyArchitecture.Plugin.BultIn.Persistence;
 using EasyArchitecture.Plugins.Validation.Persistence;
-using EasyArchitecture.Runtime;
-using EasyArchitecture.Runtime.Plugin;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.BuiltIn.Tests.Persistence

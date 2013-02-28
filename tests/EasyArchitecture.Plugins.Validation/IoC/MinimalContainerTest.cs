@@ -1,5 +1,5 @@
 ﻿using System;
-using EasyArchitecture.IoC.Plugin.Contracts;
+using EasyArchitecture.Plugin.Contracts.IoC;
 using EasyArchitecture.Plugins.Validation.IoC.Stuff;
 using NUnit.Framework;
 using System.Collections.Generic;

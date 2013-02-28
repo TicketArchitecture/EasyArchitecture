@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using EasyArchitecture.Plugin.Contracts.Translation;
 using EasyArchitecture.Plugins.Validation.Translation.Stuff;
-using EasyArchitecture.Translation.Plugin.Contracts;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.Validation.Translation

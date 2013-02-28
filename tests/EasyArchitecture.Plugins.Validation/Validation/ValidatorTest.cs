@@ -1,5 +1,5 @@
+using EasyArchitecture.Plugin.Contracts.Validation;
 using EasyArchitecture.Plugins.Validation.Validation.Stuff;
-using EasyArchitecture.Validation.Plugin.Contracts;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.Validation.Validation

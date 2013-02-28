@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-using EasyArchitecture.Caching.Plugin.Contracts;
+using EasyArchitecture.Plugin.Contracts.Caching;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.Validation.Caching

@@ -1,7 +1,7 @@
-﻿using EasyArchitecture.Runtime;
+﻿using EasyArchitecture.Core;
+using EasyArchitecture.Instances.Translation;
+using EasyArchitecture.Plugin.Contracts.Translation;
 using EasyArchitecture.Tests.Translation.Stuff;
-using EasyArchitecture.Translation;
-using EasyArchitecture.Translation.Plugin.Contracts;
 using NUnit.Framework;
 using Rhino.Mocks;
 
@@ -19,7 +19,7 @@ namespace EasyArchitecture.Tests.Translation
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<ITranslator>();
 
-            LocalThreadStorage.SetInstance(new EasyArchitecture.Translation.Instance.Translator(_instancePlugin));
+            LocalThreadStorage.GetCurrentContext().SetInstance(new Translator(_instancePlugin));
         }
 
 
@@ -33,7 +33,7 @@ namespace EasyArchitecture.Tests.Translation
             Expect.Call(_instancePlugin.Translate<Dog,DogDto>(entity)).Return(expected);
             _mockery.ReplayAll();
 
-            var actual = Translator.This(entity).To<DogDto>();
+            var actual = Mechanisms.Translation.Translator.This(entity).To<DogDto>();
 
             _mockery.VerifyAll();
         }
@@ -47,7 +47,7 @@ namespace EasyArchitecture.Tests.Translation
             Expect.Call(_instancePlugin.Translate<DogDto,Dog>(dto)).Return(expected);
             _mockery.ReplayAll();
 
-            var actual = Translator.This(dto).To<Dog>();
+            var actual = Mechanisms.Translation.Translator.This(dto).To<Dog>();
 
             _mockery.VerifyAll();
         }

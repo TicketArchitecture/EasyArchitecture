@@ -1,5 +1,5 @@
-﻿using EasyArchitecture.Configuration.Exceptions;
-using EasyArchitecture.IoC;
+﻿using EasyArchitecture.Mechanisms.Configuration.Exceptions;
+using EasyArchitecture.Mechanisms.IoC;
 using EasyArchitecture.Tests.IoC.Stuff;
 using NUnit.Framework;
 

@@ -1,6 +1,6 @@
 using System;
-using EasyArchitecture.Caching.Instance;
-using EasyArchitecture.Caching.Plugin.Contracts;
+using EasyArchitecture.Instances.Caching;
+using EasyArchitecture.Plugin.Contracts.Caching;
 using NUnit.Framework;
 using Rhino.Mocks;
 

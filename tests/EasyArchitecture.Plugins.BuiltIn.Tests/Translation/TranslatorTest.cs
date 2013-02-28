@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
+using EasyArchitecture.Core;
+using EasyArchitecture.Core.Plugin;
+using EasyArchitecture.Plugin.BultIn.Translation;
 using EasyArchitecture.Plugins.Validation.Translation;
 using EasyArchitecture.Plugins.Validation.Translation.Stuff;
-using EasyArchitecture.Runtime;
-using EasyArchitecture.Runtime.Plugin;
-using EasyArchitecture.Translation.Plugin.BultIn;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.BuiltIn.Tests.Translation

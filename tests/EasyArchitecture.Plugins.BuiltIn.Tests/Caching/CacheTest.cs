@@ -1,4 +1,4 @@
-using EasyArchitecture.Caching.Plugin.BultIn;
+using EasyArchitecture.Plugin.BultIn.Caching;
 using EasyArchitecture.Plugins.Validation.Caching;
 using NUnit.Framework;
 

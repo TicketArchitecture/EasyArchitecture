@@ -1,6 +1,6 @@
-﻿using EasyArchitecture.IoC;
-using EasyArchitecture.IoC.Plugin.Contracts;
-using EasyArchitecture.Runtime;
+﻿using EasyArchitecture.Core;
+using EasyArchitecture.Mechanisms.IoC;
+using EasyArchitecture.Plugin.Contracts.IoC;
 using EasyArchitecture.Tests.IoC.Stuff;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -19,7 +19,7 @@ namespace EasyArchitecture.Tests.IoC
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<IContainer>();
 
-            LocalThreadStorage.SetInstance(new EasyArchitecture.IoC.Instance.Container(_instancePlugin));
+            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.IoC.Container(_instancePlugin));
         }
 
         [Test]

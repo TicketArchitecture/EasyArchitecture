@@ -1,6 +1,6 @@
-using EasyArchitecture.Log;
-using EasyArchitecture.Log.Plugin.Contracts;
-using EasyArchitecture.Runtime;
+using EasyArchitecture.Core;
+using EasyArchitecture.Instances.Log;
+using EasyArchitecture.Plugin.Contracts.Log;
 using NUnit.Framework;
 using Rhino.Mocks;
 
@@ -18,13 +18,13 @@ namespace EasyArchitecture.Tests.Log
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<ILogger>();
 
-            LocalThreadStorage.SetInstance(new EasyArchitecture.Log.Instance.Logger(_instancePlugin));
+            LocalThreadStorage.GetCurrentContext().SetInstance(new Logger(_instancePlugin));
         }
 
         [TearDown]
         public void TearDown()
         {
-            LocalThreadStorage.SetInstance<EasyArchitecture.Log.Instance.Logger>(null);
+            LocalThreadStorage.GetCurrentContext().SetInstance<Logger>(null);
         }
 
         [Test]
@@ -35,7 +35,7 @@ namespace EasyArchitecture.Tests.Log
             Expect.Call(() => _instancePlugin.Log(LogLevel.Debug, message,null)).Repeat.Once();
             _mockery.ReplayAll();
 
-            Logger.Message(message).Debug();
+            Mechanisms.Log.Logger.Message(message).Debug();
 
             _mockery.VerifyAll();
         }

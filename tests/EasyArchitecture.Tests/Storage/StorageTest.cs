@@ -1,7 +1,7 @@
 ﻿using System;
-using EasyArchitecture.Runtime;
-using EasyArchitecture.Storage;
-using EasyArchitecture.Storage.Plugin.Contracts;
+using EasyArchitecture.Core;
+using EasyArchitecture.Instances.Storage;
+using EasyArchitecture.Plugin.Contracts.Storage;
 using NUnit.Framework;
 using Rhino.Mocks;
 
@@ -20,7 +20,7 @@ namespace EasyArchitecture.Tests.Storage
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<IStorage>();
 
-            LocalThreadStorage.SetInstance(new EasyArchitecture.Storage.Instance.Storer(_instancePlugin));
+            LocalThreadStorage.GetCurrentContext().SetInstance(new Storer(_instancePlugin));
             _buffer = new byte[10];
         }
 
@@ -32,7 +32,7 @@ namespace EasyArchitecture.Tests.Storage
             Expect.Call(_instancePlugin.Save(_buffer)).Return(id);
             _mockery.ReplayAll();
 
-            var ret = Storer.Save(_buffer);
+            var ret = Mechanisms.Storage.Storer.Save(_buffer);
 
             _mockery.VerifyAll();
 
@@ -47,7 +47,7 @@ namespace EasyArchitecture.Tests.Storage
             Expect.Call( _instancePlugin.Get(id)).Return(_buffer);
             _mockery.ReplayAll();
 
-            var ret = Storer.Get(id);
+            var ret = Mechanisms.Storage.Storer.Get(id);
 
             _mockery.VerifyAll();
 
@@ -62,7 +62,7 @@ namespace EasyArchitecture.Tests.Storage
             Expect.Call(_instancePlugin.Exists(id)).Return(true);
             _mockery.ReplayAll();
 
-            var actual = Storer.Exists(id);
+            var actual = Mechanisms.Storage.Storer.Exists(id);
 
             _mockery.VerifyAll();
             Assert.That(actual, Is.True);

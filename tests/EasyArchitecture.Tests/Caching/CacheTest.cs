@@ -1,7 +1,7 @@
 using System;
-using EasyArchitecture.Caching;
-using EasyArchitecture.Caching.Plugin.Contracts;
-using EasyArchitecture.Runtime;
+using EasyArchitecture.Core;
+using EasyArchitecture.Mechanisms.Caching;
+using EasyArchitecture.Plugin.Contracts.Caching;
 using NUnit.Framework;
 using Rhino.Mocks;
 
@@ -19,7 +19,7 @@ namespace EasyArchitecture.Tests.Caching
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<ICache>();
 
-            LocalThreadStorage.SetInstance(new EasyArchitecture.Caching.Instance.Cache(_instancePlugin));
+            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Caching.Cache(_instancePlugin));
         }
 
         [Test]

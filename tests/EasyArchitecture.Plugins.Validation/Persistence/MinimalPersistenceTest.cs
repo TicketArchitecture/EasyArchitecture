@@ -1,5 +1,5 @@
 ﻿using System;
-using EasyArchitecture.Persistence.Plugin.Contracts;
+using EasyArchitecture.Plugin.Contracts.Persistence;
 using EasyArchitecture.Plugins.Validation.Persistence.Stuff;
 using NUnit.Framework;
 

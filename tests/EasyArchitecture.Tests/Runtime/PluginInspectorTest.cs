@@ -1,4 +1,4 @@
-using EasyArchitecture.Runtime.Plugin;
+using EasyArchitecture.Core.Plugin;
 using EasyArchitecture.Tests.Runtime.Stuff;
 using NUnit.Framework;
 
