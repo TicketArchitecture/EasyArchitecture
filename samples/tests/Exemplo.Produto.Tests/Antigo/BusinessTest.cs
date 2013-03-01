@@ -1,8 +1,8 @@
 ﻿using System;
 using Exemplo.Produto.Data.TO;
 using Exemplo.Produto.Service;
-using NUnit.Framework;
 using System.Linq;
+using NUnit.Framework;
 
 namespace Exemplo.Produto.Tests.Antigo
 {
