@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Text;
 using EasyArchitecture.Core.Log;
 using EasyArchitecture.Instances.IoC;
-using EasyArchitecture.Mechanisms.Log;
+using EasyArchitecture.Instances.Log;
 
 namespace EasyArchitecture.Core.Aspects
 {
@@ -45,17 +45,17 @@ namespace EasyArchitecture.Core.Aspects
             if (counter > 0)
                 parameters.Remove(parameters.Length - 2, 2);
 
-            Logger.Message("->[{0}]: {1}", input.Method.Name, parameters).Debug();
+            InstanceProvider.GetInstance<Logger>().Log(EasyArchitecture.Plugin.Contracts.Log.LogLevel.Debug, string.Format("->[{0}]: {1}", input.Method.Name, parameters),null);
         }
 
         private static void LogReturn(ProxyMethodCall input, object message, Stopwatch sw)
         {
-            Logger.Message("<-[{0}]: ({1}) [{2}ms]", input.Method.Name, SerializationHelper.Mount(message), sw.ElapsedMilliseconds).Debug();
+            InstanceProvider.GetInstance<Logger>().Log(EasyArchitecture.Plugin.Contracts.Log.LogLevel.Debug, string.Format("<-[{0}]: ({1}) [{2}ms]", input.Method.Name, SerializationHelper.Mount(message), sw.ElapsedMilliseconds), null);
         }
 
         private static void LogException(ProxyMethodCall input, Exception ex, Stopwatch sw)
         {
-            Logger.Exception(ex, "x [{0}]: {1} [{2}ms]", input.Method.Name, ex.Message, sw.ElapsedMilliseconds).Debug();
+            InstanceProvider.GetInstance<Logger>().Log(EasyArchitecture.Plugin.Contracts.Log.LogLevel.Debug, string.Format("x [{0}]: {1} [{2}ms]", input.Method.Name, ex.Message, sw.ElapsedMilliseconds), ex);
         }
     }
 }
