@@ -1,6 +1,5 @@
 ﻿using System;
 using EasyArchitecture.Core;
-using EasyArchitecture.Mechanisms.Configuration;
 using EasyArchitecture.Mechanisms.IoC;
 using EasyArchitecture.Plugin.Contracts.IoC;
 using EasyArchitecture.Tests.IoC.Stuff;

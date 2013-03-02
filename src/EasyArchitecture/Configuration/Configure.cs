@@ -1,7 +1,7 @@
+using EasyArchitecture.Configuration.Expressions;
 using EasyArchitecture.Core;
-using EasyArchitecture.Mechanisms.Configuration.Expressions;
 
-namespace EasyArchitecture.Mechanisms.Configuration
+namespace EasyArchitecture.Configuration
 {
     public static class Configure
     {

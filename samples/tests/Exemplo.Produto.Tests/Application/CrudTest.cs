@@ -1,5 +1,5 @@
 ﻿using System;
-using EasyArchitecture.Mechanisms.Configuration;
+using EasyArchitecture.Configuration;
 using EasyArchitecture.Mechanisms.IoC;
 using Exemplo.Produto.Application.Contracts;
 using Exemplo.Produto.Application.Contracts.DTOs;

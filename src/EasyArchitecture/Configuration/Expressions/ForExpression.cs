@@ -1,5 +1,4 @@
 using EasyArchitecture.Core;
-using EasyArchitecture.Instances.Configuration;
 using EasyArchitecture.Plugin.Contracts.Caching;
 using EasyArchitecture.Plugin.Contracts.IoC;
 using EasyArchitecture.Plugin.Contracts.Log;
@@ -8,7 +7,7 @@ using EasyArchitecture.Plugin.Contracts.Storage;
 using EasyArchitecture.Plugin.Contracts.Translation;
 using EasyArchitecture.Plugin.Contracts.Validation;
 
-namespace EasyArchitecture.Mechanisms.Configuration.Expressions
+namespace EasyArchitecture.Configuration.Expressions
 {
     public class ForExpression
     {

@@ -81,7 +81,7 @@
     <Compile Include="Core\ThreadContext.cs" />
     <Compile Include="Core\Log\UnknowTypeDataContractSurrogate.cs" />
     <Compile Include="Core\Log\InstanceLogger.cs" />
-    <Compile Include="Instances\Configuration\PluginConfiguration.cs" />
+    <Compile Include="Configuration\PluginConfiguration.cs" />
     <Compile Include="Instances\IoC\ProxyMethodCall.cs" />
     <Compile Include="Plugin\BultIn\IoC\InterceptionHook.cs" />
     <Compile Include="Plugin\BultIn\Log\Logger.cs" />
@@ -99,7 +99,7 @@
     <Compile Include="Plugin\BultIn\Storage\Storage.cs" />
     <Compile Include="Plugin\Contracts\Storage\IStorage.cs" />
     <Compile Include="Instances\Translation\Translator.cs" />
-    <Compile Include="Mechanisms\Configuration\Exceptions\NotConfiguredModuleException.cs" />
+    <Compile Include="Configuration\Exceptions\NotConfiguredModuleException.cs" />
     <Compile Include="Plugin\BultIn\Translation\TypeManager.cs" />
     <Compile Include="Mechanisms\Caching\Cache.cs" />
     <Compile Include="Plugin\BultIn\Persistence\Persistence.cs" />
@@ -121,8 +121,8 @@
     <Compile Include="Plugin\Contracts\Validation\IValidatorPlugin.cs" />
     <Compile Include="Plugin\Contracts\Validation\IValidator.cs" />
     <Compile Include="Core\ModuleAssemblies.cs" />
-    <Compile Include="Mechanisms\Configuration\Configure.cs" />
-    <Compile Include="Mechanisms\Configuration\Expressions\ForExpression.cs" />
+    <Compile Include="Configuration\Configure.cs" />
+    <Compile Include="Configuration\Expressions\ForExpression.cs" />
     <Compile Include="Instances\IoC\NotInterfaceException.cs" />
     <Compile Include="Mechanisms\Validation\Validator.cs" />
     <Compile Include="Plugin\BultIn\IoC\DefaultProxy.cs" />

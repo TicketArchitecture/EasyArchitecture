@@ -1,6 +1,6 @@
 using System;
 
-namespace EasyArchitecture.Mechanisms.Configuration.Exceptions
+namespace EasyArchitecture.Configuration.Exceptions
 {
     public class NotConfiguredModuleException : Exception
     {

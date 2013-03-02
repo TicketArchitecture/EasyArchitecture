@@ -1,5 +1,4 @@
 using EasyArchitecture.Core;
-using EasyArchitecture.Core.Log;
 
 namespace EasyArchitecture.Mechanisms.Caching.Expressions
 {
@@ -12,7 +11,7 @@ namespace EasyArchitecture.Mechanisms.Caching.Expressions
 
         public bool At(object key)
         {
-            return At(SerializationHelper.Mount(key));
+            return At(key.ToString());
         }
     }
 }
