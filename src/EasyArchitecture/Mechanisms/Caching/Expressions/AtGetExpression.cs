@@ -12,8 +12,7 @@ namespace EasyArchitecture.Mechanisms.Caching.Expressions
 
         public object At(object key)
         {
-            return At(SerializationHelper.Mount(key));
+            return At(key.ToString());
         }
-
     }
 }
