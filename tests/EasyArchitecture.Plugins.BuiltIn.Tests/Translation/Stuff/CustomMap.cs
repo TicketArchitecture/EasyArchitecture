@@ -1,5 +1,5 @@
 ﻿using EasyArchitecture.Plugin.BultIn.Translation;
-using EasyArchitecture.Plugins.Validation.Translation.Stuff;
+using EasyArchitecture.Plugins.Tests.Translation.Stuff;
 
 namespace EasyArchitecture.Plugins.BuiltIn.Tests.Translation.Stuff
 {

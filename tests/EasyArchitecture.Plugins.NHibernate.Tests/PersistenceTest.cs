@@ -2,7 +2,7 @@
 using EasyArchitecture.Core;
 using EasyArchitecture.Core.Plugin;
 using EasyArchitecture.Plugins.NHibernate.Persistence;
-using EasyArchitecture.Plugins.Validation.Persistence;
+using EasyArchitecture.Plugins.Tests.Persistence;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.NHibernate.Tests

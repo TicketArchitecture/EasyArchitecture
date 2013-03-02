@@ -1,5 +1,5 @@
 using EasyArchitecture.Plugin.BultIn.Caching;
-using EasyArchitecture.Plugins.Validation.Caching;
+using EasyArchitecture.Plugins.Tests.Caching;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.BuiltIn.Tests.Caching

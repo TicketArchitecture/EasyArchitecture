@@ -1,5 +1,5 @@
 ﻿using EasyArchitecture.Plugin.BultIn.IoC;
-using EasyArchitecture.Plugins.Validation.IoC;
+using EasyArchitecture.Plugins.Tests.IoC;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.BuiltIn.Tests.IoC

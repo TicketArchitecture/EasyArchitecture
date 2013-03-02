@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EasyArchitecture.Plugins.Validation.Translation.Stuff;
+using EasyArchitecture.Plugins.Tests.Translation.Stuff;
 
 namespace EasyArchitecture.Plugins.AutoMapper.Tests.Stuff
 {

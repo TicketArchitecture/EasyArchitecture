@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using EasyArchitecture.Core;
 using EasyArchitecture.Core.Plugin;
-using EasyArchitecture.Plugins.Validation.IoC;
+using EasyArchitecture.Plugins.Tests.IoC;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.Ninject.Tests

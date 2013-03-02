@@ -3,7 +3,7 @@ using System.Reflection;
 using EasyArchitecture.Core;
 using EasyArchitecture.Core.Plugin;
 using EasyArchitecture.Plugin.BultIn.Validation;
-using EasyArchitecture.Plugins.Validation.Validation;
+using EasyArchitecture.Plugins.Tests.Validation;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.BuiltIn.Tests.Validation

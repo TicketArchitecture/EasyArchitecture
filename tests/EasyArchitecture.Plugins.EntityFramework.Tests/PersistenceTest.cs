@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using EasyArchitecture.Core;
 using EasyArchitecture.Core.Plugin;
-using EasyArchitecture.Plugins.Validation.Persistence;
+using EasyArchitecture.Plugins.Tests.Persistence;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.EntityFramework.Tests

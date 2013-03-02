@@ -73,9 +73,9 @@
       <Project>{09A7AA21-ED65-409C-8442-E0ADA02A7AAF}</Project>
       <Name>EasyArchitecture</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EasyArchitecture.Plugins.Validation\EasyArchitecture.Plugins.Validation.csproj">
+    <ProjectReference Include="..\EasyArchitecture.Plugins.Tests\EasyArchitecture.Plugins.Tests.csproj">
       <Project>{0658FF22-FD01-489F-B3E5-8C215FBCC276}</Project>
-      <Name>EasyArchitecture.Plugins.Validation</Name>
+      <Name>EasyArchitecture.Plugins.Tests</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

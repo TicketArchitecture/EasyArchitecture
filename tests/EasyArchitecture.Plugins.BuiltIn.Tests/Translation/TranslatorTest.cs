@@ -2,8 +2,7 @@
 using EasyArchitecture.Core;
 using EasyArchitecture.Core.Plugin;
 using EasyArchitecture.Plugin.BultIn.Translation;
-using EasyArchitecture.Plugins.Validation.Translation;
-using EasyArchitecture.Plugins.Validation.Translation.Stuff;
+using EasyArchitecture.Plugins.Tests.Translation;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.BuiltIn.Tests.Translation

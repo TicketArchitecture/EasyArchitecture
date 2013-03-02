@@ -1,4 +1,4 @@
-﻿using EasyArchitecture.Plugins.Validation.Persistence.Stuff;
+﻿using EasyArchitecture.Plugins.Tests.Persistence.Stuff;
 using FluentNHibernate.Mapping;
 
 namespace EasyArchitecture.Plugins.NHibernate.Tests.Stuff.Mappings

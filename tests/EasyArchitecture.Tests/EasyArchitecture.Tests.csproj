@@ -90,17 +90,15 @@
     <Compile Include="IoC\ContainerTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\EasyArchitecture\EasyArchitecture.csproj">
       <Project>{09A7AA21-ED65-409C-8442-E0ADA02A7AAF}</Project>
       <Name>EasyArchitecture</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EasyArchitecture.Plugins.Validation\EasyArchitecture.Plugins.Validation.csproj">
-      <Project>{0658FF22-FD01-489F-B3E5-8C215FBCC276}</Project>
-      <Name>EasyArchitecture.Plugins.Validation</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

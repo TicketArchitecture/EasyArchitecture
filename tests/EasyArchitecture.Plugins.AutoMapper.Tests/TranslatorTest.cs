@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using EasyArchitecture.Core;
 using EasyArchitecture.Core.Plugin;
-using EasyArchitecture.Plugins.Validation.Translation;
+using EasyArchitecture.Plugins.Tests.Translation;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.AutoMapper.Tests

@@ -1,5 +1,5 @@
 ﻿using EasyArchitecture.Plugin.BultIn.Storage;
-using EasyArchitecture.Plugins.Validation.Storage;
+using EasyArchitecture.Plugins.Tests.Storage;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.BuiltIn.Tests.Storage

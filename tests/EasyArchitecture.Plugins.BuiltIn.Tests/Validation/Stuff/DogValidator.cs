@@ -1,5 +1,5 @@
 ﻿using EasyArchitecture.Plugin.BultIn.Validation;
-using EasyArchitecture.Plugins.Validation.Validation.Stuff;
+using EasyArchitecture.Plugins.Tests.Validation.Stuff;
 
 namespace EasyArchitecture.Plugins.BuiltIn.Tests.Validation.Stuff
 {

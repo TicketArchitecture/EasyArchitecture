@@ -1,4 +1,4 @@
-﻿using EasyArchitecture.Plugins.Validation.Validation.Stuff;
+﻿using EasyArchitecture.Plugins.Tests.Validation.Stuff;
 using FluentValidation;
 
 namespace EasyArchitecture.Plugins.FluentValidation.Tests.Stuff

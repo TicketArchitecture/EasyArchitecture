@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using EasyArchitecture.Plugins.Validation.Persistence.Stuff;
+using EasyArchitecture.Plugins.Tests.Persistence.Stuff;
 
 namespace EasyArchitecture.Plugins.EntityFramework.Tests.Stuff.Mappings
 {

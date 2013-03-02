@@ -2,7 +2,7 @@
 using EasyArchitecture.Core;
 using EasyArchitecture.Core.Plugin;
 using EasyArchitecture.Plugin.BultIn.Log;
-using EasyArchitecture.Plugins.Validation.Log;
+using EasyArchitecture.Plugins.Tests.Log;
 using NUnit.Framework;
 
 namespace EasyArchitecture.Plugins.BuiltIn.Tests.Log
