@@ -8,25 +8,22 @@ namespace EasyArchitecture.Core.Log
     {
         internal static void Log(object intance, string method, params object[] @params)
         {
-            var type = intance.GetType();
+            var sb = new StringBuilder();
 
-
-            var parameters = new StringBuilder();
-
-            var counter = 0;
             foreach (var parameterInfo in @params)
             {
-                parameters.Append(SerializationHelper.Mount(@params[counter++]) + ", ");
+                sb.Append(SerializationHelper.Mount(parameterInfo));
+                sb.Append(", ");
             }
 
-            if (counter > 0)
-                parameters.Remove(parameters.Length - 2, 2);
+            if (@params.Length > 0)
+                sb.Remove(sb.Length - 2, 2);
 
-            var message = string.Format("\t[{0}] {1} ", type.Name, method) + parameters;
-            
+            var message = string.Format("\t[{0}] {1} ", intance.GetType().Name, method) + sb;
+
             var instance = InstanceProvider.GetLocalInstance<Logger>();
             if (instance != null)
-                instance.Log(LogLevel.Debug, message, null);
+                instance.Log(LogLevel.Info, message, null);
 
         }
     }
