@@ -22,9 +22,9 @@ namespace EasyArchitecture.Tests.Persistence
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<IPersistence>();
 
-            LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
-            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Persistence.Persistence(_instancePlugin));
-            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Log.Logger(MockRepository.GenerateStub<ILogger>()));
+            ThreadContext.Create("EasyArchitecture.Tests");
+            ThreadContext.GetCurrent().SetInstance(new Instances.Persistence.Persistence(_instancePlugin));
+            ThreadContext.GetCurrent().SetInstance(new Instances.Log.Logger(MockRepository.GenerateStub<ILogger>()));
 
             _dog = new Dog { Age = 15, Name = "Old Dog" };
         }

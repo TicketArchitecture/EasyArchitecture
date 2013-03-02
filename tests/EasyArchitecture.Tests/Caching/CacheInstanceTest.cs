@@ -25,8 +25,8 @@ namespace EasyArchitecture.Tests.Caching
 
             _key = Guid.NewGuid().ToString();
 
-            LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
-            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Log.Logger(MockRepository.GenerateStub<ILogger>()));
+            ThreadContext.Create("EasyArchitecture.Tests");
+            ThreadContext.GetCurrent().SetInstance(new Instances.Log.Logger(MockRepository.GenerateStub<ILogger>()));
         }
 
         [Test]

@@ -14,7 +14,7 @@ namespace EasyArchitecture.Instances.Log
         internal Logger(ILogger plugin)
         {
             _plugin = plugin;
-            _logLevel = LoggerConfig.LoadRuntimeConfiguration(LocalThreadStorage.GetCurrentContext().Name);
+            _logLevel = LoggerConfig.LoadRuntimeConfiguration(ThreadContext.GetCurrent().Name);
         }
 
         private void Log(LogLevel logLevel, object message, Exception exception)

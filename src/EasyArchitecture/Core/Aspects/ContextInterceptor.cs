@@ -6,7 +6,7 @@ namespace EasyArchitecture.Core.Aspects
     {
         public override object Invoke(ProxyMethodCall methodCall)
         {
-            LocalThreadStorage.GetCurrentContext().Initialize();
+            ThreadContext.GetCurrent().Initialize();
             return Next(methodCall);
         }
     }

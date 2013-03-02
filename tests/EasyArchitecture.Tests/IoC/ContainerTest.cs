@@ -21,9 +21,9 @@ namespace EasyArchitecture.Tests.IoC
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<IContainer>();
 
-            LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
-            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.IoC.Container(_instancePlugin));
-            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Log.Logger(MockRepository.GenerateStub<ILogger>()));
+            ThreadContext.Create("EasyArchitecture.Tests");
+            ThreadContext.GetCurrent().SetInstance(new Instances.IoC.Container(_instancePlugin));
+            ThreadContext.GetCurrent().SetInstance(new Instances.Log.Logger(MockRepository.GenerateStub<ILogger>()));
 
         }
 

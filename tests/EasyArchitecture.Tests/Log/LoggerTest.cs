@@ -18,14 +18,14 @@ namespace EasyArchitecture.Tests.Log
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<ILogger>();
 
-            LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
-            LocalThreadStorage.GetCurrentContext().SetInstance(new Logger(_instancePlugin));
+            ThreadContext.Create("EasyArchitecture.Tests");
+            ThreadContext.GetCurrent().SetInstance(new Logger(_instancePlugin));
         }
 
         [TearDown]
         public void TearDown()
         {
-            LocalThreadStorage.GetCurrentContext().SetInstance<Logger>(null);
+            ThreadContext.GetCurrent().SetInstance<Logger>(null);
         }
 
         [Test]

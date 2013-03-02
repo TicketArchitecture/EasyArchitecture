@@ -39,14 +39,14 @@ namespace EasyArchitecture.Core
 
         public static T GetInstance<T>() where T : class
         {
-            var context = LocalThreadStorage.GetCurrentContext();
+            var context = ThreadContext.GetCurrent();
             if(context==null)
                 throw new NotConfiguredException();
 
-            var instance = LocalThreadStorage.GetCurrentContext().GetInstance<T>();
+            var instance = ThreadContext.GetCurrent().GetInstance<T>();
             if (instance == null)
             {
-                var moduleName = LocalThreadStorage.GetCurrentContext().Name;
+                var moduleName = ThreadContext.GetCurrent().Name;
                 if (!Factories.ContainsKey(moduleName))
                     throw new NotConfiguredException(moduleName);
 
@@ -56,7 +56,7 @@ namespace EasyArchitecture.Core
                 var plugin = plugins.Find(pluginType.IsInstanceOfType);
                 var pluginInstance = pluginType.InvokeMember("GetInstance", BindingFlags.InvokeMethod, null, plugin, null);
                 instance = (T)providerType.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance)[0].Invoke(new[]{pluginInstance});
-                LocalThreadStorage.GetCurrentContext().SetInstance(instance);
+                ThreadContext.GetCurrent().SetInstance(instance);
             }
             
             return (T)instance;
@@ -79,7 +79,7 @@ namespace EasyArchitecture.Core
 
             var pluginInfo = new PluginInspectorExtrator(inspectors);
 
-            LocalThreadStorage.CreateContext(moduleName);
+            ThreadContext.Create(moduleName);
 
             GetInstance<Logger>().LogInfo(pluginInfo, null);
         }

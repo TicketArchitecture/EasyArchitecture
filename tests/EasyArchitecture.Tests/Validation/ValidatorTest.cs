@@ -25,9 +25,9 @@ namespace EasyArchitecture.Tests.Validation
             _mockery = new MockRepository();
             _instancePlugin = _mockery.DynamicMock<IValidator>();
 
-            LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
-            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Validation.Validator(_instancePlugin));
-            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Log.Logger(MockRepository.GenerateStub<ILogger>()));
+            ThreadContext.Create("EasyArchitecture.Tests");
+            ThreadContext.GetCurrent().SetInstance(new Instances.Validation.Validator(_instancePlugin));
+            ThreadContext.GetCurrent().SetInstance(new Instances.Log.Logger(MockRepository.GenerateStub<ILogger>()));
 
             _oldDog = new Dog { Age = 15, Name = "Old Dog" };
             _youngDog = new Dog { Age = 5, Name = "Young Dog" };

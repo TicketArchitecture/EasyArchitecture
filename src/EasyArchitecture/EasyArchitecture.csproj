@@ -137,7 +137,7 @@
     <Compile Include="Plugin\Contracts\Log\ILoggerPlugin.cs" />
     <Compile Include="Plugin\Contracts\Translation\ITranslatorPlugin.cs" />
     <Compile Include="Plugin\Contracts\Persistence\IPersistence.cs" />
-    <Compile Include="Core\LocalThreadStorage.cs" />
+    <Compile Include="Core\ContextStorage.cs" />
     <Compile Include="Plugin\BultIn\Validation\ValidationRule.cs" />
     <Compile Include="Plugin\BultIn\Validation\ValidationRuleSet.cs" />
     <Compile Include="Core\AssemblyManager.cs" />
