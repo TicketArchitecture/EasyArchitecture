@@ -6,7 +6,7 @@ using EasyArchitecture.Plugins.Contracts.Persistence;
 
 namespace EasyArchitecture.Plugins.BultIn.Persistence
 {
-    internal class PersistencePlugin : AbstractPlugin,IPersistencePlugin
+    internal class PersistencePlugin : Plugin,IPersistencePlugin
     {
         private readonly Dictionary<Type, ArrayList> _dataBase = new Dictionary<Type, ArrayList>();
 

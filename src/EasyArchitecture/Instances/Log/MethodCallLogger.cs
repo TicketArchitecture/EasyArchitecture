@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using System.Text;
 using EasyArchitecture.Core;
-using EasyArchitecture.Core.Log;
+using EasyArchitecture.Core.Serializer;
 using EasyArchitecture.Plugins.Contracts.Log;
 
 namespace EasyArchitecture.Instances.Log
@@ -24,7 +24,7 @@ namespace EasyArchitecture.Instances.Log
                 if (logInstance._logLevel == LogLevel.Debug)
                 {
                     sb.Append(" (");
-                    sb.Append(SerializationHelper.Mount(parametersValue[counter++]));
+                    sb.Append(JsonSerializer.Serialize(parametersValue[counter++]));
                     sb.Append(")");
                 }
                 sb.Append(", ");
@@ -51,7 +51,7 @@ namespace EasyArchitecture.Instances.Log
 
             if (logInstance._logLevel == LogLevel.Debug)
             {
-                logInstance.LogDebug(string.Format("<-[{0}]: ({1}) [{2}ms]", methodInfo.Name, SerializationHelper.Mount(returnValue), elapsedMilliseconds), null);
+                logInstance.LogDebug(string.Format("<-[{0}]: ({1}) [{2}ms]", methodInfo.Name, JsonSerializer.Serialize(returnValue), elapsedMilliseconds), null);
             }
             else
             {

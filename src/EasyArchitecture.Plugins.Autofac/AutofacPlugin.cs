@@ -5,7 +5,7 @@ using IContainer = EasyArchitecture.Plugins.Contracts.IoC.IContainer;
 
 namespace EasyArchitecture.Plugins.Autofac
 {
-    public class AutofacPlugin : AbstractPlugin, IContainerPlugin
+    public class AutofacPlugin : Plugin, IContainerPlugin
     {
         private global::Autofac.IContainer _container;
 

@@ -5,7 +5,7 @@ using Ninject;
 
 namespace EasyArchitecture.Plugins.Ninject
 {
-    public class NinjectPlugin : AbstractPlugin, IContainerPlugin
+    public class NinjectPlugin : Plugin, IContainerPlugin
     {
         private IKernel _container;
 

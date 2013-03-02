@@ -1,6 +1,6 @@
 namespace EasyArchitecture.Plugins
 {
-    public interface IInstanceProvider<T>
+    public interface IPluginFactory<out T>
     {
         T GetInstance();
     }

@@ -9,7 +9,7 @@ using ILogger = EasyArchitecture.Plugins.Contracts.Log.ILogger;
 
 namespace EasyArchitecture.Plugins.log4net
 {
-    public class Log4NetPlugin :AbstractPlugin, ILoggerPlugin
+    public class Log4NetPlugin :Plugin, ILoggerPlugin
     {
         private string _moduleName;
         private const string LogPattern = "%d [%t] %-5p %m%n";

@@ -5,7 +5,7 @@ using EasyArchitecture.Plugins.Contracts.Log;
 
 namespace EasyArchitecture.Plugins.BultIn.Log
 {
-    internal class LoggerPlugin : AbstractPlugin, ILoggerPlugin
+    internal class LoggerPlugin : Plugin, ILoggerPlugin
     {
         private FileInfo _arquivo;
         private const string DefaultPath = "Log";

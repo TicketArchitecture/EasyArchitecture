@@ -7,7 +7,7 @@ using NHibernate;
 
 namespace EasyArchitecture.Plugins.NHibernate.Persistence
 {
-    public class NHibernatePlugin : AbstractPlugin,IPersistencePlugin
+    public class NHibernatePlugin : Plugin,IPersistencePlugin
     {
         private ISessionFactory _sessionFactory;
  

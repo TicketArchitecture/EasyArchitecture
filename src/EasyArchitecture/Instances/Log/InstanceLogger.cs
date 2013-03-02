@@ -1,6 +1,6 @@
 ﻿using System.Text;
 using EasyArchitecture.Core;
-using EasyArchitecture.Core.Log;
+using EasyArchitecture.Core.Serializer;
 using EasyArchitecture.Plugins.Contracts.Log;
 
 namespace EasyArchitecture.Instances.Log
@@ -23,7 +23,7 @@ namespace EasyArchitecture.Instances.Log
 
             foreach (var parameterInfo in @params)
             {
-                sb.Append(SerializationHelper.Mount(parameterInfo));
+                sb.Append(JsonSerializer.Serialize(parameterInfo));
                 sb.Append(", ");
             }
 

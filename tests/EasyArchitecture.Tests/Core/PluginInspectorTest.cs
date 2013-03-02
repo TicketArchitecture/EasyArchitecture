@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using EasyArchitecture.Plugins;
 using EasyArchitecture.Tests.Core.Stuff;
 using NUnit.Framework;
@@ -7,7 +8,6 @@ namespace EasyArchitecture.Tests.Core
     [TestFixture]
     public class PluginInspectorTest
     {
-
         [Test]
         public void Can_get_plugin_info()
         {
@@ -15,7 +15,7 @@ namespace EasyArchitecture.Tests.Core
             PluginInspector pluginInspector;
             plugin.Configure(null,out pluginInspector);
 
-            var info = pluginInspector.ExtractInfo();
+            var info = new PluginInspectorExtrator(new List<PluginInspector> {pluginInspector}).ToString();
 
             Assert.That(info,Is.StringContaining("DummyPlugin"));
             Assert.That(info, Is.StringContaining("Mensagem teste"));

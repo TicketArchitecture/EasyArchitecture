@@ -5,7 +5,7 @@ using EasyArchitecture.Plugins.Contracts.Persistence;
 
 namespace EasyArchitecture.Plugins.Db4o
 {
-    public class Db4oPlugin: AbstractPlugin, IPersistencePlugin
+    public class Db4oPlugin: Plugin, IPersistencePlugin
     {
 
         private IObjectContainer db ;

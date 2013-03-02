@@ -1,6 +1,6 @@
 namespace EasyArchitecture.Plugins.Contracts.Translation
 {
-    public interface ITranslatorPlugin : IInstanceProvider<ITranslator>, IConfigurablePlugin
+    public interface ITranslatorPlugin : IPluginFactory<ITranslator>, IConfigurablePlugin
     {
     }
 }

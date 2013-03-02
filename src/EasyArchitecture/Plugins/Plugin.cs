@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 
 namespace EasyArchitecture.Plugins
 {
-    public abstract class AbstractPlugin : IConfigurablePlugin
+    public abstract class Plugin : IConfigurablePlugin
     {
         public void Configure(PluginConfiguration pluginConfiguration, out PluginInspector pluginInspector)
         {
@@ -13,7 +14,7 @@ namespace EasyArchitecture.Plugins
             }
             catch (Exception exception)
             {
-                throw new PluginConfigurationException(pluginInspector.ExtractInfo(),exception);
+                throw new PluginConfigurationException(new PluginInspectorExtrator(new List<PluginInspector> {pluginInspector}).ToString(), exception);
             }
         }
 

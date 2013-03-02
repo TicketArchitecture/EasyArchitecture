@@ -6,7 +6,7 @@ using EasyArchitecture.Plugins.Contracts.IoC;
 
 namespace EasyArchitecture.Plugins.BultIn.IoC
 {
-    internal class ContainerPlugin : AbstractPlugin, IContainerPlugin
+    internal class ContainerPlugin : Plugin, IContainerPlugin
     {
         private readonly Dictionary<Type, TypeRegistry> _registeredTypes = new Dictionary<Type, TypeRegistry>();
 

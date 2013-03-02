@@ -2,13 +2,13 @@
 using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace EasyArchitecture.Core.Log
+namespace EasyArchitecture.Core.Serializer
 {
-    internal static class SerializationHelper
+    internal static class JsonSerializer
     {
         private const string NullValue = "null";
 
-        internal static string Mount(object obj)
+        internal static string Serialize(object obj)
         {
             if (obj == null)
                 return NullValue;

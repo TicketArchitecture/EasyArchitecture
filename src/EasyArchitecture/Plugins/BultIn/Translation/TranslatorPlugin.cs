@@ -5,7 +5,7 @@ using EasyArchitecture.Plugins.Contracts.Translation;
 
 namespace EasyArchitecture.Plugins.BultIn.Translation
 {
-    internal class TranslatorPlugin : AbstractPlugin, ITranslatorPlugin
+    internal class TranslatorPlugin : Plugin, ITranslatorPlugin
     {
         private readonly List<TypeMap> _mappedTypes = new List<TypeMap>();
 

@@ -23,18 +23,18 @@ namespace EasyArchitecture.Core
 {
     internal static class InstanceProvider
     {
-        private static readonly Dictionary<string, List<AbstractPlugin>> PluginFactories = new Dictionary<string, List<AbstractPlugin>>();
+        private static readonly Dictionary<string, List<Plugin>> PluginFactories = new Dictionary<string, List<Plugin>>();
         private static readonly Dictionary<Type, Type> Map = new Dictionary<Type, Type>();
 
         static InstanceProvider()
         {
-            Map.Add(typeof(Persistence), typeof(IInstanceProvider<IPersistence>));
-            Map.Add(typeof(Container), typeof(IInstanceProvider<IContainer>));
-            Map.Add(typeof(Translator), typeof(IInstanceProvider<ITranslator>));
-            Map.Add(typeof(Validator), typeof(IInstanceProvider<IValidator>));
-            Map.Add(typeof(Storer), typeof(IInstanceProvider<IStorage>));
-            Map.Add(typeof(Cache), typeof(IInstanceProvider<ICache>));
-            Map.Add(typeof(Logger), typeof(IInstanceProvider<ILogger>));
+            Map.Add(typeof(Persistence), typeof(IPluginFactory<IPersistence>));
+            Map.Add(typeof(Container), typeof(IPluginFactory<IContainer>));
+            Map.Add(typeof(Translator), typeof(IPluginFactory<ITranslator>));
+            Map.Add(typeof(Validator), typeof(IPluginFactory<IValidator>));
+            Map.Add(typeof(Storer), typeof(IPluginFactory<IStorage>));
+            Map.Add(typeof(Cache), typeof(IPluginFactory<ICache>));
+            Map.Add(typeof(Logger), typeof(IPluginFactory<ILogger>));
         }
 
         internal static T GetInstance<T>() where T : class

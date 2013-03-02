@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace EasyArchitecture.Core.Log
+namespace EasyArchitecture.Core.Serializer
 {
-    public class UnknowTypeDataContractSurrogate : IDataContractSurrogate
+    internal class UnknowTypeDataContractSurrogate : IDataContractSurrogate
     {
         public Type GetDataContractType(Type type)
         {

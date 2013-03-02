@@ -3,7 +3,7 @@ using EasyArchitecture.Plugins;
 
 namespace EasyArchitecture.Tests.Core.Stuff
 {
-    public class DummyPlugin : AbstractPlugin
+    public class DummyPlugin : Plugin
     {
         protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {

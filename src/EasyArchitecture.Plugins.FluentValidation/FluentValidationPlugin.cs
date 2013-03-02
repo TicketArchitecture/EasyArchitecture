@@ -8,7 +8,7 @@ using IValidator = EasyArchitecture.Plugins.Contracts.Validation.IValidator;
 
 namespace EasyArchitecture.Plugins.FluentValidation
 {
-    public class FluentValidationPlugin : AbstractPlugin, IValidatorPlugin
+    public class FluentValidationPlugin : Plugin, IValidatorPlugin
     {
         private readonly Dictionary<Type, object> _validationRuleDefinitions = new Dictionary<Type, object>();
 

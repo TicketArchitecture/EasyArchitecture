@@ -5,7 +5,7 @@ using Microsoft.Practices.Unity.InterceptionExtension;
 
 namespace EasyArchitecture.Plugins.Unity
 {
-    public class UnityPlugin : AbstractPlugin,IContainerPlugin
+    public class UnityPlugin : Plugin,IContainerPlugin
     {
         private IUnityContainer _container;
 

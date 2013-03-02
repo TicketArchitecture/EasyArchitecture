@@ -19,18 +19,18 @@ using EasyArchitecture.Plugins.Contracts.Validation;
 
 namespace EasyArchitecture.Configuration
 {
-    public class PluginSetup
+    internal class PluginSetup
     {
-        private readonly Dictionary<Type, AbstractPlugin> _plugins;
+        private readonly Dictionary<Type, Plugin> _plugins;
 
-        private PluginSetup(Dictionary<Type, AbstractPlugin> plugins)
+        private PluginSetup(Dictionary<Type, Plugin> plugins)
         {
             _plugins = plugins;
         }
 
         internal static PluginSetup Create()
         {
-            var plugins = new Dictionary<Type, AbstractPlugin>
+            var plugins = new Dictionary<Type, Plugin>
                 {
                     {typeof (IValidatorPlugin), new ValidatorPlugin()},
                     {typeof (ILoggerPlugin), new LoggerPlugin()},
@@ -46,7 +46,7 @@ namespace EasyArchitecture.Configuration
 
         internal void Register<T>(T plugin)
         {
-            var abstractPlugin = plugin as AbstractPlugin;
+            var abstractPlugin = plugin as Plugin;
             _plugins[typeof(T)] = abstractPlugin;
         }
 
@@ -57,7 +57,7 @@ namespace EasyArchitecture.Configuration
             Register((TU)plugin);
         }
 
-        internal List<AbstractPlugin> GetPlugins()
+        internal List<Plugin> GetPlugins()
         {
             return _plugins.Select(plugin => plugin.Value).ToList();
         }

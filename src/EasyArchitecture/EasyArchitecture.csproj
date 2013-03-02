@@ -80,9 +80,9 @@
     <Compile Include="Plugins\Contracts\IoC\IContainer.cs" />
     <Compile Include="Core\Aspects\LogInterceptor.cs" />
     <Compile Include="Plugins\Contracts\Persistence\IPersistencePlugin.cs" />
-    <Compile Include="Core\Log\UnknowTypeDataContractSurrogate.cs" />
+    <Compile Include="Core\Serializer\UnknowTypeDataContractSurrogate.cs" />
     <Compile Include="Instances\Log\InstanceLogger.cs" />
-    <Compile Include="Configuration\PluginConfiguration.cs" />
+    <Compile Include="Configuration\PluginSetup.cs" />
     <Compile Include="Instances\IoC\ProxyMethodCall.cs" />
     <Compile Include="Plugins\BultIn\IoC\InterceptionHook.cs" />
     <Compile Include="Plugins\BultIn\Log\Logger.cs" />
@@ -90,8 +90,8 @@
     <Compile Include="Core\Aspects\TransactionInterceptor.cs" />
     <Compile Include="Core\Aspects\ContextInterceptor.cs" />
     <Compile Include="Instances\IoC\Interceptor.cs" />
-    <Compile Include="Core\Log\SerializationHelper.cs" />
-    <Compile Include="Plugins\AbstractPlugin.cs" />
+    <Compile Include="Core\Serializer\JsonSerializer.cs" />
+    <Compile Include="Plugins\Plugin.cs" />
     <Compile Include="Plugins\PluginConfigurationException.cs" />
     <Compile Include="Plugins\PluginInspector.cs" />
     <Compile Include="Instances\Storage\Storer.cs" />
@@ -100,7 +100,7 @@
     <Compile Include="Plugins\BultIn\Storage\Storage.cs" />
     <Compile Include="Plugins\Contracts\Storage\IStorage.cs" />
     <Compile Include="Instances\Translation\Translator.cs" />
-    <Compile Include="Configuration\Exceptions\NotConfiguredModuleException.cs" />
+    <Compile Include="Configuration\Exceptions\NotConfiguredException.cs" />
     <Compile Include="Plugins\BultIn\Translation\TypeManager.cs" />
     <Compile Include="Mechanisms\Caching\Cache.cs" />
     <Compile Include="Plugins\BultIn\Persistence\Persistence.cs" />
@@ -118,7 +118,7 @@
     <Compile Include="Plugins\BultIn\Validation\Validator.cs" />
     <Compile Include="Plugins\BultIn\Validation\ValidatorPlugin.cs" />
     <Compile Include="Plugins\IConfigurablePlugin.cs" />
-    <Compile Include="Plugins\IInstanceProvider.cs" />
+    <Compile Include="Plugins\IPluginFactory.cs" />
     <Compile Include="Plugins\Contracts\Validation\IValidatorPlugin.cs" />
     <Compile Include="Plugins\Contracts\Validation\IValidator.cs" />
     <Compile Include="Plugins\PluginConfiguration.cs" />

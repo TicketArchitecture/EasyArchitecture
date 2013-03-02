@@ -17,7 +17,7 @@ namespace EasyArchitecture.Core
             return AppDomain.CurrentDomain.Load(assemblyName);
         }
 
-        internal static string RemoveAssemblySufix(string assemblyName)
+        private static string RemoveAssemblySufix(string assemblyName)
         {
             var sb = new StringBuilder(assemblyName);
 

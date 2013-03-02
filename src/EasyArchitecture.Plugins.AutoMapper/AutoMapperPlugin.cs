@@ -5,7 +5,7 @@ using EasyArchitecture.Plugins.Contracts.Translation;
 
 namespace EasyArchitecture.Plugins.AutoMapper
 {
-    public class AutoMapperPlugin : AbstractPlugin,ITranslatorPlugin
+    public class AutoMapperPlugin : Plugin,ITranslatorPlugin
     {
         public ITranslator GetInstance()
         {

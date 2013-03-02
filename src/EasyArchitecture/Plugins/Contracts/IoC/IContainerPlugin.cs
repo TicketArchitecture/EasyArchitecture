@@ -1,6 +1,6 @@
 namespace EasyArchitecture.Plugins.Contracts.IoC
 {
-    public interface IContainerPlugin:IConfigurablePlugin,IInstanceProvider<IContainer>
+    public interface IContainerPlugin:IConfigurablePlugin,IPluginFactory<IContainer>
     {
     }
 }

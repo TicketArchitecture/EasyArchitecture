@@ -3,7 +3,7 @@ using EasyArchitecture.Plugins.Contracts.Storage;
 
 namespace EasyArchitecture.Plugins.BultIn.Storage
 {
-    internal class StoragePlugin : AbstractPlugin,IStoragePlugin
+    internal class StoragePlugin : Plugin,IStoragePlugin
     {
         protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {

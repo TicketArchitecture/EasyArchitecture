@@ -5,7 +5,7 @@ using EasyArchitecture.Plugins.Contracts.Persistence;
 
 namespace EasyArchitecture.Plugins.EntityFramework
 {
-    public class EntityFrameworkPlugin :AbstractPlugin, IPersistencePlugin
+    public class EntityFrameworkPlugin :Plugin, IPersistencePlugin
     {
         private DbContext _dbContext;
      

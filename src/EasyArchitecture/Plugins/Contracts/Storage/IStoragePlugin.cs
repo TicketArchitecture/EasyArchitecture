@@ -1,6 +1,6 @@
 ﻿namespace EasyArchitecture.Plugins.Contracts.Storage
 {
-    public interface IStoragePlugin : IInstanceProvider<IStorage>, IConfigurablePlugin
+    public interface IStoragePlugin : IPluginFactory<IStorage>, IConfigurablePlugin
     {
     }
 }

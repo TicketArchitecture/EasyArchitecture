@@ -6,7 +6,7 @@ using EasyArchitecture.Plugins.Contracts.Validation;
 
 namespace EasyArchitecture.Plugins.BultIn.Validation
 {
-    internal class ValidatorPlugin : AbstractPlugin, IValidatorPlugin
+    internal class ValidatorPlugin : Plugin, IValidatorPlugin
     {
         private readonly Dictionary<Type, object> _validationRuleDefinitions = new Dictionary<Type, object>();
 

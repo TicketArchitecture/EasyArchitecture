@@ -4,7 +4,7 @@ using EasyArchitecture.Plugins;
 
 namespace EasyArchitecture.Tests.Core.Stuff
 {
-    public class BuggedPlugin : AbstractPlugin
+    public class BuggedPlugin : Plugin
     {
         protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {

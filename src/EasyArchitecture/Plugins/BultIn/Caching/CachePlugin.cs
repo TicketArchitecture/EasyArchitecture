@@ -3,7 +3,7 @@ using EasyArchitecture.Plugins.Contracts.Caching;
 
 namespace EasyArchitecture.Plugins.BultIn.Caching
 {
-    internal class CachePlugin :AbstractPlugin,ICachePlugin
+    internal class CachePlugin :Plugin,ICachePlugin
     {
         protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
