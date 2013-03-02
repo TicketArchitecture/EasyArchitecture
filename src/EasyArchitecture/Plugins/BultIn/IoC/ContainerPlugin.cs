@@ -10,10 +10,10 @@ namespace EasyArchitecture.Plugins.BultIn.IoC
     {
         private readonly Dictionary<Type, TypeRegistry> _registeredTypes = new Dictionary<Type, TypeRegistry>();
 
-        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
+        protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
-            AutoRegister(moduleAssemblies.DomainAssembly, moduleAssemblies.InfrastructureAssembly, false,pluginInspector);
-            AutoRegister(moduleAssemblies.ApplicationAssembly, moduleAssemblies.ApplicationAssembly, true,pluginInspector);
+            AutoRegister(pluginConfiguration.DomainAssembly, pluginConfiguration.InfrastructureAssembly, false,pluginInspector);
+            AutoRegister(pluginConfiguration.ApplicationAssembly, pluginConfiguration.ApplicationAssembly, true,pluginInspector);
         }
 
         private void AutoRegister(Assembly interfacesAssembly, Assembly implementationsAssembly, bool useInterception, PluginInspector pluginInspector)

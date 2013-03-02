@@ -41,14 +41,17 @@ namespace EasyArchitecture.Core
             return moduleName;
         }
 
-        public static ModuleAssemblies GetModuleAssemblies(string moduleName)
+        public static Assembly GetDomainAssembly(string moduleName)
         {
-            return new ModuleAssemblies(
-                moduleName,
-                GetAssembly(Application, moduleName),
-                GetAssembly(Domain, moduleName),
-                GetAssembly(Infrastructure, moduleName)
-                );
+            return GetAssembly(Domain, moduleName);
+        }
+        public static Assembly GetApplicationAssembly(string moduleName)
+        {
+            return GetAssembly(Application, moduleName);
+        }
+        public static Assembly GetInfrastructureAssembly(string moduleName)
+        {
+            return GetAssembly(Infrastructure, moduleName);
         }
     }
 }

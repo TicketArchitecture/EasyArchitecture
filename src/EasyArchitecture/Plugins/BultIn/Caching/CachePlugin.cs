@@ -5,7 +5,7 @@ namespace EasyArchitecture.Plugins.BultIn.Caching
 {
     internal class CachePlugin :AbstractPlugin,ICachePlugin
     {
-        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
+        protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
         }
 

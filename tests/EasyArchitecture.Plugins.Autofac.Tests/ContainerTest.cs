@@ -15,7 +15,7 @@ namespace EasyArchitecture.Plugins.Autofac.Tests
             var plugin = new AutofacPlugin();
 
             PluginInspector pluginInspector;
-            plugin.Configure(new ModuleAssemblies(null, null, null, Assembly.GetExecutingAssembly()),
+            plugin.Configure(new PluginConfiguration(null, null, null, Assembly.GetExecutingAssembly()),
                              out pluginInspector);
 
             Container = plugin.GetInstance();

@@ -15,10 +15,10 @@ namespace EasyArchitecture.Plugins.Db4o
             return new Db4oPersistence(db);
         }
 
-        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
+        protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
-            var assembly = moduleAssemblies.InfrastructureAssembly;
-            var file = string.Format("\\db{0}.db", moduleAssemblies.ModuleName);
+            var assembly = pluginConfiguration.InfrastructureAssembly;
+            var file = string.Format("\\db{0}.db", pluginConfiguration.ModuleName);
 
             db = Db4oFactory.OpenFile(AppDomain.CurrentDomain.BaseDirectory + file);
         }

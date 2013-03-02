@@ -15,7 +15,7 @@ namespace EasyArchitecture.Plugins.NHibernate.Tests
             var plugin = new NHibernatePlugin();
 
             PluginInspector pluginInspector;
-            plugin.Configure(new ModuleAssemblies(null, null, null, Assembly.GetExecutingAssembly()),
+            plugin.Configure(new PluginConfiguration(null, null, null, Assembly.GetExecutingAssembly()),
                              out pluginInspector);
 
             PluginInstance = plugin.GetInstance();

@@ -20,7 +20,7 @@ namespace EasyArchitecture.Plugins.BuiltIn.Tests.Validation
 
             var infraAssembly = Assembly.GetExecutingAssembly();
 
-            validatorPlugin.Configure(new ModuleAssemblies(moduleName, null, null, infraAssembly), out pluginInspector);
+            validatorPlugin.Configure(new PluginConfiguration(moduleName, null, null, infraAssembly), out pluginInspector);
             Validator = validatorPlugin.GetInstance();
         }
     }

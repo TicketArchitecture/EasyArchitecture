@@ -50,44 +50,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caching\CacheInstanceTest.cs" />
-    <Compile Include="IoC\ContainerServiceTest.cs" />
-    <Compile Include="IoC\Stuff\DogDto.cs" />
-    <Compile Include="IoC\Stuff\IDogFacade.cs" />
-    <Compile Include="Persistence\Stuff\Dog.cs" />
-    <Compile Include="Runtime\Stuff\BuggedPlugin.cs" />
-    <Compile Include="Runtime\Stuff\DummyPlugin.cs" />
-    <Compile Include="Runtime\PluginInspectorTest.cs" />
-    <Compile Include="Caching\CacheTest.cs" />
-    <Compile Include="IoC\Stuff\DummyCatFacade.cs">
+    <Compile Include="Instances\Caching\CacheInstanceTest.cs" />
+    <Compile Include="Instances\IoC\ContainerServiceTest.cs" />
+    <Compile Include="Instances\IoC\Stuff\DogDto.cs" />
+    <Compile Include="Instances\IoC\Stuff\IDogFacade.cs" />
+    <Compile Include="Instances\Persistence\Stuff\Dog.cs" />
+    <Compile Include="Core\Stuff\BuggedPlugin.cs" />
+    <Compile Include="Core\Stuff\DummyPlugin.cs" />
+    <Compile Include="Core\PluginInspectorTest.cs" />
+    <Compile Include="Instances\Caching\CacheTest.cs" />
+    <Compile Include="Instances\IoC\Stuff\DummyCatFacade.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="IoC\Stuff\DummyDogFacade.cs">
+    <Compile Include="Instances\IoC\Stuff\DummyDogFacade.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="IoC\Stuff\ICatFacade.cs">
+    <Compile Include="Instances\IoC\Stuff\ICatFacade.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Persistence\RepositoryTest.cs" />
-    <Compile Include="Storage\StorageTest.cs" />
-    <Compile Include="Log\LoggerTest.cs" />
-    <Compile Include="Runtime\ConfigurationTest.cs" />
-    <Compile Include="Translation\Stuff\AnotherDogDto.cs">
+    <Compile Include="Instances\Persistence\RepositoryTest.cs" />
+    <Compile Include="Instances\Storage\StorageTest.cs" />
+    <Compile Include="Instances\Log\LoggerTest.cs" />
+    <Compile Include="Core\ConfigurationTest.cs" />
+    <Compile Include="Instances\Translation\Stuff\AnotherDogDto.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Translation\Stuff\Dog.cs">
+    <Compile Include="Instances\Translation\Stuff\Dog.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Translation\Stuff\DogDto.cs">
+    <Compile Include="Instances\Translation\Stuff\DogDto.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Translation\TranslatorTest.cs" />
-    <Compile Include="Validation\Stuff\Dog.cs" />
-    <Compile Include="Validation\ValidatorTest.cs" />
-    <Compile Include="Runtime\Helpers\AssemblyLoader.cs" />
-    <Compile Include="Runtime\AssemblyManagerTest.cs" />
+    <Compile Include="Instances\Translation\TranslatorTest.cs" />
+    <Compile Include="Instances\Validation\Stuff\Dog.cs" />
+    <Compile Include="Instances\Validation\ValidatorTest.cs" />
+    <Compile Include="Core\Helpers\AssemblyLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IoC\ContainerTest.cs" />
+    <Compile Include="Instances\IoC\ContainerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

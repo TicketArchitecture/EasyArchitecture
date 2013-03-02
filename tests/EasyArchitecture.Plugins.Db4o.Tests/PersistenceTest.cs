@@ -16,7 +16,7 @@ namespace EasyArchitecture.Plugins.Db4o.Tests
             var moduleName = Guid.NewGuid().ToString();
 
             PluginInspector pluginInspector;
-            plugin.Configure(new ModuleAssemblies(moduleName, null, null, Assembly.GetExecutingAssembly()),
+            plugin.Configure(new PluginConfiguration(moduleName, null, null, Assembly.GetExecutingAssembly()),
                              out pluginInspector);
 
             PluginInstance = plugin.GetInstance();

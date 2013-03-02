@@ -9,7 +9,7 @@ namespace EasyArchitecture.Plugins.Ninject
     {
         private IKernel _container;
 
-        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
+        protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
             _container = new StandardKernel();
         }

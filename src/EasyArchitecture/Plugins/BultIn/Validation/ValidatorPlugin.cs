@@ -10,9 +10,9 @@ namespace EasyArchitecture.Plugins.BultIn.Validation
     {
         private readonly Dictionary<Type, object> _validationRuleDefinitions = new Dictionary<Type, object>();
 
-        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
+        protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
-            var assembly = moduleAssemblies.InfrastructureAssembly;
+            var assembly = pluginConfiguration.InfrastructureAssembly;
             foreach (var validator in from tipo in assembly.GetExportedTypes()
                                       where tipo.BaseType != null && tipo.BaseType.IsGenericType && tipo.BaseType.GetGenericTypeDefinition() == typeof(ValidationRuleSet<>)
                                       select tipo.Assembly.CreateInstance(tipo.FullName))

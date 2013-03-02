@@ -16,7 +16,7 @@ namespace EasyArchitecture.Plugins.BuiltIn.Tests.Persistence
 
             var plugin = new PersistencePlugin();
             PluginInspector pluginInspector;
-            plugin.Configure(new ModuleAssemblies(moduleName, null, null, null), out pluginInspector);
+            plugin.Configure(new PluginConfiguration(moduleName, null, null, null), out pluginInspector);
             PluginInstance = plugin.GetInstance();
         }
     }

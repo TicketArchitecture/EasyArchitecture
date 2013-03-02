@@ -10,7 +10,7 @@ namespace EasyArchitecture.Plugins.BultIn.Persistence
     {
         private readonly Dictionary<Type, ArrayList> _dataBase = new Dictionary<Type, ArrayList>();
 
-        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
+        protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
         }
 

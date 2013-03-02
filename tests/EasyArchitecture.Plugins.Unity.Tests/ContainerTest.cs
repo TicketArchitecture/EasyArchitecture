@@ -14,7 +14,7 @@ namespace EasyArchitecture.Plugins.Unity.Tests
             var plugin = new UnityPlugin();
 
             PluginInspector pluginInspector;
-            plugin.Configure(new ModuleAssemblies(null, null, null, Assembly.GetExecutingAssembly()),
+            plugin.Configure(new PluginConfiguration(null, null, null, Assembly.GetExecutingAssembly()),
                              out pluginInspector);
 
             base.Container = plugin.GetInstance();

@@ -15,7 +15,7 @@ namespace EasyArchitecture.Plugins.Ninject.Tests
             var plugin = new NinjectPlugin();
 
             PluginInspector pluginInspector;
-            plugin.Configure(new ModuleAssemblies(null, null, null, Assembly.GetExecutingAssembly()),
+            plugin.Configure(new PluginConfiguration(null, null, null, Assembly.GetExecutingAssembly()),
                              out pluginInspector);
 
             Container = plugin.GetInstance();

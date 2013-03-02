@@ -21,9 +21,9 @@ using EasyArchitecture.Plugins.Contracts.Validation;
 
 namespace EasyArchitecture.Core
 {
-    public static class InstanceProvider
+    internal static class InstanceProvider
     {
-        private static readonly Dictionary<string, List<AbstractPlugin>> Factories = new Dictionary<string, List<AbstractPlugin>>();
+        private static readonly Dictionary<string, List<AbstractPlugin>> PluginFactories = new Dictionary<string, List<AbstractPlugin>>();
         private static readonly Dictionary<Type, Type> Map = new Dictionary<Type, Type>();
 
         static InstanceProvider()
@@ -37,51 +37,59 @@ namespace EasyArchitecture.Core
             Map.Add(typeof(Logger), typeof(IInstanceProvider<ILogger>));
         }
 
-        public static T GetInstance<T>() where T : class
+        internal static T GetInstance<T>() where T : class
         {
             var context = ThreadContext.GetCurrent();
-            if(context==null)
+            if (context == null)
                 throw new NotConfiguredException();
 
             var instance = ThreadContext.GetCurrent().GetInstance<T>();
             if (instance == null)
             {
                 var moduleName = ThreadContext.GetCurrent().Name;
-                if (!Factories.ContainsKey(moduleName))
+                if (!PluginFactories.ContainsKey(moduleName))
                     throw new NotConfiguredException(moduleName);
 
-                var plugins = Factories[moduleName];
+                var plugins = PluginFactories[moduleName];
                 var providerType = typeof(T);
                 var pluginType = Map[providerType];
                 var plugin = plugins.Find(pluginType.IsInstanceOfType);
                 var pluginInstance = pluginType.InvokeMember("GetInstance", BindingFlags.InvokeMethod, null, plugin, null);
-                instance = (T)providerType.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance)[0].Invoke(new[]{pluginInstance});
+                instance = (T)providerType.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance)[0].Invoke(new[] { pluginInstance });
                 ThreadContext.GetCurrent().SetInstance(instance);
             }
-            
+
             return (T)instance;
         }
 
-        internal static void Configure(string moduleName, PluginConfiguration pluginConfiguration)
+        internal static void Configure(string moduleName, PluginSetup pluginSetup)
         {
-            var moduleAssemblies = AssemblyManager.GetModuleAssemblies(moduleName);
-            var inspectors = new List<PluginInspector>();
+            var pluginConfigurationData = new PluginConfiguration(
+                moduleName,
+                AssemblyManager.GetApplicationAssembly(moduleName),
+                AssemblyManager.GetDomainAssembly(moduleName),
+                AssemblyManager.GetInfrastructureAssembly(moduleName)
+                );
 
-            var plugins = pluginConfiguration.GetPluginList();
-            foreach (var plugin in plugins)
-            {
-                PluginInspector pluginInspector;
-                plugin.Configure(moduleAssemblies, out pluginInspector);
-                inspectors.Add(pluginInspector);
-            }
+            var pluginInformation = InitializePlugins(pluginSetup, pluginConfigurationData);
 
-            Factories[moduleAssemblies.ModuleName] = plugins;
-
-            var pluginInfo = new PluginInspectorExtrator(inspectors);
+            PluginFactories[moduleName] = pluginSetup.GetPlugins();
 
             ThreadContext.Create(moduleName);
 
-            GetInstance<Logger>().LogInfo(pluginInfo, null);
+            GetInstance<Logger>().LogInfo(pluginInformation, null);
+        }
+
+        private static string InitializePlugins(PluginSetup pluginSetup,PluginConfiguration pluginConfigurationData)
+        {
+            var inspectors = new List<PluginInspector>();
+            foreach (var plugin in pluginSetup.GetPlugins())
+            {
+                PluginInspector pluginInspector;
+                plugin.Configure(pluginConfigurationData, out pluginInspector);
+                inspectors.Add(pluginInspector);
+            }
+            return new PluginInspectorExtrator(inspectors).ToString();
         }
     }
 

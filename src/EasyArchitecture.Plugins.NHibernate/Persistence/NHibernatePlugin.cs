@@ -17,9 +17,9 @@ namespace EasyArchitecture.Plugins.NHibernate.Persistence
             return new NHibernatePersistence(session);
         }
 
-        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
+        protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
-            var assembly = moduleAssemblies.InfrastructureAssembly;
+            var assembly = pluginConfiguration.InfrastructureAssembly;
             var nhibernateConfigurationType = Array.Find(assembly.GetExportedTypes(), t => typeof(INHibernateConfiguration).IsAssignableFrom(t));
 
             INHibernateConfiguration nhibernateConfiguration = null;

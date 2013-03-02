@@ -14,7 +14,7 @@ namespace EasyArchitecture.Plugins.Autofac
             return new AutofacContainer(_container);
         }
 
-        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
+        protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
             if (_container != null) return;
 

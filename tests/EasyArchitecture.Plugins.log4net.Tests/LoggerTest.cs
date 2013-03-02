@@ -17,7 +17,7 @@ namespace EasyArchitecture.Plugins.log4net.Tests
             base.ModuleName = Guid.NewGuid().ToString();
 
             PluginInspector pluginInspector;
-            plugin.Configure(new ModuleAssemblies(base.ModuleName, null, null, Assembly.GetExecutingAssembly()),
+            plugin.Configure(new PluginConfiguration(base.ModuleName, null, null, Assembly.GetExecutingAssembly()),
                              out pluginInspector);
 
             base.Logger= plugin.GetInstance();

@@ -12,12 +12,12 @@ namespace EasyArchitecture.Configuration.Expressions
     public class ForExpression
     {
         private readonly string _moduleName;
-        private readonly PluginConfiguration _pluginConfiguration;
+        private readonly PluginSetup _pluginConfiguration;
 
         internal ForExpression(string moduleName)
         {
             _moduleName = moduleName;
-            _pluginConfiguration = PluginConfiguration.Create();
+            _pluginConfiguration = PluginSetup.Create();
         }
 
         public ForExpression Log(ILoggerPlugin plugin)

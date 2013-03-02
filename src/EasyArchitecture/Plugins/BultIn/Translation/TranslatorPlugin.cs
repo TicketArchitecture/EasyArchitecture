@@ -9,9 +9,9 @@ namespace EasyArchitecture.Plugins.BultIn.Translation
     {
         private readonly List<TypeMap> _mappedTypes = new List<TypeMap>();
 
-        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
+        protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
-            var assembly = moduleAssemblies.InfrastructureAssembly;
+            var assembly = pluginConfiguration.InfrastructureAssembly;
             foreach (var mapRule in from tipo in assembly.GetExportedTypes()
                                       where tipo.BaseType == typeof(MapRule)
                                       select tipo.Assembly.CreateInstance(tipo.FullName))

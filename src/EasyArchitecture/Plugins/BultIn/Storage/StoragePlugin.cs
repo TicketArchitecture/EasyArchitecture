@@ -5,7 +5,7 @@ namespace EasyArchitecture.Plugins.BultIn.Storage
 {
     internal class StoragePlugin : AbstractPlugin,IStoragePlugin
     {
-        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
+        protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
         }
 

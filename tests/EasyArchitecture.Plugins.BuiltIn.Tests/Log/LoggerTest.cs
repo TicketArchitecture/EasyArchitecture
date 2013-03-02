@@ -16,7 +16,7 @@ namespace EasyArchitecture.Plugins.BuiltIn.Tests.Log
 
             var loggerPlugin = new LoggerPlugin();
             PluginInspector pluginInspector;
-            loggerPlugin.Configure(new ModuleAssemblies(ModuleName, null, null, null), out pluginInspector);
+            loggerPlugin.Configure(new PluginConfiguration(ModuleName, null, null, null), out pluginInspector);
             Logger = loggerPlugin.GetInstance();
         }
     }

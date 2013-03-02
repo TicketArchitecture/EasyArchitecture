@@ -121,7 +121,7 @@
     <Compile Include="Plugins\IInstanceProvider.cs" />
     <Compile Include="Plugins\Contracts\Validation\IValidatorPlugin.cs" />
     <Compile Include="Plugins\Contracts\Validation\IValidator.cs" />
-    <Compile Include="Core\ModuleAssemblies.cs" />
+    <Compile Include="Plugins\PluginConfiguration.cs" />
     <Compile Include="Configuration\Configure.cs" />
     <Compile Include="Configuration\Expressions\ForExpression.cs" />
     <Compile Include="Instances\IoC\NotInterfaceException.cs" />

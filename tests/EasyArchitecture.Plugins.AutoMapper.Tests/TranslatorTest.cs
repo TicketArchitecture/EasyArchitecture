@@ -14,7 +14,7 @@ namespace EasyArchitecture.Plugins.AutoMapper.Tests
             var plugin = new AutoMapperPlugin();
 
             PluginInspector pluginInspector;
-            plugin.Configure(new ModuleAssemblies(null, null, null, Assembly.GetExecutingAssembly()),
+            plugin.Configure(new PluginConfiguration(null, null, null, Assembly.GetExecutingAssembly()),
                              out pluginInspector);
 
             Translator = plugin.GetInstance();

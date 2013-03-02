@@ -15,7 +15,7 @@ namespace EasyArchitecture.Plugins.EntityFramework.Tests
             var plugin = new EntityFrameworkPlugin();
 
             PluginInspector pluginInspector;
-            plugin.Configure(new ModuleAssemblies(null, null, null, Assembly.GetExecutingAssembly()),
+            plugin.Configure(new PluginConfiguration(null, null, null, Assembly.GetExecutingAssembly()),
                              out pluginInspector);
 
             PluginInstance = plugin.GetInstance();

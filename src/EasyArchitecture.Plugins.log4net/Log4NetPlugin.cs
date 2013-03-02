@@ -19,9 +19,9 @@ namespace EasyArchitecture.Plugins.log4net
             return new Log4NetLogger(_moduleName);
         }
 
-        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
+        protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
-            _moduleName = moduleAssemblies.ModuleName;
+            _moduleName = pluginConfiguration.ModuleName;
             BasicConfigurator.Configure();
 
             //var configLogLevel = GetLogLevel(logLevel);

@@ -17,7 +17,7 @@ namespace EasyArchitecture.Plugins.BuiltIn.Tests.Translation
             PluginInspector pluginInspector;
             var infraAssembly = Assembly.GetExecutingAssembly();
 
-            plugin.Configure(new ModuleAssemblies(null, null, null, infraAssembly), out pluginInspector);
+            plugin.Configure(new PluginConfiguration(null, null, null, infraAssembly), out pluginInspector);
             Translator = plugin.GetInstance();
         }
     }

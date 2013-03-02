@@ -11,12 +11,12 @@ namespace EasyArchitecture.Plugins.BultIn.Log
         private const string DefaultPath = "Log";
         private const string DefaultExtension = ".log";
 
-        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
+        protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DefaultPath);
             Directory.CreateDirectory(path);
 
-            var logFile = Path.ChangeExtension(moduleAssemblies.ModuleName, DefaultExtension);
+            var logFile = Path.ChangeExtension(pluginConfiguration.ModuleName, DefaultExtension);
             logFile = Path.Combine(path, logFile);
 
             _arquivo = new FileInfo(logFile);

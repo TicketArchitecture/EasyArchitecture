@@ -12,9 +12,9 @@ namespace EasyArchitecture.Plugins.AutoMapper
             return new AutoMapperTranslator();
         }
 
-        protected override void ConfigurePlugin(ModuleAssemblies moduleAssemblies, PluginInspector pluginInspector)
+        protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
-            var assembly = moduleAssemblies.InfrastructureAssembly;
+            var assembly = pluginConfiguration.InfrastructureAssembly;
             pluginInspector.Log("Configuring assembly {0}", assembly.GetName().Name);
 
             foreach (var instance in assembly.GetExportedTypes().Where(tipo => tipo.BaseType == typeof(Profile)).Select(tipo => (Profile)tipo.Assembly.CreateInstance(tipo.FullName)))

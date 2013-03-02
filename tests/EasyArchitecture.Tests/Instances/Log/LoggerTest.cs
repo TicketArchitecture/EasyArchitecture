@@ -1,0 +1,44 @@
+using EasyArchitecture.Core;
+using EasyArchitecture.Instances.Log;
+using EasyArchitecture.Plugins.Contracts.Log;
+using NUnit.Framework;
+using Rhino.Mocks;
+
+namespace EasyArchitecture.Tests.Instances.Log
+{
+    [TestFixture]
+    public class LoggerTest
+    {
+        private MockRepository _mockery;
+        private ILogger _instancePlugin;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _mockery = new MockRepository();
+            _instancePlugin = _mockery.DynamicMock<ILogger>();
+
+            ThreadContext.Create("EasyArchitecture.Tests");
+            ThreadContext.GetCurrent().SetInstance(new Logger(_instancePlugin));
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            ThreadContext.GetCurrent().SetInstance<Logger>(null);
+        }
+
+        [Test]
+        public void Should_log()
+        {
+            var message = "mensagem de teste";
+            
+            Expect.Call(() => _instancePlugin.Log(LogLevel.Debug, message,null)).Repeat.Once();
+            _mockery.ReplayAll();
+
+            Mechanisms.Log.Logger.Message(message).Debug();
+
+            _mockery.VerifyAll();
+        }
+    }
+}
