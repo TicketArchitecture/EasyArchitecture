@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using EasyArchitecture.Core;
 using EasyArchitecture.Core.Log;
-using EasyArchitecture.Plugin.Contracts.Log;
+using EasyArchitecture.Plugins.Contracts.Log;
 
 namespace EasyArchitecture.Instances.Log
 {

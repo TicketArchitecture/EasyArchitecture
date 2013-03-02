@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using EasyArchitecture.Core;
-using EasyArchitecture.Core.Plugin;
-using EasyArchitecture.Plugin.Contracts.IoC;
+using EasyArchitecture.Plugins.Contracts.IoC;
+using IContainer = EasyArchitecture.Plugins.Contracts.IoC.IContainer;
 
 namespace EasyArchitecture.Plugins.Autofac
 {
@@ -9,7 +9,7 @@ namespace EasyArchitecture.Plugins.Autofac
     {
         private global::Autofac.IContainer _container;
 
-        public Plugin.Contracts.IoC.IContainer GetInstance()
+        public IContainer GetInstance()
         {
             return new AutofacContainer(_container);
         }

@@ -1,8 +1,7 @@
 ﻿using System;
 using Db4objects.Db4o;
 using EasyArchitecture.Core;
-using EasyArchitecture.Core.Plugin;
-using EasyArchitecture.Plugin.Contracts.Persistence;
+using EasyArchitecture.Plugins.Contracts.Persistence;
 
 namespace EasyArchitecture.Plugins.Db4o
 {

@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using EasyArchitecture.Core;
-using EasyArchitecture.Core.Plugin;
 using EasyArchitecture.Mechanisms.IoC;
 using EasyArchitecture.Plugins.Tests.IoC;
 using NUnit.Framework;

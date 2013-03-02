@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Reflection;
 using EasyArchitecture.Core;
-using EasyArchitecture.Core.Plugin;
 using EasyArchitecture.Plugins.Tests.Log;
 using NUnit.Framework;
 

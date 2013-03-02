@@ -1,8 +1,8 @@
 ﻿using EasyArchitecture.Configuration;
 using EasyArchitecture.Core;
 using EasyArchitecture.Instances.Translation;
-using EasyArchitecture.Plugin.Contracts.Log;
-using EasyArchitecture.Plugin.Contracts.Translation;
+using EasyArchitecture.Plugins.Contracts.Log;
+using EasyArchitecture.Plugins.Contracts.Translation;
 using EasyArchitecture.Tests.Translation.Stuff;
 using NUnit.Framework;
 using Rhino.Mocks;

@@ -1,6 +1,6 @@
 using System;
 using System.Configuration;
-using EasyArchitecture.Plugin.Contracts.Log;
+using EasyArchitecture.Plugins.Contracts.Log;
 
 namespace EasyArchitecture.Instances.Log
 {

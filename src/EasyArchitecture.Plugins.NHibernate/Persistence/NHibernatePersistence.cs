@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
-using EasyArchitecture.Plugin.Contracts.Persistence;
+using EasyArchitecture.Plugins.Contracts.Persistence;
 using NHibernate;
 using NHibernate.Criterion;
 

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EasyArchitecture.Plugin.Contracts.Translation;
+using EasyArchitecture.Plugins.Contracts.Translation;
 
 namespace EasyArchitecture.Plugins.AutoMapper
 {

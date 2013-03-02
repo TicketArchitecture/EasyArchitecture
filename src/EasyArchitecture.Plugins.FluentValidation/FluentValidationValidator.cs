@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using FluentValidation;
 using FluentValidation.Results;
+using IValidator = EasyArchitecture.Plugins.Contracts.Validation.IValidator;
 
 namespace EasyArchitecture.Plugins.FluentValidation
 {
-    public class FluentValidationValidator : EasyArchitecture.Plugin.Contracts.Validation.IValidator
+    public class FluentValidationValidator : IValidator
     {
         private readonly Dictionary<Type, object> _validationRuleSets;
 

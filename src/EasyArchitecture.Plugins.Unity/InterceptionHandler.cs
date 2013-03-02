@@ -1,4 +1,5 @@
 using System;
+using EasyArchitecture.Plugins.BultIn.IoC;
 using Microsoft.Practices.Unity.InterceptionExtension;
 
 namespace EasyArchitecture.Plugins.Unity
@@ -13,7 +14,7 @@ namespace EasyArchitecture.Plugins.Unity
             var method=Array.Find(methods, m => m.Name == input.MethodBase.Name);
 
             //TODO: analisar se interception hook eh contrato ou implementacao builtin
-            var hook = new Plugin.BultIn.IoC.InterceptionHook(input.Target, method,null);
+            var hook = new InterceptionHook(input.Target, method,null);
             hook.Execute();
 
             return getNext()(input, getNext);

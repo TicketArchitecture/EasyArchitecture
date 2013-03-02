@@ -1,11 +1,11 @@
 ﻿using EasyArchitecture.Core;
-using EasyArchitecture.Core.Plugin;
-using EasyArchitecture.Plugin.Contracts.Log;
+using EasyArchitecture.Plugins.Contracts.Log;
 using log4net.Appender;
 using log4net.Config;
 using log4net.Core;
 using log4net.Layout;
 using log4net.Repository.Hierarchy;
+using ILogger = EasyArchitecture.Plugins.Contracts.Log.ILogger;
 
 namespace EasyArchitecture.Plugins.log4net
 {
@@ -14,7 +14,7 @@ namespace EasyArchitecture.Plugins.log4net
         private string _moduleName;
         private const string LogPattern = "%d [%t] %-5p %m%n";
 
-        public EasyArchitecture.Plugin.Contracts.Log.ILogger GetInstance()
+        public ILogger GetInstance()
         {
             return new Log4NetLogger(_moduleName);
         }

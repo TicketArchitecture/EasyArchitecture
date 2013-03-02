@@ -1,7 +1,6 @@
 ﻿using System;
 using EasyArchitecture.Core;
-using EasyArchitecture.Core.Plugin;
-using EasyArchitecture.Plugin.BultIn.Persistence;
+using EasyArchitecture.Plugins.BultIn.Persistence;
 using EasyArchitecture.Plugins.Tests.Persistence;
 using NUnit.Framework;
 

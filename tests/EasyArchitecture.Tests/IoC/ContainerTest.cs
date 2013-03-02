@@ -1,8 +1,8 @@
 ﻿using System;
 using EasyArchitecture.Core;
 using EasyArchitecture.Mechanisms.IoC;
-using EasyArchitecture.Plugin.Contracts.IoC;
-using EasyArchitecture.Plugin.Contracts.Log;
+using EasyArchitecture.Plugins.Contracts.IoC;
+using EasyArchitecture.Plugins.Contracts.Log;
 using EasyArchitecture.Tests.IoC.Stuff;
 using NUnit.Framework;
 using Rhino.Mocks;

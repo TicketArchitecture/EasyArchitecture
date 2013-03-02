@@ -1,21 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using EasyArchitecture.Core.Plugin;
-using EasyArchitecture.Plugin.BultIn.Caching;
-using EasyArchitecture.Plugin.BultIn.IoC;
-using EasyArchitecture.Plugin.BultIn.Log;
-using EasyArchitecture.Plugin.BultIn.Persistence;
-using EasyArchitecture.Plugin.BultIn.Storage;
-using EasyArchitecture.Plugin.BultIn.Translation;
-using EasyArchitecture.Plugin.BultIn.Validation;
-using EasyArchitecture.Plugin.Contracts.Caching;
-using EasyArchitecture.Plugin.Contracts.IoC;
-using EasyArchitecture.Plugin.Contracts.Log;
-using EasyArchitecture.Plugin.Contracts.Persistence;
-using EasyArchitecture.Plugin.Contracts.Storage;
-using EasyArchitecture.Plugin.Contracts.Translation;
-using EasyArchitecture.Plugin.Contracts.Validation;
+using EasyArchitecture.Plugins;
+using EasyArchitecture.Plugins.BultIn.Caching;
+using EasyArchitecture.Plugins.BultIn.IoC;
+using EasyArchitecture.Plugins.BultIn.Log;
+using EasyArchitecture.Plugins.BultIn.Persistence;
+using EasyArchitecture.Plugins.BultIn.Storage;
+using EasyArchitecture.Plugins.BultIn.Translation;
+using EasyArchitecture.Plugins.BultIn.Validation;
+using EasyArchitecture.Plugins.Contracts.Caching;
+using EasyArchitecture.Plugins.Contracts.IoC;
+using EasyArchitecture.Plugins.Contracts.Log;
+using EasyArchitecture.Plugins.Contracts.Persistence;
+using EasyArchitecture.Plugins.Contracts.Storage;
+using EasyArchitecture.Plugins.Contracts.Translation;
+using EasyArchitecture.Plugins.Contracts.Validation;
 
 namespace EasyArchitecture.Configuration
 {

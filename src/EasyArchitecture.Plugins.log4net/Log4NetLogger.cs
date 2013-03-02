@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using EasyArchitecture.Plugin.Contracts.Log;
+using EasyArchitecture.Plugins.Contracts.Log;
 using log4net;
 
 namespace EasyArchitecture.Plugins.log4net

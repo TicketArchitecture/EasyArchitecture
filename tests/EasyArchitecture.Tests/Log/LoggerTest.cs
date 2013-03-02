@@ -1,6 +1,6 @@
 using EasyArchitecture.Core;
 using EasyArchitecture.Instances.Log;
-using EasyArchitecture.Plugin.Contracts.Log;
+using EasyArchitecture.Plugins.Contracts.Log;
 using NUnit.Framework;
 using Rhino.Mocks;
 

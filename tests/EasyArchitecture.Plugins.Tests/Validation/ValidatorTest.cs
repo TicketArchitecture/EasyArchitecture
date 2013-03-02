@@ -1,4 +1,4 @@
-using EasyArchitecture.Plugin.Contracts.Validation;
+using EasyArchitecture.Plugins.Contracts.Validation;
 using EasyArchitecture.Plugins.Tests.Validation.Stuff;
 using NUnit.Framework;
 

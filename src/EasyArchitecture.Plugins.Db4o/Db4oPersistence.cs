@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Db4objects.Db4o;
-using EasyArchitecture.Plugin.Contracts.Persistence;
+using EasyArchitecture.Plugins.Contracts.Persistence;
 
 namespace EasyArchitecture.Plugins.Db4o
 {

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using EasyArchitecture.Core;
-using EasyArchitecture.Core.Plugin;
-using EasyArchitecture.Plugin.Contracts.Persistence;
+using EasyArchitecture.Plugins.Contracts.Persistence;
 using FluentNHibernate.Cfg;
 using NHibernate;
 

@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Text;
 using EasyArchitecture.Core;
 using EasyArchitecture.Core.Log;
+using EasyArchitecture.Plugins.Contracts.Log;
 
 namespace EasyArchitecture.Instances.Log
 {
@@ -11,7 +12,7 @@ namespace EasyArchitecture.Instances.Log
         internal static void LogInvokation(MethodInfo methodInfo, object[] parametersValue)
         {
             var logInstance = InstanceProvider.GetInstance<Logger>();
-            if (logInstance._logLevel != EasyArchitecture.Plugin.Contracts.Log.LogLevel.Debug && logInstance._logLevel != EasyArchitecture.Plugin.Contracts.Log.LogLevel.Info)
+            if (logInstance._logLevel != LogLevel.Debug && logInstance._logLevel != LogLevel.Info)
                 return;
 
             var sb = new StringBuilder();
@@ -20,7 +21,7 @@ namespace EasyArchitecture.Instances.Log
             foreach (var parameterInfo in methodInfo.GetParameters())
             {
                 sb.Append(parameterInfo.Name);
-                if (logInstance._logLevel == EasyArchitecture.Plugin.Contracts.Log.LogLevel.Debug)
+                if (logInstance._logLevel == LogLevel.Debug)
                 {
                     sb.Append(" (");
                     sb.Append(SerializationHelper.Mount(parametersValue[counter++]));
@@ -32,7 +33,7 @@ namespace EasyArchitecture.Instances.Log
             if (counter > 0)
                 sb.Length = sb.Length - 2;
 
-            if (logInstance._logLevel == EasyArchitecture.Plugin.Contracts.Log.LogLevel.Debug)
+            if (logInstance._logLevel == LogLevel.Debug)
             {
                 logInstance.LogDebug(string.Format("->[{0}]: {1}", methodInfo.Name, sb), null);
             }
@@ -45,10 +46,10 @@ namespace EasyArchitecture.Instances.Log
         internal static void LogReturn(MethodInfo methodInfo, object returnValue, long elapsedMilliseconds)
         {
             var logInstance = InstanceProvider.GetInstance<Logger>();
-            if (logInstance._logLevel != EasyArchitecture.Plugin.Contracts.Log.LogLevel.Debug && logInstance._logLevel != EasyArchitecture.Plugin.Contracts.Log.LogLevel.Info)
+            if (logInstance._logLevel != LogLevel.Debug && logInstance._logLevel != LogLevel.Info)
                 return;
 
-            if (logInstance._logLevel == EasyArchitecture.Plugin.Contracts.Log.LogLevel.Debug)
+            if (logInstance._logLevel == LogLevel.Debug)
             {
                 logInstance.LogDebug(string.Format("<-[{0}]: ({1}) [{2}ms]", methodInfo.Name, SerializationHelper.Mount(returnValue), elapsedMilliseconds), null);
             }
@@ -61,14 +62,14 @@ namespace EasyArchitecture.Instances.Log
         internal static void LogException(MethodInfo methodInfo, Exception ex, long elapsedMilliseconds)
         {
             var logInstance = InstanceProvider.GetInstance<Logger>();
-            if (logInstance._logLevel != EasyArchitecture.Plugin.Contracts.Log.LogLevel.Debug && logInstance._logLevel != EasyArchitecture.Plugin.Contracts.Log.LogLevel.Info)
+            if (logInstance._logLevel != LogLevel.Debug && logInstance._logLevel != LogLevel.Info)
                 return;
 
             //HACK: usar delegate?
-            if (logInstance._logLevel == EasyArchitecture.Plugin.Contracts.Log.LogLevel.Debug)
+            if (logInstance._logLevel == LogLevel.Debug)
                 logInstance.LogDebug(string.Format("x [{0}]: {1} [{2}ms]", methodInfo.Name, ex.Message, elapsedMilliseconds), ex);
 
-            if (logInstance._logLevel == EasyArchitecture.Plugin.Contracts.Log.LogLevel.Info)
+            if (logInstance._logLevel == LogLevel.Info)
                 logInstance.LogInfo(string.Format("x [{0}]: {1} [{2}ms]", methodInfo.Name, ex.Message, elapsedMilliseconds), ex);
         }
     }

@@ -1,11 +1,11 @@
 using EasyArchitecture.Core;
-using EasyArchitecture.Plugin.Contracts.Caching;
-using EasyArchitecture.Plugin.Contracts.IoC;
-using EasyArchitecture.Plugin.Contracts.Log;
-using EasyArchitecture.Plugin.Contracts.Persistence;
-using EasyArchitecture.Plugin.Contracts.Storage;
-using EasyArchitecture.Plugin.Contracts.Translation;
-using EasyArchitecture.Plugin.Contracts.Validation;
+using EasyArchitecture.Plugins.Contracts.Caching;
+using EasyArchitecture.Plugins.Contracts.IoC;
+using EasyArchitecture.Plugins.Contracts.Log;
+using EasyArchitecture.Plugins.Contracts.Persistence;
+using EasyArchitecture.Plugins.Contracts.Storage;
+using EasyArchitecture.Plugins.Contracts.Translation;
+using EasyArchitecture.Plugins.Contracts.Validation;
 
 namespace EasyArchitecture.Configuration.Expressions
 {

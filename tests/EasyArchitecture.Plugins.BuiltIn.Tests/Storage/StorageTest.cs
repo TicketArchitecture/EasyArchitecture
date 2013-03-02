@@ -1,4 +1,4 @@
-﻿using EasyArchitecture.Plugin.BultIn.Storage;
+﻿using EasyArchitecture.Plugins.BultIn.Storage;
 using EasyArchitecture.Plugins.Tests.Storage;
 using NUnit.Framework;
 

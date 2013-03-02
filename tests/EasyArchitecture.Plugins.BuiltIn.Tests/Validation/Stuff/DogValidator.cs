@@ -1,4 +1,4 @@
-﻿using EasyArchitecture.Plugin.BultIn.Validation;
+﻿using EasyArchitecture.Plugins.BultIn.Validation;
 using EasyArchitecture.Plugins.Tests.Validation.Stuff;
 
 namespace EasyArchitecture.Plugins.BuiltIn.Tests.Validation.Stuff

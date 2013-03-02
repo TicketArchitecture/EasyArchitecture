@@ -1,6 +1,5 @@
 ﻿using EasyArchitecture.Core;
-using EasyArchitecture.Core.Plugin;
-using EasyArchitecture.Plugin.Contracts.IoC;
+using EasyArchitecture.Plugins.Contracts.IoC;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.InterceptionExtension;
 

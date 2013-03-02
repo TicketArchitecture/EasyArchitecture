@@ -2,8 +2,8 @@
 using EasyArchitecture.Configuration;
 using EasyArchitecture.Core;
 using EasyArchitecture.Instances.Validation;
-using EasyArchitecture.Plugin.Contracts.Log;
-using EasyArchitecture.Plugin.Contracts.Validation;
+using EasyArchitecture.Plugins.Contracts.Log;
+using EasyArchitecture.Plugins.Contracts.Validation;
 using EasyArchitecture.Tests.Validation.Stuff;
 using NUnit.Framework;
 using Rhino.Mocks;

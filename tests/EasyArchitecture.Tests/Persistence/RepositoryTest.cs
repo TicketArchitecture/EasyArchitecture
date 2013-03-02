@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using EasyArchitecture.Core;
 using EasyArchitecture.Mechanisms.Persistence;
-using EasyArchitecture.Plugin.Contracts.Log;
-using EasyArchitecture.Plugin.Contracts.Persistence;
+using EasyArchitecture.Plugins.Contracts.Log;
+using EasyArchitecture.Plugins.Contracts.Persistence;
 using EasyArchitecture.Tests.Persistence.Stuff;
 using NUnit.Framework;
 using Rhino.Mocks;

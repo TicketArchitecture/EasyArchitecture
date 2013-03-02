@@ -1,7 +1,7 @@
 ﻿using System;
 using EasyArchitecture.Core.Log;
 using EasyArchitecture.Instances.Log;
-using EasyArchitecture.Plugin.Contracts.Storage;
+using EasyArchitecture.Plugins.Contracts.Storage;
 
 namespace EasyArchitecture.Instances.Storage
 {

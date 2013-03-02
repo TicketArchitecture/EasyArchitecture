@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using EasyArchitecture.Core;
-using EasyArchitecture.Core.Plugin;
-using EasyArchitecture.Plugin.Contracts.Validation;
+using EasyArchitecture.Plugins.Contracts.Validation;
 using FluentValidation;
+using IValidator = EasyArchitecture.Plugins.Contracts.Validation.IValidator;
 
 namespace EasyArchitecture.Plugins.FluentValidation
 {
@@ -25,7 +25,7 @@ namespace EasyArchitecture.Plugins.FluentValidation
 
         }
 
-        public EasyArchitecture.Plugin.Contracts.Validation.IValidator GetInstance()
+        public IValidator GetInstance()
         {
             return new FluentValidationValidator(_validationRuleDefinitions);
         }

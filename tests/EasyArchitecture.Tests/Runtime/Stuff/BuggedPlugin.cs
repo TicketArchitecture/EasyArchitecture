@@ -1,6 +1,6 @@
 using System;
 using EasyArchitecture.Core;
-using EasyArchitecture.Core.Plugin;
+using EasyArchitecture.Plugins;
 
 namespace EasyArchitecture.Tests.Runtime.Stuff
 {

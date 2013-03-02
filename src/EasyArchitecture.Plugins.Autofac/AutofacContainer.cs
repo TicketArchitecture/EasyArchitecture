@@ -3,7 +3,7 @@ using Autofac;
 
 namespace EasyArchitecture.Plugins.Autofac
 {
-    public class AutofacContainer : EasyArchitecture.Plugin.Contracts.IoC.IContainer
+    public class AutofacContainer : Contracts.IoC.IContainer
     {
         private readonly global::Autofac.IContainer _container;
 

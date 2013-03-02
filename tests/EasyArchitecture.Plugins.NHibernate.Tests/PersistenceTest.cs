@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using EasyArchitecture.Core;
-using EasyArchitecture.Core.Plugin;
 using EasyArchitecture.Plugins.NHibernate.Persistence;
 using EasyArchitecture.Plugins.Tests.Persistence;
 using NUnit.Framework;
