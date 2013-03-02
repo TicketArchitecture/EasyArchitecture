@@ -17,7 +17,7 @@ namespace EasyArchitecture.Instances.Validation
         {
             var ret=_plugin.Validate(entity);
 
-            InstanceLogger.Log(this, "Translate", entity, ret);
+            InstanceLogger.Log(this, "GetMessages", entity, ret);
 
             return ret;
         }
