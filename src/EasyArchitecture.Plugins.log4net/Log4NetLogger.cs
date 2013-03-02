@@ -8,7 +8,7 @@ namespace EasyArchitecture.Plugins.log4net
     public class Log4NetLogger : ILogger
     {
         private static readonly Dictionary<string, ILog> Loggers = new Dictionary<string, ILog>();
-        private static readonly object LogLock = new object(); //TODO: put lock tratment in 
+        private static readonly object LogLock = new object();
         private readonly string _moduleName;
 
         public Log4NetLogger(string moduleName)
@@ -34,7 +34,6 @@ namespace EasyArchitecture.Plugins.log4net
         {
             var logger = GetLogger(_moduleName);
 
-            //HACK: preciso diferenciar com ou sem exception?
             switch (logLevel)
             {
                 case LogLevel.Fatal:

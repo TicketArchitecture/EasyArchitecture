@@ -8,8 +8,7 @@ namespace EasyArchitecture.Instances.Caching
     {
         private readonly ICache _plugin;
 
-        //TODO: must be internal but i did to activator use
-        public Cache(ICache plugin)
+        internal Cache(ICache plugin)
         {
             _plugin = plugin;
         }

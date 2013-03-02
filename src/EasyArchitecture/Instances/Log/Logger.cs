@@ -11,8 +11,7 @@ namespace EasyArchitecture.Instances.Log
         internal readonly LogLevel _logLevel;
         private static readonly List<LogLevel> SequencialListOfLogLevel = new List<LogLevel> { LogLevel.Debug, LogLevel.Info, LogLevel.Warn, LogLevel.Error, LogLevel.Fatal };
 
-        //TODO: must be internal but i did to activator use
-        public Logger(ILogger plugin)
+        internal Logger(ILogger plugin)
         {
             _plugin = plugin;
             _logLevel = LoggerConfig.LoadRuntimeConfiguration(LocalThreadStorage.GetCurrentContext().Name);

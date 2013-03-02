@@ -19,7 +19,6 @@ namespace Exemplo.Produto.Tests.Application
                 .Translation<EasyArchitecture.Plugins.AutoMapper.AutoMapperPlugin>()
                 .Done();
 
-            //Activate.For<IProdutoFacade>();
         }
 
         [Test]

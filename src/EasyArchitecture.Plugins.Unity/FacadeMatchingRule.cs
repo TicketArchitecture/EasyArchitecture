@@ -11,8 +11,7 @@ namespace EasyArchitecture.Plugins.Unity
                 return false;
 
             //TODO: essa regra é muito genérica
-            var isFacade = member.DeclaringType.Name.EndsWith("Facade");
-            return isFacade;
+            return member.DeclaringType.Name.EndsWith("Facade");
         }
     }
 }

@@ -19,10 +19,7 @@ namespace EasyArchitecture.Plugins.Autofac
             if (_container != null) return;
 
             var builder = new ContainerBuilder();
-            
-            //TODO:loop
-            //builder.RegisterType<string>();
-            
+
             _container = builder.Build();
         }
     }

@@ -7,8 +7,7 @@ namespace EasyArchitecture.Instances.IoC
     {
         private readonly IContainer _plugin;
 
-        //TODO: must be internal but i did to activator use
-        public Container(IContainer plugin)
+        internal Container(IContainer plugin)
         {
             _plugin = plugin;
         }

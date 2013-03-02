@@ -52,12 +52,11 @@ namespace EasyArchitecture.Core
                     throw new NotConfiguredException(moduleName);
 
                 var plugins = Factories[moduleName];
-                var pluginType = typeof(T);
-                var providerType = Map[pluginType];
-                var plugin = plugins.Find(providerType.IsInstanceOfType);
-                var ret = providerType.InvokeMember("GetInstance", BindingFlags.InvokeMethod, null, plugin, null);
-                instance= (T)Activator.CreateInstance(pluginType, ret);
-
+                var providerType = typeof(T);
+                var pluginType = Map[providerType];
+                var plugin = plugins.Find(pluginType.IsInstanceOfType);
+                var pluginInstance = pluginType.InvokeMember("GetInstance", BindingFlags.InvokeMethod, null, plugin, null);
+                instance = (T)providerType.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance)[0].Invoke(new[]{pluginInstance});
                 LocalThreadStorage.GetCurrentContext().SetInstance(instance);
             }
             

@@ -7,8 +7,7 @@ namespace EasyArchitecture.Instances.Translation
     {
         private readonly ITranslator _plugin;
 
-        //TODO: must be internal but i did to activator use
-        public Translator(ITranslator plugin)
+        internal Translator(ITranslator plugin)
         {
             _plugin = plugin;
         }

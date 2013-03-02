@@ -26,25 +26,10 @@ namespace EasyArchitecture.Plugins.Autofac
 
         public void Register(Type interfaceType, Type implementationType, bool useInterception)
         {
-            if (useInterception)
-            {
-                //_container.RegisterType(
-                //    interfaceType, implementationType,
-                //    new InterceptionBehavior<PolicyInjectionBehavior>(),
-                //    new Interceptor<InterfaceInterceptor>());
-                //TODO: interception???
-                var newBuilder = new ContainerBuilder();
-                newBuilder.RegisterType(implementationType).As(interfaceType);
-                newBuilder.Update(_container);
+            var newBuilder = new ContainerBuilder();
+            newBuilder.RegisterType(implementationType).As(interfaceType);
+            newBuilder.Update(_container);
 
-            }
-            else
-            {
-                //_container.RegisterType(interfaceType, implementationType, null, null);
-                var newBuilder = new ContainerBuilder();
-                newBuilder.RegisterType(implementationType).As(interfaceType);
-                newBuilder.Update(_container);
-            }
         }
 
     }

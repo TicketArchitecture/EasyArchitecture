@@ -20,15 +20,7 @@ namespace EasyArchitecture.Plugins.Ninject
 
         public void Register(Type interfaceType, Type implementationType, bool useInterception)
         {
-            //TODO: interception
-            if (useInterception)
-            {
-                _container.Bind(interfaceType, implementationType);
-            }
-            else
-            {
-                _container.Bind(interfaceType, implementationType);
-            }
+            _container.Bind(interfaceType, implementationType);
         }
 
         public T Resolve<T>()

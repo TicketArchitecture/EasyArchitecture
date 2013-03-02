@@ -8,8 +8,7 @@ namespace EasyArchitecture.Instances.Validation
     {
         private readonly IValidator _plugin;
 
-        //TODO: must be internal but i did to activator use
-        public Validator(IValidator plugin)
+        internal Validator(IValidator plugin)
         {
             _plugin = plugin;
         }
