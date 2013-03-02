@@ -10,7 +10,7 @@ using EasyArchitecture.Instances.Log;
 using EasyArchitecture.Instances.Persistence;
 using EasyArchitecture.Instances.Storage;
 using EasyArchitecture.Instances.Translation;
-using EasyArchitecture.Instances.Validation.Instance;
+using EasyArchitecture.Instances.Validation;
 using EasyArchitecture.Plugin.Contracts.Caching;
 using EasyArchitecture.Plugin.Contracts.IoC;
 using EasyArchitecture.Plugin.Contracts.Log;

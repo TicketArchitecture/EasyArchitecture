@@ -2,7 +2,7 @@
 using EasyArchitecture.Core.Log;
 using EasyArchitecture.Plugin.Contracts.Validation;
 
-namespace EasyArchitecture.Instances.Validation.Instance
+namespace EasyArchitecture.Instances.Validation
 {
     internal class Validator
     {

@@ -1,4 +1,4 @@
-﻿namespace EasyArchitecture.Instances.Validation.Instance
+﻿namespace EasyArchitecture.Instances.Validation
 {
     public class InvalidEntityException : DomainException
     {

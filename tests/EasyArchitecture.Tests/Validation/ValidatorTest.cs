@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using EasyArchitecture.Core;
-using EasyArchitecture.Instances.Validation.Instance;
+using EasyArchitecture.Instances.Validation;
 using EasyArchitecture.Plugin.Contracts.Validation;
 using EasyArchitecture.Tests.Validation.Stuff;
 using NUnit.Framework;
@@ -24,7 +24,7 @@ namespace EasyArchitecture.Tests.Validation
             _instancePlugin = _mockery.DynamicMock<IValidator>();
 
             LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
-            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Validation.Instance.Validator(_instancePlugin));
+            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Validation.Validator(_instancePlugin));
 
             _oldDog = new Dog { Age = 15, Name = "Old Dog" };
             _youngDog = new Dog { Age = 5, Name = "Young Dog" };

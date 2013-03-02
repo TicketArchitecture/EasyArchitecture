@@ -14,12 +14,12 @@ namespace EasyArchitecture.Mechanisms.Validation.Expressions
 
         public void IsValid()
         {
-            InstanceProvider.GetInstance<Instances.Validation.Instance.Validator>().IsValid(_entity);
+            InstanceProvider.GetInstance<Instances.Validation.Validator>().IsValid(_entity);
         }
 
         public IList<string> HasMessages()
         {
-            return InstanceProvider.GetInstance<Instances.Validation.Instance.Validator>().GetMessages(_entity);
+            return InstanceProvider.GetInstance<Instances.Validation.Validator>().GetMessages(_entity);
         }
     }
 }
