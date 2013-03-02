@@ -17,7 +17,7 @@ namespace EasyArchitecture.Instances.Log
             _logLevel = LoggerConfig.LoadRuntimeConfiguration(LocalThreadStorage.GetCurrentContext().Name);
         }
 
-        internal void Log(LogLevel logLevel, object message, Exception exception)
+        private void Log(LogLevel logLevel, object message, Exception exception)
         {
             if (ShouldSendToLog(logLevel, _logLevel))
                 _plugin.Log(logLevel, message, exception);
@@ -26,6 +26,31 @@ namespace EasyArchitecture.Instances.Log
         private static bool ShouldSendToLog(LogLevel logLevel, LogLevel defaultLogLevel)
         {
             return SequencialListOfLogLevel.FindIndex(l => l == logLevel) >= SequencialListOfLogLevel.FindIndex(l => l == defaultLogLevel);
+        }
+
+        internal void LogDebug(object message, Exception exception)
+        {
+            Log(LogLevel.Debug, message, exception);
+        }
+
+        internal void LogInfo(object message, Exception exception)
+        {
+            Log(LogLevel.Info, message, exception);
+        }
+
+        internal void LogWarn(object message, Exception exception)
+        {
+            Log(LogLevel.Warn, message, exception);
+        }
+
+        internal void LogError(object message, Exception exception)
+        {
+            Log(LogLevel.Error, message, exception);
+        }
+
+        internal void LogFatal(object message, Exception exception)
+        {
+            Log(LogLevel.Fatal, message, exception);
         }
     }
 }

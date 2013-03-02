@@ -14,7 +14,7 @@ namespace EasyArchitecture.Instances.Log
             if (logInstance._logLevel != LogLevel.Debug)
                 return;
 
-            logInstance.Log(logInstance._logLevel, string.Format("\t[{0}] {1} {2}", intance.GetType().Name, method, FormatParameters(@params)), null);
+            logInstance.LogDebug(string.Format("\t[{0}] {1} {2}", intance.GetType().Name, method, FormatParameters(@params)), null);
         }
 
         private static string FormatParameters(object[] @params)
@@ -28,7 +28,7 @@ namespace EasyArchitecture.Instances.Log
             }
 
             if (@params.Length > 0)
-                sb.Length= sb.Length-2;
+                sb.Length = sb.Length - 2;
 
             return sb.ToString();
         }

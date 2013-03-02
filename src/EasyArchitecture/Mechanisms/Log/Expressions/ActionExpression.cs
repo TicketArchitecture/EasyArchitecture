@@ -1,6 +1,5 @@
 using System;
 using EasyArchitecture.Core;
-using EasyArchitecture.Plugin.Contracts.Log;
 
 namespace EasyArchitecture.Mechanisms.Log.Expressions
 {
@@ -8,7 +7,6 @@ namespace EasyArchitecture.Mechanisms.Log.Expressions
     {
         private readonly Exception _exception;
         private readonly object _message;
-        private LogLevel _logLevel;
 
         internal ActionExpression(object message)
         {
@@ -28,37 +26,27 @@ namespace EasyArchitecture.Mechanisms.Log.Expressions
 
         public void Debug()
         {
-            _logLevel=LogLevel.Debug;
-            Log();
+            InstanceProvider.GetInstance<Instances.Log.Logger>().LogDebug(_message, _exception);
         }
 
         public void Info()
         {
-            _logLevel = LogLevel.Info;
-            Log();
+            InstanceProvider.GetInstance<Instances.Log.Logger>().LogInfo(_message, _exception);
         }
 
         public void Warn()
         {
-            _logLevel = LogLevel.Warn;
-            Log();
+            InstanceProvider.GetInstance<Instances.Log.Logger>().LogWarn(_message, _exception);
         }
 
         public void Error()
         {
-            _logLevel = LogLevel.Error;
-            Log();
+            InstanceProvider.GetInstance<Instances.Log.Logger>().LogError(_message, _exception);
         }
 
         public void Fatal()
         {
-            _logLevel = LogLevel.Fatal;
-            Log();
-        }
-
-        private void Log()
-        {
-            InstanceProvider.GetInstance<Instances.Log.Logger>().Log(_logLevel,  _message, _exception);
+            InstanceProvider.GetInstance<Instances.Log.Logger>().LogFatal(_message, _exception);
         }
     }
 }

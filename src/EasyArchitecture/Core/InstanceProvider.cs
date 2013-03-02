@@ -81,7 +81,7 @@ namespace EasyArchitecture.Core
 
             LocalThreadStorage.CreateContext(moduleName);
 
-            GetInstance<Logger>().Log(LogLevel.Info, pluginInfo, null);
+            GetInstance<Logger>().LogInfo(pluginInfo, null);
         }
     }
 
