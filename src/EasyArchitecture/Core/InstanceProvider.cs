@@ -35,7 +35,6 @@ namespace EasyArchitecture.Core
             Map.Add(typeof(Storer), typeof(IInstanceProvider<IStorage>));
             Map.Add(typeof(Cache), typeof(IInstanceProvider<ICache>));
             Map.Add(typeof(Logger), typeof(IInstanceProvider<ILogger>));
-
         }
 
         public static T GetInstance<T>() where T : class
@@ -61,11 +60,6 @@ namespace EasyArchitecture.Core
             }
             
             return (T)instance;
-        }
-
-        public static T GetLocalInstance<T>() where T : class
-        {
-            return LocalThreadStorage.GetCurrentContext() ==null?null: LocalThreadStorage.GetCurrentContext().GetInstance<T>();
         }
 
         internal static void Configure(string moduleName, PluginConfiguration pluginConfiguration)

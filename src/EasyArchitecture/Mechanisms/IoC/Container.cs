@@ -1,4 +1,5 @@
 using EasyArchitecture.Core;
+using EasyArchitecture.Plugin.Contracts.Log;
 
 namespace EasyArchitecture.Mechanisms.IoC
 {
