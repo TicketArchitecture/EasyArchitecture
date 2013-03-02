@@ -52,8 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Instances\Log\MethodCallLogger.cs" />
     <Compile Include="Core\Plugin\PluginInspectorExtrator.cs" />
     <Compile Include="Instances\Caching\Cache.cs" />
+    <Compile Include="Instances\Log\LoggerConfig.cs" />
     <Compile Include="Instances\Validation\DomainException.cs" />
     <Compile Include="Instances\Validation\InvalidEntityException.cs" />
     <Compile Include="Instances\Validation\Validator.cs" />
