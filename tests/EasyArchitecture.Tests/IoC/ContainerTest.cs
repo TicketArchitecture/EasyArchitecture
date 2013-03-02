@@ -25,13 +25,12 @@ namespace EasyArchitecture.Tests.IoC
         }
 
         [Test]
-        //[Ignore("Necessário rever forma como .Resolve inicializa")]
         public void Can_get_a_facade()
         {
             Expect.Call(() => _instancePlugin.Resolve<IDogFacade>());
             _mockery.ReplayAll();
 
-            Container.Resolve<IDogFacade>(false);
+            Container.Resolve<IDogFacade>();
 
             _mockery.VerifyAll();
         }
@@ -42,7 +41,7 @@ namespace EasyArchitecture.Tests.IoC
             Expect.Call(() => _instancePlugin.Register<IDogFacade,DummyDogFacade>());
             _mockery.ReplayAll();
 
-            Container.Register<IDogFacade, DummyDogFacade>(false);
+            Container.Register<IDogFacade, DummyDogFacade>();
 
             _mockery.VerifyAll();
         }

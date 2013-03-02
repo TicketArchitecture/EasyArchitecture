@@ -13,7 +13,7 @@ namespace EasyArchitecture.Configuration
         public static ForExpression For<T>()
         {
             var moduleName = AssemblyManager.ModuleName<T>();
-            return new ForExpression(moduleName);
+            return For(moduleName);
         }
     }
 }

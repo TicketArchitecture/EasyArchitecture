@@ -40,22 +40,25 @@ namespace EasyArchitecture.Core
 
         public static T GetInstance<T>() where T : class
         {
-            var instance = LocalThreadStorage.GetCurrentContext().GetInstance<T>();
+            var context = LocalThreadStorage.GetCurrentContext();
+            if(context==null)
+                throw new NotConfiguredException();
 
+            var instance = LocalThreadStorage.GetCurrentContext().GetInstance<T>();
             if (instance == null)
             {
                 var moduleName = LocalThreadStorage.GetCurrentContext().Name;
                 if (!Factories.ContainsKey(moduleName))
-                    throw new NotConfiguredModuleException(moduleName);
+                    throw new NotConfiguredException(moduleName);
 
-                var list = Factories[moduleName];
+                var plugins = Factories[moduleName];
                 var pluginType = typeof(T);
                 var providerType = Map[pluginType];
-                var plugin = list.Find(providerType.IsInstanceOfType);
+                var plugin = plugins.Find(providerType.IsInstanceOfType);
                 var ret = providerType.InvokeMember("GetInstance", BindingFlags.InvokeMethod, null, plugin, null);
                 instance= (T)Activator.CreateInstance(pluginType, ret);
 
-                LocalThreadStorage.GetCurrentContext().SetInstance<T>(instance);
+                LocalThreadStorage.GetCurrentContext().SetInstance(instance);
             }
             
             return (T)instance;
@@ -71,19 +74,20 @@ namespace EasyArchitecture.Core
             var moduleAssemblies = AssemblyManager.GetModuleAssemblies(moduleName);
             var inspectors = new List<PluginInspector>();
 
-            var list = pluginConfiguration.GetPluginList();
-            foreach (var plugin in list)
+            var plugins = pluginConfiguration.GetPluginList();
+            foreach (var plugin in plugins)
             {
                 PluginInspector pluginInspector;
                 plugin.Configure(moduleAssemblies, out pluginInspector);
                 inspectors.Add(pluginInspector);
             }
-            Factories[moduleAssemblies.ModuleName] = list;
+
+            Factories[moduleAssemblies.ModuleName] = plugins;
 
             var pluginInfo = new PluginInspectorExtrator(inspectors);
 
-            //log after configuration because we must ensure that logger has been initialized
             LocalThreadStorage.CreateContext(moduleName);
+
             GetInstance<Logger>().Log(LogLevel.Info, pluginInfo, null);
         }
     }

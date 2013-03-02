@@ -18,6 +18,8 @@ namespace Exemplo.Produto.Tests.Application
                 .Persistence<EasyArchitecture.Plugins.NHibernate.Persistence.NHibernatePlugin>()
                 .Translation<EasyArchitecture.Plugins.AutoMapper.AutoMapperPlugin>()
                 .Done();
+
+            //Activate.For<IProdutoFacade>();
         }
 
         [Test]

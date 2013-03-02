@@ -22,6 +22,7 @@ namespace EasyArchitecture.Tests.Storage
 
             LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
             LocalThreadStorage.GetCurrentContext().SetInstance(new Storer(_instancePlugin));
+
             _buffer = new byte[10];
         }
 

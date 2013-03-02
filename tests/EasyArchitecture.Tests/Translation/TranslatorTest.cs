@@ -1,4 +1,5 @@
-﻿using EasyArchitecture.Core;
+﻿using EasyArchitecture.Configuration;
+using EasyArchitecture.Core;
 using EasyArchitecture.Instances.Translation;
 using EasyArchitecture.Plugin.Contracts.Translation;
 using EasyArchitecture.Tests.Translation.Stuff;

@@ -11,7 +11,7 @@ namespace EasyArchitecture.Tests.IoC
         [Test]
         public void Should_throw_exception_when_resolve_called_whithout_configuration()
         {
-            Assert.That(()=>Container.Resolve<IDogFacade>(), Throws.InstanceOf<NotConfiguredModuleException>());
+            Assert.That(()=>Container.Resolve<IDogFacade>(), Throws.InstanceOf<NotConfiguredException>());
         }
     }
 }
