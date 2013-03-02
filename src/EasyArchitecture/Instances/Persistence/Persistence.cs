@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using EasyArchitecture.Core.Log;
+using EasyArchitecture.Instances.Log;
 using EasyArchitecture.Plugin.Contracts.Persistence;
 
 namespace EasyArchitecture.Instances.Persistence

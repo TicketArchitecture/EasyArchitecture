@@ -1,16 +1,15 @@
 ﻿using System.Text;
-using EasyArchitecture.Instances.Log;
+using EasyArchitecture.Core;
+using EasyArchitecture.Core.Log;
 using EasyArchitecture.Plugin.Contracts.Log;
 
-namespace EasyArchitecture.Core.Log
+namespace EasyArchitecture.Instances.Log
 {
     internal static class InstanceLogger
     {
         internal static void Log(object intance, string method, params object[] @params)
         {
-            var logInstance = InstanceProvider.GetLocalInstance<Logger>();
-            if (logInstance == null)
-                return;
+            var logInstance = InstanceProvider.GetInstance<Logger>();
 
             if (logInstance._logLevel != LogLevel.Debug)
                 return;

@@ -2,6 +2,7 @@
 using EasyArchitecture.Configuration;
 using EasyArchitecture.Core;
 using EasyArchitecture.Instances.Validation;
+using EasyArchitecture.Plugin.Contracts.Log;
 using EasyArchitecture.Plugin.Contracts.Validation;
 using EasyArchitecture.Tests.Validation.Stuff;
 using NUnit.Framework;
@@ -26,6 +27,7 @@ namespace EasyArchitecture.Tests.Validation
 
             LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
             LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Validation.Validator(_instancePlugin));
+            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Log.Logger(MockRepository.GenerateStub<ILogger>()));
 
             _oldDog = new Dog { Age = 15, Name = "Old Dog" };
             _youngDog = new Dog { Age = 5, Name = "Young Dog" };

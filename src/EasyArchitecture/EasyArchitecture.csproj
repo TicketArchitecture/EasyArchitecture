@@ -82,7 +82,7 @@
     <Compile Include="Plugin\Contracts\Persistence\IPersistencePlugin.cs" />
     <Compile Include="Core\ThreadContext.cs" />
     <Compile Include="Core\Log\UnknowTypeDataContractSurrogate.cs" />
-    <Compile Include="Core\Log\InstanceLogger.cs" />
+    <Compile Include="Instances\Log\InstanceLogger.cs" />
     <Compile Include="Configuration\PluginConfiguration.cs" />
     <Compile Include="Instances\IoC\ProxyMethodCall.cs" />
     <Compile Include="Plugin\BultIn\IoC\InterceptionHook.cs" />

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using EasyArchitecture.Core;
 using EasyArchitecture.Mechanisms.Persistence;
+using EasyArchitecture.Plugin.Contracts.Log;
 using EasyArchitecture.Plugin.Contracts.Persistence;
 using EasyArchitecture.Tests.Persistence.Stuff;
 using NUnit.Framework;
@@ -23,6 +24,7 @@ namespace EasyArchitecture.Tests.Persistence
 
             LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
             LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Persistence.Persistence(_instancePlugin));
+            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Log.Logger(MockRepository.GenerateStub<ILogger>()));
 
             _dog = new Dog { Age = 15, Name = "Old Dog" };
         }

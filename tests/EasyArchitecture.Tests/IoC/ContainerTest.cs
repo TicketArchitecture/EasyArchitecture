@@ -2,6 +2,7 @@
 using EasyArchitecture.Core;
 using EasyArchitecture.Mechanisms.IoC;
 using EasyArchitecture.Plugin.Contracts.IoC;
+using EasyArchitecture.Plugin.Contracts.Log;
 using EasyArchitecture.Tests.IoC.Stuff;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -22,6 +23,8 @@ namespace EasyArchitecture.Tests.IoC
 
             LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
             LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.IoC.Container(_instancePlugin));
+            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Log.Logger(MockRepository.GenerateStub<ILogger>()));
+
         }
 
         [Test]

@@ -1,6 +1,7 @@
 ﻿using EasyArchitecture.Configuration;
 using EasyArchitecture.Core;
 using EasyArchitecture.Instances.Translation;
+using EasyArchitecture.Plugin.Contracts.Log;
 using EasyArchitecture.Plugin.Contracts.Translation;
 using EasyArchitecture.Tests.Translation.Stuff;
 using NUnit.Framework;
@@ -22,6 +23,8 @@ namespace EasyArchitecture.Tests.Translation
 
             LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
             LocalThreadStorage.GetCurrentContext().SetInstance(new Translator(_instancePlugin));
+            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Log.Logger(MockRepository.GenerateStub<ILogger>()));
+
         }
 
 

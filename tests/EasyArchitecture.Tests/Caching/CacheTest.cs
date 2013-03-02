@@ -2,6 +2,7 @@ using System;
 using EasyArchitecture.Core;
 using EasyArchitecture.Mechanisms.Caching;
 using EasyArchitecture.Plugin.Contracts.Caching;
+using EasyArchitecture.Plugin.Contracts.Log;
 using NUnit.Framework;
 using Rhino.Mocks;
 
@@ -21,6 +22,7 @@ namespace EasyArchitecture.Tests.Caching
 
             LocalThreadStorage.CreateContext("EasyArchitecture.Tests");
             LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Caching.Cache(_instancePlugin));
+            LocalThreadStorage.GetCurrentContext().SetInstance(new Instances.Log.Logger(MockRepository.GenerateStub<ILogger>()));
         }
 
         [Test]
