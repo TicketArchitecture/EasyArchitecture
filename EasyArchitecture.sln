@@ -75,29 +75,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{C042
 		samples\readme.txt = samples\readme.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Business", "samples\app01\Exemplo.Produto.Business\Exemplo.Produto.Business.csproj", "{C23277A7-4CE9-47BC-867F-C03F40560BBB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Data", "samples\app01\Exemplo.Produto.Data\Exemplo.Produto.Data.csproj", "{A29114D9-081A-4695-A923-AB332AED5BA9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Data.Impl", "samples\app01\Exemplo.Produto.Data.Impl\Exemplo.Produto.Data.Impl.csproj", "{6B5B4BDF-0025-4A07-9CB7-04B6F5C82C2A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Service", "samples\app01\Exemplo.Produto.Service\Exemplo.Produto.Service.csproj", "{D8CD9D35-D47D-47C2-8D2D-CE5CF9F71DFA}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App01", "App01", "{9A5170D9-9E1D-49AC-9773-57E9ED92F7BC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Application", "samples\app02\Exemplo.Produto.Application\Exemplo.Produto.Application.csproj", "{1F6CFAD0-6F13-4AE1-88DA-4B198750FEB9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Domain", "samples\app02\Exemplo.Produto.Domain\Exemplo.Produto.Domain.csproj", "{AC8B2A18-F2E8-4C28-AC4E-6F5751BFBFE0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Infrastructure", "samples\app02\Exemplo.Produto.Infrastructure\Exemplo.Produto.Infrastructure.csproj", "{B9A9BCE1-627C-422E-916C-DB072D153B9F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App02", "App02", "{AF7AEB30-12FA-4389-BB84-0F0288C3940C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Tests", "samples\tests\Exemplo.Produto.Tests\Exemplo.Produto.Tests.csproj", "{6764ECFC-5E31-4B0C-94CC-071F14C518D3}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App03", "App03", "{210FDE8C-1B8E-4AA2-94D3-8F05E68896C3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Plugins.Tests", "tests\EasyArchitecture.Plugins.Tests\EasyArchitecture.Plugins.Tests.csproj", "{0658FF22-FD01-489F-B3E5-8C215FBCC276}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Application", "samples\Exemplo.Produto.Application\Exemplo.Produto.Application.csproj", "{1F6CFAD0-6F13-4AE1-88DA-4B198750FEB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Domain", "samples\Exemplo.Produto.Domain\Exemplo.Produto.Domain.csproj", "{AC8B2A18-F2E8-4C28-AC4E-6F5751BFBFE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Infrastructure", "samples\Exemplo.Produto.Infrastructure\Exemplo.Produto.Infrastructure.csproj", "{B9A9BCE1-627C-422E-916C-DB072D153B9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Tests", "samples\Exemplo.Produto.Tests\Exemplo.Produto.Tests.csproj", "{6764ECFC-5E31-4B0C-94CC-071F14C518D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -221,22 +207,10 @@ Global
 		{3ACCD6FE-781F-46C6-888C-F00FBA6BD591}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ACCD6FE-781F-46C6-888C-F00FBA6BD591}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ACCD6FE-781F-46C6-888C-F00FBA6BD591}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C23277A7-4CE9-47BC-867F-C03F40560BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C23277A7-4CE9-47BC-867F-C03F40560BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C23277A7-4CE9-47BC-867F-C03F40560BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C23277A7-4CE9-47BC-867F-C03F40560BBB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A29114D9-081A-4695-A923-AB332AED5BA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A29114D9-081A-4695-A923-AB332AED5BA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A29114D9-081A-4695-A923-AB332AED5BA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A29114D9-081A-4695-A923-AB332AED5BA9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6B5B4BDF-0025-4A07-9CB7-04B6F5C82C2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B5B4BDF-0025-4A07-9CB7-04B6F5C82C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6B5B4BDF-0025-4A07-9CB7-04B6F5C82C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6B5B4BDF-0025-4A07-9CB7-04B6F5C82C2A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D8CD9D35-D47D-47C2-8D2D-CE5CF9F71DFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8CD9D35-D47D-47C2-8D2D-CE5CF9F71DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8CD9D35-D47D-47C2-8D2D-CE5CF9F71DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8CD9D35-D47D-47C2-8D2D-CE5CF9F71DFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1F6CFAD0-6F13-4AE1-88DA-4B198750FEB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1F6CFAD0-6F13-4AE1-88DA-4B198750FEB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F6CFAD0-6F13-4AE1-88DA-4B198750FEB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -253,10 +227,6 @@ Global
 		{6764ECFC-5E31-4B0C-94CC-071F14C518D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6764ECFC-5E31-4B0C-94CC-071F14C518D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6764ECFC-5E31-4B0C-94CC-071F14C518D3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -291,17 +261,10 @@ Global
 		{E03E3582-FA3F-436C-B84A-32313E5033BD} = {A20584F5-1CEB-4614-857C-AED4CA6989F2}
 		{11C41E7B-1E4B-46EE-893D-994861E456EA} = {A20584F5-1CEB-4614-857C-AED4CA6989F2}
 		{3ACCD6FE-781F-46C6-888C-F00FBA6BD591} = {A20584F5-1CEB-4614-857C-AED4CA6989F2}
-		{9A5170D9-9E1D-49AC-9773-57E9ED92F7BC} = {C042F097-88C3-4D52-80C7-D4A1EAFC841F}
-		{AF7AEB30-12FA-4389-BB84-0F0288C3940C} = {C042F097-88C3-4D52-80C7-D4A1EAFC841F}
-		{210FDE8C-1B8E-4AA2-94D3-8F05E68896C3} = {C042F097-88C3-4D52-80C7-D4A1EAFC841F}
-		{A29114D9-081A-4695-A923-AB332AED5BA9} = {9A5170D9-9E1D-49AC-9773-57E9ED92F7BC}
-		{6B5B4BDF-0025-4A07-9CB7-04B6F5C82C2A} = {9A5170D9-9E1D-49AC-9773-57E9ED92F7BC}
-		{D8CD9D35-D47D-47C2-8D2D-CE5CF9F71DFA} = {9A5170D9-9E1D-49AC-9773-57E9ED92F7BC}
-		{C23277A7-4CE9-47BC-867F-C03F40560BBB} = {9A5170D9-9E1D-49AC-9773-57E9ED92F7BC}
-		{AC8B2A18-F2E8-4C28-AC4E-6F5751BFBFE0} = {AF7AEB30-12FA-4389-BB84-0F0288C3940C}
-		{B9A9BCE1-627C-422E-916C-DB072D153B9F} = {AF7AEB30-12FA-4389-BB84-0F0288C3940C}
-		{1F6CFAD0-6F13-4AE1-88DA-4B198750FEB9} = {AF7AEB30-12FA-4389-BB84-0F0288C3940C}
-		{6764ECFC-5E31-4B0C-94CC-071F14C518D3} = {AF7AEB30-12FA-4389-BB84-0F0288C3940C}
+		{1F6CFAD0-6F13-4AE1-88DA-4B198750FEB9} = {C042F097-88C3-4D52-80C7-D4A1EAFC841F}
+		{AC8B2A18-F2E8-4C28-AC4E-6F5751BFBFE0} = {C042F097-88C3-4D52-80C7-D4A1EAFC841F}
+		{B9A9BCE1-627C-422E-916C-DB072D153B9F} = {C042F097-88C3-4D52-80C7-D4A1EAFC841F}
+		{6764ECFC-5E31-4B0C-94CC-071F14C518D3} = {C042F097-88C3-4D52-80C7-D4A1EAFC841F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\Unity.2.1.505.2\lib\NET35;packages\Unity.Interception.2.1.505.2\lib\NET35
