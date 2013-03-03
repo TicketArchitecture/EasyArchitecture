@@ -46,7 +46,7 @@ namespace EasyArchitecture.Core
             var instance = ThreadContext.GetCurrent().GetInstance<T>();
             if (instance == null)
             {
-                var moduleName = ThreadContext.GetCurrent().Name;
+                var moduleName = ThreadContext.GetCurrent().ConfigurationName;
                 if (!PluginFactories.ContainsKey(moduleName))
                     throw new NotConfiguredException(moduleName);
 

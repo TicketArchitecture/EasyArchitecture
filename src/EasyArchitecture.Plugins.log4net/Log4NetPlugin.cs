@@ -1,5 +1,4 @@
-﻿using EasyArchitecture.Core;
-using EasyArchitecture.Plugins.Contracts.Log;
+﻿using EasyArchitecture.Plugins.Contracts.Log;
 using log4net.Appender;
 using log4net.Config;
 using log4net.Core;
@@ -24,8 +23,6 @@ namespace EasyArchitecture.Plugins.log4net
             _moduleName = pluginConfiguration.ModuleName;
             BasicConfigurator.Configure();
 
-            //var configLogLevel = GetLogLevel(logLevel);
-
             var defaultPattern = new PatternLayout { ConversionPattern = LogPattern };
             defaultPattern.ActivateOptions();
 
@@ -46,7 +43,6 @@ namespace EasyArchitecture.Plugins.log4net
 
             var root = ((Hierarchy)global::log4net.LogManager.GetRepository()).Root;
             root.AddAppender(rollingFileAppender);
-            //root.Level = configLogLevel;
             root.Level = Level.Debug;
             root.Repository.Configured = true;
         }

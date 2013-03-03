@@ -11,7 +11,7 @@ namespace EasyArchitecture.Instances.Log
         {
             var logInstance = InstanceProvider.GetInstance<Logger>();
 
-            if (logInstance._logLevel != LogLevel.Debug)
+            if (logInstance.LogLevel != LogLevel.Debug)
                 return;
 
             logInstance.LogDebug(string.Format("\t[{0}] {1} {2}", intance.GetType().Name, method, FormatParameters(@params)), null);

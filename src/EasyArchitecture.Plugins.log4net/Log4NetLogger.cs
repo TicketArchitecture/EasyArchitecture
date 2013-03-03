@@ -30,26 +30,27 @@ namespace EasyArchitecture.Plugins.log4net
             }
         }
 
-        public void Log(LogLevel logLevel,  object message, Exception exception)
+        public void Log(LogLevel logLevel, Guid identifier, object message, Exception exception)
         {
             var logger = GetLogger(_moduleName);
+            var msg = string.Format("[{0}] {1}", identifier, message); 
 
             switch (logLevel)
             {
                 case LogLevel.Fatal:
-                    logger.Fatal(message,exception);
+                    logger.Fatal(msg,exception);
                     break;
                 case LogLevel.Error:
-                    logger.Error(message, exception);
+                    logger.Error(msg, exception);
                     break;
                 case LogLevel.Warn:
-                    logger.Warn(message, exception);
+                    logger.Warn(msg, exception);
                     break;
                 case LogLevel.Info:
-                    logger.Info(message, exception);
+                    logger.Info(msg, exception);
                     break;
                 case LogLevel.Debug:
-                    logger.Debug(message, exception);
+                    logger.Debug(msg, exception);
                     break;
             }
         }

@@ -8,19 +8,19 @@ namespace EasyArchitecture.Instances.Log
     internal class Logger
     {
         private readonly ILogger _plugin;
-        internal readonly LogLevel _logLevel;
+        internal readonly LogLevel LogLevel;
         private static readonly List<LogLevel> SequencialListOfLogLevel = new List<LogLevel> { LogLevel.Debug, LogLevel.Info, LogLevel.Warn, LogLevel.Error, LogLevel.Fatal };
 
         internal Logger(ILogger plugin)
         {
             _plugin = plugin;
-            _logLevel = LoggerConfig.LoadRuntimeConfiguration(ThreadContext.GetCurrent().Name);
+            LogLevel = LoggerConfig.LoadRuntimeConfiguration(ThreadContext.GetCurrent().ConfigurationName);
         }
 
         private void Log(LogLevel logLevel, object message, Exception exception)
         {
-            if (ShouldSendToLog(logLevel, _logLevel))
-                _plugin.Log(logLevel, message, exception);
+            if (ShouldSendToLog(logLevel, LogLevel))
+                _plugin.Log(logLevel, ThreadContext.GetCurrent().Identifier, message, exception);
         }
 
         private static bool ShouldSendToLog(LogLevel logLevel, LogLevel defaultLogLevel)

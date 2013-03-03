@@ -6,9 +6,10 @@ namespace EasyArchitecture.Core
 {
     internal class ThreadContext
     {
-        private static readonly string ModuleNameKey = typeof(ThreadContext).Name;
+        private static readonly string ConfigurationNameKey = typeof(ThreadContext).Name;
         private readonly Dictionary<Type, object> _instances = new Dictionary<Type, object>();
-        internal string Name;
+        internal string ConfigurationName;
+        internal Guid Identifier;
 
         private ThreadContext()
         {
@@ -16,14 +17,14 @@ namespace EasyArchitecture.Core
 
         internal static ThreadContext GetCurrent()
         {
-            var slot = Thread.GetNamedDataSlot(ModuleNameKey);
+            var slot = Thread.GetNamedDataSlot(ConfigurationNameKey);
             return (ThreadContext)Thread.GetData(slot);
         }
 
         internal static void Create(string moduleName)
         {
-            var context = new ThreadContext { Name = moduleName };
-            var slot = Thread.GetNamedDataSlot(ModuleNameKey);
+            var context = new ThreadContext { ConfigurationName = moduleName };
+            var slot = Thread.GetNamedDataSlot(ConfigurationNameKey);
             Thread.SetData(slot, context);
         }
 
@@ -40,6 +41,7 @@ namespace EasyArchitecture.Core
 
         internal void Initialize()
         {
+            Identifier = Guid.NewGuid();
             _instances.Clear();
         }
     }

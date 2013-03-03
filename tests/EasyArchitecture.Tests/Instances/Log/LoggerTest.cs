@@ -1,3 +1,4 @@
+using System;
 using EasyArchitecture.Core;
 using EasyArchitecture.Instances.Log;
 using EasyArchitecture.Plugins.Contracts.Log;
@@ -31,9 +32,9 @@ namespace EasyArchitecture.Tests.Instances.Log
         [Test]
         public void Should_log()
         {
-            var message = "mensagem de teste";
-            
-            Expect.Call(() => _instancePlugin.Log(LogLevel.Debug, message,null)).Repeat.Once();
+            const string message = "mensagem de teste";
+            var identifier = ThreadContext.GetCurrent().Identifier;
+            Expect.Call(() => _instancePlugin.Log(LogLevel.Debug, identifier, message, null)).Repeat.Once();
             _mockery.ReplayAll();
 
             Mechanisms.Log.Logger.Message(message).Debug();

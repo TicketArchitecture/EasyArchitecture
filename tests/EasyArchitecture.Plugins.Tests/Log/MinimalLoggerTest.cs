@@ -18,7 +18,7 @@ namespace EasyArchitecture.Plugins.Tests.Log
         [Test]
         public void Should_create_log_file_if_not_exists()
         {
-            Logger.Log(LogLevel.Debug, "message", null);
+            Logger.Log(LogLevel.Debug, Guid.NewGuid(), "message", null);
 
             var content = GetFileContent(ModuleName);
 
@@ -30,7 +30,7 @@ namespace EasyArchitecture.Plugins.Tests.Log
         {
             var message = Guid.NewGuid().ToString();
 
-            Logger.Log(LogLevel.Debug, message, null);
+            Logger.Log(LogLevel.Debug, Guid.NewGuid(), message, null);
 
             var content = GetFileContent(ModuleName);
 
@@ -38,21 +38,21 @@ namespace EasyArchitecture.Plugins.Tests.Log
         }
 
         [Test]
-        public void Should_log_message_with_format()
+        public void Should_log_message_data()
         {
             var message = Guid.NewGuid().ToString();
-
-            //2012-12-10 11:46:03,911 [CurrentAppDomainHost.ExecuteNodes] Debug e5ea10da-6545-400a-a130-f036648b3293
-
-            var msgToLocate = string.Format("[{0}] DEBUG {1}", Thread.CurrentThread.Name, message);
+            var identifier = Guid.NewGuid();
             var dateOfMessage = DateTime.Now.ToString("yyyy-MM-dd");
 
-            Logger.Log(LogLevel.Debug, message, null);
+            Logger.Log(LogLevel.Debug, identifier, message, null);
 
             var content = GetFileContent(ModuleName);
 
-            Assert.That(content.Substring(0, 10), Is.StringContaining(dateOfMessage));
-            Assert.That(content, Is.StringContaining(msgToLocate));
+            Assert.That(content, Is.StringContaining(dateOfMessage));
+            Assert.That(content, Is.StringContaining(Thread.CurrentThread.Name));
+            Assert.That(content, Is.StringContaining(LogLevel.Debug.ToString().ToUpperInvariant()));
+            Assert.That(content, Is.StringContaining(identifier.ToString()));
+            Assert.That(content, Is.StringContaining(message));
         }
 
         private static string GetFileContent(string moduleName)
@@ -64,11 +64,8 @@ namespace EasyArchitecture.Plugins.Tests.Log
             var logFile = Path.ChangeExtension(moduleName, defaultExtension);
             logFile = Path.Combine(path, logFile);
 
-            //var file = new FileInfo(logFile);
-            //file;
-            var ret = string.Empty;
+            string ret;
             using (var fs = new FileStream(logFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-            //using (StreamWriter sw = new StreamWriter(fs))
             using (var sw = new StreamReader(fs))
             {
                 ret = sw.ReadToEnd();
