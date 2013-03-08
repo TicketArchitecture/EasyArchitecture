@@ -4,7 +4,7 @@ using FluentNHibernate.Cfg.Db;
 
 namespace Exemplo.Produto.Infrastructure.Configuration.NHibernate
 {
-    public class NHibernateConfig : INHibernateConfiguration
+    public class NHibernateConfig : INHibernateFluentlyConfig
     {
         public IPersistenceConfigurer ConfigureDatabase()
         {

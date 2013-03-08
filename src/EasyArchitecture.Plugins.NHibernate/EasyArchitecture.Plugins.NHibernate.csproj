@@ -57,8 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Persistence\INHibernateCodeConfig.cs" />
     <Compile Include="Persistence\NHibernatePersistence.cs" />
-    <Compile Include="Persistence\INHibernateConfiguration.cs" />
+    <Compile Include="Persistence\INHibernateFluentlyConfig.cs" />
     <Compile Include="Persistence\NHibernatePlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

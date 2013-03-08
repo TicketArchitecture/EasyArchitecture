@@ -2,7 +2,7 @@
 
 namespace EasyArchitecture.Plugins.NHibernate.Persistence
 {
-    public interface INHibernateConfiguration
+    public interface INHibernateFluentlyConfig
     {
         IPersistenceConfigurer ConfigureDatabase();
     }

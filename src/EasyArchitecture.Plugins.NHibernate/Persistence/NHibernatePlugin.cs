@@ -1,44 +1,79 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
-using EasyArchitecture.Core;
 using EasyArchitecture.Plugins.Contracts.Persistence;
 using FluentNHibernate.Cfg;
 using NHibernate;
+using NHibernate.Mapping.ByCode;
+using NHibernate.Mapping.ByCode.Conformist;
 
 namespace EasyArchitecture.Plugins.NHibernate.Persistence
 {
-    public class NHibernatePlugin : Plugin,IPersistencePlugin
+    public class NHibernatePlugin : Plugin, IPersistencePlugin
     {
         private ISessionFactory _sessionFactory;
- 
+        private object _instance;
+        
         public IPersistence GetInstance()
         {
-            var session = _sessionFactory.OpenSession();
-            return new NHibernatePersistence(session);
+            return new NHibernatePersistence(_sessionFactory.OpenSession());
         }
 
         protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
-            var assembly = pluginConfiguration.InfrastructureAssembly;
-            var nhibernateConfigurationType = Array.Find(assembly.GetExportedTypes(), t => typeof(INHibernateConfiguration).IsAssignableFrom(t));
+            var nhibernateConfiguration =  _instance
+                ?? GetNHibernateConfiguration<INHibernateFluentlyConfig>(pluginConfiguration.InfrastructureAssembly)
+                ?? (object)GetNHibernateConfiguration<INHibernateCodeConfig>(pluginConfiguration.InfrastructureAssembly);
 
-            INHibernateConfiguration nhibernateConfiguration = null;
-            if (nhibernateConfigurationType != null)
-            {
-                nhibernateConfiguration = (INHibernateConfiguration)nhibernateConfigurationType.Assembly.CreateInstance(nhibernateConfigurationType.FullName);
-            }
+            _sessionFactory = GetSessionFactory(nhibernateConfiguration,pluginConfiguration.InfrastructureAssembly);
 
-            _sessionFactory = GetConfiguredSessionFactory(assembly,nhibernateConfiguration);
         }
 
-        private static ISessionFactory GetConfiguredSessionFactory(Assembly mappingAssembly, INHibernateConfiguration configuration )
+        private static ISessionFactory GetSessionFactory(object nhibernateConfiguration, Assembly assembly)
         {
-            return Fluently.Configure()
-                .Database(configuration.ConfigureDatabase())
-                .ProxyFactoryFactory("NHibernate.Bytecode.DefaultProxyFactoryFactory, NHibernate")
-                .Mappings(m => m.FluentMappings.AddFromAssembly(mappingAssembly))
-                .BuildConfiguration()
-                .BuildSessionFactory();
+            return nhibernateConfiguration is INHibernateFluentlyConfig
+                       ? FluentlyMapped((INHibernateFluentlyConfig) nhibernateConfiguration, assembly)
+                       : (nhibernateConfiguration is INHibernateCodeConfig
+                              ? ByCodeMapped((INHibernateCodeConfig) nhibernateConfiguration, assembly)
+                              : null);
+        }
+
+        private static ISessionFactory FluentlyMapped(INHibernateFluentlyConfig nhibernateConfiguration,Assembly assembly)
+        {
+                       return Fluently.Configure()
+                             .Database(nhibernateConfiguration.ConfigureDatabase())
+                             .Mappings(m => m.FluentMappings.AddFromAssembly(assembly))
+                             .BuildConfiguration()
+                             .BuildSessionFactory();
+        }
+
+        private static ISessionFactory ByCodeMapped(INHibernateCodeConfig nhibernateConfiguration, Assembly assembly)
+        {
+            var mapper = new ModelMapper();
+            mapper.AddMappings(assembly.GetExportedTypes()
+               .Where(t => t.BaseType != null && t.BaseType.IsGenericType &&
+                           t.BaseType.GetGenericTypeDefinition() == typeof(ClassMapping<>)));
+
+            var configure = new global::NHibernate.Cfg.Configuration();
+
+            nhibernateConfiguration.AddDataBaseIntegrationInfo(configure);
+
+            configure.AddMapping(mapper.CompileMappingForAllExplicitlyAddedEntities());
+
+            return configure.BuildSessionFactory();
+        }
+
+        private static T GetNHibernateConfiguration<T>(Assembly assembly)
+        {
+            var nhibernateConfigurationType = Array.Find(assembly.GetExportedTypes(), typeof(T).IsAssignableFrom);
+
+            return nhibernateConfigurationType == null ?
+                default(T) : (T)nhibernateConfigurationType.Assembly.CreateInstance(nhibernateConfigurationType.FullName);
+        }
+        
+        internal void SetConfigurationInstance(object instance)
+        {
+            _instance = instance;
         }
     }
 }
