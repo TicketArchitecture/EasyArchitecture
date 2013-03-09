@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data.Entity;
-using EasyArchitecture.Core;
 using EasyArchitecture.Plugins.Contracts.Persistence;
 
 namespace EasyArchitecture.Plugins.EntityFramework

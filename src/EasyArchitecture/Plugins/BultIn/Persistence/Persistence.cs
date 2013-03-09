@@ -73,7 +73,22 @@ namespace EasyArchitecture.Plugins.BultIn.Persistence
 
         private static bool ExampleMatchesItem(object item, IEnumerable<PropertyInfo> typeProperties, object example)
         {
-            return !(from property in typeProperties let exampleValue = property.GetValue(example, BindingFlags.Default, null, null, null) where exampleValue != null && !(exampleValue is bool) && !exampleValue.Equals(0) && !exampleValue.Equals(string.Empty) let itemValue = property.GetValue(item, BindingFlags.Default, null, null, null) where !exampleValue.Equals(itemValue) select exampleValue).Any();
+            bool any = false;
+            foreach (PropertyInfo property in typeProperties)
+            {
+                object exampleValue = property.GetValue(example, BindingFlags.Default, null, null, null);
+
+                if (CommonRules.ShouldNotUseForComparison(exampleValue, property))
+                {
+                    object itemValue = property.GetValue(item, BindingFlags.Default, null, null, null);
+                    if (!exampleValue.Equals(itemValue))
+                    {
+                        any = true;
+                        break;
+                    }
+                }
+            }
+            return !any;
         }
 
         public IList<T> Get<T>()

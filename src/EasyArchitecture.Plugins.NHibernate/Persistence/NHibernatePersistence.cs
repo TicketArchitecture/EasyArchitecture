@@ -62,14 +62,14 @@ namespace EasyArchitecture.Plugins.NHibernate.Persistence
             {
                 var exampleValue = property.GetValue(example, BindingFlags.Default, null, null, null);
 
-                //ignore all these non initialized properties, as well as boolean ones
-                if (exampleValue == null || exampleValue is bool || exampleValue.Equals(0) || exampleValue.Equals(string.Empty))
+                if(CommonRules.ShouldNotUseForComparison(exampleValue, property))
                     continue;
 
                 criteria.Add(Restrictions.Eq(property.Name, exampleValue));
             }
             return criteria.List<T>();
         }
+
 
         public IList<T> Get<T>()
         {

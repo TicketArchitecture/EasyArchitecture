@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -47,6 +46,7 @@ namespace EasyArchitecture.Plugins.EntityFramework
         public void Delete(object entity)
         {
             _dbContext.Set(entity.GetType()).Remove(entity);
+            _dbContext.SaveChanges();
         }
 
         public IList<T> Get<T>(object example) 
@@ -62,8 +62,7 @@ namespace EasyArchitecture.Plugins.EntityFramework
             {
                 var exampleValue = property.GetValue(example, BindingFlags.Default, null, null, null);
 
-                //ignore all these non initialized properties, as well as boolean ones
-                if (exampleValue == null || exampleValue is bool || exampleValue.Equals(0) || exampleValue.Equals(string.Empty))
+                if (CommonRules.ShouldNotUseForComparison(exampleValue,property))
                     continue;
 
                 expressions.Add(Expression.Equal(Expression.Property(parameterExpression, property.Name), Expression.Constant(exampleValue)));
