@@ -58,6 +58,7 @@ namespace Exemplo.Produto.Tests
         }
 
         [Test]
+        [Ignore("Nao roda em todas as maquinas pois depende da instalcao do code contracts, substituir por outra impl")]
         public void Nao_deve_cadastrar_produto_sem_nome()
         {
             var produto = new ProdutoDTO

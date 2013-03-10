@@ -43,10 +43,6 @@
     <Reference Include="FluentNHibernate">
       <HintPath>..\..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\libs\Framework.dll</HintPath>
-    </Reference>
     <Reference Include="Iesi.Collections">
       <HintPath>..\..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
     </Reference>
@@ -76,6 +72,7 @@
     <Compile Include="BuiltInTest.cs" />
     <Compile Include="AutoMapperTest.cs" />
     <Compile Include="BaseTest.cs" />
+    <Compile Include="UnityTest.cs" />
     <Compile Include="EntityFrameworkTest.cs" />
     <Compile Include="Helpers\DataBaseHelper.cs" />
     <Compile Include="NHibernateTest.cs" />
@@ -103,6 +100,10 @@
     <ProjectReference Include="..\..\src\EasyArchitecture.Plugins.NHibernate\EasyArchitecture.Plugins.NHibernate.csproj">
       <Project>{2a920002-a724-469c-9330-57482d1a01f3}</Project>
       <Name>EasyArchitecture.Plugins.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\EasyArchitecture.Plugins.Unity\EasyArchitecture.Plugins.Unity.csproj">
+      <Project>{e03e3582-fa3f-436c-b84a-32313e5033bd}</Project>
+      <Name>EasyArchitecture.Plugins.Unity</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\EasyArchitecture\EasyArchitecture.csproj">
       <Project>{09A7AA21-ED65-409C-8442-E0ADA02A7AAF}</Project>

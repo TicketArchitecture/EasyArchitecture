@@ -77,8 +77,10 @@ namespace EasyArchitecture.Plugins.BultIn.Persistence
             foreach (PropertyInfo property in typeProperties)
             {
                 object exampleValue = property.GetValue(example, BindingFlags.Default, null, null, null);
+                if (exampleValue==null)
+                    continue;
 
-                if (CommonRules.ShouldNotUseForComparison(exampleValue, property))
+                if (!CommonRules.ShouldNotUseForComparison(exampleValue, property))
                 {
                     object itemValue = property.GetValue(item, BindingFlags.Default, null, null, null);
                     if (!exampleValue.Equals(itemValue))
