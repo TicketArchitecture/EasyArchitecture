@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ConfigObject.cs" />
     <Compile Include="Instances\Log\MethodCallLogger.cs" />
     <Compile Include="Plugins\Contracts\Persistence\CommonRules.cs" />
     <Compile Include="Plugins\PluginInspectorExtrator.cs" />

@@ -104,9 +104,10 @@ namespace EasyArchitecture.Configuration.Expressions
             return this;
         }
 
-        public void Done()
+        public ConfigObject Done()
         {
             InstanceProvider.Configure(_moduleName, _pluginConfiguration);
+            return new ConfigObject(_moduleName);
         }
     }
 }
