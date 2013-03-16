@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Configuration\ConfigObject.cs" />
     <Compile Include="Instances\Log\MethodCallLogger.cs" />
+    <Compile Include="Plugins\Contracts\IoC\AbstractContainerPlugin.cs" />
     <Compile Include="Plugins\Contracts\Persistence\CommonRules.cs" />
     <Compile Include="Plugins\PluginInspectorExtrator.cs" />
     <Compile Include="Instances\Caching\Cache.cs" />
@@ -85,13 +86,13 @@
     <Compile Include="Core\Serializer\UnknowTypeDataContractSurrogate.cs" />
     <Compile Include="Instances\Log\InstanceLogger.cs" />
     <Compile Include="Configuration\PluginSetup.cs" />
-    <Compile Include="Instances\IoC\ProxyMethodCall.cs" />
-    <Compile Include="Plugins\BultIn\IoC\InterceptionHook.cs" />
+    <Compile Include="Plugins\Contracts\IoC\ProxyMethodCall.cs" />
+    <Compile Include="Plugins\Contracts\IoC\InterceptionHook.cs" />
     <Compile Include="Plugins\BultIn\Log\Logger.cs" />
     <Compile Include="Plugins\Contracts\Log\ILogger.cs" />
     <Compile Include="Core\Aspects\TransactionInterceptor.cs" />
     <Compile Include="Core\Aspects\ContextInterceptor.cs" />
-    <Compile Include="Instances\IoC\Interceptor.cs" />
+    <Compile Include="Plugins\Contracts\IoC\Interceptor.cs" />
     <Compile Include="Core\Serializer\JsonSerializer.cs" />
     <Compile Include="Plugins\Plugin.cs" />
     <Compile Include="Plugins\PluginConfigurationException.cs" />

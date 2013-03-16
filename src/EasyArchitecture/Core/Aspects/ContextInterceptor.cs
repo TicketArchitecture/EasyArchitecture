@@ -1,4 +1,5 @@
 using EasyArchitecture.Instances.IoC;
+using EasyArchitecture.Plugins.Contracts.IoC;
 
 namespace EasyArchitecture.Core.Aspects
 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using EasyArchitecture.Plugins.Contracts.IoC;
 
 namespace EasyArchitecture.Plugins.BultIn.IoC
 {

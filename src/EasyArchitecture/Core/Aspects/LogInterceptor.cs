@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using EasyArchitecture.Instances.IoC;
 using EasyArchitecture.Instances.Log;
+using EasyArchitecture.Plugins.Contracts.IoC;
 
 namespace EasyArchitecture.Core.Aspects
 {

@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace EasyArchitecture.Instances.IoC
+namespace EasyArchitecture.Plugins.Contracts.IoC
 {
     public class ProxyMethodCall
     {

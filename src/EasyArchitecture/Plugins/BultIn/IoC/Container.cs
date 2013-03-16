@@ -41,7 +41,8 @@ namespace EasyArchitecture.Plugins.BultIn.IoC
             return (T)Resolve(typeof(T));
         }
 
-        private object Resolve(Type interfaceType)
+        //TODO: changed from public
+        public object Resolve(Type interfaceType)
         {
             var typeInfo = SearchType(interfaceType);
 

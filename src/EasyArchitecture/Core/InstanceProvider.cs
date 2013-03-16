@@ -21,7 +21,8 @@ using EasyArchitecture.Plugins.Contracts.Validation;
 
 namespace EasyArchitecture.Core
 {
-    internal static class InstanceProvider
+    //TODO: voltar para public
+    public static class InstanceProvider
     {
         private static readonly Dictionary<string, List<Plugin>> PluginFactories = new Dictionary<string, List<Plugin>>();
         private static readonly Dictionary<Type, Type> Map = new Dictionary<Type, Type>();
@@ -37,7 +38,8 @@ namespace EasyArchitecture.Core
             Map.Add(typeof(Logger), typeof(IPluginFactory<ILogger>));
         }
 
-        internal static T GetInstance<T>() where T : class
+        //TODO: retonar para internal
+        public static T GetInstance<T>() where T : class
         {
             var context = ThreadContext.GetCurrent();
             if (context == null)

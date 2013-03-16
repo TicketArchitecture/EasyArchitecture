@@ -1,5 +1,6 @@
 using System;
 using EasyArchitecture.Plugins.BultIn.IoC;
+using EasyArchitecture.Plugins.Contracts.IoC;
 using Microsoft.Practices.Unity.InterceptionExtension;
 
 namespace EasyArchitecture.Plugins.Unity

@@ -1,6 +1,7 @@
 using System;
 using EasyArchitecture.Instances.IoC;
 using EasyArchitecture.Instances.Persistence;
+using EasyArchitecture.Plugins.Contracts.IoC;
 
 namespace EasyArchitecture.Core.Aspects
 {

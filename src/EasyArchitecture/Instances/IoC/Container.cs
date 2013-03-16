@@ -1,9 +1,11 @@
-﻿using EasyArchitecture.Instances.Log;
+﻿using System;
+using EasyArchitecture.Instances.Log;
 using EasyArchitecture.Plugins.Contracts.IoC;
 
 namespace EasyArchitecture.Instances.IoC
 {
-    internal class Container
+    //TODO: voltar pra internal
+    public class Container
     {
         private readonly IContainer _plugin;
 
@@ -32,6 +34,12 @@ namespace EasyArchitecture.Instances.IoC
             InstanceLogger.Log(this, "Resolve", typeof(T).Name, ret.GetType().Name);
 
             return ret;
+        }
+
+        //TODO: criado pra tentar
+        public object Resolve(Type type)
+        {
+            return _plugin.Resolve(type);
         }
     }
 }
