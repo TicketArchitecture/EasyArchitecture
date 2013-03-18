@@ -9,7 +9,6 @@ using NUnit.Framework;
 namespace Exemplo.Produto.Tests
 {
     [TestFixture]
-    [Ignore]
     public class UnityTest : BaseTest
     {
         [SetUp]

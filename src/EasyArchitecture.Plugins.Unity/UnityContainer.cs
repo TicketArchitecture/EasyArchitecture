@@ -1,11 +1,10 @@
 ﻿using System;
 using EasyArchitecture.Plugins.Contracts.IoC;
 using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.InterceptionExtension;
 
 namespace EasyArchitecture.Plugins.Unity
 {
-    public class UnityContainer:IContainer
+    public class UnityContainer : IContainer
     {
         private readonly IUnityContainer _container;
 
@@ -24,19 +23,9 @@ namespace EasyArchitecture.Plugins.Unity
             return _container.Resolve<T>();
         }
 
-        public void Register(Type interfaceType, Type implementationType, bool useInterception)
+        public void Register(Type interfaceType, Type implementationType)
         {
-            if (useInterception)
-            {
-                _container.RegisterType(
-                    interfaceType, implementationType,
-                    new InterceptionBehavior<PolicyInjectionBehavior>(),
-                    new Interceptor<InterfaceInterceptor>());
-            }
-            else
-            {
-                _container.RegisterType(interfaceType, implementationType, null, null);
-            }
+            _container.RegisterType(interfaceType, implementationType, null, null);
         }
 
     }

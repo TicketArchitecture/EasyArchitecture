@@ -18,11 +18,11 @@ namespace EasyArchitecture.Configuration
             return InstanceProvider.GetInstance<Instances.IoC.Container>().Resolve<T>();
         }
 
-        public object ActivateFacade(Type type)
-        {
-            ActivateCurrentThread();
-            return InstanceProvider.GetInstance<Instances.IoC.Container>().Resolve(type);
-        }
+        //public object ActivateFacade(Type type)
+        //{
+        //    ActivateCurrentThread();
+        //    return InstanceProvider.GetInstance<Instances.IoC.Container>().Resolve(type);
+        //}
 
 
         public void ActivateCurrentThread()

@@ -4,8 +4,7 @@ using EasyArchitecture.Plugins.Contracts.IoC;
 
 namespace EasyArchitecture.Instances.IoC
 {
-    //TODO: voltar pra internal
-    public class Container
+    internal class Container
     {
         private readonly IContainer _plugin;
 
@@ -37,9 +36,9 @@ namespace EasyArchitecture.Instances.IoC
         }
 
         //TODO: criado pra tentar
-        public object Resolve(Type type)
-        {
-            return _plugin.Resolve(type);
-        }
+        //public object Resolve(Type type)
+        //{
+        //    return _plugin.Resolve(type);
+        //}
     }
 }

@@ -1,5 +1,6 @@
 using System;
-using EasyArchitecture.Plugins.BultIn.IoC;
+using System.Collections.Generic;
+using System.Linq;
 using EasyArchitecture.Plugins.Contracts.IoC;
 using Microsoft.Practices.Unity.InterceptionExtension;
 
@@ -12,11 +13,10 @@ namespace EasyArchitecture.Plugins.Unity
         public IMethodReturn Invoke(IMethodInvocation input, GetNextHandlerDelegate getNext)
         {
             var methods = input.Target.GetType().GetMethods();
-            var method=Array.Find(methods, m => m.Name == input.MethodBase.Name);
-
-            //TODO: analisar se interception hook eh contrato ou implementacao builtin
-            var hook = new InterceptionHook(input.Target, method,null);
-            hook.Execute();
+            var method = Array.Find(methods, m => m.Name == input.MethodBase.Name);
+           
+            //TODO: melhorar
+            new InterceptionHook(input.Target, method, input.Inputs.Cast<object>().ToArray()).Execute();
 
             return getNext()(input, getNext);
         }

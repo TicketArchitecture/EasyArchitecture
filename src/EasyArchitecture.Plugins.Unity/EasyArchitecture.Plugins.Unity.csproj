@@ -59,10 +59,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnyMatchingRule.cs" />
     <Compile Include="UnityContainer.cs" />
     <Compile Include="UnityPlugin.cs" />
     <Compile Include="InterceptionHandler.cs" />
-    <Compile Include="FacadeMatchingRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

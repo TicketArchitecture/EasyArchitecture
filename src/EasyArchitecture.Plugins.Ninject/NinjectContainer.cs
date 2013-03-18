@@ -18,7 +18,7 @@ namespace EasyArchitecture.Plugins.Ninject
             _container.Bind<T>().To<TU>();
         }
 
-        public void Register(Type interfaceType, Type implementationType, bool useInterception)
+        public void Register(Type interfaceType, Type implementationType)
         {
             _container.Bind(interfaceType, implementationType);
         }

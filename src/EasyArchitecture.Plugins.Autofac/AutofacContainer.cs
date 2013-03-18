@@ -24,7 +24,7 @@ namespace EasyArchitecture.Plugins.Autofac
             return _container.Resolve<T>();
         }
 
-        public void Register(Type interfaceType, Type implementationType, bool useInterception)
+        public void Register(Type interfaceType, Type implementationType)
         {
             var newBuilder = new ContainerBuilder();
             newBuilder.RegisterType(implementationType).As(interfaceType);

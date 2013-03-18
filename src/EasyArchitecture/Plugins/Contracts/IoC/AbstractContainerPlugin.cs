@@ -16,8 +16,6 @@ namespace EasyArchitecture.Plugins.Contracts.IoC
 
         protected abstract void ConfigureContainerPlugin(PluginInspector pluginInspector);
         
-       
-
         private void AutoRegister(Assembly interfacesAssembly, Assembly implementationsAssembly, bool useInterception, PluginInspector pluginInspector)
         {
             var implementationTypes = implementationsAssembly.GetExportedTypes();
@@ -38,9 +36,9 @@ namespace EasyArchitecture.Plugins.Contracts.IoC
                                     useInterception ? string.Empty : "NOT");
 
                 if (useInterception)
-                    Register(exportedType, implementationType, pluginInspector);
-                else
                     RegisterWithInterception(exportedType, implementationType, pluginInspector);
+                else
+                    Register(exportedType, implementationType, pluginInspector);
             }
         }
 

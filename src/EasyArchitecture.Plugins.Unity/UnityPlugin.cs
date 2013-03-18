@@ -1,5 +1,4 @@
 ﻿using System;
-using EasyArchitecture.Core;
 using EasyArchitecture.Plugins.Contracts.IoC;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.InterceptionExtension;
@@ -11,68 +10,32 @@ namespace EasyArchitecture.Plugins.Unity
     {
         private IUnityContainer _container;
 
-        //private void ConfigurePoliceInterceptor()
-        //{
-        //    _container.Configure<Interception>()
-        //        .AddPolicy("Interception")
-        //        .AddMatchingRule<FacadeMatchingRule>()
-        //        .AddCallHandler(typeof(InterceptionHandler));
-        //}
-
         public IContainer GetInstance()
         {
             return new UnityContainer(_container);
         }
 
-
         protected override void ConfigureContainerPlugin(PluginInspector pluginInspector)
         {
-            if (_container != null) return;
-
             _container = new Microsoft.Practices.Unity.UnityContainer();
             _container.AddNewExtension<Interception>();
-
-            //ConfigurePoliceInterceptor();
+            _container.Configure<Interception>().AddPolicy("general")
+                .AddMatchingRule<AnyMatchingRule>()
+                .AddCallHandler<InterceptionHandler>();
         }
 
         protected override void Register(Type interfaceType, Type concreteType, PluginInspector pluginInspector)
         {
-            _container.RegisterType(interfaceType, concreteType, null,null,null);
+            _container.RegisterType(interfaceType, concreteType);
         }
 
-        protected override void RegisterWithInterception(Type interfaceType, Type concreteType, PluginInspector pluginInspector)
+        protected override void RegisterWithInterception(Type interfaceType, Type concreteType,
+                                                         PluginInspector pluginInspector)
         {
-            //TODO: configurar interception handler
-            _container.RegisterType(interfaceType, concreteType, null, null, null);
+            //_container.RegisterType(interfaceType, concreteType, new Interceptor<InterfaceInterceptor>());
+            _container.RegisterType(interfaceType, concreteType);
+            _container.Configure<Interception>().SetInterceptorFor(interfaceType, new InterfaceInterceptor());
         }
     }
-
-
-    //public class UnityPlugin : Plugin,IContainerPlugin
-    //{
-    //    private IUnityContainer _container;
-
-    //    private void ConfigurePoliceInterceptor()
-    //    {
-    //        _container.Configure<Interception>()
-    //            .AddPolicy("Interception")
-    //            .AddMatchingRule<FacadeMatchingRule>()
-    //            .AddCallHandler(typeof(InterceptionHandler));
-    //    }
-
-    //    public IContainer GetInstance()
-    //    {
-    //        return new UnityContainer(_container);
-    //    }
-
-    //    protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
-    //    {
-    //           if (_container != null) return;
-
-    //        _container = new Microsoft.Practices.Unity.UnityContainer();
-    //        _container.AddNewExtension<Interception>();
-
-    //        ConfigurePoliceInterceptor();
-    //    }        
-    //}
 }
+

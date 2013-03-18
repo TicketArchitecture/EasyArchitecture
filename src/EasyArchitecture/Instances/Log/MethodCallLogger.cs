@@ -65,7 +65,6 @@ namespace EasyArchitecture.Instances.Log
             if (logInstance.LogLevel != LogLevel.Debug && logInstance.LogLevel != LogLevel.Info)
                 return;
 
-            //HACK: usar delegate?
             if (logInstance.LogLevel == LogLevel.Debug)
                 logInstance.LogDebug(string.Format("x [{0}]: {1} [{2}ms]", methodInfo.Name, ex.Message, elapsedMilliseconds), ex);
 

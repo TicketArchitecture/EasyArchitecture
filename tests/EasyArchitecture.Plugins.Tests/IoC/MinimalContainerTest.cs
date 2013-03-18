@@ -82,17 +82,6 @@ namespace EasyArchitecture.Plugins.Tests.IoC
         }
 
         [Test]
-        [Ignore("nao pode ser testado sem comentar a sequencia de interceptadores em InterceptionHook.cs")]
-        public void Proxy_should_return_original_exception()
-        {
-            Container.Register(typeof(IDummyInterface),typeof(NewDummyImplementation),true);
-
-            var implementation = Container.Resolve<IDummyInterface>();
-
-            Assert.That(()=>implementation.VoidDummyMethod(), Throws.InstanceOf<NotImplementedException>());
-        }
-
-        [Test]
         public void Should_be_possible_call_void_facade_methods()
         {
             Container.Register<IDummyInterface, DummyImplementation>();
