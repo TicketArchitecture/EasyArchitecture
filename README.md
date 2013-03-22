@@ -7,7 +7,6 @@ Com EasyArchitecture é possível:
 * Prototipar
 * Deixar para decidir mais tarde qual tecnologia usar
 * Efetuar testes unitários
-* Permitir testabilidade
 
 
 # Serviços de infra-estrutura:
