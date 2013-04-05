@@ -23,6 +23,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="src\EasyArchitecture.Plugins.EntityFramework\bin\Release\EasyArchitecture.Plugins.EntityFramework.dll" target="EasyArchitecture.Plugins.EntityFramework.dll" />
+        <file src="src\EasyArchitecture.Plugins.EntityFramework\bin\Debug\EasyArchitecture.Plugins.EntityFramework.dll" target="EasyArchitecture.Plugins.EntityFramework.dll" />
     </files>
 </package>

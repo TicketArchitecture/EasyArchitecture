@@ -23,6 +23,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="src\EasyArchitecture.Plugins.NHibernate\bin\Release\EasyArchitecture.Plugins.NHibernate.dll" target="EasyArchitecture.Plugins.NHibernate.dll" />
+        <file src="src\EasyArchitecture.Plugins.NHibernate\bin\Debug\EasyArchitecture.Plugins.NHibernate.dll" target="EasyArchitecture.Plugins.NHibernate.dll" />
     </files>
 </package>

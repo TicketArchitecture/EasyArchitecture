@@ -24,6 +24,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="src\EasyArchitecture.Plugins.log4net\bin\Release\EasyArchitecture.Plugins.log4net.dll" target="EasyArchitecture.Plugins.log4net.dll" />
+        <file src="src\EasyArchitecture.Plugins.log4net\bin\Debug\EasyArchitecture.Plugins.log4net.dll" target="EasyArchitecture.Plugins.log4net.dll" />
     </files>
 </package>

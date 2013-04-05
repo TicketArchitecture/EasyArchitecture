@@ -24,6 +24,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="src\EasyArchitecture.Plugins.Unity\bin\Release\EasyArchitecture.Plugins.Unity.dll" target="EasyArchitecture.Plugins.Unity.dll" />
+        <file src="src\EasyArchitecture.Plugins.Unity\bin\Debug\EasyArchitecture.Plugins.Unity.dll" target="EasyArchitecture.Plugins.Unity.dll" />
     </files>
 </package>

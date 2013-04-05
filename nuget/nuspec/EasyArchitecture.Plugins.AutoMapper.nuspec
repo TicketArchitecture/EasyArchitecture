@@ -23,6 +23,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="src\EasyArchitecture.Plugins.AutoMapper\bin\Release\EasyArchitecture.Plugins.AutoMapper.dll" target="EasyArchitecture.Plugins.AutoMapper.dll" />
+        <file src="src\EasyArchitecture.Plugins.AutoMapper\bin\Debug\EasyArchitecture.Plugins.AutoMapper.dll" target="EasyArchitecture.Plugins.AutoMapper.dll" />
     </files>
 </package>

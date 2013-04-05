@@ -17,6 +17,6 @@
         <tags>framework api</tags>
     </metadata>
     <files>
-        <file src="src\EasyArchitecture\bin\Release\EasyArchitecture.dll" target="EasyArchitecture.dll" />
+        <file src="src\EasyArchitecture\bin\Debug\EasyArchitecture.dll" target="EasyArchitecture.dll" />
     </files>
 </package>
