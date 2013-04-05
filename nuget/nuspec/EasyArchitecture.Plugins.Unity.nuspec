@@ -4,8 +4,8 @@
         <id>EasyArchitecture.Plugins.Unity</id>
         <version>1.0.4811</version>
         <title />
-        <authors>Henrique Riccio</authors>
-        <owners>Henrique Riccio</owners>
+        <authors>Henrique Riccio e Colaboradores</authors>
+        <owners>Henrique Riccio e Colaboradores</owners>
         <licenseUrl>https://raw.github.com/EasyArchitecture/EasyArchitecture/master/LICENSE.txt</licenseUrl>
         <projectUrl>https://github.com/EasyArchitecture</projectUrl>
         <iconUrl>http://1.gravatar.com/blavatar/f82ea165758b496a4b89f577f66e22b7?s=16</iconUrl>
@@ -24,6 +24,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="src\EasyArchitecture.Plugins.Unity\bin\Debug\EasyArchitecture.Plugins.Unity.dll" target="EasyArchitecture.Plugins.Unity.dll" />
+        <file src="src\EasyArchitecture.Plugins.Unity\bin\Debug\EasyArchitecture.Plugins.Unity.dll" target="lib\net40\EasyArchitecture.Plugins.Unity.dll" />
     </files>
 </package>
