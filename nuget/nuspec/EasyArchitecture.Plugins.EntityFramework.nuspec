@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>EasyArchitecture.Plugins.EntityFramework</id>
+        <version>1.0.4811.37919</version>
+        <title />
+        <authors>Henrique Riccio</authors>
+        <owners>Henrique Riccio</owners>
+        <licenseUrl>https://github.com/henriquericcio/EasyArchitecture/blob/master/LICENSE.txt</licenseUrl>
+        <projectUrl>https://github.com/henriquericcio/EasyArchitecture</projectUrl>
+        <iconUrl>http://1.gravatar.com/blavatar/f82ea165758b496a4b89f577f66e22b7?s=16</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Plugin do Entity Framework para o mecanismo de persistência do EasyArchitecture</description>
+        <summary>Plugin do Entity Framework para o mecanismo de persistência do EasyArchitecture</summary>
+        <copyright>Copyright (c) 2010 Henrique Riccio</copyright>
+        <language>pt-BR</language>
+        <tags>easyarchitecture plugin entity framework</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework4.0">
+                <dependency id="EasyArchitecture" version="1.0.4811" />
+                <dependency id="EntityFramework" version="5.0.0" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="lib\net40\EasyArchitecture.Plugins.EntityFramework.dll" target="lib\net40\EasyArchitecture.Plugins.EntityFramework.dll" />
+    </files>
+</package>

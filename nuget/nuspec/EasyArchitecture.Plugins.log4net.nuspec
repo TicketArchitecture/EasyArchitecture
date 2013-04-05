@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>EasyArchitecture.Plugins.log4net</id>
+        <version>1.0.4811</version>
+        <title />
+        <authors>Henrique Riccio</authors>
+        <owners>Henrique Riccio</owners>
+        <licenseUrl>https://github.com/henriquericcio/EasyArchitecture/blob/master/LICENSE.txt</licenseUrl>
+        <projectUrl>https://github.com/henriquericcio/EasyArchitecture</projectUrl>
+        <iconUrl>http://1.gravatar.com/blavatar/f82ea165758b496a4b89f577f66e22b7?s=16</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Plugin do log4net para o mecanismo de log do EasyArchitecture</description>
+        <summary>Plugin do log4net para o mecanismo de log do EasyArchitecture</summary>
+        <releaseNotes>Plugin do log4net para o mecanismo de log do EasyArchitecture</releaseNotes>
+        <copyright>Copyright (c) 2010 Henrique Riccio</copyright>
+        <language>pt-BR</language>
+        <tags>easyarchitecture plugin log4net</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework4.0">
+                <dependency id="log4net" version="2.0.0" />
+                <dependency id="EasyArchitecture" version="1.0.4811" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="lib\net40\EasyArchitecture.Plugins.log4net.dll" target="lib\net40\EasyArchitecture.Plugins.log4net.dll" />
+    </files>
+</package>
