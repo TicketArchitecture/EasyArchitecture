@@ -38,20 +38,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Plugins.Un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Plugins.EntityFramework", "src\EasyArchitecture.Plugins.EntityFramework\EasyArchitecture.Plugins.EntityFramework.csproj", "{3ACCD6FE-781F-46C6-888C-F00FBA6BD591}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{C042F097-88C3-4D52-80C7-D4A1EAFC841F}"
-	ProjectSection(SolutionItems) = preProject
-		samples\readme.txt = samples\readme.txt
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Plugins.Tests", "tests\EasyArchitecture.Plugins.Tests\EasyArchitecture.Plugins.Tests.csproj", "{0658FF22-FD01-489F-B3E5-8C215FBCC276}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Application", "samples\Exemplo.Produto.Application\Exemplo.Produto.Application.csproj", "{1F6CFAD0-6F13-4AE1-88DA-4B198750FEB9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Domain", "samples\Exemplo.Produto.Domain\Exemplo.Produto.Domain.csproj", "{AC8B2A18-F2E8-4C28-AC4E-6F5751BFBFE0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Infrastructure", "samples\Exemplo.Produto.Infrastructure\Exemplo.Produto.Infrastructure.csproj", "{B9A9BCE1-627C-422E-916C-DB072D153B9F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo.Produto.Tests", "samples\Exemplo.Produto.Tests\Exemplo.Produto.Tests.csproj", "{6764ECFC-5E31-4B0C-94CC-071F14C518D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,22 +102,6 @@ Global
 		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0658FF22-FD01-489F-B3E5-8C215FBCC276}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F6CFAD0-6F13-4AE1-88DA-4B198750FEB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F6CFAD0-6F13-4AE1-88DA-4B198750FEB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F6CFAD0-6F13-4AE1-88DA-4B198750FEB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F6CFAD0-6F13-4AE1-88DA-4B198750FEB9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC8B2A18-F2E8-4C28-AC4E-6F5751BFBFE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC8B2A18-F2E8-4C28-AC4E-6F5751BFBFE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC8B2A18-F2E8-4C28-AC4E-6F5751BFBFE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC8B2A18-F2E8-4C28-AC4E-6F5751BFBFE0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B9A9BCE1-627C-422E-916C-DB072D153B9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9A9BCE1-627C-422E-916C-DB072D153B9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9A9BCE1-627C-422E-916C-DB072D153B9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9A9BCE1-627C-422E-916C-DB072D153B9F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6764ECFC-5E31-4B0C-94CC-071F14C518D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6764ECFC-5E31-4B0C-94CC-071F14C518D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6764ECFC-5E31-4B0C-94CC-071F14C518D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6764ECFC-5E31-4B0C-94CC-071F14C518D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -149,10 +120,6 @@ Global
 		{2A920002-A724-469C-9330-57482D1A01F3} = {A20584F5-1CEB-4614-857C-AED4CA6989F2}
 		{E03E3582-FA3F-436C-B84A-32313E5033BD} = {A20584F5-1CEB-4614-857C-AED4CA6989F2}
 		{3ACCD6FE-781F-46C6-888C-F00FBA6BD591} = {A20584F5-1CEB-4614-857C-AED4CA6989F2}
-		{1F6CFAD0-6F13-4AE1-88DA-4B198750FEB9} = {C042F097-88C3-4D52-80C7-D4A1EAFC841F}
-		{AC8B2A18-F2E8-4C28-AC4E-6F5751BFBFE0} = {C042F097-88C3-4D52-80C7-D4A1EAFC841F}
-		{B9A9BCE1-627C-422E-916C-DB072D153B9F} = {C042F097-88C3-4D52-80C7-D4A1EAFC841F}
-		{6764ECFC-5E31-4B0C-94CC-071F14C518D3} = {C042F097-88C3-4D52-80C7-D4A1EAFC841F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\Unity.2.1.505.2\lib\NET35;packages\Unity.Interception.2.1.505.2\lib\NET35
