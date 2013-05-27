@@ -2,7 +2,7 @@ using EasyArchitecture.Mechanisms.Translation.Expressions;
 
 namespace EasyArchitecture.Mechanisms.Translation
 {
-    public static class Translator
+    public static class Translate
     {
         public static ToExpression<T> This<T>(T obj)
         {

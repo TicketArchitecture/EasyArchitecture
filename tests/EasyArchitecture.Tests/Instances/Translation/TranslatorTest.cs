@@ -37,7 +37,7 @@ namespace EasyArchitecture.Tests.Instances.Translation
             Expect.Call(_instancePlugin.Translate<Dog,DogDto>(entity)).Return(expected);
             _mockery.ReplayAll();
 
-            var actual = Mechanisms.Translation.Translator.This(entity).To<DogDto>();
+            var actual = Mechanisms.Translation.Translate.This(entity).Into<DogDto>();
 
             _mockery.VerifyAll();
         }
@@ -51,7 +51,7 @@ namespace EasyArchitecture.Tests.Instances.Translation
             Expect.Call(_instancePlugin.Translate<DogDto,Dog>(dto)).Return(expected);
             _mockery.ReplayAll();
 
-            var actual = Mechanisms.Translation.Translator.This(dto).To<Dog>();
+            var actual = Mechanisms.Translation.Translate.This(dto).Into<Dog>();
 
             _mockery.VerifyAll();
         }

@@ -148,7 +148,7 @@
     <Compile Include="Plugins\BultIn\Persistence\PersistencePlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Mechanisms\Translation\Expressions\ToExpression.cs" />
-    <Compile Include="Mechanisms\Translation\Translator.cs" />
+    <Compile Include="Mechanisms\Translation\Translate.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

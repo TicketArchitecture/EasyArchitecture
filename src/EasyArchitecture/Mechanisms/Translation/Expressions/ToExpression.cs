@@ -11,7 +11,7 @@ namespace EasyArchitecture.Mechanisms.Translation.Expressions
             _obj = obj;
         }
 
-        public T1 To<T1>()
+        public T1 Into<T1>()
         {
             return InstanceProvider.GetInstance<Instances.Translation.Translator>().Translate<T, T1>(_obj);
         }
