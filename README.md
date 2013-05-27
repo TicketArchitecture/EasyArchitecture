@@ -1,6 +1,4 @@
-<img src="http://easyarchitecture.org/images/logofull64.png" alt="EasyArchitecture">
-
-EasyArchitecture
+<img src="http://www.gravatar.com/avatar/e3e660b0916a4de7b15ef41361ee9f8e.png" alt="EasyArchitecture"> EasyArchitecture
 ================================
 
 Oque é o EasyArchitecture?
