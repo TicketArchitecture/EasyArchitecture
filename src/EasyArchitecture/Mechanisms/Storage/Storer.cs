@@ -1,23 +1,24 @@
 ﻿using System;
+using System.IO;
 using EasyArchitecture.Core;
 
 namespace EasyArchitecture.Mechanisms.Storage
 {
     public static class Storer
     {
-        public static Guid Save(byte[] buffer)
+        public static void Save(Stream stream,string identifier)
         {
-            return InstanceProvider.GetInstance<Instances.Storage.Storer>().Save(buffer);
+            InstanceProvider.GetInstance<Instances.Storage.Storer>().Save(stream,identifier);
         }
 
-        public static byte[] Get(Guid id)
+        public static void Retrieve(Stream stream, string identifier)
         {
-            return InstanceProvider.GetInstance<Instances.Storage.Storer>().Get(id);
+            InstanceProvider.GetInstance<Instances.Storage.Storer>().Retrieve(stream,identifier);
         }
 
-        public static bool Exists(Guid id)
+        public static bool Exists(string identifier)
         {
-            return InstanceProvider.GetInstance<Instances.Storage.Storer>().Exists(id);
+            return InstanceProvider.GetInstance<Instances.Storage.Storer>().Exists(identifier);
         }
     }
 }

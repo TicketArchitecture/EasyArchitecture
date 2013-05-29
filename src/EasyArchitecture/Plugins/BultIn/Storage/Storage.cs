@@ -1,28 +1,51 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using EasyArchitecture.Plugins.Contracts.Storage;
 
 namespace EasyArchitecture.Plugins.BultIn.Storage
 {
     internal class Storage : IStorage
     {
-        private readonly Dictionary<Guid,byte[]> _storageInMemory = new Dictionary<Guid,byte[]>();
+        private readonly Dictionary<string, byte[]> _storageInMemory = new Dictionary<string, byte[]>();
 
-        public Guid Save(byte[] buffer)
+        public void Save(Stream stream, string identifier)
         {
-            var id = Guid.NewGuid();
-            _storageInMemory.Add(id,buffer);
-            return id;
+            var length = (int)stream.Length;
+            var buffer = new byte[length];
+
+            stream.Write(buffer, 0, (int)stream.Length);
+            
+            _storageInMemory.Add(identifier, buffer);
         }
 
-        public byte[] Get(Guid id)
+        //TODO: trocar para IEnumerable
+        public List<string> List()
         {
-            return _storageInMemory[id];
+            return new List<string>(_storageInMemory.Keys);
         }
 
-        public bool Exists(Guid id)
+        public void Retrieve(Stream stream, string identifier)
         {
-            return _storageInMemory.ContainsKey(id);
+            //using (var reader = new BinaryReader(stream))
+            //{
+            //    _storageInMemory.Add(identifier, reader.ReadBytes((int)reader.BaseStream.Length));
+            //}
+
+            var buffer = _storageInMemory[identifier];
+            stream.Read(buffer, 0, (int)stream.Length);
+
+            
+        }
+
+        public void Delete(string identifier)
+        {
+            _storageInMemory.Remove(identifier);
+        }
+
+        public bool Exists(string identifier)
+        {
+            return _storageInMemory.ContainsKey(identifier);
         }
     }
 }

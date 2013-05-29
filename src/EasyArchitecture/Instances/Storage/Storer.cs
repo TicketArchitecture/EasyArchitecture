@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using EasyArchitecture.Instances.Log;
 using EasyArchitecture.Plugins.Contracts.Storage;
 
@@ -13,29 +14,25 @@ namespace EasyArchitecture.Instances.Storage
             _plugin = plugin;
         }
 
-        internal Guid Save(byte[] buffer)
+        internal void Save(Stream stream, string identifier)
         {
-            var ret =_plugin.Save(buffer);
+            _plugin.Save(stream, identifier);
             
-            InstanceLogger.Log(this, "Save",buffer,ret);
-            
-            return ret;
+            InstanceLogger.Log(this, "Save",stream.Length, identifier);
         }
 
-        internal byte[] Get(Guid id)
+        internal void Retrieve(Stream stream, string identifier)
         {
-            var ret=_plugin.Get(id);
+            _plugin.Retrieve(stream,identifier);
 
-            InstanceLogger.Log(this, "Get", id, ret);
-
-            return ret;
+            InstanceLogger.Log(this, "Get", stream.Length, identifier);
         }
 
-        internal bool Exists(Guid id)
+        internal bool Exists(string identifier)
         {
-            var ret = _plugin.Exists(id);
+            var ret = _plugin.Exists(identifier);
 
-            InstanceLogger.Log(this, "Exists", id, ret);
+            InstanceLogger.Log(this, "Exists", identifier, ret);
 
             return ret;
         }
