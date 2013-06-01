@@ -9,6 +9,7 @@ namespace EasyArchitecture.Plugins.Tests.Storage
     public abstract class MinimalStorageTest
     {
         protected IStorage Storage;
+        private const string Container = "teste-container";
 
         [SetUp]
         public abstract void SetUp();
@@ -18,10 +19,10 @@ namespace EasyArchitecture.Plugins.Tests.Storage
         {
             var buffer = new byte[] { 1, 2, 3, 4 };
             var id = Guid.NewGuid().ToString();
-
+            
             using(var stream = new MemoryStream(buffer))
             {
-                Assert.That(() => { Storage.Save(stream,id); }, Throws.Nothing);
+                Assert.That(() => { Storage.Save(stream, Container,id); }, Throws.Nothing);
             }
             
         }
@@ -32,17 +33,17 @@ namespace EasyArchitecture.Plugins.Tests.Storage
             var buffer = new byte[] { 1, 2, 3, 4 };
             var id = Guid.NewGuid().ToString();
 
-            var recoveredBuffer = new byte[3];
+            var recoveredBuffer = new byte[4];
 
             using (var stream = new MemoryStream(buffer))
             {
-                Storage.Save(stream, id); 
+                Storage.Save(stream, Container, id); 
             }
 
             using (var stream = new MemoryStream())
             {
-                Storage.Retrieve(stream, id);
-                stream.Read(recoveredBuffer, 0, 3);
+                Storage.Retrieve(stream, Container, id);
+                stream.Read(recoveredBuffer, 0, 4);
             }
             
             Assert.That(recoveredBuffer, Is.EqualTo(buffer));
@@ -55,23 +56,23 @@ namespace EasyArchitecture.Plugins.Tests.Storage
 
             using (var stream = new MemoryStream())
             {
-                Assert.That(() => { Storage.Retrieve(stream,id); }, Throws.Exception);
+                Assert.That(() => { Storage.Retrieve(stream, Container,id); }, Throws.Exception);
             }
         }
 
 
         [Test]
-        public void Should_confirm_file_existence()
+        public void     Should_confirm_file_existence()
         {
             var buffer = new byte[] { 1, 2, 3, 4 };
             var id = Guid.NewGuid().ToString();
 
             using (var stream = new MemoryStream(buffer))
             {
-                Storage.Save(stream, id);
+                Storage.Save(stream, Container, id);
             }
 
-            var actual = Storage.Exists(id);
+            var actual = Storage.Exists(Container, id);
 
             Assert.That(actual, Is.True);
         }
@@ -81,7 +82,7 @@ namespace EasyArchitecture.Plugins.Tests.Storage
         {
             var id = Guid.NewGuid().ToString();
 
-            var actual = Storage.Exists(id);
+            var actual = Storage.Exists(Container, id);
 
             Assert.That(actual, Is.False);
         }

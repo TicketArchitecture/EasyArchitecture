@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="Configuration\ConfigObject.cs" />
     <Compile Include="Instances\Log\MethodCallLogger.cs" />
+    <Compile Include="Plugins\BultIn\Storage\FileSystemStorage.cs" />
+    <Compile Include="Plugins\BultIn\Storage\FileSystemStoragePlugin.cs" />
     <Compile Include="Plugins\Contracts\IoC\AbstractContainerPlugin.cs" />
     <Compile Include="Plugins\Contracts\Persistence\CommonRules.cs" />
     <Compile Include="Plugins\PluginInspectorExtrator.cs" />
@@ -100,7 +102,7 @@
     <Compile Include="Instances\Storage\Storer.cs" />
     <Compile Include="Instances\Log\Logger.cs" />
     <Compile Include="Instances\Persistence\Persistence.cs" />
-    <Compile Include="Plugins\BultIn\Storage\Storage.cs" />
+    <Compile Include="Plugins\BultIn\Storage\MemoryStorage.cs" />
     <Compile Include="Plugins\Contracts\Storage\IStorage.cs" />
     <Compile Include="Instances\Translation\Translator.cs" />
     <Compile Include="Configuration\Exceptions\NotConfiguredException.cs" />
@@ -110,7 +112,7 @@
     <Compile Include="Mechanisms\Storage\Storer.cs" />
     <Compile Include="Plugins\BultIn\Caching\Cache.cs" />
     <Compile Include="Plugins\BultIn\Caching\CacheItem.cs" />
-    <Compile Include="Plugins\BultIn\Storage\StoragePlugin.cs" />
+    <Compile Include="Plugins\BultIn\Storage\MemoryStoragePlugin.cs" />
     <Compile Include="Plugins\Contracts\Storage\IStoragePlugin.cs" />
     <Compile Include="Plugins\Contracts\Caching\ICachePlugin.cs" />
     <Compile Include="Plugins\BultIn\Translation\MapRule.cs" />
