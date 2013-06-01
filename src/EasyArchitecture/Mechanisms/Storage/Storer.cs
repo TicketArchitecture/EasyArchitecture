@@ -1,23 +1,35 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.IO;
 using EasyArchitecture.Core;
 
 namespace EasyArchitecture.Mechanisms.Storage
 {
     public static class Storer
     {
-        public static Guid Save(byte[] buffer)
+        public static void Save(Stream stream,string container, string identifier)
         {
-            return InstanceProvider.GetInstance<Instances.Storage.Storer>().Save(buffer);
+            InstanceProvider.GetInstance<Instances.Storage.Storer>().Save(stream,container,identifier);
         }
 
-        public static byte[] Get(Guid id)
+        public static void Retrieve(Stream stream, string container, string identifier)
         {
-            return InstanceProvider.GetInstance<Instances.Storage.Storer>().Get(id);
+            InstanceProvider.GetInstance<Instances.Storage.Storer>().Retrieve(stream,container,identifier);
         }
 
-        public static bool Exists(Guid id)
+        public static bool Exists(string container, string identifier)
         {
-            return InstanceProvider.GetInstance<Instances.Storage.Storer>().Exists(id);
+            return InstanceProvider.GetInstance<Instances.Storage.Storer>().Exists(container,identifier);
         }
+
+        public static void Delete(string container, string identifier)
+        {
+            InstanceProvider.GetInstance<Instances.Storage.Storer>().Delete(container, identifier);
+        }
+
+        public static IEnumerable<string> List(string container)
+        {
+            return InstanceProvider.GetInstance<Instances.Storage.Storer>().List(container);
+        }
+
     }
 }

@@ -1,9 +1,8 @@
-using EasyArchitecture.Core;
 using EasyArchitecture.Plugins.Contracts.Storage;
 
 namespace EasyArchitecture.Plugins.BultIn.Storage
 {
-    internal class StoragePlugin : Plugin,IStoragePlugin
+    internal class MemoryStoragePlugin : Plugin,IStoragePlugin
     {
         protected override void ConfigurePlugin(PluginConfiguration pluginConfiguration, PluginInspector pluginInspector)
         {
@@ -11,7 +10,7 @@ namespace EasyArchitecture.Plugins.BultIn.Storage
 
         public IStorage GetInstance()
         {
-            return new Storage();
+            return new MemoryStorage();
         }
     }
 }

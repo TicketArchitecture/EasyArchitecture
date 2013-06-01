@@ -1,11 +1,14 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.IO;
 
 namespace EasyArchitecture.Plugins.Contracts.Storage
 {
     public interface IStorage
     {
-        Guid Save(byte[] buffer);
-        byte[] Get(Guid id);
-        bool Exists (Guid id);
+        bool Exists (string container, string identifier);
+        void Save(Stream stream, string container, string identifier);
+        IEnumerable<string> List(string container);
+        void Retrieve(Stream stream, string container, string identifier);
+        void Delete(string container, string identifier);
     }
 }

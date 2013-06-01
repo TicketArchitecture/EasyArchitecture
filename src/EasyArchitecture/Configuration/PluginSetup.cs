@@ -36,7 +36,7 @@ namespace EasyArchitecture.Configuration
                     {typeof (ILoggerPlugin), new LoggerPlugin()},
                     {typeof (ITranslatorPlugin), new TranslatorPlugin()},
                     {typeof (ICachePlugin), new CachePlugin()},
-                    {typeof (IStoragePlugin), new StoragePlugin()},
+                    {typeof (IStoragePlugin), new MemoryStoragePlugin()},
                     {typeof (IPersistencePlugin), new PersistencePlugin()},
                     {typeof (IContainerPlugin), new ContainerPlugin()}
                 };

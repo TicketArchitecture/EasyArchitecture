@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.IO;
 using EasyArchitecture.Instances.Log;
 using EasyArchitecture.Plugins.Contracts.Storage;
 
@@ -13,31 +14,43 @@ namespace EasyArchitecture.Instances.Storage
             _plugin = plugin;
         }
 
-        internal Guid Save(byte[] buffer)
+        internal void Save(Stream stream, string container, string identifier)
         {
-            var ret =_plugin.Save(buffer);
+            _plugin.Save(stream, container,identifier);
             
-            InstanceLogger.Log(this, "Save",buffer,ret);
-            
+            InstanceLogger.Log(this, "Save",stream.Length,container, identifier);
+        }
+
+        internal void Retrieve(Stream stream, string container, string identifier)
+        {
+            _plugin.Retrieve(stream,container,identifier);
+
+            InstanceLogger.Log(this, "Retrieve", stream.Length, container, identifier);
+        }
+
+        internal bool Exists(string container, string identifier)
+        {
+            var ret = _plugin.Exists(container,identifier);
+
+            InstanceLogger.Log(this, "Exists", container,identifier, ret);
+
             return ret;
         }
 
-        internal byte[] Get(Guid id)
+        internal IEnumerable<string> List(string container)
         {
-            var ret=_plugin.Get(id);
+            var ret = _plugin.List(container);
 
-            InstanceLogger.Log(this, "Get", id, ret);
+            InstanceLogger.Log(this, "List", container, ret);
 
             return ret;
         }
 
-        internal bool Exists(Guid id)
+        internal void Delete(string container, string identifier)
         {
-            var ret = _plugin.Exists(id);
+            _plugin.Delete(container, identifier);
 
-            InstanceLogger.Log(this, "Exists", id, ret);
-
-            return ret;
+            InstanceLogger.Log(this, "Delete", container,identifier);
         }
     }
 }

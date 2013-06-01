@@ -10,7 +10,7 @@ namespace EasyArchitecture.Plugins.BuiltIn.Tests.Storage
         [SetUp]
         public override void SetUp()
         {
-            Storage = new StoragePlugin().GetInstance();
+            Storage = new MemoryStoragePlugin().GetInstance();
         }
     }
 }
