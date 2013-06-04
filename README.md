@@ -7,9 +7,9 @@ Um framework simples e leve para acelerar a construção de API's.
 
 Como eu posso começar?
 --------------------------------
-Acesse o [site oficial](http://easyarchitecture.org) para maiores detalhes.
-Siga-nos no [twitter](https://twitter.com/easyarchitect)
-Tire suas dúvidas no [grupo](https://groups.google.com/forum/#!forum/easyarchitectureframework)
+Acesse o [site oficial](http://easyarchitecture.org) para maiores detalhes. <br>
+Siga-nos no [twitter](https://twitter.com/easyarchitect). <br>
+Tire suas dúvidas no [grupo](https://groups.google.com/forum/#!forum/easyarchitectureframework).
 
 
 Onde posso baixar?
