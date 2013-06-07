@@ -1,6 +1,5 @@
 using EasyArchitecture.Core;
 using EasyArchitecture.Plugins.Contracts.Caching;
-using EasyArchitecture.Plugins.Contracts.IoC;
 using EasyArchitecture.Plugins.Contracts.Log;
 using EasyArchitecture.Plugins.Contracts.Persistence;
 using EasyArchitecture.Plugins.Contracts.Storage;
@@ -53,18 +52,6 @@ namespace EasyArchitecture.Configuration.Expressions
         public ForExpression Persistence<T>() where T : IPersistencePlugin
         {
             _pluginConfiguration.Register<IPersistencePlugin, T>();
-            return this;
-        }
-
-        public ForExpression Container(IContainerPlugin plugin)
-        {
-            _pluginConfiguration.Register(plugin);
-            return this;
-        }
-
-        public ForExpression Container<T>() where T : IContainerPlugin
-        {
-            _pluginConfiguration.Register<IContainerPlugin, T>();
             return this;
         }
 
