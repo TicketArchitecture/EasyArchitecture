@@ -3,9 +3,6 @@ using System.Reflection;
 
 namespace EasyArchitecture.Core.Aspects
 {
-    /// <summary>
-    /// VO
-    /// </summary>
     internal class ProxyMethodCall
     {
         private readonly object _o;

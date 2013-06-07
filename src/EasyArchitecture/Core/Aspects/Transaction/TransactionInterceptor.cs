@@ -3,7 +3,7 @@ using EasyArchitecture.Instances.Persistence;
 
 namespace EasyArchitecture.Core.Aspects.Transaction
 {
-    public class TransactionInterceptor : Interceptor
+    internal class TransactionInterceptor : Interceptor
     {
         internal override object Invoke(ProxyMethodCall methodCall)
         {

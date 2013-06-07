@@ -4,11 +4,11 @@ using EasyArchitecture.Core.Aspects.Transaction;
 
 namespace EasyArchitecture.Core.Aspects
 {
-    public static class InterceptorFactory
+    internal static class InterceptorFactory
     {
         private static  Interceptor _interceptor ;
 
-        public static Interceptor GetInstance()
+        internal static Interceptor GetInstance()
         {
             return _interceptor ?? (_interceptor = new ContextInterceptor()
                                                        .SetSuccessor(

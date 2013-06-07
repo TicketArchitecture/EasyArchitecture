@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace EasyArchitecture.Core.Aspects.Log
 {
-    public class LogInterceptor:Interceptor
+    internal class LogInterceptor:Interceptor
     {
         internal override object Invoke(ProxyMethodCall methodCall)
         {

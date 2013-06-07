@@ -7,7 +7,7 @@ using EasyArchitecture.Plugins.Contracts.Log;
 
 namespace EasyArchitecture.Core.Aspects.Log
 {
-    public static class MethodCallLogger
+    internal static class MethodCallLogger
     {
         internal static void LogInvokation(MethodInfo methodInfo, object[] parametersValue)
         {
