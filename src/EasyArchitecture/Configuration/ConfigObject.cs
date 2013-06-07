@@ -1,4 +1,3 @@
-using System;
 using EasyArchitecture.Core;
 
 namespace EasyArchitecture.Configuration
@@ -17,13 +16,6 @@ namespace EasyArchitecture.Configuration
             ActivateCurrentThread();
             return InstanceProvider.GetInstance<Instances.IoC.Container>().Resolve<T>();
         }
-
-        //public object ActivateFacade(Type type)
-        //{
-        //    ActivateCurrentThread();
-        //    return InstanceProvider.GetInstance<Instances.IoC.Container>().Resolve(type);
-        //}
-
 
         public void ActivateCurrentThread()
         {
