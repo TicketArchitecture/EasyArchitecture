@@ -56,7 +56,7 @@ namespace EasyArchitecture.Plugins.BultIn.IoC
             }
             
             var constructor = constructors[0];
-            return  Activator.CreateInstance(typeInfo.Type, constructor.GetParameters().Select(constructorParameter => this.Resolve(constructorParameter.ParameterType)).ToArray());
+            return  Activator.CreateInstance(typeInfo.Type, constructor.GetParameters().Select(constructorParameter => Resolve(constructorParameter.ParameterType)).ToArray());
         }
 
         private TypeRegistry SearchType(Type interfaceType)

@@ -1,5 +1,3 @@
-using EasyArchitecture.Plugins.Contracts.IoC;
-
 namespace EasyArchitecture.Core.Aspects
 {
     public class ContextInterceptor : Interceptor

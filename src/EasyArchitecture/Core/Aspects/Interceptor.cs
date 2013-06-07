@@ -1,4 +1,4 @@
-namespace EasyArchitecture.Plugins.Contracts.IoC
+namespace EasyArchitecture.Core.Aspects
 {
     public abstract class Interceptor
     {

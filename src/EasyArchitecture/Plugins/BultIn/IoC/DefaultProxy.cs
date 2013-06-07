@@ -1,5 +1,5 @@
 ﻿using System;
-using EasyArchitecture.Plugins.Contracts.IoC;
+using EasyArchitecture.Core.Aspects;
 
 namespace EasyArchitecture.Plugins.BultIn.IoC
 {
@@ -12,7 +12,7 @@ namespace EasyArchitecture.Plugins.BultIn.IoC
         }
 
         public Object Invoke(Object proxy, System.Reflection.MethodInfo method, Object[] parameters) {
-            return new InterceptionHook(_obj, method, parameters).Execute();
+            return InterceptorFactory.GetInstance().Invoke(new ProxyMethodCall(_obj, method, parameters));
         }
     }
 }

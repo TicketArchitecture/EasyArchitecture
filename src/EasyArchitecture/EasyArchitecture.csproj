@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ConfigObject.cs" />
+    <Compile Include="Core\Aspects\InterceptorFactory.cs" />
     <Compile Include="Instances\Log\MethodCallLogger.cs" />
     <Compile Include="Plugins\BultIn\Storage\FileSystemStorage.cs" />
     <Compile Include="Plugins\BultIn\Storage\FileSystemStoragePlugin.cs" />
@@ -87,13 +88,12 @@
     <Compile Include="Core\Serializer\UnknowTypeDataContractSurrogate.cs" />
     <Compile Include="Instances\Log\InstanceLogger.cs" />
     <Compile Include="Configuration\PluginSetup.cs" />
-    <Compile Include="Plugins\Contracts\IoC\ProxyMethodCall.cs" />
-    <Compile Include="Plugins\Contracts\IoC\InterceptionHook.cs" />
+    <Compile Include="Core\Aspects\ProxyMethodCall.cs" />
     <Compile Include="Plugins\BultIn\Log\Logger.cs" />
     <Compile Include="Plugins\Contracts\Log\ILogger.cs" />
     <Compile Include="Core\Aspects\TransactionInterceptor.cs" />
     <Compile Include="Core\Aspects\ContextInterceptor.cs" />
-    <Compile Include="Plugins\Contracts\IoC\Interceptor.cs" />
+    <Compile Include="Core\Aspects\Interceptor.cs" />
     <Compile Include="Core\Serializer\JsonSerializer.cs" />
     <Compile Include="Plugins\Plugin.cs" />
     <Compile Include="Plugins\PluginConfigurationException.cs" />

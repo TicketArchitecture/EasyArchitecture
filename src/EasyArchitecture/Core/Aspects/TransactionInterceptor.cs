@@ -1,6 +1,5 @@
 using System;
 using EasyArchitecture.Instances.Persistence;
-using EasyArchitecture.Plugins.Contracts.IoC;
 
 namespace EasyArchitecture.Core.Aspects
 {
@@ -8,7 +7,7 @@ namespace EasyArchitecture.Core.Aspects
     {
         public override object Invoke(ProxyMethodCall methodCall)
         {
-            object ret = null;
+            object ret;
             
             InstanceProvider.GetInstance<Persistence>().BeginTransaction();
             try

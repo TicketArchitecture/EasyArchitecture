@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace EasyArchitecture.Plugins.Contracts.IoC
+namespace EasyArchitecture.Core.Aspects
 {
     public class ProxyMethodCall
     {
@@ -17,7 +17,7 @@ namespace EasyArchitecture.Plugins.Contracts.IoC
         }
         public object Invoke()
         {
-            object ret = null;
+            object ret;
             try
             {
                 ret = _method.Invoke(_o, _parameters);

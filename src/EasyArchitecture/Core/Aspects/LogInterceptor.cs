@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using EasyArchitecture.Instances.Log;
-using EasyArchitecture.Plugins.Contracts.IoC;
 
 namespace EasyArchitecture.Core.Aspects
 {
