@@ -1,9 +1,9 @@
 ﻿using System.Text;
-using EasyArchitecture.Core;
 using EasyArchitecture.Core.Serializer;
+using EasyArchitecture.Instances.Log;
 using EasyArchitecture.Plugins.Contracts.Log;
 
-namespace EasyArchitecture.Instances.Log
+namespace EasyArchitecture.Core
 {
     internal static class InstanceLogger
     {

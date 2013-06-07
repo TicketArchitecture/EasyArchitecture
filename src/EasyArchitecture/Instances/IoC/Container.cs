@@ -1,4 +1,5 @@
-﻿using EasyArchitecture.Instances.Log;
+﻿using EasyArchitecture.Core;
+using EasyArchitecture.Instances.Log;
 using EasyArchitecture.Plugins.Contracts.IoC;
 
 namespace EasyArchitecture.Instances.IoC

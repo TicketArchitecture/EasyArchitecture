@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
-using EasyArchitecture.Instances.Log;
 
-namespace EasyArchitecture.Core.Aspects
+namespace EasyArchitecture.Core.Aspects.Log
 {
     public class LogInterceptor:Interceptor
     {

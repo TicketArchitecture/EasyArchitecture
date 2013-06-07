@@ -1,7 +1,7 @@
 using System;
 using EasyArchitecture.Instances.Persistence;
 
-namespace EasyArchitecture.Core.Aspects
+namespace EasyArchitecture.Core.Aspects.Transaction
 {
     public class TransactionInterceptor : Interceptor
     {

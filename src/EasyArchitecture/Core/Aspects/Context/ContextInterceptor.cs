@@ -1,4 +1,4 @@
-namespace EasyArchitecture.Core.Aspects
+namespace EasyArchitecture.Core.Aspects.Context
 {
     public class ContextInterceptor : Interceptor
     {

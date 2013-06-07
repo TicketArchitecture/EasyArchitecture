@@ -1,3 +1,7 @@
+using EasyArchitecture.Core.Aspects.Context;
+using EasyArchitecture.Core.Aspects.Log;
+using EasyArchitecture.Core.Aspects.Transaction;
+
 namespace EasyArchitecture.Core.Aspects
 {
     public static class InterceptorFactory

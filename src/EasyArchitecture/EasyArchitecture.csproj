@@ -54,7 +54,7 @@
   <ItemGroup>
     <Compile Include="Configuration\ConfigObject.cs" />
     <Compile Include="Core\Aspects\InterceptorFactory.cs" />
-    <Compile Include="Instances\Log\MethodCallLogger.cs" />
+    <Compile Include="Core\Aspects\Log\MethodCallLogger.cs" />
     <Compile Include="Plugins\BultIn\Storage\FileSystemStorage.cs" />
     <Compile Include="Plugins\BultIn\Storage\FileSystemStoragePlugin.cs" />
     <Compile Include="Plugins\Contracts\Persistence\CommonRules.cs" />
@@ -83,16 +83,16 @@
     <Compile Include="Plugins\BultIn\IoC\TypeRegistry.cs" />
     <Compile Include="Plugins\Contracts\IoC\IContainerPlugin.cs" />
     <Compile Include="Plugins\Contracts\IoC\IContainer.cs" />
-    <Compile Include="Core\Aspects\LogInterceptor.cs" />
+    <Compile Include="Core\Aspects\Log\LogInterceptor.cs" />
     <Compile Include="Plugins\Contracts\Persistence\IPersistencePlugin.cs" />
     <Compile Include="Core\Serializer\UnknowTypeDataContractSurrogate.cs" />
-    <Compile Include="Instances\Log\InstanceLogger.cs" />
+    <Compile Include="Core\InstanceLogger.cs" />
     <Compile Include="Configuration\PluginSetup.cs" />
     <Compile Include="Core\Aspects\ProxyMethodCall.cs" />
     <Compile Include="Plugins\BultIn\Log\Logger.cs" />
     <Compile Include="Plugins\Contracts\Log\ILogger.cs" />
-    <Compile Include="Core\Aspects\TransactionInterceptor.cs" />
-    <Compile Include="Core\Aspects\ContextInterceptor.cs" />
+    <Compile Include="Core\Aspects\Transaction\TransactionInterceptor.cs" />
+    <Compile Include="Core\Aspects\Context\ContextInterceptor.cs" />
     <Compile Include="Core\Aspects\Interceptor.cs" />
     <Compile Include="Core\Serializer\JsonSerializer.cs" />
     <Compile Include="Plugins\Plugin.cs" />

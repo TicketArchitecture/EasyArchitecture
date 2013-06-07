@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using EasyArchitecture.Core;
 using EasyArchitecture.Instances.Log;
 using EasyArchitecture.Plugins.Contracts.Validation;
 
