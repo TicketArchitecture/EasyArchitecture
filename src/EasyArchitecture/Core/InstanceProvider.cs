@@ -59,7 +59,7 @@ namespace EasyArchitecture.Core
                 ThreadContext.GetCurrent().SetInstance(instance);
             }
 
-            return (T)instance;
+            return instance;
         }
 
         internal static void Configure(string moduleName, PluginSetup pluginSetup)
