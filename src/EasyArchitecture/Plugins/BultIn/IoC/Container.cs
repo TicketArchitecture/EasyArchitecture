@@ -16,18 +16,18 @@ namespace EasyArchitecture.Plugins.BultIn.IoC
 
         public void Register<T, T1>() where T1 : T
         {
-            Register(typeof (T), typeof (T1));
-        }
+            var interfaceType  = typeof(T);
+            var implementationType = typeof (T1);
 
-        public void Register(Type interfaceType, Type implementationType)
-        {
+            var typeRegistry = new TypeRegistry(implementationType, false);
+
             if (_registeredTypes.ContainsKey(interfaceType))
             {
-                _registeredTypes[interfaceType] = new TypeRegistry(implementationType, false);
+                _registeredTypes[interfaceType] = typeRegistry;
             }
             else
             {
-                _registeredTypes.Add(interfaceType, new TypeRegistry(implementationType, false));
+                _registeredTypes.Add(interfaceType, typeRegistry);
             }
         }
 
@@ -36,7 +36,7 @@ namespace EasyArchitecture.Plugins.BultIn.IoC
             return (T)Resolve(typeof(T));
         }
 
-        public object Resolve(Type interfaceType)
+        private object Resolve(Type interfaceType)
         {
             var typeInfo = SearchType(interfaceType);
 
@@ -54,11 +54,9 @@ namespace EasyArchitecture.Plugins.BultIn.IoC
             {
                 return Activator.CreateInstance(typeInfo.Type);
             }
-            else
-            {
-                var constructor = constructors[0];
-                return  Activator.CreateInstance(typeInfo.Type, constructor.GetParameters().Select(constructorParameter => this.Resolve(constructorParameter.ParameterType)).ToArray());
-            }
+            
+            var constructor = constructors[0];
+            return  Activator.CreateInstance(typeInfo.Type, constructor.GetParameters().Select(constructorParameter => this.Resolve(constructorParameter.ParameterType)).ToArray());
         }
 
         private TypeRegistry SearchType(Type interfaceType)

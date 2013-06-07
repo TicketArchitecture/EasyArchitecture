@@ -56,7 +56,6 @@
     <Compile Include="Instances\Log\MethodCallLogger.cs" />
     <Compile Include="Plugins\BultIn\Storage\FileSystemStorage.cs" />
     <Compile Include="Plugins\BultIn\Storage\FileSystemStoragePlugin.cs" />
-    <Compile Include="Plugins\Contracts\IoC\AbstractContainerPlugin.cs" />
     <Compile Include="Plugins\Contracts\Persistence\CommonRules.cs" />
     <Compile Include="Plugins\PluginInspectorExtrator.cs" />
     <Compile Include="Instances\Caching\Cache.cs" />

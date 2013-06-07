@@ -1,5 +1,4 @@
-﻿using System;
-using EasyArchitecture.Instances.Log;
+﻿using EasyArchitecture.Instances.Log;
 using EasyArchitecture.Plugins.Contracts.IoC;
 
 namespace EasyArchitecture.Instances.IoC
@@ -34,11 +33,5 @@ namespace EasyArchitecture.Instances.IoC
 
             return ret;
         }
-
-        //TODO: criado pra tentar
-        //public object Resolve(Type type)
-        //{
-        //    return _plugin.Resolve(type);
-        //}
     }
 }
