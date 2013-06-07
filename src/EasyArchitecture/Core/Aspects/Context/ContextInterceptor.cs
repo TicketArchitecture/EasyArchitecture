@@ -1,8 +1,8 @@
 namespace EasyArchitecture.Core.Aspects.Context
 {
-    public class ContextInterceptor : Interceptor
+    internal class ContextInterceptor : Interceptor
     {
-        public override object Invoke(ProxyMethodCall methodCall)
+        internal override object Invoke(ProxyMethodCall methodCall)
         {
             ThreadContext.GetCurrent().Initialize();
             return Next(methodCall);

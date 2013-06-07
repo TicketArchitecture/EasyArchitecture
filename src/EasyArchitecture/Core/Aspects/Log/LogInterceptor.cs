@@ -5,7 +5,7 @@ namespace EasyArchitecture.Core.Aspects.Log
 {
     public class LogInterceptor:Interceptor
     {
-        public override object Invoke(ProxyMethodCall methodCall)
+        internal override object Invoke(ProxyMethodCall methodCall)
         {
             object ret;
 

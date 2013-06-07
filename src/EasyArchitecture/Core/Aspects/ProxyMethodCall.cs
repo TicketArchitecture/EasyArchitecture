@@ -3,19 +3,23 @@ using System.Reflection;
 
 namespace EasyArchitecture.Core.Aspects
 {
-    public class ProxyMethodCall
+    /// <summary>
+    /// VO
+    /// </summary>
+    internal class ProxyMethodCall
     {
         private readonly object _o;
         private readonly MethodInfo _method;
         private readonly object[] _parameters;
 
-        public ProxyMethodCall(object o, MethodInfo method, object[] parameters)
+        internal ProxyMethodCall(object o, MethodInfo method, object[] parameters)
         {
             _o = o;
             _method = method;
             _parameters = parameters;
         }
-        public object Invoke()
+
+        internal object Invoke()
         {
             object ret;
             try
@@ -29,15 +33,17 @@ namespace EasyArchitecture.Core.Aspects
             return ret;
         }
 
-        public MethodInfo Method
+        internal MethodInfo Method
         {
             get { return _method; }
         }
-        public object [] Parameters
+
+        internal object [] Parameters
         {
             get { return _parameters; }
         }
-        public Object ObjOrigin
+
+        internal Object ObjOrigin
         {
             get { return _o; }
         }
