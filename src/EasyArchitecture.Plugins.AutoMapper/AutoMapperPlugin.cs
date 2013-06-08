@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using AutoMapper;
-using EasyArchitecture.Core;
 using EasyArchitecture.Plugins.Contracts.Translation;
 
 namespace EasyArchitecture.Plugins.AutoMapper

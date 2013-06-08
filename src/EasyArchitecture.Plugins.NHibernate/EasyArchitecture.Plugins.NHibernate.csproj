@@ -67,9 +67,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Validation\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\EasyArchitecture\EasyArchitecture.csproj">
       <Project>{09a7aa21-ed65-409c-8442-e0ada02a7aaf}</Project>

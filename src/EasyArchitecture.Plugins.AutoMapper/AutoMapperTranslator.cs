@@ -12,7 +12,7 @@ namespace EasyArchitecture.Plugins.AutoMapper
 
         public T1 Translate<T, T1>(T p0, T1 obj1)
         {
-            return Mapper.Map<T, T1>(p0,obj1);
+            return Mapper.Map(p0,obj1);
         }
     }
 }

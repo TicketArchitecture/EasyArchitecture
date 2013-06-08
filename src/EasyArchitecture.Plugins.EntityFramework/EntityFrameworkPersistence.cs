@@ -53,21 +53,11 @@ namespace EasyArchitecture.Plugins.EntityFramework
         {
             var queryable = (IQueryable<T>)_dbContext.Set(typeof(T));
             var type = typeof(T);
-            
 
-            var expressions= new List<Expression>();
+
             var parameterExpression = Expression.Parameter(type, "p");
 
-            foreach (var property in type.GetProperties())
-            {
-                var exampleValue = property.GetValue(example, BindingFlags.Default, null, null, null);
-
-                if (CommonRules.ShouldNotUseForComparison(exampleValue,property))
-                    continue;
-
-                expressions.Add(Expression.Equal(Expression.Property(parameterExpression, property.Name), Expression.Constant(exampleValue)));
-            }
-
+            var expressions= (from property in type.GetProperties() let exampleValue = property.GetValue(example, BindingFlags.Default, null, null, null) where !CommonRules.ShouldNotUseForComparison(exampleValue, property) select Expression.Equal(Expression.Property(parameterExpression, property.Name), Expression.Constant(exampleValue))).Cast<Expression>().ToList();
 
             var query = queryable.Where(x => true); 
             if (expressions.Count > 0)
