@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activation\Container.cs" />
     <Compile Include="Configuration\ConfigObject.cs" />
     <Compile Include="Core\Aspects\InterceptorFactory.cs" />
     <Compile Include="Core\Aspects\Log\MethodCallLogger.cs" />
@@ -76,7 +77,6 @@
     <Compile Include="Mechanisms\Validation\Expressions\ThisExpression.cs" />
     <Compile Include="Plugins\BultIn\Caching\CachePlugin.cs" />
     <Compile Include="Plugins\Contracts\Caching\ICache.cs" />
-    <Compile Include="Mechanisms\IoC\Container.cs" />
     <Compile Include="Instances\IoC\Container.cs" />
     <Compile Include="Plugins\BultIn\IoC\Container.cs" />
     <Compile Include="Plugins\BultIn\IoC\ContainerPlugin.cs" />
@@ -151,7 +151,9 @@
     <Compile Include="Mechanisms\Translation\Expressions\ToExpression.cs" />
     <Compile Include="Mechanisms\Translation\Translate.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Mechanisms\IoC\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /> -->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
