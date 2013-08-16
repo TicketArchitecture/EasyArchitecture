@@ -40,6 +40,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Plugins.Az
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Plugins.Azure.Tests", "tests\EasyArchitecture.Plugins.Azure.Tests\EasyArchitecture.Plugins.Azure.Tests.csproj", "{31325DD6-568B-499C-9217-425CDEED9B50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Plugins.Db4o", "src\EasyArchitecture.Plugins.Db4o\EasyArchitecture.Plugins.Db4o.csproj", "{0F02C607-F4C1-4AD5-A10C-47EC8E03F065}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyArchitecture.Plugins.Db4o.Tests", "tests\EasyArchitecture.Plugins.Db4o.Tests\EasyArchitecture.Plugins.Db4o.Tests.csproj", "{93D88B5D-D8D3-4474-A273-79DA344C187D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,6 +106,14 @@ Global
 		{31325DD6-568B-499C-9217-425CDEED9B50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31325DD6-568B-499C-9217-425CDEED9B50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31325DD6-568B-499C-9217-425CDEED9B50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F02C607-F4C1-4AD5-A10C-47EC8E03F065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F02C607-F4C1-4AD5-A10C-47EC8E03F065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F02C607-F4C1-4AD5-A10C-47EC8E03F065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F02C607-F4C1-4AD5-A10C-47EC8E03F065}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93D88B5D-D8D3-4474-A273-79DA344C187D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D88B5D-D8D3-4474-A273-79DA344C187D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D88B5D-D8D3-4474-A273-79DA344C187D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D88B5D-D8D3-4474-A273-79DA344C187D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,11 +127,13 @@ Global
 		{C17C18E1-CD87-47F9-BEA9-C086F3E44B95} = {8B654DAA-B565-4267-B9E8-7A97944DF48A}
 		{0658FF22-FD01-489F-B3E5-8C215FBCC276} = {8B654DAA-B565-4267-B9E8-7A97944DF48A}
 		{31325DD6-568B-499C-9217-425CDEED9B50} = {8B654DAA-B565-4267-B9E8-7A97944DF48A}
+		{93D88B5D-D8D3-4474-A273-79DA344C187D} = {8B654DAA-B565-4267-B9E8-7A97944DF48A}
 		{46C70FC2-29AC-4F11-AC70-CC3D066C90ED} = {A20584F5-1CEB-4614-857C-AED4CA6989F2}
 		{13B2D49C-45D2-43AD-99A3-FF1F66AEAA3F} = {A20584F5-1CEB-4614-857C-AED4CA6989F2}
 		{2A920002-A724-469C-9330-57482D1A01F3} = {A20584F5-1CEB-4614-857C-AED4CA6989F2}
 		{3ACCD6FE-781F-46C6-888C-F00FBA6BD591} = {A20584F5-1CEB-4614-857C-AED4CA6989F2}
 		{C2548051-16BA-418D-981E-82B2DEB40F4B} = {A20584F5-1CEB-4614-857C-AED4CA6989F2}
+		{0F02C607-F4C1-4AD5-A10C-47EC8E03F065} = {A20584F5-1CEB-4614-857C-AED4CA6989F2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\Unity.2.1.505.2\lib\NET35;packages\Unity.Interception.2.1.505.2\lib\NET35

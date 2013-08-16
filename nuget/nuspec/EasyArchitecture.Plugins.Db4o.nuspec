@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>EasyArchitecture.Plugins.Db4o</id>
+        <version>1.0.4811</version>
+        <title />
+        <authors>Henrique Riccio e Colaboradores</authors>
+        <owners>Henrique Riccio e Colaboradores</owners>
+        <licenseUrl>https://raw.github.com/EasyArchitecture/EasyArchitecture/master/LICENSE.txt</licenseUrl>
+        <projectUrl>https://github.com/EasyArchitecture</projectUrl>
+        <iconUrl>http://s.gravatar.com/avatar/e3e660b0916a4de7b15ef41361ee9f8e</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Plugin do db4o para o mecanismo de persistência do EasyArchitecture</description>
+        <summary>Plugin do db4o para o mecanismo de persistência do EasyArchitecture</summary>
+        <copyright>Copyright (c) 2010 Henrique Riccio</copyright>
+        <language>pt-BR</language>
+        <tags>easyarchitecture plugin nhibernate</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework4.0">
+                <dependency id="db4o-devel" version="8.1.184.15492" />
+                <dependency id="EasyArchitecture" version="1.0.4811" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="src\EasyArchitecture.Plugins.Db4o\bin\Debug\EasyArchitecture.Plugins.Db4o.dll" target="lib\net40\EasyArchitecture.Plugins.Db4o.dll" />
+    </files>
+</package>
