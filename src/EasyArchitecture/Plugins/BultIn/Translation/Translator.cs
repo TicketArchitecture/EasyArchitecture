@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using EasyArchitecture.Plugins.Contracts.Translation;
 
 namespace EasyArchitecture.Plugins.BultIn.Translation
@@ -66,13 +67,13 @@ namespace EasyArchitecture.Plugins.BultIn.Translation
             return target;
         }
 
-        private object TranslateObject<T, T1>(T source, T1 target)
+        private object TranslateObject(object source, object target)
         {
-            var typeMap = _mappedTypes.Find(m => m.Source == typeof(T) && m.Target == typeof(T1));
+            var typeMap = _mappedTypes.Find(m => m.Source == source.GetType() && m.Target == target.GetType());
             if (typeMap != null)
             {
-                var func = (Func<T, T1, T1>)typeMap.DeclaredMap;
-                return func(source, target);
+                var func = typeMap.DeclaredMap;
+                return func.GetType().InvokeMember("Invoke", BindingFlags.InvokeMethod, null, func, new object[] { source, target });
             }
 
             foreach (var property in source.GetType().GetProperties())
