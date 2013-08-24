@@ -32,12 +32,13 @@ namespace EasyArchitecture.Tests.Instances.Log
         [Test]
         public void Should_log()
         {
-            const string message = "mensagem de teste";
+            const string originalMessage = "mensagem de teste";
+            var message = string.Format("   [Message]: {0}", originalMessage);
             var identifier = ThreadContext.GetCurrent().Identifier;
             Expect.Call(() => _instancePlugin.Log(LogLevel.Debug, identifier, message, null)).Repeat.Once();
             _mockery.ReplayAll();
 
-            Mechanisms.Log.Logger.Message(message).Debug();
+            Mechanisms.Log.Logger.Message(originalMessage).Debug();
 
             _mockery.VerifyAll();
         }
